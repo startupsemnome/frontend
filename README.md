@@ -1,4 +1,4 @@
 # frontend
 
 
-Julio Henrique dos Santos 816126014 - FullStack - CTO
+Julio Henrique dos Santos 816126014 - FullStack 
