@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import RegisterUser from "./components/registerUser";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+          <RegisterUser nome="formulario de cadastro" idade="27" />
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -20,6 +22,9 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <footer>
+        <RegisterUser nome="formulario de desemprego" />
+        </footer>
       </div>
     );
   }
