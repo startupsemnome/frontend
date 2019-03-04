@@ -13,6 +13,11 @@ class NavBar extends Component {
           <ul>
             <li>
               <Link to="/">Home</Link>
+              <ul>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </ul>  
             </li>
             <li>
               <Link to="/cadastro-empresa">Cadastrar Empresa</Link>
