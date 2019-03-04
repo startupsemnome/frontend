@@ -6,6 +6,6 @@ export default class NotFound extends Component {
   }
 
   render() {
-    return <div>NOT A FOUND</div>;
+    return <div className="container">NOT A FOUND</div>;
   }
 }

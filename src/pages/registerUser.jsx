@@ -9,7 +9,7 @@ class RegisterUser extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <h1>{this.state.nome}</h1>
         <form action="">
           <legend>NOME: </legend>

@@ -4,18 +4,16 @@ class ProblemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        fname: "",
-        solic: "",
-        email: "",
-        telef: "",
-        nprob: "",
-      
-      
+      fname: "",
+      solic: "",
+      email: "",
+      telef: "",
+      nprob: ""
     };
   }
-    handleFormSubmit(event) {
-        event.preventDefault();
-        console.log(this.state);
+  handleFormSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
   }
 
   render() {
@@ -72,22 +70,20 @@ class ProblemForm extends Component {
               required
             />
 
-
             <label className="A col-md-2">Novo Problema</label>
             <textarea
               className="A col-md-10"
               id="nprob"
               name="Novo problema"
               placeholder="Descreva seu problema:"
-           
               onChange={e => this.setState({ nprob: e.target.value })}
               value={this.state.nprob}
             />
 
-        <button type="button" className="btn btn-success">Enviar</button>
-
-
-        </form>
+            <button type="button" className="btn btn-success">
+              Enviar
+            </button>
+          </form>
         </div>
       </div>
     );

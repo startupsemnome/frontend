@@ -14,6 +14,7 @@ import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
 import RegisterProblem from "../pages/registerProblem";
+import RegisterUsuario from "../pages/registerUser";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -35,22 +36,21 @@ export default class Routes extends Component {
             path="/cadastro-recurso"
             component={RegisterResource}
           />
-          <Route 
-          exact={true} 
-          path="/cadastro-problema"
-          component={RegisterProblem} />
+          <Route
+            exact={true}
+            path="/cadastro-usuario"
+            component={RegisterUsuario}
+          />
+          <Route
+            exact={true}
+            path="/cadastro-problema"
+            component={RegisterProblem}
+          />
 
           <Route exact={true} component={NotFound} />
-          
-
-          
-            
-          
         </Switch>
         <Footer />
       </div>
     );
   }
 }
-
-

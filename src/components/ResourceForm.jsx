@@ -13,8 +13,7 @@ class ResourceForm extends Component {
       est: "",
       desc: "",
       areai: "",
-      message1:""
-      
+      message1: ""
     };
   }
   handleFormSubmit(event) {
@@ -24,12 +23,12 @@ class ResourceForm extends Component {
   render() {
     return (
       <div className="App">
-        <div> 
-            <div>  
-                <h1>Cadastro de Recursos</h1>
-                <br/>
-            </div>
-            <form action="/action_page.php">
+        <div>
+          <div>
+            <h1>Cadastro de Recursos</h1>
+            <br />
+          </div>
+          <form action="/action_page.php">
             <label className="A col-md-2">Nome</label>
             <input
               className="A col-md-10"
@@ -65,7 +64,7 @@ class ResourceForm extends Component {
               onChange={e => this.setState({ rua: e.target.value })}
               required
             />
-            
+
             <label className="A col-md-2">Telefone</label>
             <input
               className="A col-md-10"
@@ -113,7 +112,7 @@ class ResourceForm extends Component {
               onChange={e => this.setState({ email: e.target.value })}
               required
             />
-            
+
             <label className="A col-md-2">Descrição</label>
             <textarea
               className="A col-md-10"
@@ -138,7 +137,7 @@ class ResourceForm extends Component {
               value="Confirmar Cadastro"
               class="btn btn-success"
             />
-             <input
+            <input
               type="button"
               onClick={e => this.handleFormSubmit(e)}
               value="Cancelar Cadastro"

@@ -11,7 +11,7 @@ export default class RegisterResource extends Component {
     return (
       <div className="container">
         <h1>RegisterResource</h1>
-        <ResourceForm/>        
+        <ResourceForm />
       </div>
     );
   }
