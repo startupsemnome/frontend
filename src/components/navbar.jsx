@@ -31,6 +31,9 @@ class NavBar extends Component {
               <Link to="/cadastro-produto">Cadastrar Produto</Link>
             </li>
             <li>
+              <Link to="/cadastro-recurso">Cadastrar Recurso</Link>
+            </li>
+            <li>
               <Link to="/sobre">Sobre Nós</Link>
             </li>
           </ul>
