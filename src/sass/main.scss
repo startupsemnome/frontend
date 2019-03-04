@@ -1,3 +1,13 @@
-h1 {
-  color: purple;
-}
+@import "vendors/bootstrap";
+@import "utils/variables";
+@import "base/reset";
+@import "base/mixin";
+@import "base/typography";
+
+@import "layout/button";
+@import "layout/footer";
+@import "layout/forms";
+@import "layout/header";
+
+@import "pages/notfound";
+@import "utils/common";
