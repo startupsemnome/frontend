@@ -3,11 +3,7 @@
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
-    "lib": [
-      "es6",
-      "dom",
-      "esnext"
-    ],
+    "lib": ["es6", "dom", "esnext"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "preserve",
@@ -15,7 +11,7 @@
     "rootDir": "src",
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "strictNullChecks": true,
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
@@ -33,7 +29,5 @@
     "config",
     "src/setupTests.ts"
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
