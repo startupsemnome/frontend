@@ -10,7 +10,7 @@ export default class Home extends Component {
     return (
       <div className="container">
 
-        <h1>Home</h1>
+        <h1>Home Teste</h1>
         <HomeDash />
 
       </div>
