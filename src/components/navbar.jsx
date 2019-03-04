@@ -18,17 +18,17 @@ class NavBar extends Component {
               <Link to="/cadastro-empresa">Cadastrar Empresa</Link>
               <ul>
                 <li>
-                  <a href="#">Product 1</a>
+                  <Link to="/cadastro-empresa">Empresa</Link>
                   <ul>
                     <li>
-                      <a href="#">Sub Product</a>
+                      <Link to="/cadastro-empresa">Nova</Link>
                     </li>
                   </ul>
                 </li>
               </ul>
             </li>
             <li>
-              <Link to="/cadastro-empresa">Cadastrar Produto</Link>
+              <Link to="/cadastro-produto">Cadastrar Produto</Link>
             </li>
             <li>
               <Link to="/sobre">Sobre Nós</Link>
