@@ -9,6 +9,7 @@ import multi from "redux-multi";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { ConnectedRouter } from "react-router-redux";
+import "./sass/main.scss";
 
 const history = createBrowserHistory();
 
