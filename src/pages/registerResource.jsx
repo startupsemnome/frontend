@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ResourceForm from "../components/ResourceForm";
+import ResourceForm from "../components/resourceForm";
 
 //Alterar o nome do class para a página desejada
 export default class RegisterResource extends Component {
@@ -11,7 +11,7 @@ export default class RegisterResource extends Component {
     return (
       <div className="container">
         <h1>RegisterResource</h1>
-        <ResourceForm/>        
+        <ResourceForm />
       </div>
     );
   }
