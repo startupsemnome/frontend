@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import './bootstrap.min.css';
 import './App.css';
 import RegisterUser from "./components/registerUser";
-
+import logo from "./logo.svg";
+import CompanyForm from "./components/CompanyForm";
 class App extends Component {
   render() {
     return (
@@ -21,9 +22,14 @@ class App extends Component {
           >
             Learn React
           </a>
-        </header>
-        <footer>
-        <RegisterUser nome="formulario de desemprego" />
+        </header> 
+          <RegisterUser nome="formulario de desemprego" />
+          Empresa
+          <div className="container">
+            <CompanyForm /> 
+          </div>
+        <footer className="App-footer">
+        <h5>&copy;Todos os direitos reservados - 2019</h5>
         </footer>
       </div>
     );
