@@ -91,7 +91,7 @@ class CompanyForm extends Component {
               id="est"
               name="estado"
               placeholder="Estado da empresa"
-              value={this.state.email}
+              value={this.state.est}
               onChange={e => this.setState({ est: e.target.value })}
               required
             />
