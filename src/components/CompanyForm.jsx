@@ -63,7 +63,7 @@ class CompanyForm extends Component {
             <label className="A col-md-2">Numero</label>
             <input
               className="A col-md-10"
-              type=""
+              type="number"
               id="num"
               name="numero"
               placeholder="O numero da empresa"
@@ -91,7 +91,7 @@ class CompanyForm extends Component {
               id="est"
               name="estado"
               placeholder="Estado da empresa"
-              value={this.state.email}
+              value={this.state.est}
               onChange={e => this.setState({ est: e.target.value })}
               required
             />
@@ -139,5 +139,4 @@ class CompanyForm extends Component {
     );
   }
 }
-
-export default CompanyForm;
+export default CompanyForm; 
