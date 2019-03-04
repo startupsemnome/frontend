@@ -139,5 +139,4 @@ class CompanyForm extends Component {
     );
   }
 }
-
-export default CompanyForm;
+export default CompanyForm; 
