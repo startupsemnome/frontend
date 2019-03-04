@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../bootstrap.min.css";
+
 class ProblemForm extends Component {
   constructor(props) {
     super(props);

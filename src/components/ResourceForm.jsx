@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../bootstrap.min.css";
+
 class ResourceForm extends Component {
   constructor(props) {
     super(props);
@@ -135,13 +135,13 @@ class ResourceForm extends Component {
               type="submit"
               onClick={e => this.handleFormSubmit(e)}
               value="Confirmar Cadastro"
-              class="btn btn-success"
+              className="btn btn-success"
             />
             <input
               type="button"
               onClick={e => this.handleFormSubmit(e)}
               value="Cancelar Cadastro"
-              class="btn btn-warning"
+              className="btn btn-warning"
             />
           </form>
         </div>
