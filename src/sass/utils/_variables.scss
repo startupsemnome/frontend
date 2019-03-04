@@ -1,0 +1,52 @@
+/*-------------Portal-------------*/
+$colorMain: #8553df;
+$graySubTitleInfo: #6f6f6e;
+$grayTous: #f0f0f0;
+$navbar-height: 50px;
+/*--------------------------------*/
+
+/*--------------Font--------------*/
+$font-family: "Arial";
+/*--------------------------------*/
+
+/*-------------Colors-------------*/
+$white: #fff;
+$black: #000;
+$grey: #707070;
+$light-grey: #999;
+/*--------------------------------*/
+
+/*-----------Typography-----------*/
+$subtitleColor: $grey;
+$titleColor: $black;
+$textColor: $light-grey;
+$buttonHeight: 1em 3.5em;
+$buttonFontSize: 0.7rem;
+$buttonPrimaryColor: $colorMain;
+$buttonPrimaryFontColor: $white;
+$buttonSecundaryColor: $white;
+$buttonSecundaryFontColor: $black;
+$buttonOutlineColor: $colorMain;
+$buttonPrivatePersonColor: #3db39e;
+$buttonPrivatePersonFontColor: $white;
+$buttonLegalEntityColor: #3d97b3;
+$buttonLegalEntityFontColor: $white;
+$buttonContractColor: #3db39e;
+$buttonContractFontColor: $white;
+$buttonProgressColor: #32ba7c;
+$buttonProgressFontColor: $white;
+$navbar-color: $light-grey !default;
+$navbar-hover-color: $grey !default;
+$navbar-toggler-icon: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-color}' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"),
+  "#",
+  "%23"
+) !default;
+$navbar-toggler-icon-hover: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-hover-color}' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"),
+  "#",
+  "%23"
+) !default;
+/*--------------------------------*/
+
+/*------------------------------------------------------------------End-Images-------------------------------------------------------*/

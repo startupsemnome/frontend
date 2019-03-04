@@ -1,0 +1,84 @@
+*,
+html,
+body {
+  font-family: $font-family !important;
+}
+
+body {
+  background-color: $white;
+}
+
+@for $i from 1 through 6 {
+  h#{$i},
+  p {
+    &.text-inverse,
+    .text-inverse & {
+      color: $white;
+    }
+
+    b {
+      font-size: 1.4em;
+    }
+  }
+
+  a {
+    &.text-inverse,
+    .text-inverse & {
+      color: $white;
+      @include textHoverEffect($white, 20%);
+    }
+  }
+
+  @for $j from 1 through 5 {
+    h#{$i}.display-#{$j},
+    .display-#{$j}.banner-portal,
+    .banner-portal {
+      color: $colorMain;
+      font-weight: bold;
+      line-height: 1.3em;
+    }
+  }
+}
+
+.portal {
+  &-bold {
+    font-weight: bold;
+    color: $black;
+  }
+
+  &-text {
+    &-grey {
+      color: $grey;
+    }
+  }
+}
+
+h1,
+h4,
+h5 {
+  color: $subtitleColor;
+}
+
+h3 {
+  .banner-container & {
+    color: $titleColor;
+  }
+  color: $textColor;
+}
+
+p {
+  color: $textColor;
+}
+
+.spanError h6 {
+  color: red !important;
+  opacity: 1;
+}
+
+.text-color-green {
+  color: green;
+}
+
+.text-color-red {
+  color: red;
+}

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CompanyForm from "../components/companyForm";
-
-export default class RegisterCompany extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
   }
@@ -9,8 +8,8 @@ export default class RegisterCompany extends Component {
   render() {
     return (
       <div className="container">
-        <h1>RegisterCompany</h1>
-        <CompanyForm />
+        <h1>Logrin</h1>
+        <conteudo />
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./../css/menu.css";
 
 class NavBar extends Component {
   constructor(props) {
@@ -9,35 +8,51 @@ class NavBar extends Component {
   render() {
     return (
       <div className="nav-bar">
-        <div id="cssmenu">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/cadastro-empresa">Cadastrar Empresa</Link>
-              <ul>
-                <li>
-                  <Link to="/cadastro-empresa">Empresa</Link>
-                  <ul>
-                    <li>
-                      <Link to="/cadastro-empresa">Nova</Link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link to="/cadastro-produto">Cadastrar Produto</Link>
-            </li>
-            <li>
-              <Link to="/cadastro-recurso">Cadastrar Recurso</Link>
-            </li>
-            <li>
-              <Link to="/sobre">Sobre Nós</Link>
-            </li>
-          </ul>
-        </div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor">
+          <a className="navbar-brand" href="#">
+            Navbar
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item active">
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cadastro-empresa">
+                  Empresa
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cadastro-recurso">
+                  Recurso
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cadastro-problema">
+                  Problema
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cadastro-usuario">
+                  Usuario
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     );
   }
