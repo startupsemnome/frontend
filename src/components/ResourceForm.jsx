@@ -12,7 +12,9 @@ class ResourceForm extends Component {
       cid: "",
       est: "",
       desc: "",
-      areai: ""
+      areai: "",
+      message1:""
+      
     };
   }
   handleFormSubmit(event) {
@@ -127,8 +129,8 @@ class ResourceForm extends Component {
               id="areai"
               name="areadeinteresse"
               placeholder="Informe as áreas de interesse na qual você deseja atuar"
-              onChange={e => this.setState({ message: e.target.value })}
-              value={this.state.message}
+              onChange={e => this.setState({ message1: e.target.value })}
+              value={this.state.message1}
             />
             <input
               type="submit"
