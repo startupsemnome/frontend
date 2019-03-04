@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CompanyForm from "./../components/CompanyForm"
+import CompanyForm from "./../components/companyForm";
 
 export default class RegisterCompany extends Component {
   constructor(props) {
