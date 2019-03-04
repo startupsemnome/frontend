@@ -4,17 +4,13 @@ class RegisterUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nome: this.props.nome
+      nome: ""
     };
   }
   render() {
     return (
       <div className="container">
-        <h1>{this.state.nome}</h1>
-        <form action="">
-          <legend>NOME: </legend>
-          <input type="text" />
-        </form>
+        <h1>Novo Usuario</h1>
       </div>
     );
   }
