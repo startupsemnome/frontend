@@ -11,6 +11,7 @@ class App extends Component {
         <header>
           <Navbar />
         </header>
+        <h1>disj</h1>
         <Footer />
       </div>
     );

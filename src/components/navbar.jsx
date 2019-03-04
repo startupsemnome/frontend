@@ -12,10 +12,10 @@ class NavBar extends Component {
         <div id="cssmenu">
           <ul>
             <li>
-              <Link to="cadastro-empresa">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="cadastro-empresa">Cadastrar Empresa</Link>
+              <Link to="/cadastro-empresa">Cadastrar Empresa</Link>
               <ul>
                 <li>
                   <a href="#">Product 1</a>
@@ -28,10 +28,10 @@ class NavBar extends Component {
               </ul>
             </li>
             <li>
-              <Link to="cadastro-empresa">Cadastrar Produto</Link>
+              <Link to="/cadastro-empresa">Cadastrar Produto</Link>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="/sobre">Sobre Nós</Link>
             </li>
           </ul>
         </div>
