@@ -12,6 +12,7 @@ import Footer from "./../components/footer";
 import RegisterCompany from "../pages/registerCompany";
 import Home from "../pages/home";
 import NotFound from "../pages/notFound";
+import RegisterResource from "../pages/registerResource";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -28,7 +29,16 @@ export default class Routes extends Component {
             path="/cadastro-empresa"
             component={RegisterCompany}
           />
+          <Route
+            exact={true}
+            path="/cadastro-recurso"
+            component={RegisterResource}
+          />
           <Route exact={true} component={NotFound} />
+          
+          
+            
+          
         </Switch>
         <Footer />
       </div>
