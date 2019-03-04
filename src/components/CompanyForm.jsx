@@ -63,7 +63,7 @@ class CompanyForm extends Component {
             <label className="A col-md-2">Numero</label>
             <input
               className="A col-md-10"
-              type=""
+              type="number"
               id="num"
               name="numero"
               placeholder="O numero da empresa"
