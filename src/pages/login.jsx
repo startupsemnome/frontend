@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import HomeDash from "./../components/homeDash";
-
-export default class Home extends Component {
+import CompanyForm from "../components/companyForm";
+export default class Login extends Component {
   constructor(props) {
     super(props);
   }
@@ -9,10 +8,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
-
-        <h1>Home Teste</h1>
-        <HomeDash />
-
+        <h1>Logrin</h1>
+        <conteudo />
       </div>
     );
   }
