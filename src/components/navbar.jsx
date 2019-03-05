@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       NavLinkProblem: false
-    }
+    };
     this.toggle = this.toggle.bind(this);
   }
   render() {
@@ -47,41 +51,52 @@ class NavBar extends Component {
                 </Link>
               </li>
 
-
               <Dropdown isOpen={this.state.NavLinkProblem} toggle={this.toggle}>
-                <DropdownToggle caret>
-                  Problemas
-                </DropdownToggle>
+                <DropdownToggle caret>Problemas</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
-                    Criar
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/cadastro-problema">
-                      </Link>
-                    </li>
+                    <Link
+                      className="nav-link"
+                      to="/cadastro-problema"
+                      className="nav-link text-secondary"
+                    >
+                      Criar
+                    </Link>
                   </DropdownItem>
                   <DropdownItem>
-                    Editar
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/editar-problema">
-                      </Link>
-                    </li>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/editar-problema"
+                    >
+                      Editar
+                    </Link>
                   </DropdownItem>
-                  <DropdownItem>Consultar</DropdownItem>
-                  <DropdownItem>Detalhes</DropdownItem>
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/consultar-problema"
+                    >
+                      Consultar
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/detalhes-problema"
+                    >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
 
-              <li className="nav-item">
-                <Link className="nav-link" to="/institucional">
-                  Institucional
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cadastro-usuario">
-                  Usuario
-                </Link>
-              </li>
+              <Link className="nav-link" to="/institucional">
+                Institucional
+              </Link>
+
+              <Link className="nav-link" to="/cadastro-usuario">
+                Usuario
+              </Link>
             </ul>
           </div>
         </nav>
@@ -91,11 +106,8 @@ class NavBar extends Component {
   toggle() {
     this.setState({
       NavLinkProblem: !this.state.NavLinkProblem
-
-    })
-
+    });
   }
 }
 
 export default NavBar;
-
