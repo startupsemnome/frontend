@@ -34,12 +34,22 @@ class NavBar extends Component {
                 <Link className="nav-link" to="/cadastro-empresa">
                   Empresa
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cadastro-recurso">
-                  Recurso
+              </li>             
+                <li className="nav-item">
+                  <Link className="nav-link" to="/cadastro-recurso">
+                    Cadastrar Recurso
+                  </Link>                  
+                </li> 
+                <li className="nav-item">
+                <Link className="nav-link" to="/detalhes-recurso">
+                  Detalhes Recurso
                 </Link>
-              </li>
+              </li> 
+              <li className="nav-item">
+                <Link className="nav-link" to="/detalhes-recurso">
+                  Editar Recurso
+                </Link>
+              </li>                                              
               <li className="nav-item">
                 <Link className="nav-link" to="/cadastro-problema">
                   Problema
@@ -54,7 +64,7 @@ class NavBar extends Component {
                 <Link className="nav-link" to="/cadastro-usuario">
                   Usuario
                 </Link>
-              </li>
+              </li>              
             </ul>
           </div>
         </nav>
