@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+
 import ContentRegister from "./componentsform/contentRegister";
+
 import ContentLoginform from "./componentsform/contentLoginform";
-export default class Content extends Component {
+class Content extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div className="container">
-        <h1>LOGIN</h1>
+        <h3>Faça seu login</h3>
+        <br />
         <ContentLoginform />
         <br />
         <p>O ContentRegister vai ser aqui</p>
@@ -16,3 +19,4 @@ export default class Content extends Component {
     );
   }
 }
+export default Content;

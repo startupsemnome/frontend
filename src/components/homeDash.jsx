@@ -7,9 +7,7 @@ import { savePDF } from '@progress/kendo-react-pdf';
 
 class HomeDash extends Component {
   constructor(props) {
-    super(props);
   }
-
   render() {
     return (
       <div className="container">
@@ -19,7 +17,12 @@ class HomeDash extends Component {
           </div>
 
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-            <button className="btn btn-success">Login</button>
+            <input
+              type="Submit"
+              className="btn btn-success"
+              value="Login"
+              onClick={e => this.handleFormSubmit(e)}
+            />
           </div>
         </div>
 
