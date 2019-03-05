@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import CompanyForm from "../components/companyForm";
+/*import CompanyForm from "../components/companyForm";*/
+import Content from "../components/content";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -8,8 +10,9 @@ export default class Login extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Logrin</h1>
 
+        <h1>Login</h1>
+        <Content />
       </div>
     );
   }
