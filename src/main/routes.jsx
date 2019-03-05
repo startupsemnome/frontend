@@ -14,10 +14,7 @@ import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
 import RegisterProblem from "../pages/registerProblem";
-<<<<<<< HEAD
 import Login from "../pages/login";
-=======
->>>>>>> develop
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
