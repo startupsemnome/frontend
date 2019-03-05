@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditProb from "./../components/editProb"
+import EditProblemForm from "../components/editProblemForm"
 
 export default class EditProblem extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class EditProblem extends Component {
       <div className="container">
         <h1>Editar Problema</h1>
 
-        <EditProb />
+        <EditProblemForm />
 
       </div>
     );

@@ -14,9 +14,11 @@ import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
 import RegisterProblem from "../pages/registerProblem";
+import EditProblem from "../pages/editProblem";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
+import EditProblemForm from "../components/editProblemForm";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -43,19 +45,32 @@ export default class Routes extends Component {
             path="/cadastro-usuario"
             component={RegisterUsuario}
           />
-          <Route exact={true} path="/login" component={Login} />
+          <Route
+            exact={true}
+            path="/login"
+            component={Login}
+          />
           <Route
             exact={true}
             path="/cadastro-problema"
             component={RegisterProblem}
           />
+
+          <Route
+            exact={true}
+            path="/editar-problema"
+            component={EditProblem}
+          />
+
           <Route
             exact={true}
             path="/institucional"
             component={Institutional}
           />
 
-          <Route exact={true} component={NotFound} />
+          <Route
+            exact={true}
+            component={NotFound} />
         </Switch>
         <Footer />
       </div>

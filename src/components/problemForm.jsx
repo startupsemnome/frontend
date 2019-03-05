@@ -80,9 +80,20 @@ class ProblemForm extends Component {
               value={this.state.nprob}
             />
 
-            <button type="button" className="btn btn-success">
-              Enviar
-            </button>
+            <input
+              type="button"
+              onClick={e => this.handleFormSubmit(e)}
+              value="Cancelar"
+              className="btn btn-danger"
+            />
+
+            <input
+              type="submit"
+              onClick={e => this.handleFormSubmit(e)}
+              value="Enviar"
+              className="btn btn-success"
+            />
+
           </form>
         </div>
       </div>
