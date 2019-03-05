@@ -3,6 +3,7 @@ import "./../bootstrap.min.css";
 import ReactDOM from 'react-dom';
 import { Button } from '@progress/kendo-react-buttons';
 import { savePDF } from '@progress/kendo-react-pdf';
+import { Link } from "react-router-dom";
 
 
 class HomeDash extends Component {
@@ -19,13 +20,17 @@ class HomeDash extends Component {
           </div>
 
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-            <button className="btn btn-success">Login</button>
+            <button className="btn btn-success">
+              <Link className="nav-link" to="/login">
+                Login
+                </Link>
+
+            </button>
           </div>
         </div>
 
         <div className="row">
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-            {/* <h4>Panel Bar Container</h4> */}
           </div>
 
           <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
