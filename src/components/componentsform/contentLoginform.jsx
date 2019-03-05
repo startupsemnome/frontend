@@ -4,14 +4,7 @@ class ContentLoginform extends Component {
     super(props);
     this.state = {
       fname: "",
-      lname: "",
-      email: "",
-      message: "",
-      tele: "",
-      est: "",
-      bair: "",
-      num: "",
-      rua: ""
+      lpassword: "",
     };
   }
   handleFormSubmit(event) {
@@ -28,102 +21,23 @@ class ContentLoginform extends Component {
               className="A col-md-10"
               type="text"
               id="fname"
-              name="firstname"
-              placeholder="Nome da empresa"
+              name="nome"
+              placeholder="Nome de login"
               value={this.state.fname}
               onChange={e => this.setState({ fname: e.target.value })}
               required
             />
-            <label className="A col-md-2">CNPJ</label>
+            <label className="A col-md-2">Senha</label>
             <input
               className="A col-md-10"
-              type="text"
+              type="password"
               max="11"
-              id="lname"
+              id="lpassword"
               name="lastname"
-              placeholder="CNPJ"
-              value={this.state.lname}
-              onChange={e => this.setState({ lname: e.target.value })}
+              placeholder="Senha de login"
+              value={this.state.lpassword}
+              onChange={e => this.setState({ lpassword: e.target.value })}
               required
-            />
-
-            <label className="A col-md-2">Rua</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              id="rua"
-              name="rua"
-              placeholder="A rua da empresa"
-              value={this.state.rua}
-              onChange={e => this.setState({ rua: e.target.value })}
-              required
-            />
-
-            <label className="A col-md-2">Numero</label>
-            <input
-              className="A col-md-10"
-              type="number"
-              id="num"
-              name="numero"
-              placeholder="O numero da empresa"
-              value={this.state.num}
-              onChange={e => this.setState({ num: e.target.value })}
-              required
-            />
-
-            <label className="A col-md-2">Bairro</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              id="bair"
-              name="bairro"
-              placeholder="O bairro da empresa"
-              value={this.state.bair}
-              onChange={e => this.setState({ bair: e.target.value })}
-              required
-            />
-
-            <label className="A col-md-2">Estado</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              id="est"
-              name="estado"
-              placeholder="Estado da empresa"
-              value={this.state.est}
-              onChange={e => this.setState({ est: e.target.value })}
-              required
-            />
-            <label className="A col-md-2">Email</label>
-            <input
-              className="A col-md-10"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email da empresa"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-              required
-            />
-            <label className="A col-md-2">Telefone da empresa</label>
-            <input
-              className="A col-md-10"
-              type="tel"
-              id="tele"
-              name="telefone"
-              placeholder="Telefone da empresa"
-              value={this.state.tele}
-              onChange={e => this.setState({ tele: e.target.value })}
-              required
-            />
-            <label className="A col-md-2">Assunto</label>
-            <textarea
-              className="A col-md-10"
-              id="message"
-              name="message"
-              placeholder="Descreva pouco sobre a necessidade da sua empresa"
-              onChange={e => this.setState({ message: e.target.value })}
-              value={this.state.message}
             />
             <input
               type="submit"

@@ -5,13 +5,13 @@ export default class Content extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <div className="container">
         <h1>LOGIN</h1>
         <ContentLoginform />
-        <ContentLoginform />
+        <br />
+        <p>O ContentRegister vai ser aqui</p>
       </div>
     );
   }

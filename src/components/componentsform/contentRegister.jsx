@@ -4,15 +4,15 @@ class ContentRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
-      email: "",
-      message: "",
-      tele: "",
-      est: "",
-      bair: "",
-      num: "",
-      rua: ""
+      fname: "Star",
+      lname: "Sem ",
+      email: "aedscw@com",
+      message: "ops",
+      tele: "11-1111-11111",
+      est: "sp",
+      bair: "sw",
+      num: "12",
+      rua: "sasaxasa"
     };
   }
   handleFormSubmit(event) {
