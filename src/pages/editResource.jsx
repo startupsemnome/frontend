@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import RegisterResourceForm from "../components/registerResourceForm";
+import EditResourceForm from "../components/registerResourceForm";
 
 //Alterar o nome do class para a página desejada
-export default class RegisterResource extends Component {
+export default class EditResource extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,8 +10,8 @@ export default class RegisterResource extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Cadastrar Recurso</h1>
-        <RegisterResourceForm />
+        <h1>Editar Recurso</h1>
+        <EditResourceForm/>
       </div>
     );
   }

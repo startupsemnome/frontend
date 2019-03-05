@@ -47,7 +47,17 @@ class NavBar extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/cadastro-recurso">
-                  Recurso
+                  Cadastrar Recurso
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/detalhes-recurso">
+                  Detalhes Recurso
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/detalhes-recurso">
+                  Editar Recurso
                 </Link>
               </li>
 

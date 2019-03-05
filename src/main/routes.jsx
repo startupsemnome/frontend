@@ -18,7 +18,12 @@ import EditProblem from "../pages/editProblem";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
+<<<<<<< HEAD
 import EditProblemForm from "../components/editProblemForm";
+=======
+import ResourceDetails from "../pages/resourceDetails";
+import EditResource from "../pages/editResource";
+>>>>>>> leonardo/formAtividadeNova
 
 export default class Routes extends Component {
   constructor(props) {
@@ -51,11 +56,21 @@ export default class Routes extends Component {
             path="/cadastro-problema"
             component={RegisterProblem}
           />
-
+          
           <Route exact={true} path="/editar-problema" component={EditProblem} />
 
           <Route exact={true} path="/institucional" component={Institutional} />
-
+          
+          <Route
+            exact={true}
+            path="/detalhes-recurso"
+            component={ResourceDetails}
+          />
+           <Route
+            exact={true}
+            path="/editar-recurso"
+            component={EditResource}
+          />
           <Route exact={true} component={NotFound} />
         </Switch>
         <Footer />
