@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./../bootstrap.min.css";
-import ReactDOM from 'react-dom';
-import { Button } from '@progress/kendo-react-buttons';
-import { savePDF } from '@progress/kendo-react-pdf';
-
+import ReactDOM from "react-dom";
+import { Button } from "@progress/kendo-react-buttons";
+import { savePDF } from "@progress/kendo-react-pdf";
 
 class HomeDash extends Component {
   constructor(props) {
+    super(props);
   }
   render() {
     return (
@@ -63,12 +63,8 @@ class HomeDash extends Component {
             </div>
           </div>
         </div>
-        <h4 style={{ display: 'none' }}>Dialog Shown/Hidden with Logic</h4>
-
+        <h4 style={{ display: "none" }}>Dialog Shown/Hidden with Logic</h4>
       </div>
-
-
-
     );
   }
 }
