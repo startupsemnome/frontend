@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DetailsProblemForm from "../components/detailsProblemForm"
+import DetailsProblemForm from "../components/problem/detailsProblemForm"
 
 export default class DetailsProblem extends Component {
   constructor(props) {

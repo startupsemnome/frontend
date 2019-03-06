@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Progress } from 'reactstrap';
 
-class ProblemForm extends Component {
+class DetailsProblemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      opera: "",
       fname: "",
       solic: "",
       email: "",
       telef: "",
-      nprob: ""
+      dprob: ""
     };
   }
   handleFormSubmit(event) {
@@ -21,6 +24,18 @@ class ProblemForm extends Component {
       <div className="App">
         <div>
           <form action="/action_page.php">
+            <label className="A col-md-2">Operador</label>
+            <input
+              className="A col-md-10"
+              type="text"
+              id="opera"
+              name="firstname"
+              placeholder="Operador responsável"
+              value={this.state.opera}
+              onChange={e => this.setState({ opera: e.target.value })}
+              required
+            />
+
             <label className="A col-md-2">Nome da empresa</label>
             <input
               className="A col-md-10"
@@ -40,7 +55,7 @@ class ProblemForm extends Component {
               max="11"
               id="solic"
               name="requesting"
-              placeholder="Nome do Solicitante"
+              placeholder="Nome do solicitante"
               value={this.state.lname}
               onChange={e => this.setState({ solic: e.target.value })}
               required
@@ -64,41 +79,52 @@ class ProblemForm extends Component {
               type="tel"
               id="telef"
               name="telefone"
-              placeholder="Telefone"
+              placeholder="Telefone da empresa"
               value={this.state.telef}
               onChange={e => this.setState({ telef: e.target.value })}
               required
             />
 
-            <label className="A col-md-2">Novo Problema</label>
+            <label className="A col-md-2">Descrição</label>
             <textarea
               className="A col-md-10"
-              id="nprob"
-              name="Novo problema"
-              placeholder="Descreva seu problema:"
-              onChange={e => this.setState({ nprob: e.target.value })}
-              value={this.state.nprob}
+              id="dprob"
+              name="Editar Problema"
+              placeholder="Descrição do problema"
+              onChange={e => this.setState({ dprob: e.target.value })}
+              value={this.state.dprob}
             />
 
-            <input
-              type="button"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Cancelar"
-              className="btn btn-danger"
-            />
+            {/* VERIFICAR DE COLOCAR O TIPO DA SITUAÇÃO 
+            COMO UM INDICADOR (INICIO, ANDAMENTO, ENCERRADO) */}
+
+            <br></br>
+            <div className="text-center">Situação do Problema</div>
+            <br></br>
+
+            <Progress color="success" value="100">Finalizado</Progress>
+
+            <br></br>
 
             <input
               type="submit"
               onClick={e => this.handleFormSubmit(e)}
-              value="Enviar"
-              className="btn btn-success"
+              value="Voltar"
+              className="btn btn-info"
             />
+
+            <br></br>
+            <br></br>
+
+            <div class="alert alert-warning">
+              <strong>Atenção!!</strong> Informações sujeitas a alterações.
+            </div>
 
           </form>
         </div>
-      </div>
+      </div >
     );
   }
 }
 
-export default ProblemForm;
+export default DetailsProblemForm;

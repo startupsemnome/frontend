@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Progress } from 'reactstrap';
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
 
-class DetailsProblemForm extends Component {
+class ProblemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      opera: "",
       fname: "",
       solic: "",
       email: "",
       telef: "",
-      dprob: ""
+      nprob: ""
     };
   }
   handleFormSubmit(event) {
@@ -24,25 +23,13 @@ class DetailsProblemForm extends Component {
       <div className="App">
         <div>
           <form action="/action_page.php">
-            <label className="A col-md-2">Operador</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              id="opera"
-              name="firstname"
-              placeholder="Operador responsável:"
-              value={this.state.opera}
-              onChange={e => this.setState({ opera: e.target.value })}
-              required
-            />
-
             <label className="A col-md-2">Nome da empresa</label>
             <input
               className="A col-md-10"
               type="text"
               id="fname"
               name="firstname"
-              placeholder="Nome da empresa:"
+              placeholder="Digite o nome da empresa"
               value={this.state.fname}
               onChange={e => this.setState({ fname: e.target.value })}
               required
@@ -55,7 +42,7 @@ class DetailsProblemForm extends Component {
               max="11"
               id="solic"
               name="requesting"
-              placeholder="Nome do solicitante:"
+              placeholder="Digite o nome o nome do solicitante"
               value={this.state.lname}
               onChange={e => this.setState({ solic: e.target.value })}
               required
@@ -67,7 +54,7 @@ class DetailsProblemForm extends Component {
               type="email"
               id="email"
               name="email"
-              placeholder="Email da empresa:"
+              placeholder="Digite o email da empresa"
               value={this.state.email}
               onChange={e => this.setState({ email: e.target.value })}
               required
@@ -79,52 +66,41 @@ class DetailsProblemForm extends Component {
               type="tel"
               id="telef"
               name="telefone"
-              placeholder="Telefone:"
+              placeholder="Digite o telefone da empresa"
               value={this.state.telef}
               onChange={e => this.setState({ telef: e.target.value })}
               required
             />
 
-            <label className="A col-md-2">Descrição</label>
+            <label className="A col-md-2">Novo Problema</label>
             <textarea
               className="A col-md-10"
-              id="dprob"
-              name="Editar Problema"
-              placeholder="Descrição do problema: "
-              onChange={e => this.setState({ dprob: e.target.value })}
-              value={this.state.dprob}
+              id="nprob"
+              name="Novo problema"
+              placeholder="Descreva o problema:"
+              onChange={e => this.setState({ nprob: e.target.value })}
+              value={this.state.nprob}
             />
 
-            {/* VERIFICAR DE COLOCAR O TIPO DA SITUAÇÃO 
-            COMO UM INDICADOR (INICIO, ANDAMENTO, ENCERRADO) */}
-
-            <br></br>
-            <div className="text-center">Situação do Problema</div>
-            <br></br>
-
-            <Progress color="success" value="100">Finalizado</Progress>
-
-            <br></br>
+            <input
+              type="button"
+              onClick={e => this.handleFormSubmit(e)}
+              value="Cancelar"
+              className="btn btn-danger"
+            />
 
             <input
               type="submit"
               onClick={e => this.handleFormSubmit(e)}
-              value="Voltar"
-              className="btn btn-info"
+              value="Enviar"
+              className="btn btn-success"
             />
-
-            <br></br>
-            <br></br>
-
-            <div class="alert alert-warning">
-              <strong>Atenção!!</strong> Informações sujeitas a alterações.
-            </div>
 
           </form>
         </div>
-      </div >
+      </div>
     );
   }
 }
 
-export default DetailsProblemForm;
+export default ProblemForm;
