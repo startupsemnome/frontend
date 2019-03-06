@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ResourceForm extends Component {
+class RegisterResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,11 +23,7 @@ class ResourceForm extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <div>
-            <h1>Cadastro de Recursos</h1>
-            <br />
-          </div>
+        <div>          
           <form action="/action_page.php">
             <label className="A col-md-2">Nome</label>
             <input
@@ -150,4 +146,4 @@ class ResourceForm extends Component {
   }
 }
 
-export default ResourceForm;
+export default RegisterResourceForm;

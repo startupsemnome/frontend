@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 class ProblemForm extends Component {
   constructor(props) {
@@ -27,7 +29,7 @@ class ProblemForm extends Component {
               type="text"
               id="fname"
               name="firstname"
-              placeholder="Nome da empresa"
+              placeholder="Digite o nome da empresa"
               value={this.state.fname}
               onChange={e => this.setState({ fname: e.target.value })}
               required
@@ -40,7 +42,7 @@ class ProblemForm extends Component {
               max="11"
               id="solic"
               name="requesting"
-              placeholder="Nome do Solicitante"
+              placeholder="Digite o nome o nome do solicitante"
               value={this.state.lname}
               onChange={e => this.setState({ solic: e.target.value })}
               required
@@ -52,7 +54,7 @@ class ProblemForm extends Component {
               type="email"
               id="email"
               name="email"
-              placeholder="Email da empresa"
+              placeholder="Digite o email da empresa"
               value={this.state.email}
               onChange={e => this.setState({ email: e.target.value })}
               required
@@ -64,7 +66,7 @@ class ProblemForm extends Component {
               type="tel"
               id="telef"
               name="telefone"
-              placeholder="Telefone"
+              placeholder="Digite o telefone da empresa"
               value={this.state.telef}
               onChange={e => this.setState({ telef: e.target.value })}
               required
@@ -75,14 +77,25 @@ class ProblemForm extends Component {
               className="A col-md-10"
               id="nprob"
               name="Novo problema"
-              placeholder="Descreva seu problema:"
+              placeholder="Descreva o problema:"
               onChange={e => this.setState({ nprob: e.target.value })}
               value={this.state.nprob}
             />
 
-            <button type="button" className="btn btn-success">
-              Enviar
-            </button>
+            <input
+              type="button"
+              onClick={e => this.handleFormSubmit(e)}
+              value="Cancelar"
+              className="btn btn-danger"
+            />
+
+            <input
+              type="submit"
+              onClick={e => this.handleFormSubmit(e)}
+              value="Enviar"
+              className="btn btn-success"
+            />
+
           </form>
         </div>
       </div>

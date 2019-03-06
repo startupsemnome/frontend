@@ -14,9 +14,17 @@ import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
 import RegisterProblem from "../pages/registerProblem";
-import Login from "../pages/login";
+import EditProblem from "../pages/editProblem";
+import DetailsProblem from "../pages/detailsProblem";
 import RegisterUsuario from "../pages/registerUser";
+import Login from "../pages/login";
 import Institutional from "../pages/institutional";
+import EditProblemForm from "../components/problem/editProblemForm";
+import ConsultProblemForm from "../components/problem/consultProblemForm";
+import ResourceDetails from "../pages/resourceDetails";
+import EditResource from "../pages/editResource";
+import UserList from "../components/user/userList";
+import ConsultProblem from "../pages/consultProblem";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -27,11 +35,7 @@ export default class Routes extends Component {
       <div>
         <Navbar />
         <Switch>
-          <Route
-            exact={true}
-            path="/"
-            component={Home}
-          />
+          <Route exact={true} path="/" component={Home} />
           <Route
             exact={true}
             path="/cadastro-empresa"
@@ -42,16 +46,14 @@ export default class Routes extends Component {
             path="/cadastro-recurso"
             component={RegisterResource}
           />
+          <Route exact={true} path="/consultar-usuario" component={UserList} />
           <Route
             exact={true}
             path="/cadastro-usuario"
             component={RegisterUsuario}
           />
-          <Route
-            exact={true}
-            path="/login"
-            component={Login}
-          />
+          <Route exact={true} path="/login" component={Login} />
+
           <Route
             exact={true}
             path="/cadastro-problema"
@@ -59,15 +61,28 @@ export default class Routes extends Component {
           />
           <Route
             exact={true}
-            path="/institucional"
-            component={Institutional}
+            path="/detalhes-problema"
+            component={DetailsProblem}
           />
+          <Route
+            exact={true}
+            path="/editar-problema"
+            component={EditProblem} />
 
           <Route
             exact={true}
-            component={NotFound}
-          />
+            path="/consultar-problema"
+            component={ConsultProblem} />
 
+          <Route exact={true} path="/institucional" component={Institutional} />
+
+          <Route
+            exact={true}
+            path="/detalhes-recurso"
+            component={ResourceDetails}
+          />
+          <Route exact={true} path="/editar-recurso" component={EditResource} />
+          <Route exact={true} component={NotFound} />
         </Switch>
         <Footer />
       </div>

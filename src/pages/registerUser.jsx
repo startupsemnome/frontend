@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import UserForm from "./../components/userForm";
+import UserForm from "../components/user/userForm";
+import { Row, Col } from "reactstrap";
 
 class RegisterUser extends Component {
   constructor(props) {
@@ -11,8 +12,16 @@ class RegisterUser extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Novo Usuario</h1>
-        <UserForm />
+        <Row>
+          <Col>
+            <h1 className="h1-main">Cadastrar Usuario</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <UserForm />
+          </Col>
+        </Row>
       </div>
     );
   }
