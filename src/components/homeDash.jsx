@@ -8,13 +8,25 @@ import { Link } from "react-router-dom";
 class HomeDash extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      ButtoLogin: true,
+    };
   }
   render() {
     return (
       <div className="container">
         <div className="row">
+          <Button isOpen={this.state.ButtoLogin} className="btn btn-success">
+             <Link
+                to="/login"
+                className="buttonLogin"
+              >
+                Login
+              </Link>
+          </Button>
+        </div>
+        <div className="row">
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" />
-
           <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
             <div className="row">
               <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-4" />
