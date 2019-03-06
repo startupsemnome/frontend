@@ -15,6 +15,7 @@ import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
 import RegisterProblem from "../pages/registerProblem";
 import EditProblem from "../pages/editProblem";
+import DetailsProblem from "../pages/detailsProblem";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
@@ -48,13 +49,21 @@ export default class Routes extends Component {
             component={RegisterUsuario}
           />
           <Route exact={true} path="/login" component={Login} />
+
           <Route
             exact={true}
             path="/cadastro-problema"
             component={RegisterProblem}
           />
-
-          <Route exact={true} path="/editar-problema" component={EditProblem} />
+          <Route
+            exact={true}
+            path="/detalhes-problema"
+            component={DetailsProblem}
+          />
+          <Route
+            exact={true}
+            path="/editar-problema"
+            component={EditProblem} />
 
           <Route exact={true} path="/institucional" component={Institutional} />
 
