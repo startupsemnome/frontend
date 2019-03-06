@@ -21,6 +21,7 @@ import Institutional from "../pages/institutional";
 import EditProblemForm from "../components/editProblemForm";
 import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
+import UserList from "../components/user/userList";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ export default class Routes extends Component {
             path="/cadastro-recurso"
             component={RegisterResource}
           />
+          <Route exact={true} path="/consultar-usuario" component={UserList} />
           <Route
             exact={true}
             path="/cadastro-usuario"

@@ -11,9 +11,11 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      NavLinkProblem: false
+      NavLinkProblem: false,
+      NavLinkUsuario: false
     };
     this.toggle = this.toggle.bind(this);
+    this.toggleUsuario = this.toggleUsuario.bind(this);
   }
   render() {
     return (
@@ -34,7 +36,7 @@ class NavBar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav w-100">
               <li className="nav-item active">
                 <Link to="/" className="nav-link">
                   Home
@@ -104,8 +106,50 @@ class NavBar extends Component {
                 Institucional
               </Link>
 
-              <Link className="nav-link" to="/cadastro-usuario">
-                Usuario
+              <Dropdown
+                isOpen={this.state.NavLinkUsuario}
+                toggle={this.toggleUsuario}
+              >
+                <DropdownToggle caret>Usuario</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>
+                    <Link
+                      className="nav-link"
+                      to="/cadastro-usuario"
+                      className="nav-link text-secondary"
+                    >
+                      Cadastrar
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/editar-usuario"
+                    >
+                      Editar
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/consultar-usuario"
+                    >
+                      Consultar
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/detalhes-usuario"
+                    >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+
+              <Link className="nav-link float-right" to="/detalhes-recurso">
+                Logout
               </Link>
             </ul>
           </div>
@@ -116,6 +160,11 @@ class NavBar extends Component {
   toggle() {
     this.setState({
       NavLinkProblem: !this.state.NavLinkProblem
+    });
+  }
+  toggleUsuario() {
+    this.setState({
+      NavLinkUsuario: !this.state.NavLinkUsuario
     });
   }
 }
