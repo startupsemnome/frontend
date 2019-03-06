@@ -25,6 +25,7 @@ import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 import UserList from "../components/user/userList";
 import ConsultProblem from "../pages/consultProblem";
+import ContentRegister from "../components/componentsform/contentRegister";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -82,6 +83,12 @@ export default class Routes extends Component {
             component={ResourceDetails}
           />
           <Route exact={true} path="/editar-recurso" component={EditResource} />
+
+          <Route
+            exact={true}
+            path="/registro-empresa"
+            component={ContentRegister}
+          />
           <Route exact={true} component={NotFound} />
         </Switch>
         <Footer />

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-/*import CompanyForm from "../components/companyForm";*/
 import Content from "../components/content";
 
 export default class Login extends Component {

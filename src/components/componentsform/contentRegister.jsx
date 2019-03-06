@@ -23,6 +23,7 @@ class ContentRegister extends Component {
     return (
       <div className="App">
         <div>
+          <h1> Company Registration </h1>
           <form action="/action_page.php">
             <label className="A col-md-2">Nome da Organização</label>
             <input
@@ -126,12 +127,6 @@ class ContentRegister extends Component {
               placeholder="Descreva pouco sobre a necessidade da sua empresa"
               onChange={e => this.setState({ message: e.target.value })}
               value={this.state.message}
-            />
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Enviar"
-              className="btn btn-success"
             />
           </form>
         </div>
