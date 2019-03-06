@@ -27,8 +27,57 @@ a.buttonRegistro {
 
 /*Contentregister*/
 
+h1.companyRe{
+  text-align: center;
+  font-size: 30px;
+  color: #999;
+  margin-bottom:10px;
+  margin-toP:3px;
+}
+
+.acr{
+ margin-top:2px;
+ margin-bottom:2px;
+}
+.acr.nomee {
+  margin-left: 14px;
+}
+.acr.cnpjcr{
+  margin-left: 14px;
+}
+.acr.ruacr{
+  margin-left: 14px;
+}
+.acr.numce{
+  margin-left: 14px;
+}
+.acr.bairoce{
+  margin-left: 14px;
+}
+.acr.estce{
+  margin-left: 14px;
+}
+.acr.emace{
+  margin-left: 14px;
+}
+.acr.telce{
+  margin-left: 14px;
+}
+.acr.asce{
+  margin-left: 30px;
+  text-align: center;
+  border: 0px;
+  font-size: 20px;
+}
+.acr.astce{
+  margin-top: 4px;
+  text-align: center;
+  font-size: 25px;
+}
+
+/*Content*/
 h3.contentLogin{
-    color: #999;
+    color: rgb(95, 93, 93);
     font-size: 30px;
     text-align: center;
     margin: 10px;
