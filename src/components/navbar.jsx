@@ -77,7 +77,7 @@ class NavBar extends Component {
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
-                      to="/detalhes-recurso"
+                      to="/editar-recurso"
                     >
                       Editar
                     </Link>
