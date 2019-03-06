@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProblemForm from "./../components/problemForm"
+import ProblemForm from "../components/problem/problemForm"
 
 export default class RegisterProblem extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class RegisterProblem extends Component {
       <div className="container">
         <h1>RegisterProblem</h1>
         <ProblemForm />
-       
+
       </div>
     );
   }

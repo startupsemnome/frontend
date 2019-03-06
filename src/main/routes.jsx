@@ -19,10 +19,12 @@ import DetailsProblem from "../pages/detailsProblem";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
-import EditProblemForm from "../components/editProblemForm";
+import EditProblemForm from "../components/problem/editProblemForm";
+import ConsultProblemForm from "../components/problem/consultProblemForm";
 import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 import UserList from "../components/user/userList";
+import ConsultProblem from "../pages/consultProblem";
 
 export default class Routes extends Component {
   constructor(props) {
@@ -66,6 +68,11 @@ export default class Routes extends Component {
             exact={true}
             path="/editar-problema"
             component={EditProblem} />
+
+          <Route
+            exact={true}
+            path="/consultar-problema"
+            component={ConsultProblem} />
 
           <Route exact={true} path="/institucional" component={Institutional} />
 

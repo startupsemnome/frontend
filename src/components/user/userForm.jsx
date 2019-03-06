@@ -64,7 +64,6 @@ class UserForm extends Component {
             </Col>
           </Row>
         </form>
-
         <SweetAlert
           success
           show={this.state.sweetCreate}
@@ -72,6 +71,7 @@ class UserForm extends Component {
         >
           {`Cadastrado ${this.state.name} com sucesso!`}
         </SweetAlert>
+
       </div>
     );
   }
