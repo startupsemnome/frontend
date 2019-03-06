@@ -4,8 +4,13 @@ class EditResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nrec: "",      
-      message1: ""
+      nomeUsuario: "José da Silva Pinto",
+      telefone: "(11)2242-7589",
+      celular: "(11)92242-7589",
+      endereco: "Rua 01",
+      objetivo: "Estágio",
+      resumoProfissional: "Sem experiência",
+      areaInteresse: "TI"
     };
   }
   handleFormSubmit(event) {
@@ -15,62 +20,71 @@ class EditResourceForm extends Component {
   render() {
     return (
       <div className="App">
-        <div>          
-          <form action="/action_page.php">
-          <h1>Nome  do Usuario: José da Silva Pinto</h1>
-          <br/><br/>
-          <img src="https://i.ytimg.com/vi/bG1w8JkcPUo/hqdefault.jpg" width ="200" height="200"></img>
-          <br/>  
-          <br/>      
+        <div>
+          <form className="signupForm">
+            <label className="labelFields">Nome  do Usuario:</label><br />
+            <input className="inputFields" type="text" value={this.state.nomeUsuario}
+              onChange={e => this.setState({ nomeUsuario: e.target.value })} />
+            <br /><br />
+            <img src="https://i.ytimg.com/vi/bG1w8JkcPUo/hqdefault.jpg" width="200" height="200"></img>
+            <br />
+            <br />
             <div>
-                <ul>
-                    <h1>Dados pessoais :</h1> 
-                    <br/>                    
-                    <li> Telefone: (11)2242-7589</li>
-                    <li> Celular :(11)94207-9857</li>
-                    <li> Endereco: Rua Tenente Lamoro 023242320 São Paulo São Paulo Brasil</li>
-               </ul>
-           </div>
-            <br/><br/>
+              <ul>
+                <label className="labelFields">Dados Pessoais:</label><br />
+                <br />
+                <label className="labelFields">Telefone:</label><br />
+                <input className="inputFields" type="text" value={this.state.telefone}
+                  onChange={e => this.setState({ telefone: e.target.value })} /> <br />
+                <label className="labelFields">Celular:</label><br />
+                <input className="inputFields" type="text" value={this.state.celular}
+                  onChange={e => this.setState({ celular: e.target.value })} /><br />
+                <label className="labelFields">Endereço:</label><br />
+                <input className="inputFields" type="text" value={this.state.endereco}
+                  onChange={e => this.setState({ endereco: e.target.value })} /><br />
+              </ul>
+            </div>
+            <br /><br />
             <div>
-                <ul>
-                    <h1>Objetivos:</h1>  
-                    <br/>              
-                    <li>T.I, preferencialmente em desenvolvimento de sistemas.</li>
-                    
-               </ul>
-           </div>
-           <br/><br/>
-           <div>
-                <ul>
-                    <h1>Resumo Profissional:</h1>  
-                    <br/>                  
+              <ul>
+                <label className="labelFields">Objetivos:</label><br />
+                <br />
+                <input className="inputFields" type="text" value={this.state.objetivo}
+                  onChange={e => this.setState({ objetivo: e.target.value })} /><br />
 
-                    <li>Sou profissional nas áreas comercial, administrativa e design passando por empresas como: Grupo Pão de Açúcar, Lojas Americanas/Itaú, Cosntrudecor (DICICO), Saraiva e Siciliano e Paggo Administradora de Crédito (OI). 
-                        Atualmente cursando Análise e Desenvolvimento de Sistemas</li>
-                </ul>
-           </div>
-           <br/><br/>
-           <div>
-                <ul>
-                    <h1>Áreas de Interesse : </h1>  
-                    <br/>                  
-                    <li> Informática/T.I. no nível Auxiliar/Operacional</li>
-                    <li> Informática/T.I. no nível Junior/Trainee</li>
+              </ul>
+            </div>
+            <br /><br />
+            <div>
+              <ul>
+                <label className="labelFields">Resumo Profissional:</label><br />
+                <br />
 
-                </ul>
-           </div>
+                <input className="inputFields" type="text" value={this.state.resumoProfissional}
+                  onChange={e => this.setState({ resumoProfissional: e.target.value })} /><br />
+              </ul>
+            </div>
+            <br /><br />
+            <div>
+              <ul>
+                <label className="labelFields">Áreas de Interesse:</label><br />
+                <br />
+                <input className="inputFields" type="text" value={this.state.areaInteresse}
+                  onChange={e => this.setState({ areaInteresse: e.target.value })} /><br />
 
-           
-            <br/>
-            <br/>
-            
-      
-             <input
+              </ul>
+            </div>
+
+
+            <br />
+            <br />
+
+
+            <input
               type="submit"
               onClick={e => this.handleFormSubmit(e)}
               value="Editar"
-              className="btn btn-success"
+              className="join-btn"
             />
             <input
               type="button"
