@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ContentRegister from "./componentsform/contentRegister";
+import ContentRegister from"./componentsform/contentRegister";
 import ContentLoginform from "./componentsform/contentLoginform";
 class Content extends Component {
   constructor(props) {
