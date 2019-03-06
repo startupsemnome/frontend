@@ -6,13 +6,11 @@ class EditResourceForm extends Component {
     this.state = {
       nomeUsuario: "José da Silva Pinto",
       telefone: "(11)2242-7589",
-      celular: "",
-      endereco: "",
-      objetivo: "",
-      resumoProfissional: "",
-      areaInteresse: "",
-      nrec: "",
-      message1: ""
+      celular: "(11)92242-7589",
+      endereco: "Rua 01",
+      objetivo: "Estágio",
+      resumoProfissional: "Sem experiência",
+      areaInteresse: "TI"
     };
   }
   handleFormSubmit(event) {
@@ -25,21 +23,25 @@ class EditResourceForm extends Component {
         <div>
           <form className="signupForm">
             <label className="labelFields">Nome  do Usuario:</label><br />
-            <input className="inputFields" type="text" value={this.state.nomeUsuario} />
+            <input className="inputFields" type="text" value={this.state.nomeUsuario}
+              onChange={e => this.setState({ nomeUsuario: e.target.value })} />
             <br /><br />
             <img src="https://i.ytimg.com/vi/bG1w8JkcPUo/hqdefault.jpg" width="200" height="200"></img>
             <br />
             <br />
             <div>
               <ul>
-                <h1>Dados pessoais :</h1>
+                <label className="labelFields">Dados Pessoais:</label><br />
                 <br />
                 <label className="labelFields">Telefone:</label><br />
-                <input className="inputFields" type="text" value={this.state.telefone} /> <br />
+                <input className="inputFields" type="text" value={this.state.telefone}
+                  onChange={e => this.setState({ telefone: e.target.value })} /> <br />
                 <label className="labelFields">Celular:</label><br />
-                <input className="inputFields" type="text" value={this.state.celular} /><br />
+                <input className="inputFields" type="text" value={this.state.celular}
+                  onChange={e => this.setState({ celular: e.target.value })} /><br />
                 <label className="labelFields">Endereço:</label><br />
-                <input className="inputFields" type="text" value={this.state.endereco} /><br />
+                <input className="inputFields" type="text" value={this.state.endereco}
+                  onChange={e => this.setState({ endereco: e.target.value })} /><br />
               </ul>
             </div>
             <br /><br />
@@ -47,7 +49,8 @@ class EditResourceForm extends Component {
               <ul>
                 <label className="labelFields">Objetivos:</label><br />
                 <br />
-                <input className="inputFields" type="text" value={this.state.objetivo} /><br />
+                <input className="inputFields" type="text" value={this.state.objetivo}
+                  onChange={e => this.setState({ objetivo: e.target.value })} /><br />
 
               </ul>
             </div>
@@ -57,7 +60,8 @@ class EditResourceForm extends Component {
                 <label className="labelFields">Resumo Profissional:</label><br />
                 <br />
 
-                <input className="inputFields" type="text" value={this.state.resumoProfissional} /><br />
+                <input className="inputFields" type="text" value={this.state.resumoProfissional}
+                  onChange={e => this.setState({ resumoProfissional: e.target.value })} /><br />
               </ul>
             </div>
             <br /><br />
@@ -65,7 +69,8 @@ class EditResourceForm extends Component {
               <ul>
                 <label className="labelFields">Áreas de Interesse:</label><br />
                 <br />
-                <input className="inputFields" type="text" value={this.state.areaInteresse} /><br />
+                <input className="inputFields" type="text" value={this.state.areaInteresse}
+                  onChange={e => this.setState({ areaInteresse: e.target.value })} /><br />
 
               </ul>
             </div>

@@ -10,7 +10,7 @@ export default class EditResource extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Editar Recurso</h1>
+        <h1 className="h1-main">Editar Recurso</h1>
         <EditResourceForm />
       </div>
     );
