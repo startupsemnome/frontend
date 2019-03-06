@@ -6,6 +6,11 @@ class EditResourceForm extends Component {
     this.state = {
       nomeUsuario: "José da Silva Pinto",
       telefone: "(11)2242-7589",
+      celular: "",
+      endereco: "",
+      objetivo: "",
+      resumoProfissional: "",
+      areaInteresse: "",
       nrec: "",
       message1: ""
     };
@@ -30,37 +35,37 @@ class EditResourceForm extends Component {
                 <h1>Dados pessoais :</h1>
                 <br />
                 <label className="labelFields">Telefone:</label><br />
-                <input className="inputFields" type="text" value={this.state.telefone} />
-                <li> Celular :(11)94207-9857</li>
-                <li> Endereco: Rua Tenente Lamoro 023242320 São Paulo São Paulo Brasil</li>
+                <input className="inputFields" type="text" value={this.state.telefone} /> <br />
+                <label className="labelFields">Celular:</label><br />
+                <input className="inputFields" type="text" value={this.state.celular} /><br />
+                <label className="labelFields">Endereço:</label><br />
+                <input className="inputFields" type="text" value={this.state.endereco} /><br />
               </ul>
             </div>
             <br /><br />
             <div>
               <ul>
-                <h1>Objetivos:</h1>
+                <label className="labelFields">Objetivos:</label><br />
                 <br />
-                <li>T.I, preferencialmente em desenvolvimento de sistemas.</li>
+                <input className="inputFields" type="text" value={this.state.objetivo} /><br />
 
               </ul>
             </div>
             <br /><br />
             <div>
               <ul>
-                <h1>Resumo Profissional:</h1>
+                <label className="labelFields">Resumo Profissional:</label><br />
                 <br />
 
-                <li>Sou profissional nas áreas comercial, administrativa e design passando por empresas como: Grupo Pão de Açúcar, Lojas Americanas/Itaú, Cosntrudecor (DICICO), Saraiva e Siciliano e Paggo Administradora de Crédito (OI).
-                        Atualmente cursando Análise e Desenvolvimento de Sistemas</li>
+                <input className="inputFields" type="text" value={this.state.resumoProfissional} /><br />
               </ul>
             </div>
             <br /><br />
             <div>
               <ul>
-                <h1>Áreas de Interesse : </h1>
+                <label className="labelFields">Áreas de Interesse:</label><br />
                 <br />
-                <li> Informática/T.I. no nível Auxiliar/Operacional</li>
-                <li> Informática/T.I. no nível Junior/Trainee</li>
+                <input className="inputFields" type="text" value={this.state.areaInteresse} /><br />
 
               </ul>
             </div>
