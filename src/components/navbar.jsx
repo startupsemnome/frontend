@@ -24,7 +24,7 @@ class NavBar extends Component {
       <div className="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor">
           <a className="navbar-brand" href="#">
-            Navbar
+            HACK
           </a>
           <button
             className="navbar-toggler"
