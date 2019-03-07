@@ -49,7 +49,26 @@ class NavBar extends Component {
                   Empresa
                 </Link>
               </li>
-
+              <li className="nav-item">
+                <Link className="nav-link" to="/cadastro-recurso">
+                  Cadastrar Recurso
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/detalhes-recurso">
+                  Detalhes Recurso
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/editar-recurso">
+                  Editar Recurso
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cadastro-problema">
+                  Problema
+                </Link>
+              </li>
 
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
@@ -97,7 +116,6 @@ class NavBar extends Component {
                       Criar
                     </Link>
                   </DropdownItem>
-
 
                   <DropdownItem>
                     <Link
@@ -171,7 +189,6 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
             </ul>
           </div>
         </nav>
