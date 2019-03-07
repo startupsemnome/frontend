@@ -25,6 +25,8 @@ import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 import UserList from "../components/user/userList";
 import ConsultProblem from "../pages/consultProblem";
+import ConsultResource from "../pages/consultResource";
+ 
 
 export default class Routes extends Component {
   constructor(props) {
@@ -46,7 +48,27 @@ export default class Routes extends Component {
             path="/cadastro-recurso"
             component={RegisterResource}
           />
-          <Route exact={true} path="/consultar-usuario" component={UserList} />
+          <Route
+            exact={true}
+            path="/detalhes-recurso"
+            component={ResourceDetails}
+          />
+          <Route 
+          exact={true} 
+          path="/editar-recurso" 
+          component={EditResource}
+          />
+
+          <Route 
+          exact={true} 
+          path="/consultar-recurso" 
+          component={ConsultResource}
+          />
+          
+          <Route exact={true} 
+          path="/consultar-usuario" 
+          component={UserList} 
+          />
           <Route
             exact={true}
             path="/cadastro-usuario"
@@ -73,15 +95,12 @@ export default class Routes extends Component {
             exact={true}
             path="/consultar-problema"
             component={ConsultProblem} />
+                        
 
           <Route exact={true} path="/institucional" component={Institutional} />
 
-          <Route
-            exact={true}
-            path="/detalhes-recurso"
-            component={ResourceDetails}
-          />
-          <Route exact={true} path="/editar-recurso" component={EditResource} />
+          
+          
           <Route exact={true} component={NotFound} />
         </Switch>
         <Footer />

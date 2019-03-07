@@ -80,8 +80,19 @@ class NavBar extends Component {
                       to="/editar-recurso"
                     >
                       Editar
-                    </Link>
+                    </Link>                
+                  
+                  
                   </DropdownItem>
+                  
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/consultar-recurso"
+                    >
+                      Consultar
+                    </Link>
+                    </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
 
