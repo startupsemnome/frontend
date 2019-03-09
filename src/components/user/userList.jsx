@@ -10,7 +10,9 @@ class UserList extends Component {
     this.state = {
       users: []
     };
+    console.log(this.props);
   }
+
   loadUsers() {
     // Make a request for a user with a given ID
     axios

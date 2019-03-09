@@ -6,123 +6,107 @@ class DetailsProblemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      opera: "",
-      fname: "",
-      solic: "",
+      operador: "",
+      empresa: "",
+      solicit: "",
       email: "",
       telef: "",
-      dprob: ""
+      descricao: ""
     };
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.setState({ sweetCreate: true });
   }
-
   render() {
     return (
       <div className="App">
         <div>
-          <form action="/action_page.php">
-            <label className="A col-md-2">Operador</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              id="opera"
-              name="firstname"
-              placeholder="Operador responsável"
-              value={this.state.opera}
-              onChange={e => this.setState({ opera: e.target.value })}
-              required
-            />
+          <form className="signupForm">
+            <div>
+              <ul>
+                <label className="labelFields">Operador:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Operador responsável pelo cadastro"
+                  value={this.state.operador}
+                  onChange={e => this.setState({ operador: e.target.value })} /> <br />
 
-            <label className="A col-md-2">Nome da empresa</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              id="fname"
-              name="firstname"
-              placeholder="Nome da empresa"
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
-              required
-            />
 
-            <label className="A col-md-2">Solicitante</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              max="11"
-              id="solic"
-              name="requesting"
-              placeholder="Nome do solicitante"
-              value={this.state.lname}
-              onChange={e => this.setState({ solic: e.target.value })}
-              required
-            />
+                <label className="labelFields">Nome da Empresa:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Empresa cadastrada"
+                  value={this.state.empresa}
+                  onChange={e => this.setState({ empresa: e.target.value })} /><br />
 
-            <label className="A col-md-2">Email</label>
-            <input
-              className="A col-md-10"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email da empresa"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-              required
-            />
+                <label className="labelFields">Solicitante:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Solicitante responsável pela abertura"
+                  value={this.state.solicit}
+                  onChange={e => this.setState({ solicit: e.target.value })} /><br />
 
-            <label className="A col-md-2">Telefone</label>
-            <input
-              className="A col-md-10"
-              type="tel"
-              id="telef"
-              name="telefone"
-              placeholder="Telefone da empresa"
-              value={this.state.telef}
-              onChange={e => this.setState({ telef: e.target.value })}
-              required
-            />
+                <label className="labelFields">Email:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Email cadastrado"
+                  value={this.state.email}
+                  onChange={e => this.setState({ email: e.target.value })} /><br />
 
-            <label className="A col-md-2">Descrição</label>
-            <textarea
-              className="A col-md-10"
-              id="dprob"
-              name="Editar Problema"
-              placeholder="Descrição do problema"
-              onChange={e => this.setState({ dprob: e.target.value })}
-              value={this.state.dprob}
-            />
 
-            {/* VERIFICAR DE COLOCAR O TIPO DA SITUAÇÃO 
-            COMO UM INDICADOR (INICIO, ANDAMENTO, ENCERRADO) */}
+                <label className="labelFields">Telefone:</label><br />
+                <input
+                  className="inputFields"
+                  type="number"
+                  placeholder="Telefone cadastrado"
+                  value={this.state.telef}
+                  onChange={e => this.setState({ telef: e.target.value })} />
 
-            <br></br>
-            <div className="text-center">Situação do Problema</div>
-            <br></br>
-
-            <Progress color="success" value="100">Finalizado</Progress>
-
-            <br></br>
-
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Voltar"
-              className="btn btn-info"
-            />
-
-            <br></br>
-            <br></br>
-
-            <div class="alert alert-warning">
-              <strong>Atenção!!</strong> Informações sujeitas a alterações.
+              </ul>
             </div>
 
+            <div>
+              <ul>
+                <label className="labelFields">Descrição do Problema</label>
+                <br></br>
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Problema descrito"
+                  value={this.state.descricao}
+                  onChange={e => this.setState({ descricao: e.target.value })} />
+
+                <div className="text-center">Situação do Problema</div>
+
+                <Progress color="success" value="100">Finalizado</Progress>
+
+                <br></br>
+                <br></br>
+
+                <input
+                  type="submit"
+                  onClick={e => this.handleFormSubmit(e)}
+                  value="Voltar"
+                  className="btn btn-info"
+                />
+
+                <br></br>
+                <br></br>
+
+                <div class="alert alert-warning">
+                  <strong>Atenção!!</strong> Informações sujeitas a alterações.
+            </div>
+              </ul>
+            </div>
           </form>
         </div>
-      </div >
+      </div>
+
     );
   }
 }
