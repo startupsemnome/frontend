@@ -49,26 +49,6 @@ class NavBar extends Component {
                   Empresa
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cadastro-recurso">
-                  Cadastrar Recurso
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/detalhes-recurso">
-                  Detalhes Recurso
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/editar-recurso">
-                  Editar Recurso
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cadastro-problema">
-                  Problema
-                </Link>
-              </li>
 
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
@@ -85,14 +65,7 @@ class NavBar extends Component {
                       Cadastrar
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-recurso"
-                    >
-                      Detalhar
-                    </Link>
-                  </DropdownItem>
+
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
@@ -101,6 +74,25 @@ class NavBar extends Component {
                       Editar
                     </Link>
                   </DropdownItem>
+
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/consultar-recurso"
+                    >
+                      Consultar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/detalhes-recurso"
+                    >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
+
                 </DropdownMenu>
               </Dropdown>
 
@@ -113,7 +105,7 @@ class NavBar extends Component {
                       to="/cadastro-problema"
                       className="nav-link text-secondary"
                     >
-                      Criar
+                      Cadastrar
                     </Link>
                   </DropdownItem>
 
