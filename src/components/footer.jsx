@@ -7,7 +7,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <footer className="App-footer">
+        <footer className="App-footer">        
           <h5 className="footer-text">
             &copy;Todos os direitos reservados - 2019
           </h5>

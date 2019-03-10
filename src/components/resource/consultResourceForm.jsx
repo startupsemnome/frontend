@@ -1,80 +1,91 @@
 import React, { Component } from "react";
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 
 class ConsultResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      areaAtuacao: "ex: Backend, Frontend, Fullstack",
-      experiencia: "ex: Java, PHP",
-      regiao: "ex: São Paulo -SP",
-      formacao: "ex: Superior Completo",      
-      disponibilidade: "ex: Segunda, terça e quinta"
+      users: []
     };
+    console.log(this.props);
   }
-  handleFormSubmit(event) {
-    event.preventDefault();
-    console.log(this.state);
+
+  loadResources() {
+    // Make a request for a user with a given ID
+    axios
+      .get(env.API + "resource")
+      .then(response => {
+        // handle success
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
+  componentDidMount() {
+    console.log("teste");
+    this.loadResources();
   }
   render() {
     return (
-      <div className="App">
-        <div>
-          <form className="signupForm">                        
-           
-            <div>
-              <ul>
-                <label className="labelFields">Consultar Recurso</label><br />
-                <br />
-                <label className="labelFields">Area de Atuação</label><br />
-                <input className="inputFields" type="text" value={this.state.areaAtuacao}
-                  onChange={e => this.setState({ areaAtuacao: e.target.value })} /> <br />
-                <label className="labelFields">Experiência</label><br />
-                <input className="inputFields" type="text" value={this.state.experiencia}
-                  onChange={e => this.setState({ experiencia: e.target.value })} /><br />
-                <label className="labelFields">Regiao:</label><br />
-                <input className="inputFields" type="text" value={this.state.regiao}
-                  onChange={e => this.setState({ endereco: e.target.value })} /><br />
-              </ul>
-            </div>
-            <br /><br />
-            <div>
-              <ul>
-                <label className="labelFields">Formação</label><br />
-                <br />
-                <input className="inputFields" type="text" value={this.state.formacao}
-                  onChange={e => this.setState({ formacao: e.target.value })} /><br />
-
-              </ul>
-            </div>
-            <br /><br />
-            <div>
-              <ul>
-                <label className="labelFields">Disponibilidade</label><br />
-                <br />
-
-                <input className="inputFields" type="text" value={this.state.disponibilidade}
-                  onChange={e => this.setState({ disponibilidade: e.target.value })} /><br />
-              </ul>
-            </div>
-            <br /><br />
-                       <br />
-            <br />
-
-
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Consultar"
-              className="join-btn"
-            />
-            <input
-              type="button"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Cancelar"
-              className="btn btn-warning"
-            />
-
-          </form>
+      <div className="container col-md-12">
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="h1-main">Consultar Recursos</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
+            <label htmlFor="" className="labelFields m-l-1">
+              Pesquisar:
+            </label>
+            <input type="text" className="inputFields" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Sobrenome</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Telefone</th>
+				  <th scope="col">Cidade</th>
+				  <th scope="col">Estado</th>                  
+				  <th scope="col">Area de Interesse</th>
+				  <th scope="col">Habilidades e Qualificações</th>
+                  <th scope="col">Ultima Atualização</th>
+                  <th scope="col">Data Criação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.users.map(resource => {
+                  return (
+                    <tr>
+                      <td>{resource.id}</td>
+                      <td>{resource.nome}</td>
+                      <td>{resource.sobrenome}</td>
+                      <td>{resource.email}</td>
+                      <td>{resource.telefone}</td>
+                      <td>{resource.cidade}</td>
+					  <td>{resource.estado}</td>
+					  <td>{resource.areai}</td>
+					  <td>{resource.hab}</td>
+                      <td>{resource.updated_at}</td>
+                      <td>{resource.created_at}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );
