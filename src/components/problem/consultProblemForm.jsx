@@ -10,11 +10,13 @@ class ConsultProblemForm extends Component {
     this.state = {
       users: []
     };
+    console.log(this.props);
   }
-  loadUsers() {
+
+  loadProblems() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "user")
+      .get(env.API + "problem")
       .then(response => {
         // handle success
         const data = response.data;
@@ -27,14 +29,14 @@ class ConsultProblemForm extends Component {
   }
   componentDidMount() {
     console.log("teste");
-    this.loadUsers();
+    this.loadProblems();
   }
   render() {
     return (
       <div className="container col-md-12">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="h1-main">Listar Problemas</h1>
+            <h1 className="h1-main">Consultar Problemas</h1>
           </div>
         </div>
         <div className="row">
@@ -61,17 +63,17 @@ class ConsultProblemForm extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map(user => {
+                {this.state.users.map(problem => {
                   return (
                     <tr>
-                      <td>{user.id}</td>
-                      <td>{user.empresa}</td>
-                      <td>{user.solicitante}</td>
-                      <td>{user.email}</td>
-                      <td>{user.telefone}</td>
-                      <td>{user.problema}</td>
-                      <td>{user.updated_at}</td>
-                      <td>{user.created_at}</td>
+                      <td>{problem.id}</td>
+                      <td>{problem.empresa}</td>
+                      <td>{problem.solicit}</td>
+                      <td>{problem.email}</td>
+                      <td>{problem.telef}</td>
+                      <td>{problem.nprob}</td>
+                      <td>{problem.updated_at}</td>
+                      <td>{problem.created_at}</td>
                     </tr>
                   );
                 })}

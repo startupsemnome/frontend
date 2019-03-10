@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 
 class ProblemForm extends Component {
   constructor(props) {
@@ -13,11 +15,56 @@ class ProblemForm extends Component {
       nprob: "",
       sweetCreate: false
     };
+    this.hasErros = this.hasErros.bind(this);
+    this.createProblem = this.createProblem.bind(this);
   }
   handleFormSubmit(event) {
     event.preventDefault();
     this.setState({ sweetCreate: true });
   }
+  createProblem() {
+    alert(1);
+    if (!this.hasErros()) {
+      axios
+        .post(env.API + "problem", {
+          empresa: this.state.empresa,
+          solicit: this.state.solicit,
+          email: this.state.email,
+          telef: this.state.telef,
+          nprob: this.state.nprob
+        })
+        .then(function (response) {
+          alert(2);
+          console.log(response);
+          window.location = "/consultar-problema";
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
+  hasErros() {
+    if (this.state.empresa === "") {
+      this.setState({ error: "preencha o campo empresa" });
+      return true;
+    } else if (this.state.solicit === "") {
+      this.setState({ error: "preencha o campo solicitante" });
+      return true;
+    } else if (this.state.email === "") {
+      this.setState({ error: "preencha o campo email" });
+      return true;
+    } else if (this.state.telef === "") {
+      this.setState({ error: "preencha o campo telefone" });
+      return true;
+    } else if (this.state.nprob === "") {
+      this.setState({ error: "preencha o campo novo problema" });
+      return true;
+    }
+    return false;
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -78,21 +125,27 @@ class ProblemForm extends Component {
               <Col>
                 <button
                   type="button"
-                  onClick={e => this.handleFormSubmit(e)}
+                  onClick={this.createProblem}
                   className="join-btn"
-                > Salvar
+                >
+                  Cadastrar Problema
               </button>
               </Col>
             </Row>
-
           </form>
+
+
           <SweetAlert
             success
             show={this.state.sweetCreate}
+            title="Atenção"
             onConfirm={() => this.setState({ sweetCreate: false })}
           >
             {`Cadastrado ${this.state.empresa} com sucesso!`}
           </SweetAlert>
+
+
+
 
         </div>
       </div>
