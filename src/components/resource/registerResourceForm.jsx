@@ -11,6 +11,7 @@ class RegisterResourceForm extends Component {
     this.state = {
       fname: "",
       lname: "",
+      email:"",
       end: "",
       tel: "",
       cel: "",
@@ -18,7 +19,8 @@ class RegisterResourceForm extends Component {
       est: "",
       hab: "",
       areai: "",
-      message1: "",
+      message1: "",     
+      
       sweetCreate: false
     };
     this.hasErros = this.hasErros.bind(this);
@@ -35,14 +37,15 @@ class RegisterResourceForm extends Component {
         .post(env.API + "resource", {
           fname: this.state.fname,
           lname: this.state.lname,
+          email:this.state.email,
           end: this.state.end,
           tel: this.state.tel,
           cel: this.state.cel,
-		  cid: this.state.cid,
-		  est: this.state.est,
-		  hab: this.state.hab,
-		  areai: this.state.areai,
-		  message1: this.state.message1		  
+          cid: this.state.cid,
+          est: this.state.est,
+          hab: this.state.hab,
+          areai: this.state.areai,
+          message1: this.state.message1		  
 		  
         })
         .then(function (response) {
@@ -62,6 +65,9 @@ class RegisterResourceForm extends Component {
       return true;
     } else if (this.state.lname === "") {
       this.setState({ error: "preencha o campo sobrenome" });
+      return true;
+    } else if (this.state.email === "") {
+      this.setState({ error: "preencha o campo email" });
       return true;
     } else if (this.state.end === "") {
       this.setState({ error: "preencha o campo endereço" });
@@ -112,6 +118,13 @@ class RegisterResourceForm extends Component {
                   placeholder="Digite o sobrenome"
                   value={this.state.lname}
                   onChange={e => this.setState({ lname: e.target.value })} /> <br />
+                 <label className="labelFields">E-mail:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite o e-mail"
+                  value={this.state.email}
+                  onChange={e => this.setState({ email: e.target.value })} /> <br />  
 
                 <label className="labelFields">Endereço:</label><br />
                 <input
@@ -139,7 +152,7 @@ class RegisterResourceForm extends Component {
                   className="inputFields"
                   type="text"
                   placeholder="Digite o celular do responsável"
-                  value={this.state.cid}
+                  value={this.state.cel}
                   onChange={e => this.setState({ cel: e.target.value })} />
 
               </ul>

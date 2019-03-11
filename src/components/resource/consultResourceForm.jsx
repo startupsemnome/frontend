@@ -57,10 +57,10 @@ class ConsultResourceForm extends Component {
                   <th scope="col">Sobrenome</th>
                   <th scope="col">Email</th>
                   <th scope="col">Telefone</th>
-				  <th scope="col">Cidade</th>
-				  <th scope="col">Estado</th>                  
-				  <th scope="col">Area de Interesse</th>
-				  <th scope="col">Habilidades e Qualificações</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">Estado</th>                  
+                  <th scope="col">Area de Interesse</th>
+                  <th scope="col">Habilidades e Qualificações</th>
                   <th scope="col">Ultima Atualização</th>
                   <th scope="col">Data Criação</th>
                 </tr>
@@ -70,14 +70,14 @@ class ConsultResourceForm extends Component {
                   return (
                     <tr>
                       <td>{resource.id}</td>
-                      <td>{resource.nome}</td>
-                      <td>{resource.sobrenome}</td>
+                      <td>{resource.fname}</td>
+                      <td>{resource.lname}</td>
                       <td>{resource.email}</td>
-                      <td>{resource.telefone}</td>
-                      <td>{resource.cidade}</td>
-					  <td>{resource.estado}</td>
-					  <td>{resource.areai}</td>
-					  <td>{resource.hab}</td>
+                      <td>{resource.tel}</td>
+                      <td>{resource.cid}</td>
+                      <td>{resource.est}</td>
+                      <td>{resource.areai}</td>
+                      <td>{resource.hab}</td>
                       <td>{resource.updated_at}</td>
                       <td>{resource.created_at}</td>
                     </tr>
