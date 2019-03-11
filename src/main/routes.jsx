@@ -65,15 +65,13 @@ export default class Routes extends Component {
             path="/detalhes-problema"
             component={DetailsProblem}
           />
-          <Route
-            exact={true}
-            path="/editar-problema"
-            component={EditProblem} />
+          <Route exact={true} path="/editar-problema" component={EditProblem} />
 
           <Route
             exact={true}
             path="/consultar-problema"
-            component={ConsultProblem} />
+            component={ConsultProblem}
+          />
 
           <Route exact={true} path="/institucional" component={Institutional} />
 

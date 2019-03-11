@@ -50,7 +50,6 @@ class NavBar extends Component {
                 </Link>
               </li>
 
-
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
                 toggle={this.toggleRecurso}
@@ -66,14 +65,7 @@ class NavBar extends Component {
                       Cadastrar
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-recurso"
-                    >
-                      Detalhar
-                    </Link>
-                  </DropdownItem>
+
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
@@ -82,6 +74,25 @@ class NavBar extends Component {
                       Editar
                     </Link>
                   </DropdownItem>
+
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/consultar-recurso"
+                    >
+                      Consultar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/detalhes-recurso"
+                    >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
+
                 </DropdownMenu>
               </Dropdown>
 
@@ -94,10 +105,9 @@ class NavBar extends Component {
                       to="/cadastro-problema"
                       className="nav-link text-secondary"
                     >
-                      Criar
+                      Cadastrar
                     </Link>
                   </DropdownItem>
-
 
                   <DropdownItem>
                     <Link
@@ -171,7 +181,6 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
             </ul>
           </div>
         </nav>

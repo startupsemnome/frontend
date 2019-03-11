@@ -1,10 +1,33 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 
 class ConsultProblemForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      users: []
+    };
+  }
+  loadUsers() {
+    // Make a request for a user with a given ID
+    axios
+      .get(env.API + "user")
+      .then(response => {
+        // handle success
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
+  componentDidMount() {
+    console.log("teste");
+    this.loadUsers();
   }
   render() {
     return (
@@ -20,14 +43,40 @@ class ConsultProblemForm extends Component {
               Pesquisar:
             </label>
             <input type="text" className="inputFields" />
-
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Enviar"
-              className="btn btn-success"
-            />
-
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">Solicitante</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Telefone</th>
+                  <th scope="col">Problema</th>
+                  <th scope="col">Ultima Atualização</th>
+                  <th scope="col">Data Criação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.users.map(user => {
+                  return (
+                    <tr>
+                      <td>{user.id}</td>
+                      <td>{user.empresa}</td>
+                      <td>{user.solicitante}</td>
+                      <td>{user.email}</td>
+                      <td>{user.telefone}</td>
+                      <td>{user.problema}</td>
+                      <td>{user.updated_at}</td>
+                      <td>{user.created_at}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

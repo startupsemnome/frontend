@@ -68,25 +68,8 @@ class ResourceDetailsForm extends Component {
 
                 </ul>
            </div>
-
            
-            <br/>
-            <br/>
-            
-      
-             <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Contatar"
-              className="btn btn-success"
-            />
-            <input
-              type="button"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Cancelar Cadastro"
-              className="btn btn-warning"
-            />
-
+    
           </form>
         </div>
       </div>
