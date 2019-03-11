@@ -4,12 +4,13 @@ class CompanyForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
+      empresa: "",
+      cnpj: "",
       email: "",
       message: "",
       tele: "",
       est: "",
+      cid: "",
       bair: "",
       num: "",
       rua: ""
@@ -28,23 +29,23 @@ class CompanyForm extends Component {
             <input
               className="A col-md-10"
               type="text"
-              id="fname"
+              id="empresa"
               name="firstname"
               placeholder="Nome da empresa"
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
               required
             />
             <label className="A col-md-2">CNPJ</label>
             <input
               className="A col-md-10"
-              type="text"
+              type="number"
               max="11"
-              id="lname"
+              id="cnpj"
               name="lastname"
               placeholder="CNPJ"
-              value={this.state.lname}
-              onChange={e => this.setState({ lname: e.target.value })}
+              value={this.state.cnpj}
+              onChange={e => this.setState({ cnpj: e.target.value })}
               required
             />
 
@@ -81,6 +82,18 @@ class CompanyForm extends Component {
               placeholder="O bairro da empresa"
               value={this.state.bair}
               onChange={e => this.setState({ bair: e.target.value })}
+              required
+            />
+
+            <label className="A col-md-2">Cidade</label>
+            <input
+              className="A col-md-10"
+              type="text"
+              id="cida"
+              name="cidade"
+              placeholder="A cidade da empresa"
+              value={this.state.cid}
+              onChange={e => this.setState({ cid: e.target.value })}
               required
             />
 
