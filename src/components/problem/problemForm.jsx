@@ -80,7 +80,6 @@ class ProblemForm extends Component {
             <div>
               <ul>
                 <br />
-
                 <label className="labelFields">Solicitante:</label><br />
                 <input
                   className="inputFields"
@@ -117,10 +116,8 @@ class ProblemForm extends Component {
                   placeholder="Descreve o problema"
                   value={this.state.nprob}
                   onChange={e => this.setState({ nprob: e.target.value })} />
-
               </ul>
             </div>
-
             <Row>
               <Col>
                 <button
@@ -133,8 +130,6 @@ class ProblemForm extends Component {
               </Col>
             </Row>
           </form>
-
-
           <SweetAlert
             success
             show={this.state.sweetCreate}
@@ -143,10 +138,6 @@ class ProblemForm extends Component {
           >
             {`Cadastrado ${this.state.empresa} com sucesso!`}
           </SweetAlert>
-
-
-
-
         </div>
       </div>
 
