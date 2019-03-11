@@ -47,45 +47,29 @@ class NavBar extends Component {
                 </Link>
               </li>
 
-              <Dropdown
-                isOpen={this.state.NavLinkEmpresa}
-                toggle={this.toggleEmpresa}
-              >
+              <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} >
                 <DropdownToggle caret>Empresa</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
-                    <Link
-                      className="nav-link"
-                      to="/cadastro-empresa"
-                      className="nav-link text-secondary"
-                    >
+                    <Link to="/cadastro-empresa" className="nav-link text-secondary">
                       Cadastrar
                     </Link>
                   </DropdownItem>
 
                   <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/editar-empresa"
-                    >
+                    <Link className="nav-link text-secondary" to="/editar-empresa" >
                       Editar
                     </Link>
                   </DropdownItem>
 
                   <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/consultar-empresa"
-                    >
+                    <Link className="nav-link text-secondary" to="/consultar-empresa" >
                       Consultar
                     </Link>
                   </DropdownItem>
 
                   <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-empresa"
-                    >
+                    <Link className="nav-link text-secondary" to="/detalhes-empresa" >
                       Detalhes
                     </Link>
                   </DropdownItem>
