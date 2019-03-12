@@ -11,10 +11,10 @@ class ConsultCompanyForm extends Component {
       users: []
     };
   }
-  loadUsers() {
+  loadCompanys() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "user")
+      .get(env.API + "company")
       .then(response => {
         // handle success
         const data = response.data;
@@ -27,7 +27,7 @@ class ConsultCompanyForm extends Component {
   }
   componentDidMount() {
     console.log("teste");
-    this.loadUsers();
+    this.loadCompanys();
   }
   render() {
     return (
@@ -60,16 +60,16 @@ class ConsultCompanyForm extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map(user => {
+                {this.state.users.map(company => {
                   return (
                     <tr>
-                      <td>{user.id}</td>
-                      <td>{user.empresa}</td>
-                      <td>{user.cnpj}</td>
-                      <td>{user.email}</td>
-                      <td>{user.telefone}</td>
-                      <td>{user.updated_at}</td>
-                      <td>{user.created_at}</td>
+                      <td>{company.id}</td>
+                      <td>{company.empresa}</td>
+                      <td>{company.cnpj}</td>
+                      <td>{company.email}</td>
+                      <td>{company.tele}</td>
+                      <td>{company.updated_at}</td>
+                      <td>{company.created_at}</td>
                     </tr>
                   );
                 })}
