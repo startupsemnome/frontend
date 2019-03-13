@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditResourceForm from "../components/editResourceForm";
+import EditResourceForm from "../components/resource/editResourceForm";
 
 //Alterar o nome do class para a página desejada
 export default class EditResource extends Component {

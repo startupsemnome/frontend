@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RegisterResourceForm from "../components/registerResourceForm";
+import RegisterResourceForm from "../components/resource/registerResourceForm";
 
 //Alterar o nome do class para a página desejada
 export default class RegisterResource extends Component {

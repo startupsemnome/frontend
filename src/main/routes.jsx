@@ -31,6 +31,8 @@ import EditResource from "../pages/editResource";
 import UserList from "../components/user/userList";
 import ConsultProblem from "../pages/consultProblem";
 import ContentRegister from "../components/componentsform/contentRegister";
+import ConsultResource from "../pages/consultResource";
+ 
 
 export default class Routes extends Component {
   constructor(props) {
@@ -52,7 +54,27 @@ export default class Routes extends Component {
             path="/cadastro-recurso"
             component={RegisterResource}
           />
-          <Route exact={true} path="/consultar-usuario" component={UserList} />
+          <Route
+            exact={true}
+            path="/detalhes-recurso"
+            component={ResourceDetails}
+          />
+          <Route 
+          exact={true} 
+          path="/editar-recurso" 
+          component={EditResource}
+          />
+
+          <Route 
+          exact={true} 
+          path="/consultar-recurso" 
+          component={ConsultResource}
+          />
+          
+          <Route exact={true} 
+          path="/consultar-usuario" 
+          component={UserList} 
+          />
           <Route
             exact={true}
             path="/cadastro-usuario"
@@ -75,8 +97,7 @@ export default class Routes extends Component {
           <Route
             exact={true}
             path="/consultar-problema"
-            component={ConsultProblem}
-          />
+            component={ConsultProblem} />
 
           <Route exact={true} path="/institucional" component={Institutional} />
 
@@ -93,8 +114,9 @@ export default class Routes extends Component {
             component={ContentRegister}
           />
           <Route exact={true} component={NotFound} />
+        
         </Switch>
-        <Footer />
+        <Footer/>
       </div>
     );
   }
