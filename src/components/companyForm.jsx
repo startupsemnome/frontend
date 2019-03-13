@@ -1,56 +1,63 @@
 import React, { Component } from "react";
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class CompanyForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
+      empresa: "",
+      cnpj: "",
       email: "",
       message: "",
       tele: "",
       est: "",
+      cid: "",
       bair: "",
       num: "",
-      rua: ""
+      rua: "",
+      sweetCreate: false
     };
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.setState({ sweetCreate: true });
   }
   render() {
     return (
       <div className="App">
         <div>
-          <form action="/action_page.php">
-            <label className="A col-md-2">Nome da Organização</label>
+          <form className="signupForm">
+            <label className="labelFields">Nome da Organização</label><br />
+            <br></br>
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="text"
-              id="fname"
+              id="empresa"
               name="firstname"
               placeholder="Nome da empresa"
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
               required
             />
-            <label className="A col-md-2">CNPJ</label>
+            <br></br>
+            <label className="labelFields">CNPJ</label><br />
             <input
-              className="A col-md-10"
-              type="text"
+              className="inputFields"
+              type="number"
               max="11"
-              id="lname"
+              id="cnpj"
               name="lastname"
               placeholder="CNPJ"
-              value={this.state.lname}
-              onChange={e => this.setState({ lname: e.target.value })}
+              value={this.state.cnpj}
+              onChange={e => this.setState({ cnpj: e.target.value })}
               required
             />
-
-            <label className="A col-md-2">Rua</label>
+            <br></br>
+            <label className="labelFields">Rua</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="text"
               id="rua"
               name="rua"
@@ -59,10 +66,10 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ rua: e.target.value })}
               required
             />
-
-            <label className="A col-md-2">Numero</label>
+            <br></br>
+            <label className="labelFields">Numero</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="number"
               id="num"
               name="numero"
@@ -71,10 +78,10 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ num: e.target.value })}
               required
             />
-
-            <label className="A col-md-2">Bairro</label>
+            <br></br>
+            <label className="labelFields">Bairro</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="text"
               id="bair"
               name="bairro"
@@ -83,10 +90,22 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ bair: e.target.value })}
               required
             />
-
-            <label className="A col-md-2">Estado</label>
+            <br></br>
+            <label className="labelFields">Cidade</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
+              type="text"
+              id="cida"
+              name="cidade"
+              placeholder="A cidade da empresa"
+              value={this.state.cid}
+              onChange={e => this.setState({ cid: e.target.value })}
+              required
+            />
+            <br></br>
+            <label className="labelFields">Estado</label><br />
+            <input
+              className="inputFields"
               type="text"
               id="est"
               name="estado"
@@ -95,10 +114,10 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ est: e.target.value })}
               required
             />
-
-            <label className="A col-md-2">Email</label>
+            <br></br>
+            <label className="labelFields">Email</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="email"
               id="email"
               name="email"
@@ -107,9 +126,10 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ email: e.target.value })}
               required
             />
-            <label className="A col-md-2">Telefone da empresa</label>
+            <br></br>
+            <label className="labelFields">Telefone da empresa</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="tel"
               id="tele"
               name="telefone"
@@ -118,22 +138,37 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ tele: e.target.value })}
               required
             />
-            <label className="A col-md-2">Assunto</label>
-            <textarea
-              className="A col-md-10"
-              id="message"
-              name="message"
-              placeholder="Descreva pouco sobre a necessidade da sua empresa"
-              onChange={e => this.setState({ message: e.target.value })}
-              value={this.state.message}
-            />
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Enviar"
-              className="btn btn-success"
-            />
+            <br></br>
+            <div>
+              <label className="labelFields">Assunto</label><br />
+              <input
+                className="inputFields"
+                id="message"
+                name="message"
+                placeholder="Descreva pouco sobre a necessidade da sua empresa"
+                onChange={e => this.setState({ message: e.target.value })}
+                value={this.state.message}
+              />
+            </div>
+            <Row>
+              <Col>
+                <button
+                  type="button"
+                  onClick={e => this.handleFormSubmit(e)}
+                  className="join-btn"
+                > Cadastrar
+              </button>
+              </Col>
+            </Row>
           </form>
+
+          <SweetAlert
+            success
+            show={this.state.sweetCreate}
+            onConfirm={() => this.setState({ sweetCreate: false })}
+          >
+            {`Cadastrado ${this.state.empresa} com sucesso!!!!}`}
+          </SweetAlert>
         </div>
       </div>
     );

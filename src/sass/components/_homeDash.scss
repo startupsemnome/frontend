@@ -9,7 +9,14 @@ h1 {
 .container {
   padding: 25px;
 }
-
+.buttonLogin{
+  color:#fff;
+  font-size:25px;
+  text-decoration:none;
+}
+ a:hover {
+    color: inherit; 
+}
 .percentage-number {
   color: rgb(63, 81, 181);
   font-size: 50px;

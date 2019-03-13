@@ -1,113 +1,107 @@
 import React, { Component } from "react";
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class EditProblemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
+      empresa: "",
       solic: "",
       email: "",
       telef: "",
       alter: "",
-      nprob: ""
+      nprob: "",
+      sweetCreate: false
     };
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.setState({ sweetCreate: true });
   }
-
   render() {
     return (
       <div className="App">
         <div>
-          <form action="/action_page.php">
-            <label className="A col-md-2">Nome da empresa</label>
+          <form className="signupForm">
+            <label className="labelFields">Nome da empresa:</label><br />
             <input
-              className="A col-md-10"
+              className="inputFields"
               type="text"
-              id="fname"
-              name="firstname"
               placeholder="Digite o nome da empresa"
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
-              required
-            />
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })} />
+            <div>
+              <ul>
+                <br />
 
-            <label className="A col-md-2">Solicitante</label>
-            <input
-              className="A col-md-10"
-              type="text"
-              max="11"
-              id="solic"
-              name="requesting"
-              placeholder="Digite o nome do solicitante"
-              value={this.state.lname}
-              onChange={e => this.setState({ solic: e.target.value })}
-              required
-            />
+                <label className="labelFields">Solicitante:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite o nome do solicitante"
+                  value={this.state.solicit}
+                  onChange={e => this.setState({ solicit: e.target.value })} /> <br />
 
-            <label className="A col-md-2">Email</label>
-            <input
-              className="A col-md-10"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Digite o email da empresa"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-              required
-            />
+                <label className="labelFields">Email:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite o email do responsável"
+                  value={this.state.email}
+                  onChange={e => this.setState({ email: e.target.value })} /><br />
 
-            <label className="A col-md-2">Telefone</label>
-            <input
-              className="A col-md-10"
-              type="tel"
-              id="telef"
-              name="telefone"
-              placeholder="Digite o telefone"
-              value={this.state.telef}
-              onChange={e => this.setState({ telef: e.target.value })}
-              required
-            />
+                <label className="labelFields">Telefone:</label><br />
+                <input
+                  className="inputFields"
+                  type="number"
+                  placeholder="Digite o telefone do responsável"
+                  value={this.state.telef}
+                  onChange={e => this.setState({ telef: e.target.value })} /><br />
 
-            <label className="A col-md-2">Editar Problema</label>
-            <textarea
-              className="A col-md-10"
-              id="nprob"
-              name="Editar Problema"
-              placeholder="Descreva a alteração do problema"
-              onChange={e => this.setState({ nprob: e.target.value })}
-              value={this.state.nprob}
-            />
+                <label className="labelFields">Editar Problema:</label><br />
+                <input
+                  className="inputFields"
+                  type="number"
+                  placeholder="Digite o telefone do responsável"
+                  value={this.state.alter}
+                  onChange={e => this.setState({ alter: e.target.value })} /><br />
 
-            <FormGroup>
-              <Label for="exampleSelect">Tipo de Alteração</Label>
-              <Input type="select" className="select" id="exampleSelect">
-                <option>1 - Inclusão</option>
-                <option>2 - Alteração</option>
-                <option>3 - Exclusão</option>
-              </Input>
-            </FormGroup>
-
-            <input
-              type="button"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Cancelar"
-              className="btn btn-danger"
-            />
-
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Salvar"
-              className="btn btn-success"
-            />
+                <FormGroup>
+                  <Label for="exampleSelect">Tipo de Alteração</Label>
+                  <Input type="select" className="select" id="exampleSelect">
+                    <option>1 - Inclusão</option>
+                    <option>2 - Alteração</option>
+                    <option>3 - Exclusão</option>
+                  </Input>
+                </FormGroup>
+              </ul>
+            </div>
+            <br /><br />
+            <Row>
+              <Col>
+                <button
+                  type="button"
+                  onClick={e => this.handleFormSubmit(e)}
+                  className="join-btn"
+                > Salvar
+              </button>
+              </Col>
+            </Row>
 
           </form>
+          <SweetAlert
+            success
+            show={this.state.sweetCreate}
+            onConfirm={() => this.setState({ sweetCreate: false })}
+          >
+            {`Alterado ${this.state.empresa} com sucesso!`}
+          </SweetAlert>
+
         </div>
       </div>
+
     );
   }
 }

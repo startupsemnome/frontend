@@ -13,9 +13,11 @@ class NavBar extends Component {
     this.state = {
       NavLinkProblem: false,
       NavLinkUsuario: false,
+      NavLinkEmpresa: false,
       NavLinkRecurso: false
     };
     this.toggle = this.toggle.bind(this);
+    this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
   }
@@ -24,7 +26,7 @@ class NavBar extends Component {
       <div className="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor">
           <a className="navbar-brand" href="#">
-            Navbar
+            HACK
           </a>
           <button
             className="navbar-toggler"
@@ -44,12 +46,36 @@ class NavBar extends Component {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cadastro-empresa">
-                  Empresa
-                </Link>
-              </li>
 
+              <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} >
+                <DropdownToggle caret>Empresa</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>
+                    <Link to="/cadastro-empresa" className="nav-link text-secondary">
+                      Cadastrar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link className="nav-link text-secondary" to="/editar-empresa" >
+                      Editar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link className="nav-link text-secondary" to="/consultar-empresa" >
+                      Consultar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link className="nav-link text-secondary" to="/detalhes-empresa" >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
+
+                </DropdownMenu>
+              </Dropdown>
 
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
@@ -66,25 +92,16 @@ class NavBar extends Component {
                       Cadastrar
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-recurso"
-                    >
-                      Detalhar
-                    </Link>
-                  </DropdownItem>
+
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
                       to="/editar-recurso"
                     >
                       Editar
-                    </Link>                
-                  
-                  
+                    </Link>
                   </DropdownItem>
-                  
+
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
@@ -92,7 +109,17 @@ class NavBar extends Component {
                     >
                       Consultar
                     </Link>
-                    </DropdownItem>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/detalhes-recurso"
+                    >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
+
                 </DropdownMenu>
               </Dropdown>
 
@@ -105,10 +132,9 @@ class NavBar extends Component {
                       to="/cadastro-problema"
                       className="nav-link text-secondary"
                     >
-                      Criar
+                      Cadastrar
                     </Link>
                   </DropdownItem>
-
 
                   <DropdownItem>
                     <Link
@@ -182,7 +208,6 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
             </ul>
           </div>
         </nav>
@@ -197,6 +222,11 @@ class NavBar extends Component {
   toggleUsuario() {
     this.setState({
       NavLinkUsuario: !this.state.NavLinkUsuario
+    });
+  }
+  toggleEmpresa() {
+    this.setState({
+      NavLinkEmpresa: !this.state.NavLinkEmpresa
     });
   }
   toggleRecurso() {

@@ -2,16 +2,15 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Progress } from 'reactstrap';
 
-class DetailsProblemForm extends Component {
+class DetailsCompanyForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      operador: "",
       empresa: "",
-      solicit: "",
+      cnpj: "",
       email: "",
-      telef: "",
-      descricao: ""
+      tele: "",
+      message: ""
     };
   }
   handleFormSubmit(event) {
@@ -25,15 +24,6 @@ class DetailsProblemForm extends Component {
           <form className="signupForm">
             <div>
               <ul>
-                <label className="labelFields">Operador:</label><br />
-                <input
-                  className="inputFields"
-                  type="text"
-                  placeholder="Operador responsável pelo cadastro"
-                  value={this.state.operador}
-                  onChange={e => this.setState({ operador: e.target.value })} /> <br />
-
-
                 <label className="labelFields">Nome da Empresa:</label><br />
                 <input
                   className="inputFields"
@@ -42,18 +32,18 @@ class DetailsProblemForm extends Component {
                   value={this.state.empresa}
                   onChange={e => this.setState({ empresa: e.target.value })} /><br />
 
-                <label className="labelFields">Solicitante:</label><br />
+                <label className="labelFields">Cnpj:</label><br />
                 <input
                   className="inputFields"
-                  type="text"
-                  placeholder="Solicitante responsável pela abertura"
-                  value={this.state.solicit}
-                  onChange={e => this.setState({ solicit: e.target.value })} /><br />
+                  type="number"
+                  placeholder="Cnpj responsável da organização"
+                  value={this.state.cnpj}
+                  onChange={e => this.setState({ cnpj: e.target.value })} /><br />
 
                 <label className="labelFields">Email:</label><br />
                 <input
                   className="inputFields"
-                  type="text"
+                  type="email"
                   placeholder="Email cadastrado"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })} /><br />
@@ -62,28 +52,28 @@ class DetailsProblemForm extends Component {
                 <label className="labelFields">Telefone:</label><br />
                 <input
                   className="inputFields"
-                  type="number"
+                  type="tel"
                   placeholder="Telefone cadastrado"
-                  value={this.state.telef}
-                  onChange={e => this.setState({ telef: e.target.value })} />
+                  value={this.state.tele}
+                  onChange={e => this.setState({ tele: e.target.value })} />
 
               </ul>
             </div>
 
             <div>
               <ul>
-                <label className="labelFields">Descrição do Problema</label>
+                <label className="labelFields">Assunto da Empresa</label>
                 <br></br>
                 <input
                   className="inputFields"
                   type="text"
-                  placeholder="Problema descrito"
-                  value={this.state.descricao}
-                  onChange={e => this.setState({ descricao: e.target.value })} />
+                  placeholder="Assunto descrito"
+                  value={this.state.message}
+                  onChange={e => this.setState({ message: e.target.value })} />
 
                 <div className="text-center">Situação do Problema</div>
 
-                <Progress color="success" value="100">Finalizado</Progress>
+                <Progress color="success" value="100">Visualizado</Progress>
 
                 <br></br>
                 <br></br>
@@ -94,7 +84,6 @@ class DetailsProblemForm extends Component {
                   value="Voltar"
                   className="btn btn-info"
                 />
-
                 <br></br>
                 <br></br>
 
@@ -111,4 +100,4 @@ class DetailsProblemForm extends Component {
   }
 }
 
-export default DetailsProblemForm;
+export default DetailsCompanyForm;

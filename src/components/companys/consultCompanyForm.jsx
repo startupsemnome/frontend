@@ -4,19 +4,17 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 
-class UserList extends Component {
+class ConsultCompanyForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: []
     };
-    console.log(this.props);
   }
-
-  loadUsers() {
+  loadCompanys() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "user")
+      .get(env.API + "company")
       .then(response => {
         // handle success
         const data = response.data;
@@ -29,14 +27,14 @@ class UserList extends Component {
   }
   componentDidMount() {
     console.log("teste");
-    this.loadUsers();
+    this.loadCompanys();
   }
   render() {
     return (
       <div className="container col-md-12">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="h1-main">Listar Usuarios</h1>
+            <h1 className="h1-main">Listar Empresas</h1>
           </div>
         </div>
         <div className="row">
@@ -53,21 +51,25 @@ class UserList extends Component {
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Nome</th>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">Cnpj</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Telefone</th>
                   <th scope="col">Ultima Atualização</th>
                   <th scope="col">Data Criação</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map(user => {
+                {this.state.users.map(company => {
                   return (
                     <tr>
-                      <td>{user.id}</td>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.updated_at}</td>
-                      <td>{user.created_at}</td>
+                      <td>{company.id}</td>
+                      <td>{company.empresa}</td>
+                      <td>{company.cnpj}</td>
+                      <td>{company.email}</td>
+                      <td>{company.tele}</td>
+                      <td>{company.updated_at}</td>
+                      <td>{company.created_at}</td>
                     </tr>
                   );
                 })}
@@ -80,4 +82,4 @@ class UserList extends Component {
   }
 }
 
-export default UserList;
+export default ConsultCompanyForm;

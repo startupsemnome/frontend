@@ -1,17 +1,42 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 
 class ConsultProblemForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      users: []
+    };
+    console.log(this.props);
+  }
+
+  loadProblems() {
+    // Make a request for a user with a given ID
+    axios
+      .get(env.API + "problem")
+      .then(response => {
+        // handle success
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
+  componentDidMount() {
+    console.log("teste");
+    this.loadProblems();
   }
   render() {
     return (
       <div className="container col-md-12">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="h1-main">Listar Problemas</h1>
+            <h1 className="h1-main">Consultar Problemas</h1>
           </div>
         </div>
         <div className="row">
@@ -20,14 +45,40 @@ class ConsultProblemForm extends Component {
               Pesquisar:
             </label>
             <input type="text" className="inputFields" />
-
-            <input
-              type="submit"
-              onClick={e => this.handleFormSubmit(e)}
-              value="Enviar"
-              className="btn btn-success"
-            />
-
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">Solicitante</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Telefone</th>
+                  <th scope="col">Problema</th>
+                  <th scope="col">Ultima Atualização</th>
+                  <th scope="col">Data Criação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.users.map(problem => {
+                  return (
+                    <tr>
+                      <td>{problem.id}</td>
+                      <td>{problem.empresa}</td>
+                      <td>{problem.solicit}</td>
+                      <td>{problem.email}</td>
+                      <td>{problem.telef}</td>
+                      <td>{problem.nprob}</td>
+                      <td>{problem.updated_at}</td>
+                      <td>{problem.created_at}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditProblemForm from "../components/problem/editProblemForm"
+import EditCompanyForm from "../components/companys/editCompanyForm"
 
 export default class EditProblem extends Component {
   constructor(props) {
@@ -9,9 +9,9 @@ export default class EditProblem extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Editar Problemas</h1>
+        <h1>Editar Empresa</h1>
 
-        <EditProblemForm />
+        <EditCompanyForm />
 
       </div>
     );
