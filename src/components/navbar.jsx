@@ -13,9 +13,11 @@ class NavBar extends Component {
     this.state = {
       NavLinkProblem: false,
       NavLinkUsuario: false,
+      NavLinkEmpresa: false,
       NavLinkRecurso: false
     };
     this.toggle = this.toggle.bind(this);
+    this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
   }
@@ -44,11 +46,36 @@ class NavBar extends Component {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cadastro-empresa">
-                  Empresa
-                </Link>
-              </li>
+
+              <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} >
+                <DropdownToggle caret>Empresa</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>
+                    <Link to="/cadastro-empresa" className="nav-link text-secondary">
+                      Cadastrar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link className="nav-link text-secondary" to="/editar-empresa" >
+                      Editar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link className="nav-link text-secondary" to="/consultar-empresa" >
+                      Consultar
+                    </Link>
+                  </DropdownItem>
+
+                  <DropdownItem>
+                    <Link className="nav-link text-secondary" to="/detalhes-empresa" >
+                      Detalhes
+                    </Link>
+                  </DropdownItem>
+
+                </DropdownMenu>
+              </Dropdown>
 
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
@@ -195,6 +222,11 @@ class NavBar extends Component {
   toggleUsuario() {
     this.setState({
       NavLinkUsuario: !this.state.NavLinkUsuario
+    });
+  }
+  toggleEmpresa() {
+    this.setState({
+      NavLinkEmpresa: !this.state.NavLinkEmpresa
     });
   }
   toggleRecurso() {

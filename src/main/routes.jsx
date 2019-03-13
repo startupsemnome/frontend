@@ -8,8 +8,13 @@ import { browserHistory } from "react-router";
 import Navbar from "./../components/navbar";
 import Footer from "./../components/footer";
 
+
 // Pages
 import RegisterCompany from "../pages/registerCompany";
+import DetailsCompany from "../pages/detailsCompany";
+import EditCompany from "../pages/editCompany";
+import ConsultCompany from "../pages/consultCompany";
+
 import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
@@ -37,11 +42,11 @@ export default class Routes extends Component {
         <Navbar />
         <Switch>
           <Route exact={true} path="/" component={Home} />
-          <Route
-            exact={true}
-            path="/cadastro-empresa"
-            component={RegisterCompany}
-          />
+          <Route exact={true} path="/cadastro-empresa" component={RegisterCompany} />
+          <Route exact={true} path="/detalhes-empresa" component={DetailsCompany} />
+          <Route exact={true} path="/editar-empresa" component={EditCompany} />
+          <Route exact={true} path="/consultar-empresa" component={ConsultCompany} />
+
           <Route
             exact={true}
             path="/cadastro-recurso"
