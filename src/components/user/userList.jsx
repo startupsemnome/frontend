@@ -11,6 +11,25 @@ class UserList extends Component {
       users: []
     };
     console.log(this.props);
+    this.excluirUser = this.excluirUser.bind(this);
+  }
+
+  excluirUser(id) {
+    // chama a api do banco com o metodo de delete
+    axios
+      .delete(env.API + "user/" + id)
+      .then(response => {
+        alert("Excluido com sucesso");
+        // apos excluir carrega novamente os usuarios da tabela
+        this.loadUsers();
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na exclusao do item");
+      });
+  }
+  editUser(id) {
+    console.log(id);
   }
 
   loadUsers() {
@@ -57,17 +76,22 @@ class UserList extends Component {
                   <th scope="col">Email</th>
                   <th scope="col">Ultima Atualização</th>
                   <th scope="col">Data Criação</th>
+                  <th scope="col">Opções</th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.users.map(user => {
                   return (
-                    <tr>
+                    <tr key={`userTable${user.id}`}>
                       <td>{user.id}</td>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.updated_at}</td>
                       <td>{user.created_at}</td>
+                      <td>
+                        <button onClick={(e) => this.editUser(user.id)} className="btn btn-primary">Editar</button>
+                        <button onClick={(e) => this.excluirUser(user.id)} className="btn btn-danger">Excluir</button>
+                      </td>
                     </tr>
                   );
                 })}
