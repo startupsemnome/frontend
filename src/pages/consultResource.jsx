@@ -9,7 +9,7 @@ export default class ConsultResource extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Consultar Recurso</h1>
+        <h1 className="h1-main">Consultar Recurso</h1>
       <ConsultResourceForm />
 
       </div>

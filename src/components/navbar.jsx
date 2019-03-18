@@ -41,14 +41,14 @@ class NavBar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav w-100">
-              <li className="nav-item active">
+              <li className="nav-item active" style={{ margin: "15px" }} >
                 <Link to="/" className="nav-link">
-                  Home
+                  DASHBOARD
                 </Link>
               </li>
 
-              <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} >
-                <DropdownToggle caret>Empresa</DropdownToggle>
+              <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} style={{ margin: "10px" }} >
+                <DropdownToggle color="primary" caret>Empresa</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link to="/cadastro-empresa" className="nav-link text-secondary">
@@ -76,10 +76,10 @@ class NavBar extends Component {
 
                 </DropdownMenu>
               </Dropdown>
-
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
                 toggle={this.toggleRecurso}
+                style={{ margin: "10px" }} 
               >
                 <DropdownToggle caret>Recurso</DropdownToggle>
                 <DropdownMenu>
@@ -123,7 +123,7 @@ class NavBar extends Component {
                 </DropdownMenu>
               </Dropdown>
 
-              <Dropdown isOpen={this.state.NavLinkProblem} toggle={this.toggle}>
+              <Dropdown isOpen={this.state.NavLinkProblem} toggle={this.toggle} style={{ margin: "10px" }} >
                 <DropdownToggle caret>Problemas</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
@@ -163,13 +163,10 @@ class NavBar extends Component {
                 </DropdownMenu>
               </Dropdown>
 
-              <Link className="nav-link" to="/institucional">
-                Institucional
-              </Link>
-
               <Dropdown
                 isOpen={this.state.NavLinkUsuario}
                 toggle={this.toggleUsuario}
+                style={{ margin: "10px" }} 
               >
                 <DropdownToggle caret>Usuario</DropdownToggle>
                 <DropdownMenu>
@@ -208,6 +205,11 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+              <li style={{ position: "absolute", right: "0px", margin: "15px" }}>
+                <Link to="/login" className="nav-link">
+                  SAIR
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>

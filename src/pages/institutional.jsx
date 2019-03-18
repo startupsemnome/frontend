@@ -8,7 +8,7 @@ export default class Institutional extends Component {
     render() {
     return (
       <div className="container">
-        <h1>Institucional Teste</h1>
+        <h1 className="h1-main">Institucional Teste</h1>
       </div>
     );
   }

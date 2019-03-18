@@ -9,7 +9,7 @@ export default class EditProblem extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Editar Problemas</h1>
+        <h1 className="h1-main">Editar Problemas</h1>
 
         <EditProblemForm />
 

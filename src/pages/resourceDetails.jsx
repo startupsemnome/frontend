@@ -9,7 +9,7 @@ export default class ResourceDetails extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Detalhes de Recursos</h1>
+        <h1 className="h1-main">Detalhes de Recursos</h1>
         <br/>
         <ResourceDetailsForm />
       </div>

@@ -9,7 +9,7 @@ export default class DetailsProblem extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Detalhes dos Problemas</h1>
+        <h1 className="h1-main">Detalhes dos Problemas</h1>
 
         <DetailsProblemForm />
 
