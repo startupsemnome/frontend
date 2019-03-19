@@ -3,12 +3,14 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import UserForm from "./userForm";
 
 class UserList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      userListEdit: [null, false],
     };
     console.log(this.props);
     this.excluirUser = this.excluirUser.bind(this);
@@ -29,7 +31,7 @@ class UserList extends Component {
       });
   }
   editUser(id) {
-    console.log(id);
+    this.setState({ userListEdit: [id, true] })
   }
 
   loadUsers() {
@@ -53,52 +55,56 @@ class UserList extends Component {
   render() {
     return (
       <div className="container col-md-12">
-        <div className="row">
-          <div className="col-md-12">
-            <h1 className="h1-main">Listar Usuarios</h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-            <label htmlFor="" className="labelFields m-l-1">
-              Pesquisar:
-            </label>
-            <input type="text" className="inputFields" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Ultima Atualização</th>
-                  <th scope="col">Data Criação</th>
-                  <th scope="col">Opções</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.users.map(user => {
-                  return (
-                    <tr key={`userTable${user.id}`}>
-                      <td>{user.id}</td>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.updated_at}</td>
-                      <td>{user.created_at}</td>
-                      <td>
-                        <button onClick={(e) => this.editUser(user.id)} className="btn btn-primary">Editar</button>
-                        <button onClick={(e) => this.excluirUser(user.id)} className="btn btn-danger">Excluir</button>
-                      </td>
+        {!this.state.userListEdit[1] ?
+          <div>
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="h1-main">Listar Usuarios</h1>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
+                <label htmlFor="" className="labelFields m-l-1">
+                  Pesquisar:
+              </label>
+                <input type="text" className="inputFields" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Ultima Atualização</th>
+                      <th scope="col">Data Criação</th>
+                      <th scope="col">Opções</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
+                  </thead>
+                  <tbody>
+                    {this.state.users.map(user => {
+                      return (
+                        <tr key={`userTable${user.id}`}>
+                          <td>{user.id}</td>
+                          <td>{user.name}</td>
+                          <td>{user.email}</td>
+                          <td>{user.updated_at}</td>
+                          <td>{user.created_at}</td>
+                          <td>
+                            <button onClick={(e) => this.editUser(user.id)} className="btn btn-primary">Editar</button>
+                            <button onClick={(e) => this.excluirUser(user.id)} className="btn btn-danger">Excluir</button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> :
+          <UserForm edit={this.state.userListEdit[1]} id={this.state.userListEdit[0]} />}
       </div>
     );
   }

@@ -7,6 +7,7 @@ import env from "./../../consts";
 class UserForm extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: "",
       email: "",
@@ -14,6 +15,7 @@ class UserForm extends Component {
       error: "",
       sweetCreate: false
     };
+    console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.createUser = this.createUser.bind(this);
   }
@@ -21,26 +23,60 @@ class UserForm extends Component {
     event.preventDefault();
     this.setState({ sweetCreate: true });
   }
-  createUser() {
-    alert(1);
+
+  createUser(method, id) {
+
     if (!this.hasErros()) {
+
+      if (method == "create") {
+        axios
+          .post(env.API + "user", {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+          })
+          .then(function (response) {
+            console.log(response);
+            window.location = "/consultar-usuario";
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else if (method = "update") {
+
+        axios
+          .put(env.API + "user/" + id, {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+          })
+          .then(function (response) {
+            console.log(response);
+            window.location = "/consultar-usuario";
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.id) {
+      const id = this.props.id;
       axios
-        .post(env.API + "user", {
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password
-        })
-        .then(function(response) {
-          alert(2);
+        .get(env.API + "user/" + id)
+        .then((response) => {
           console.log(response);
-          window.location = "/consultar-usuario";
+          const data = response.data;
+          this.setState({ name: data.name, password: data.password, email: data.email });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     }
   }
-
   hasErros() {
     if (this.state.name === "") {
       this.setState({ error: "preencha o campo nome" });
@@ -98,10 +134,10 @@ class UserForm extends Component {
             <Col>
               <button
                 type="button"
-                onClick={this.createUser}
+                onClick={() => { !this.props.id ? this.createUser("create") : this.createUser("update", this.props.id) }}
                 className="join-btn"
               >
-                Criar Usuário
+                {!this.props.id ? "Criar" : "Editar"} Usuário
               </button>
             </Col>
           </Row>
