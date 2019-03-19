@@ -9,7 +9,7 @@ export default class RegisterProblem extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Registrar Problemas</h1>
+        <h1 className="h1-main">Registrar Problemas</h1>
         <ProblemForm />
 
       </div>

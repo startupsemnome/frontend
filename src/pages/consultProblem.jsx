@@ -9,7 +9,7 @@ export default class ConsultProblem extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Consultar Problemas</h1>
+        <h1 className="h1-main">Consultar Problemas</h1>
 
         <ConsultProblemForm />
 

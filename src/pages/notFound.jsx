@@ -11,7 +11,7 @@ export default class NotFound extends Component {
   render() {
     return (
       <div className="container">
-        <h1>PÁGINA NÃO ENCONTRADA</h1>
+        <h1 className="h1-main">PÁGINA NÃO ENCONTRADA</h1>
         <img className="not-found-img" src={img404} alt="" />
       </div>
     );

@@ -4,7 +4,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 
-class ConsultProblemForm extends Component {
+class ConsultResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +13,10 @@ class ConsultProblemForm extends Component {
     console.log(this.props);
   }
 
-  loadProblems() {
+  loadResources() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "problem")
+      .get(env.API + "resource")
       .then(response => {
         // handle success
         const data = response.data;
@@ -29,14 +29,14 @@ class ConsultProblemForm extends Component {
   }
   componentDidMount() {
     console.log("teste");
-    this.loadProblems();
+    this.loadResources();
   }
   render() {
     return (
       <div className="container col-md-12">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="h1-main">Consultar Problemas</h1>
+            <h1 className="h1-main">Consultar Recursos</h1>
           </div>
         </div>
         <div className="row">
@@ -53,27 +53,33 @@ class ConsultProblemForm extends Component {
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Empresa</th>
-                  <th scope="col">Solicitante</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Sobrenome</th>
                   <th scope="col">Email</th>
                   <th scope="col">Telefone</th>
-                  <th scope="col">Problema</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">Estado</th>                  
+                  <th scope="col">Area de Interesse</th>
+                  <th scope="col">Habilidades e Qualificações</th>
                   <th scope="col">Ultima Atualização</th>
                   <th scope="col">Data Criação</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map(problem => {
+                {this.state.users.map(resource => {
                   return (
                     <tr>
-                      <td>{problem.id}</td>
-                      <td>{problem.empresa}</td>
-                      <td>{problem.solicit}</td>
-                      <td>{problem.email}</td>
-                      <td>{problem.telef}</td>
-                      <td>{problem.nprob}</td>
-                      <td>{problem.updated_at}</td>
-                      <td>{problem.created_at}</td>
+                      <td>{resource.id}</td>
+                      <td>{resource.fname}</td>
+                      <td>{resource.lname}</td>
+                      <td>{resource.email}</td>
+                      <td>{resource.tel}</td>
+                      <td>{resource.cid}</td>
+                      <td>{resource.est}</td>
+                      <td>{resource.areai}</td>
+                      <td>{resource.hab}</td>
+                      <td>{resource.updated_at}</td>
+                      <td>{resource.created_at}</td>
                     </tr>
                   );
                 })}
@@ -86,4 +92,4 @@ class ConsultProblemForm extends Component {
   }
 }
 
-export default ConsultProblemForm;
+export default ConsultResourceForm;

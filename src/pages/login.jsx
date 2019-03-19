@@ -9,7 +9,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Login</h1>
+        <h1 className="h1-main">Login</h1>
         <Content />
       </div>
     );

@@ -9,7 +9,7 @@ export default class DetailsCompany extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Detalhes da Empresa</h1>
+        <h1 className="h1-main">Detalhes da Empresa</h1>
 
         <DetailsCompanyForm />
 
