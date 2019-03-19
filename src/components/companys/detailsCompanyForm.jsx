@@ -89,7 +89,7 @@ class DetailsCompanyForm extends Component {
 
                 <div class="alert alert-warning">
                   <strong>Atenção!!</strong> Informações sujeitas a alterações.
-            </div>
+                </div>
               </ul>
             </div>
           </form>

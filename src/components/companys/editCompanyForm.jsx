@@ -11,6 +11,7 @@ class EditCompanyForm extends Component {
       cnpj: "",
       email: "",
       tele: "",
+      message: "",
       est: "",
       cid: "",
       bair: "",
@@ -102,8 +103,19 @@ class EditCompanyForm extends Component {
                   placeholder="Digite o numero da empresa"
                   value={this.state.num}
                   onChange={e => this.setState({ num: e.target.value })} /><br />
-
               </ul>
+              <br></br>
+              <div>
+                <label className="labelFields">Assunto</label><br />
+                <input
+                  className="inputFields"
+                  id="message"
+                  name="message"
+                  placeholder="Descreva pouco sobre a necessidade da sua empresa"
+                  onChange={e => this.setState({ message: e.target.value })}
+                  value={this.state.message}
+                />
+              </div>
             </div>
             <br /><br />
             <Row>

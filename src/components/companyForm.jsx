@@ -95,7 +95,7 @@ class CompanyForm extends Component {
             <input
               className="inputFields"
               type="text"
-              id="cida"
+              id="cid"
               name="cidade"
               placeholder="A cidade da empresa"
               value={this.state.cid}
