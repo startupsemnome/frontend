@@ -77,8 +77,8 @@ class ConsultCompanyForm extends Component {
                       <th scope="col">ID</th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Cnpj</th>
-                      {/* <th scope="col">Contato</th>
-                      <th scope="col">Endereço</th> */}
+                      {/* <th scope="col">Contato</th> */}
+                      {/* <th scope="col">Endereço</th> */}
                       <th scope="col">Ultima Atualização</th>
                       <th scope="col">Data Criação</th>
                       <th scope="col">Opções</th>
@@ -91,8 +91,8 @@ class ConsultCompanyForm extends Component {
                           <td>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
-                          {/* <td>{company.email} Tel:{company.tele}</td>
-                          <td>{company.est}-{company.cid} {company.bair} {company.rua} {company.num}</td> */}
+                          {/* <td>{company.email} Tel:{company.tele}</td> */}
+                          {/* <td>{company.est}-{company.cid} {company.bair} {company.rua} {company.num}</td> */}
                           <td>{company.updated_at}</td>
                           <td>{company.created_at}</td>
                           <td>

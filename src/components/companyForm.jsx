@@ -250,10 +250,10 @@ class CompanyForm extends Component {
                 onChange={e => this.setState({ message: e.target.value })}
                 value={this.state.message}
               />
-              <label className="labelFields" style={{ color: "red" }}>
-                {this.state.error}
-              </label>
             </div>
+            <label className="labelFields" style={{ color: "red" }}>
+              {this.state.error}
+            </label>
             <Row>
               <Col>
                 <button
