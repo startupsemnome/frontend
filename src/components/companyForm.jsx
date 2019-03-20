@@ -20,6 +20,7 @@ class CompanyForm extends Component {
       rua: "",
       sweetCreate: false
     };
+    console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.createCompany = this.createCompany.bind(this);
   }
@@ -27,30 +28,57 @@ class CompanyForm extends Component {
     event.preventDefault();
     this.setState({ sweetCreate: true });
   }
-  createCompany() {
-    alert(1);
+  createCompany(method, id) {
     if (!this.hasErros()) {
-      axios
-        .post(env.API + "company", {
-          empresa: this.state.empresa,
-          cnpj: this.state.cnpj,
-          email: this.state.email,
-          message: this.state.message,
-          tele: this.state.tele,
-          est: this.state.est,
-          cid: this.state.cid,
-          bair: this.state.bair,
-          num: this.state.num,
-          rua: this.state.rua
-        })
-        .then(function (response) {
-          alert(2);
-          console.log(response);
-          window.location = "/consultar-empresa";
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      if (method == "create") {
+        axios
+          .post(env.API + "company", {
+            empresa: this.state.empresa,
+            cnpj: this.state.cnpj,
+            email: this.state.email,
+            message: this.state.message,
+            tele: this.state.tele,
+            est: this.state.est,
+            cid: this.state.cid,
+            bair: this.state.bair,
+            num: this.state.num,
+            rua: this.state.rua
+          })
+          .then(function (response) {
+            console.log(response);
+            window.location = "/consultar-empresa";
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else if (method = "update") {
+        axios
+          .put(env.API + "company/" + id, {
+            empresa: this.state.empresa,
+            cnpj: this.state.cnpj,
+            email: this.state.email,
+            message: this.state.message,
+            tele: this.state.tele,
+            est: this.state.est,
+            cid: this.state.cid,
+            bair: this.state.bair,
+            num: this.state.num,
+            rua: this.state.rua
+          })
+          .then(function (response) {
+            console.log(response);
+            window.location = "/consultar-empresa";
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.id) {
+
     }
   }
   hasErros() {
