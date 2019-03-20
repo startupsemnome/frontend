@@ -78,7 +78,17 @@ class CompanyForm extends Component {
 
   componentDidMount() {
     if (this.props.id) {
-
+      const id = this.props.id;
+      axios
+        .get(env.API + "company/" + id)
+        .then((response) => {
+          console.log(response);
+          const data = response.data;
+          this.setState({ empresa: data.empresa, cnpj: data.cnpj, email: data.email, message: data.message, tele: data.tele, est: data.est, cid: data.cid, bair: data.bair, num: data.num, rua: data.rua });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
   hasErros() {
@@ -240,23 +250,26 @@ class CompanyForm extends Component {
                 onChange={e => this.setState({ message: e.target.value })}
                 value={this.state.message}
               />
+              <label className="labelFields" style={{ color: "red" }}>
+                {this.state.error}
+              </label>
             </div>
             <Row>
               <Col>
                 <button
                   type="button"
-                  onClick={this.createCompany}
+                  onClick={() => { !this.props.id ? this.createCompany("create") : this.createCompany("update", this.props.id) }}
                   className="join-btn"
-                > Cadastrar
+                >
+                  {!this.props.id ? "Cadastrar " : "Editar"} Empresa
               </button>
               </Col>
             </Row>
           </form>
-
           <SweetAlert
             success
             show={this.state.sweetCreate}
-            // title="Atenção"
+            title="Atenção"
             onConfirm={() => this.setState({ sweetCreate: false })}
           >
             {`Cadastrado ${this.state.empresa} com sucesso!!!!}`}

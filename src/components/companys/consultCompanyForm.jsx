@@ -58,7 +58,7 @@ class ConsultCompanyForm extends Component {
           <div>
             <div className="row">
               <div className="col-md-12">
-                <h1 className="h1-main">Listar Empresas</h1>
+                <h1 className="h3-main">Listar Empresas</h1>
               </div>
             </div>
             <div className="row">
@@ -97,7 +97,7 @@ class ConsultCompanyForm extends Component {
                           <td>{company.created_at}</td>
                           <td>
                             <button onClick={(e) => this.editCompany(company.id)} className="btn btn-primary">Editar</button>
-                            <button onClick={(e) => this.excluirCompany(company.id)} className="btn btn-danger"></button>
+                            <button onClick={(e) => this.excluirCompany(company.id)} className="btn btn-danger">Excluir</button>
                           </td>
                         </tr>
                       );
