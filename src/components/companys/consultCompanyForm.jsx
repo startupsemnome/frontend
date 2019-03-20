@@ -47,7 +47,7 @@ class ConsultCompanyForm extends Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
