@@ -4,8 +4,12 @@ body {
   font-family: $font-family !important;
 }
 
+nav {
+  height: 37px;
+}
+
 body {
-  background-color: $white;
+  background-color: rgb(28, 38, 39);
 }
 
 @for $i from 1 through 6 {

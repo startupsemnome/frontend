@@ -9,7 +9,7 @@ export default class RegisterCompany extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="h1-main">RegisterCompany</h1>
+        <h1 className="h1-main">Cadastro de Empresa</h1>
         <CompanyForm />
       </div>
     );
