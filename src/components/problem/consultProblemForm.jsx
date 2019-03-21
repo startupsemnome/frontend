@@ -3,14 +3,35 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import ProblemForm from "./problemForm";
 
 class ConsultProblemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      problemListEdit: [null, false],
     };
     console.log(this.props);
+    this.deleteProblem = this.deleteProblem.bind(this);
+  }
+
+  deleteProblem(id) {
+    // chama a api do banco com o metodo de delete
+    axios
+      .delete(env.API + "problem/" + id)
+      .then(response => {
+        alert("Excluido com sucesso");
+        // apos excluir carrega novamente os usuarios da tabela
+        this.loadProblems();
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na exclusao do item");
+      });
+  }
+  editProblem(id) {
+    this.setState({ problemListEdit: [id, true] })
   }
 
   loadProblems() {
@@ -34,53 +55,62 @@ class ConsultProblemForm extends Component {
   render() {
     return (
       <div className="container col-md-12">
-        <div className="row">
-          <div className="col-md-12">
-            <h1 className="h1-main">Consultar Problemas</h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-            <label htmlFor="" className="labelFields m-l-1">
-              Pesquisar:
-            </label>
-            <input type="text" className="inputFields" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Empresa</th>
-                  <th scope="col">Solicitante</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Telefone</th>
-                  <th scope="col">Problema</th>
-                  <th scope="col">Ultima Atualização</th>
-                  <th scope="col">Data Criação</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.users.map(problem => {
-                  return (
+        {!this.state.problemListEdit[1] ?
+          <div>
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="h1-main">Listar Problemas</h1>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
+                <label htmlFor="" className="labelFields m-l-1">
+                  Pesquisar:
+              </label>
+                <input type="text" className="inputFields" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <table class="table">
+                  <thead>
                     <tr>
-                      <td>{problem.id}</td>
-                      <td>{problem.empresa}</td>
-                      <td>{problem.solicit}</td>
-                      <td>{problem.email}</td>
-                      <td>{problem.telef}</td>
-                      <td>{problem.nprob}</td>
-                      <td>{problem.updated_at}</td>
-                      <td>{problem.created_at}</td>
+                      <th scope="col">ID</th>
+                      <th scope="col">Empresa</th>
+                      <th scope="col">Solicitante</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Telefone</th>
+                      <th scope="col">Problema</th>
+                      <th scope="col">Ultima Atualização</th>
+                      <th scope="col">Data Criação</th>
+                      <th scope="col">Opções</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
+                  </thead>
+                  <tbody>
+                    {this.state.users.map(problem => {
+                      return (
+                        <tr key={`problemTable${problem.id}`}>
+                          <td>{problem.id}</td>
+                          <td>{problem.empresa}</td>
+                          <td>{problem.solicit}</td>
+                          <td>{problem.email}</td>
+                          <td>{problem.telef}</td>
+                          <td>{problem.nprob}</td>
+                          <td>{problem.updated_at}</td>
+                          <td>{problem.created_at}</td>
+                          <td>
+                            <button onClick={(e) => this.editProblem(problem.id)} className="btn btn-primary">Editar</button>
+                            <button onClick={(e) => this.deleteProblem(problem.id)} className="btn btn-danger">Excluir</button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> :
+          <ProblemForm edit={this.state.problemListEdit[1]} id={this.state.problemListEdit[0]} />}
       </div>
     );
   }

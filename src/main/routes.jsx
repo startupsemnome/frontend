@@ -18,18 +18,21 @@ import ConsultCompany from "../pages/consultCompany";
 import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
+
 import RegisterProblem from "../pages/registerProblem";
 import EditProblem from "../pages/editProblem";
 import DetailsProblem from "../pages/detailsProblem";
+import EditProblemForm from "../components/problem/editProblemForm";
+import ConsultProblemForm from "../components/problem/consultProblemForm";
+import ConsultProblem from "../pages/consultProblem";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
-import EditProblemForm from "../components/problem/editProblemForm";
-import ConsultProblemForm from "../components/problem/consultProblemForm";
+
 import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 import UserList from "../components/user/userList";
-import ConsultProblem from "../pages/consultProblem";
+
 import ContentRegister from "../components/componentsform/contentRegister";
 import ConsultResource from "../pages/consultResource";
 
