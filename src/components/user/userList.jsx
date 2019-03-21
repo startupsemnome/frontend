@@ -62,11 +62,8 @@ class UserList extends Component {
                 <h1 className="h1-main">Listar Usuarios</h1>
               </div>
             </div>
-            <div className="row">
+            <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <label htmlFor="" className="labelFields m-l-1">
-                  Pesquisar:
-              </label>
                 <input type="text" className="inputFields" />
               </div>
             </div>
@@ -93,8 +90,9 @@ class UserList extends Component {
                           <td>{user.updated_at}</td>
                           <td>{user.created_at}</td>
                           <td>
-                            <button onClick={(e) => this.editUser(user.id)} className="btn btn-primary">Editar</button>
-                            <button onClick={(e) => this.excluirUser(user.id)} className="btn btn-danger">Excluir</button>
+                            <button onClick={(e) => this.editUser(user.id)} className="join-btn-no-transform mr-1">Detalhe</button>
+                            <button onClick={(e) => this.editUser(user.id)} className="join-btn-no-transform mr-1">Editar</button>
+                            <button onClick={(e) => this.excluirUser(user.id)} className="join-btn-no-transform mr-1">Excluir</button>
                           </td>
                         </tr>
                       );
