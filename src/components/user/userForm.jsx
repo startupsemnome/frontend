@@ -77,6 +77,9 @@ class UserForm extends Component {
         });
     }
   }
+  goToConsulta() {
+    window.location = "consultar-usuario";
+  }
   hasErros() {
     if (this.state.name === "") {
       this.setState({ error: "preencha o campo nome" });
@@ -135,15 +138,15 @@ class UserForm extends Component {
               {this.props.id ?
                 <button
                   type="button"
-                  onClick={() => this.props.history.push("/consultar-usuarios")}
-                  className="join-btn"
+                  onClick={() => this.goToConsulta("/consultar-usuarios")}
+                  className="join-btn w-25"
                 >
                   Consultar Usuarios
               </button> : null}
               <button
                 type="button"
                 onClick={() => { !this.props.id ? this.createUser("create") : this.createUser("update", this.props.id) }}
-                className="join-btn"
+                className="join-btn w-25"
               >
                 {!this.props.id ? "Criar" : "Editar"} Usuário
               </button>
