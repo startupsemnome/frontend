@@ -99,7 +99,7 @@ class UserForm extends Component {
             <li>
               <label className="labelFields col-md-2">Nome:</label>
               <input
-                className="inputFields col-md-10"
+                className="inputFields col-md-12"
                 type="text"
                 placeholder="Digite o seu nome"
                 value={this.state.name}
@@ -110,7 +110,7 @@ class UserForm extends Component {
           </ul>
           <label className="labelFields col-md-2">Email:</label>
           <input
-            className="inputFields col-md-10"
+            className="inputFields col-md-12"
             type="email"
             placeholder="Digite o sobrenome"
             value={this.state.email}
@@ -132,6 +132,14 @@ class UserForm extends Component {
           </label>
           <Row>
             <Col>
+              {this.props.id ?
+                <button
+                  type="button"
+                  onClick={() => this.props.history.push("/consultar-usuarios")}
+                  className="join-btn"
+                >
+                  Consultar Usuarios
+              </button> : null}
               <button
                 type="button"
                 onClick={() => { !this.props.id ? this.createUser("create") : this.createUser("update", this.props.id) }}

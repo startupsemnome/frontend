@@ -111,7 +111,7 @@ class ProblemForm extends Component {
             <li>
               <label className="labelFields col-md-2">Empresa:</label>
               <input
-                className="inputFields col-md-10"
+                className="inputFields"
                 type="text"
                 placeholder="Digite o nome da empresa"
                 value={this.state.empresa}
@@ -122,7 +122,7 @@ class ProblemForm extends Component {
           </ul>
           <label className="labelFields col-md-2">Solicitante:</label>
           <input
-            className="inputFields col-md-10"
+            className="inputFields"
             type="text"
             placeholder="Digite o nome do solicitante"
             value={this.state.solicit}
