@@ -23,6 +23,7 @@ class RegisterResourceForm extends Component {
       
       sweetCreate: false
     };
+    console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.createResource = this.createResource.bind(this);
   }
@@ -30,9 +31,11 @@ class RegisterResourceForm extends Component {
     event.preventDefault();
     this.setState({ sweetCreate: true });
   }
-  createResource() {
+  createResource(method, id) {
     alert(1);
     if (!this.hasErros()) {
+
+     if (method == "create") { 
       axios
         .post(env.API + "resource", {
           fname: this.state.fname,
@@ -56,7 +59,50 @@ class RegisterResourceForm extends Component {
         .catch(function (error) {
           console.log(error);
         });
+        } else if (method = "update") {
+          axios
+          .put(env.API + "resource/" + id, {
+            fname: this.state.fname,
+            lname: this.state.lname,
+            email:this.state.email,
+            end: this.state.end,
+            tel: this.state.tel,
+            cel: this.state.cel,
+            cid: this.state.cid,
+            est: this.state.est,
+            hab: this.state.hab,
+            areai: this.state.areai,
+            message1: this.state.message1		  
+        
+          })
+          .then(function (response) {
+            console.log(response);
+            window.location = "/consultar-recurso";
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      
+        }
     }
+  }
+  componentDidMount() {
+    if (this.props.id) {
+      const id = this.props.id;
+      axios
+        .get(env.API + "resource/" + id)
+        .then((response) => {
+          console.log(response);
+          const data = response.data;
+          this.setState({ fname: data.fname , lname: data.lname, email: data.email, end: data.end ,tel: data.tel ,cel: data.cel,cid: data.cid,est: data.est, hab:data.hab ,areai: data.areai, message1:data.message1 });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+  goToConsulta() {
+    window.location = "consultar-recurso";
   }
 
   hasErros() {
@@ -207,34 +253,44 @@ class RegisterResourceForm extends Component {
                   onChange={e => this.setState({ areai: e.target.value })} />
 
               </ul>
+                  <label className="labelFields" style={{ color: "red" }}>
+                    {this.state.error}
+                  </label>
           
 
             <Row>
               <Col>
+              
+              {this.props.id ?
+                  <button
+                    type="button"
+                    onClick={() => this.goToConsulta("/consultar-recurso")}
+                    className="join-btn w-25"
+                  >
+                    Consultar Recurso
+                </button> : null}
+            
                 <button
                   type="button"
-                  onClick={this.createResource}
+                  onClick={() => { !this.props.id ? this.createResource("create") : this.createResource("update", this.props.id) }}
                   className="join-btn"
                 >
                   Cadastrar Recurso
               </button>
               </Col>
             </Row>
-          </form>
-
-
           <SweetAlert
             success
             show={this.state.sweetCreate}
             title="Atenção"
             onConfirm={() => this.setState({ sweetCreate: false })}
           >
-            {`Cadastrado ${this.state.empresa} com sucesso!`}
+            {`Cadastrado ${this.state.fname} com sucesso!`}
           </SweetAlert>
 
 
 
-
+          </form>       
         </div>
       </div>
 
