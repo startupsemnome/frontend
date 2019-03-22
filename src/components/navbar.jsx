@@ -48,7 +48,7 @@ class NavBar extends Component {
               </li>
 
               <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} style={{ margin: "10px" }} >
-                <DropdownToggle color="primary" caret>Empresa</DropdownToggle>
+                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>EMPRESA</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link to="/cadastro-empresa" className="nav-link text-secondary">
@@ -79,9 +79,9 @@ class NavBar extends Component {
               <Dropdown
                 isOpen={this.state.NavLinkRecurso}
                 toggle={this.toggleRecurso}
-                style={{ margin: "10px" }} 
+                style={{ margin: "10px" }}
               >
-                <DropdownToggle caret>Recurso</DropdownToggle>
+                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>RECURSO</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link
@@ -124,7 +124,7 @@ class NavBar extends Component {
               </Dropdown>
 
               <Dropdown isOpen={this.state.NavLinkProblem} toggle={this.toggle} style={{ margin: "10px" }} >
-                <DropdownToggle caret>Problemas</DropdownToggle>
+                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>PROBLEMA</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link
@@ -166,9 +166,9 @@ class NavBar extends Component {
               <Dropdown
                 isOpen={this.state.NavLinkUsuario}
                 toggle={this.toggleUsuario}
-                style={{ margin: "10px" }} 
+                style={{ margin: "10px" }}
               >
-                <DropdownToggle caret>Usuario</DropdownToggle>
+                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>USUARIO</DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link

@@ -130,9 +130,9 @@ class CompanyForm extends Component {
     return (
       <div className="App">
         <div>
-          <form className="signupForm">
-            <label className="labelFields">Nome da Organização</label><br />
-            <br></br>
+          <form className="signupForm form-inline">
+
+            <label className="labelFields">Nome da Organização: </label>
             <input
               className="inputFields"
               type="text"
@@ -143,7 +143,8 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ empresa: e.target.value })}
               required
             />
-            <br></br>
+
+
             <label className="labelFields">CNPJ</label><br />
             <input
               className="inputFields"
@@ -155,7 +156,8 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ cnpj: e.target.value })}
               required
             />
-            <br /><br />
+
+
             <label className="labelFields">Email</label><br />
             <input
               className="inputFields"
@@ -167,7 +169,7 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ email: e.target.value })}
               required
             />
-            <br /><br />
+
             <label className="labelFields">Telefone da empresa</label><br />
             <input
               className="inputFields"
@@ -240,17 +242,17 @@ class CompanyForm extends Component {
               required
             />
             <br /><br />
-            <div>
-              <label className="labelFields">Assunto</label><br />
-              <input
-                className="inputFields"
-                id="message"
-                name="message"
-                placeholder="Descreva pouco sobre a necessidade da sua empresa"
-                onChange={e => this.setState({ message: e.target.value })}
-                value={this.state.message}
-              />
-            </div>
+
+            <label className="labelFields">Assunto</label><br />
+            <input
+              className="inputFields"
+              id="message"
+              name="message"
+              placeholder="Descreva pouco sobre a necessidade da sua empresa"
+              onChange={e => this.setState({ message: e.target.value })}
+              value={this.state.message}
+            />
+
             <label className="labelFields" style={{ color: "red" }}>
               {this.state.error}
             </label>
