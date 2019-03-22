@@ -61,12 +61,12 @@ class ConsultCompanyForm extends Component {
                 <h1 className="h3-main">Listar Empresas</h1>
               </div>
             </div>
-            <div className="row">
+            <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <label htmlFor="" className="labelFields m-l-1">
-                  Pesquisar:
-            </label>
-                <input type="text" className="inputFields" />
+                Pesquisar:
+                <label className="inputFields" min="80">
+                  <input type="text" className="labelFields" />
+                </label>
               </div>
             </div>
             <div className="row">
@@ -87,7 +87,7 @@ class ConsultCompanyForm extends Component {
                   <tbody>
                     {this.state.users.map(company => {
                       return (
-                        <tr>
+                        <tr key={`userTable${company.id}`}>
                           <td>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
@@ -96,6 +96,7 @@ class ConsultCompanyForm extends Component {
                           <td>{company.updated_at}</td>
                           <td>{company.created_at}</td>
                           <td>
+                            <button onClick={(e) => this.editCompany(company.id)} className="join-btn-no-transform mr-1">Descrição</button>
                             <button onClick={(e) => this.editCompany(company.id)} className="btn btn-primary">Editar</button>
                             <button onClick={(e) => this.excluirCompany(company.id)} className="btn btn-danger">Excluir</button>
                           </td>

@@ -17,11 +17,11 @@ class ContentLoginform extends Component {
   }
   render() {
     return (
-      <div className="col-md-12">
+      <div className="loginUser col-md-12">
         <form action="signupForm">
-          <label className="labelFields">Nome do Usuario</label>
+          <label className="labelFields nome">Nome do Usuario</label>
           <input
-            className="contentlo col-md-6"
+            className="inputFields"
             type="text"
             id="name"
             name="nome"
@@ -30,9 +30,9 @@ class ContentLoginform extends Component {
             onChange={e => this.setState({ name: e.target.value })}
             required
           />
-          <label className="labelFields">Senha</label>
+          <label className="labelFields senha">Senha</label>
           <input
-            className="contentlo  col-md-6"
+            className="inputFields"
             type="password"
             max="11"
             id="password"
@@ -43,15 +43,17 @@ class ContentLoginform extends Component {
             required
           />
           <div className="labelFields" >
-            {/* <SweetAlert
-              onConfim={() => this.setState({ sweetCreate: false })}
-              show={this.state.sweetCreate}
-              className="regemp btn btn-success">
-              {/* <Link to="/registro-empresa" className="buttonRegistro">
-                Login
-                </Link>
-            {`Logado ${this.state.name} com sucesso!!!`}
-            </SweetAlert> */}
+            <Row>
+              <Col>
+                <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">LOGIN</button>
+              </Col>
+            </Row>
+            Or
+            <Row>
+              <Col>
+                <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">CADASTRAR</button>
+              </Col>
+            </Row>
           </div>
         </form>
       </div >
