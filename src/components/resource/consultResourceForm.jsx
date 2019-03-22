@@ -39,11 +39,8 @@ class ConsultResourceForm extends Component {
             <h1 className="h1-main">Consultar Recursos</h1>
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-2 mb-2">
           <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-            <label htmlFor="" className="labelFields m-l-1">
-              Pesquisar:
-            </label>
             <input type="text" className="inputFields" />
           </div>
         </div>
@@ -58,7 +55,7 @@ class ConsultResourceForm extends Component {
                   <th scope="col">Email</th>
                   <th scope="col">Telefone</th>
                   <th scope="col">Cidade</th>
-                  <th scope="col">Estado</th>                  
+                  <th scope="col">Estado</th>
                   <th scope="col">Area de Interesse</th>
                   <th scope="col">Habilidades e Qualificações</th>
                   <th scope="col">Ultima Atualização</th>

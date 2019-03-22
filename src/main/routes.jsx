@@ -7,7 +7,7 @@ import { browserHistory } from "react-router";
 // Components
 import Navbar from "./../components/navbar";
 import Footer from "./../components/footer";
-
+import PrivateRoute from "./privateRoutes";
 
 // Pages
 import RegisterCompany from "../pages/registerCompany";
@@ -20,10 +20,11 @@ import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
 
 import RegisterProblem from "../pages/registerProblem";
+
 import EditProblem from "../pages/editProblem";
 import DetailsProblem from "../pages/detailsProblem";
 import EditProblemForm from "../components/problem/editProblemForm";
-import ConsultProblemForm from "../components/problem/consultProblemForm";
+import ProblemList from "../components/problem/problemList";
 import ConsultProblem from "../pages/consultProblem";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
@@ -46,6 +47,8 @@ export default class Routes extends Component {
       <div>
         <Navbar />
         <Switch>
+
+          <PrivateRoute exact={true} path="/private" component={Home} />
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/cadastro-empresa" component={RegisterCompany} />
           <Route exact={true} path="/detalhes-empresa" component={DetailsCompany} />
