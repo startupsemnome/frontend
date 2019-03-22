@@ -3,14 +3,34 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import RegisterResourceForm from "./registerResourceForm";
 
 class ConsultResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      resourceListEdit: [null, false],
     };
     console.log(this.props);
+    this.excluirResource = this.excluirResource.bind(this);
+  }
+  excluirResource(id) {
+    // chama a api do banco com o metodo de delete
+    axios
+      .delete(env.API + "resource/" + id)
+      .then(response => {
+        alert("Excluido com sucesso");
+        // apos excluir carrega novamente os usuarios da tabela
+        this.loadResources();
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na exclusao do item");
+      });
+  }
+  editResource(id) {
+    this.setState({ resourceListEdit: [id, true] })
   }
 
   loadResources() {
@@ -34,9 +54,11 @@ class ConsultResourceForm extends Component {
   render() {
     return (
       <div className="container col-md-12">
+       {!this.state.resourceListEdit[1] ?
+       <div>
         <div className="row">
           <div className="col-md-12">
-            <h1 className="h1-main">Consultar Recursos</h1>
+            <h1 className="h1-main">Listar Recursos</h1>
           </div>
         </div>
         <div className="row mt-2 mb-2">
@@ -60,6 +82,7 @@ class ConsultResourceForm extends Component {
                   <th scope="col">Habilidades e Qualificações</th>
                   <th scope="col">Ultima Atualização</th>
                   <th scope="col">Data Criação</th>
+                  <th scope="col">Opções</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,14 +100,22 @@ class ConsultResourceForm extends Component {
                       <td>{resource.hab}</td>
                       <td>{resource.updated_at}</td>
                       <td>{resource.created_at}</td>
+                      <td>
+                          <button onClick={(e) => this.editResource(resource.id)} className="join-btn-no-transform mr-1">Detalhe</button>
+                          <button onClick={(e) => this.editResource(resource.id)} className="join-btn-no-transform mr-1">Editar</button>
+                          <button onClick={(e) => this.excluirResource(resource.id)} className="join-btn-no-transform mr-1">Excluir</button>
+                      </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
           </div>
-        </div>
+        </div>  
+        </div> :  
+        <RegisterResourceForm edit={this.state.resourceListEdit[1]} id={this.state.resourceListEdit[0]} />}    
       </div>
+      
     );
   }
 }
