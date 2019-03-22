@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Button } from "@progress/kendo-react-buttons";
-import { Link } from "react-router-dom";
-import "./../../bootstrap.min.css";
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 class ContentLoginform extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lpassword: "",
-      ButtoRegistro: false,
+      name: "",
+      password: "",
     };
   }
   handleFormSubmit(event) {
@@ -17,40 +17,44 @@ class ContentLoginform extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <form action="/action_page.php">
-          <label className="conlono col-md-3">Nome da Organização</label>
+      <div className="col-md-12">
+        <form action="signupForm">
+          <label className="labelFields">Nome do Usuario</label>
           <input
             className="contentlo col-md-6"
             type="text"
-            id="fname"
+            id="name"
             name="nome"
             placeholder="Nome de login"
-            value={this.state.fname}
-            onChange={e => this.setState({ fname: e.target.value })}
+            value={this.state.name}
+            onChange={e => this.setState({ name: e.target.value })}
             required
           />
-          <label className="conlose col-md-3">Senha</label>
+          <label className="labelFields">Senha</label>
           <input
             className="contentlo  col-md-6"
             type="password"
             max="11"
-            id="lpassword"
-            name="lastname"
+            id="password"
+            name="pastname"
             placeholder="Senha de login"
-            value={this.state.lpassword}
-            onChange={e => this.setState({ lpassword: e.target.value })}
+            value={this.state.password}
+            onChange={e => this.setState({ password: e.target.value })}
             required
           />
-          <div className="row bottonrform" >
-            <Button isOpen={this.state.ButtoRegistro} className="regemp btn btn-success">
-              <Link to="/registro-empresa" className="buttonRegistro">
+          <div className="labelFields" >
+            {/* <SweetAlert
+              onConfim={() => this.setState({ sweetCreate: false })}
+              show={this.state.sweetCreate}
+              className="regemp btn btn-success">
+              {/* <Link to="/registro-empresa" className="buttonRegistro">
                 Login
                 </Link>
-            </Button>
+            {`Logado ${this.state.name} com sucesso!!!`}
+            </SweetAlert> */}
           </div>
         </form>
-      </div>
+      </div >
     );
   }
 }
