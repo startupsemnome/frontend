@@ -54,6 +54,7 @@
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.3",
     "react-redux": "^5.0.7",
+    "react-responsive-widget": "^2.0.0",
     "react-router": "^3.2.0",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",

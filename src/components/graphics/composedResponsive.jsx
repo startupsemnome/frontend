@@ -5,19 +5,19 @@ import {
 
 const data = [
   {
-    name: 'Empresas', uv: 590, pv: 800, amt: 1400,
+    name: 'Empresas', Análise: 989, Progresso: 1200, Entrada: 1289,
   },
   {
-    name: 'Recursos', uv: 868, pv: 967, amt: 1506,
+    name: 'Recursos', Análise: 868, Progresso: 967, Entrada: 1090,
   },
   {
-    name: 'Problemas', uv: 1397, pv: 1098, amt: 989,
+    name: 'Usuários', Análise: 677, Progresso: 789, Entrada: 989,
   },
   {
-    name: 'Usuários', uv: 1480, pv: 1200, amt: 1228,
+    name: 'Problemas', Análise: 1121, Progresso: 1221, Entrada: 1228,
   },
   {
-    name: 'Financeiros', uv: 1400, pv: 680, amt: 1700,
+    name: 'Diversos', Análise: 400, Progresso: 401, Entrada: 433,
   },
 ];
 
@@ -42,9 +42,9 @@ export default class ComposedResponsive extends PureComponent {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-            <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="uv" stroke="#ff7300" />
+            <Area type="monotone" dataKey="Entrada" fill="#8884d8" stroke="#8884d8" />
+            <Bar dataKey="Progresso" barSize={20} fill="#413ea0" />
+            <Line type="monotone" dataKey="Análise" stroke="#ff7300" />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
