@@ -1,4 +1,7 @@
 /*ContentLoginform*/
+.labelFields p{
+  text-align: center;
+}
 .conlono{
   padding-left: 1px;
   padding-right: 0px;
@@ -14,6 +17,8 @@
   // -moz-box-shadow:    9px 7px 5px 1px rgba(138, 137, 137, 0.531);
   // box-shadow:         9px 7px 5px 1px rgba(138, 137, 137, 0.531);
   box-shadow: 2px 0px 7px 4px rgba(138, 137, 137, 0.531);
+  max-width: 720px;
+  min-height: 350px;
 }
 #name,#password{
   text-align: center;

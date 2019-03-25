@@ -34,7 +34,7 @@ class ContentLoginform extends Component {
           <input
             className="inputFields"
             type="password"
-            max="11"
+            min="8"
             id="password"
             name="pastname"
             placeholder="Senha de login"
@@ -48,7 +48,7 @@ class ContentLoginform extends Component {
                 <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">LOGIN</button>
               </Col>
             </Row>
-            Or
+            <p>Ou</p>
             <Row>
               <Col>
                 <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">CADASTRAR</button>
