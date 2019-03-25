@@ -78,6 +78,7 @@ class UserForm extends Component {
     }
   }
   goToConsulta() {
+    console.log(this.props);
     window.location = "consultar-usuario";
   }
   hasErros() {

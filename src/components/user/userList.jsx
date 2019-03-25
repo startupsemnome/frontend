@@ -12,7 +12,6 @@ class UserList extends Component {
       users: [],
       userListEdit: [null, false],
     };
-    console.log(this.props);
     this.excluirUser = this.excluirUser.bind(this);
   }
 
@@ -49,7 +48,6 @@ class UserList extends Component {
       });
   }
   componentDidMount() {
-    console.log("teste");
     this.loadUsers();
   }
   render() {

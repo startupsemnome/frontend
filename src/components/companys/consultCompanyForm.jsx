@@ -58,15 +58,19 @@ class ConsultCompanyForm extends Component {
           <div>
             <div className="row">
               <div className="col-md-12">
-                <h1 className="h3-main">Listar Empresas</h1>
+                <h1 className="h1-main">Listar Empresas</h1>
               </div>
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
+<<<<<<< HEAD
                 Pesquisar:
                 <label className="inputFields" min="80">
                   <input type="text" className="labelFields" />
                 </label>
+=======
+                <input type="text" className="inputFields" />
+>>>>>>> develop
               </div>
             </div>
             <div className="row">
@@ -77,8 +81,7 @@ class ConsultCompanyForm extends Component {
                       <th scope="col">ID</th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Cnpj</th>
-                      {/* <th scope="col">Contato</th> */}
-                      {/* <th scope="col">Endereço</th> */}
+                      <th scope="col">Contato</th>
                       <th scope="col">Ultima Atualização</th>
                       <th scope="col">Data Criação</th>
                       <th scope="col">Opções</th>
@@ -91,14 +94,14 @@ class ConsultCompanyForm extends Component {
                           <td>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
-                          {/* <td>{company.email} Tel:{company.tele}</td> */}
-                          {/* <td>{company.est}-{company.cid} {company.bair} {company.rua} {company.num}</td> */}
+                          <td>{company.email} Tel:{company.tele}</td>
+                          {/* <td>{company.est}-{company.cid}</td> */}
                           <td>{company.updated_at}</td>
                           <td>{company.created_at}</td>
                           <td>
-                            <button onClick={(e) => this.editCompany(company.id)} className="join-btn-no-transform mr-1">Descrição</button>
-                            <button onClick={(e) => this.editCompany(company.id)} className="btn btn-primary">Editar</button>
-                            <button onClick={(e) => this.excluirCompany(company.id)} className="btn btn-danger">Excluir</button>
+                            <button onClick={(e) => this.editCompany(company.id)} className="join-btn-no-transform mr-1">Detalhe</button>
+                            <button onClick={(e) => this.editCompany(company.id)} className="join-btn-no-transform mr-1">Editar</button>
+                            <button onClick={(e) => this.excluirCompany(company.id)} className="join-btn-no-transform mr-1">Excluir</button>
                           </td>
                         </tr>
                       );

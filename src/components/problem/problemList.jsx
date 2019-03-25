@@ -2,17 +2,16 @@ import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
-import env from "./../../consts";
+import env from "../../consts";
 import ProblemForm from "./problemForm";
 
-class ConsultProblemForm extends Component {
+class ProblemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
       problemListEdit: [null, false],
     };
-    console.log(this.props);
     this.deleteProblem = this.deleteProblem.bind(this);
   }
 
@@ -33,7 +32,6 @@ class ConsultProblemForm extends Component {
   editProblem(id) {
     this.setState({ problemListEdit: [id, true] })
   }
-
   loadProblems() {
     // Make a request for a user with a given ID
     axios
@@ -49,7 +47,6 @@ class ConsultProblemForm extends Component {
       });
   }
   componentDidMount() {
-    console.log("teste");
     this.loadProblems();
   }
   render() {
@@ -62,11 +59,8 @@ class ConsultProblemForm extends Component {
                 <h1 className="h1-main">Listar Problemas</h1>
               </div>
             </div>
-            <div className="row">
+            <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <label htmlFor="" className="labelFields m-l-1">
-                  Pesquisar:
-              </label>
                 <input type="text" className="inputFields" />
               </div>
             </div>
@@ -99,8 +93,9 @@ class ConsultProblemForm extends Component {
                           <td>{problem.updated_at}</td>
                           <td>{problem.created_at}</td>
                           <td>
-                            <button onClick={(e) => this.editProblem(problem.id)} className="btn btn-primary">Editar</button>
-                            <button onClick={(e) => this.deleteProblem(problem.id)} className="btn btn-danger">Excluir</button>
+                            <button onClick={(e) => this.editProblem(problem.id)} className="join-btn-no-transform mr-1">Detalhes</button>
+                            <button onClick={(e) => this.editProblem(problem.id)} className="join-btn-no-transform mr-1">Editar</button>
+                            <button onClick={(e) => this.deleteProblem(problem.id)} className="join-btn-no-transform mr-1">Excluir</button>
                           </td>
                         </tr>
                       );
@@ -116,4 +111,4 @@ class ConsultProblemForm extends Component {
   }
 }
 
-export default ConsultProblemForm;
+export default ProblemList;
