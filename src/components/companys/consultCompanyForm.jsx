@@ -63,14 +63,7 @@ class ConsultCompanyForm extends Component {
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-<<<<<<< HEAD
-                Pesquisar:
-                <label className="inputFields" min="80">
-                  <input type="text" className="labelFields" />
-                </label>
-=======
                 <input type="text" className="inputFields" />
->>>>>>> develop
               </div>
             </div>
             <div className="row">
