@@ -205,6 +205,12 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+              <li className="nav-item active" style={{ margin: "15px" }} >
+                <Link to="/institutional" className="nav-link">
+                  INSTITUCIONAL
+                </Link>
+              </li>
+
               <li style={{ position: "absolute", right: "0px", margin: "15px" }}>
                 <Link to="/login" className="nav-link">
                   SAIR

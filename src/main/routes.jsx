@@ -15,15 +15,18 @@ import DetailsCompany from "../pages/detailsCompany";
 import EditCompany from "../pages/editCompany";
 import ConsultCompany from "../pages/consultCompany";
 
+
 import Home from "../pages/home";
 import NotFound from "../pages/notFound";
 import RegisterResource from "../pages/registerResource";
+
 
 import RegisterProblem from "../pages/registerProblem";
 
 import EditProblem from "../pages/editProblem";
 import DetailsProblem from "../pages/detailsProblem";
 import EditProblemForm from "../components/problem/editProblemForm";
+import institutionalForm from "../components/institutionalForm";
 import ProblemList from "../components/problem/problemList";
 import ConsultProblem from "../pages/consultProblem";
 import RegisterUsuario from "../pages/registerUser";
@@ -119,6 +122,13 @@ export default class Routes extends Component {
             path="/registro-empresa"
             component={ContentRegister}
           />
+
+          <Route
+            exact={true}
+            path="/institutional"
+            component={institutionalForm}
+          />
+
           <Route exact={true} component={NotFound} />
 
         </Switch>

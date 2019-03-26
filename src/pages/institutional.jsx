@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import InstitutionalForm from "../components/institutionalForm"
 
 export default class Institutional extends Component {
-    constructor(props) {
-      super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
+  render() {
     return (
       <div className="container">
-        <h1 className="h1-main">Institucional Teste</h1>
+        <h1 className="h1-main">Institucional</h1>
+        <InstitutionalForm />
+
       </div>
     );
   }
