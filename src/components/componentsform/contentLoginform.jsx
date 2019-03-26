@@ -9,16 +9,45 @@ class ContentLoginform extends Component {
     this.state = {
       name: "",
       password: "",
+      error: ""
     };
+    this.hasErros = this.hasErros.bind(this);
+    this.validarUser = this.validarUser.bind(this);
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.setState({ SweetCreate: true })
+  }
+  hasErros() {
+    if (this.state.name === "") {
+      this.setState({ error: "preencha o campo login" });
+      return true;
+    } else if (this.state.password === "") {
+      this.setState({ error: "preencha o campo senha" });
+      return true;
+    }
+    return false;
+  }
+  validarUser() {
+    if (!this.hasErros()) {
+      axios
+        .post(env.API + "login", {
+          login: this.state.name,
+          password: this.state.password
+        })
+        .then(function (response) {
+          console.log(response.data);
+          Storage.setItem('userName', response.data.name);
+        }).catch((error) => {
+          this.setState({ error });
+        }
+        );
+    }
   }
   render() {
     return (
       <div className="loginUser col-md-12">
-        <form action="signupForm">
+        <form>
           <label className="labelFields nome">Nome do Usuario</label>
           <input
             className="inputFields"
@@ -45,7 +74,7 @@ class ContentLoginform extends Component {
           <div className="labelFields" >
             <Row>
               <Col>
-                <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">LOGIN</button>
+                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</button>
               </Col>
             </Row>
             <p>Ou</p>
@@ -56,6 +85,7 @@ class ContentLoginform extends Component {
             </Row>
           </div>
         </form>
+
       </div >
     );
   }
