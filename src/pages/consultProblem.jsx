@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ConsultProblemForm from "../components/problem/consultProblemForm";
+import ProblemList from "../components/problem/problemList";
 
 export default class ConsultProblem extends Component {
   constructor(props) {
@@ -8,11 +8,8 @@ export default class ConsultProblem extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="h1-main">Consultar Problemas</h1>
-
-        <ConsultProblemForm />
-
+      <div>
+        <ProblemList />
       </div>
     );
   }

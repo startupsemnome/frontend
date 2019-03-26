@@ -8,8 +8,7 @@ export default class ConsultCompany extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="h1-main">Consultar Empresas Cadastradas</h1>
+      <div>
         <ConsultCompanyForm />
       </div>
     );
