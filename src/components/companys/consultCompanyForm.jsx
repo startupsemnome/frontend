@@ -10,6 +10,7 @@ class ConsultCompanyForm extends Component {
     super(props);
     this.state = {
       users: [],
+      userTable: "",
       companyEdit: [null, false],
     };
     console.log(this.props);
@@ -33,6 +34,21 @@ class ConsultCompanyForm extends Component {
     this.setState({ companyEdit: [id, true] })
   }
 
+  findUsers() {
+    // Make a request for a user with a given ID
+    axios
+      .post(env.API + "consult-resource", { "search": this.state.userTable })
+      .then(response => {
+        // handle success
+        alert('foi');
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na busca");
+      });
+  }
   loadCompanys() {
     // Make a request for a user with a given ID
     axios
@@ -63,7 +79,8 @@ class ConsultCompanyForm extends Component {
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" />
+                <input type="text" className="inputFields" onChange={e => this.setState({ userTable: e.target.value })} />
+                <button type="button" onClick={() => this.findUsers()}>find</button>
               </div>
             </div>
             <div className="row">
