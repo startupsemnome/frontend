@@ -44,11 +44,20 @@ import ConsultResource from "../pages/consultResource";
 export default class Routes extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      url: null
+    }
+  }
+  componentDidMount() {
+    var url_atual = window.location.href;
+    var ar_url = url_atual.split("/");
+    this.setState({ url: ar_url[3] }, () => alert(ar_url[3]));
   }
   render() {
     return (
       <div>
-        <Navbar />
+        {this.state.url != "institutional" ?
+          <Navbar /> : null}
         <Switch>
 
           <PrivateRoute exact={true} path="/private" component={Home} />
@@ -108,12 +117,15 @@ export default class Routes extends Component {
             path="/consultar-problema"
             component={ConsultProblem} />
 
-          <Route exact={true} path="/institucional" component={Institutional} />
-
           <Route
             exact={true}
             path="/detalhes-recurso"
             component={ResourceDetails}
+          />
+          <Route
+            exact={true}
+            path="/institutional"
+            component={Institutional}
           />
           <Route exact={true} path="/editar-recurso" component={EditResource} />
 
@@ -122,13 +134,6 @@ export default class Routes extends Component {
             path="/registro-empresa"
             component={ContentRegister}
           />
-
-          <Route
-            exact={true}
-            path="/institutional"
-            component={institutionalForm}
-          />
-
           <Route exact={true} component={NotFound} />
 
         </Switch>
