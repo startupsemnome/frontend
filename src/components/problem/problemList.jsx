@@ -12,6 +12,9 @@ class ProblemList extends Component {
       users: [],
       problemListEdit: [null, false],
     };
+    console.log(this.props);
+
+
     this.deleteProblem = this.deleteProblem.bind(this);
   }
 

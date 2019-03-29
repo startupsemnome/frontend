@@ -20,6 +20,7 @@ class NavBar extends Component {
     this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
+    console.log(this.props);
   }
   render() {
     return (
