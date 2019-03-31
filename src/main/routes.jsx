@@ -51,7 +51,7 @@ export default class Routes extends Component {
   componentDidMount() {
     var url_atual = window.location.href;
     var ar_url = url_atual.split("/");
-    this.setState({ url: ar_url[3] }, () => alert(ar_url[3]));
+    this.setState({ url: ar_url[3] });
   }
   render() {
     return (

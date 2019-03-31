@@ -13,6 +13,7 @@ import { Apps, CloudDownload } from "@material-ui/icons";
 
 // core components
 import Button from "./Button.jsx";
+import { Link } from "react-router-dom";
 
 import headerLinksStyle from "./../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
@@ -32,14 +33,13 @@ function HeaderLinks({ ...props }) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          href="https://www.creative-tim.com/product/material-kit-react"
+        <Link
+          to="/login"
           color="transparent"
-          target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Contato
-        </Button>
+          Login
+        </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Tooltip
