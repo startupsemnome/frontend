@@ -26,7 +26,7 @@ import RegisterProblem from "../pages/registerProblem";
 import EditProblem from "../pages/editProblem";
 import DetailsProblem from "../pages/detailsProblem";
 import EditProblemForm from "../components/problem/editProblemForm";
-import institutionalForm from "../components/institutionalForm";
+import institutionalForm from "../components/institutional/institutionalForm";
 import ProblemList from "../components/problem/problemList";
 import ConsultProblem from "../pages/consultProblem";
 import RegisterUsuario from "../pages/registerUser";

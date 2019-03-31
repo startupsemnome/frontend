@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import InstitutionalForm from "../components/institutionalForm";
+import InstitutionalForm from "../components/institutional/institutionalForm";
 
 export default class Institutional extends Component {
   constructor(props) {
