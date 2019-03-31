@@ -56,22 +56,9 @@ class NavBar extends Component {
                       Cadastrar
                     </Link>
                   </DropdownItem>
-
-                  <DropdownItem>
-                    <Link className="nav-link text-secondary" to="/editar-empresa" >
-                      Editar
-                    </Link>
-                  </DropdownItem>
-
                   <DropdownItem>
                     <Link className="nav-link text-secondary" to="/consultar-empresa" >
                       Consultar
-                    </Link>
-                  </DropdownItem>
-
-                  <DropdownItem>
-                    <Link className="nav-link text-secondary" to="/detalhes-empresa" >
-                      Detalhes
                     </Link>
                   </DropdownItem>
 
@@ -97,27 +84,9 @@ class NavBar extends Component {
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
-                      to="/editar-recurso"
-                    >
-                      Editar
-                    </Link>
-                  </DropdownItem>
-
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
                       to="/consultar-recurso"
                     >
                       Consultar
-                    </Link>
-                  </DropdownItem>
-
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-recurso"
-                    >
-                      Detalhes
                     </Link>
                   </DropdownItem>
 
@@ -137,14 +106,7 @@ class NavBar extends Component {
                     </Link>
                   </DropdownItem>
 
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/editar-problema"
-                    >
-                      Editar
-                    </Link>
-                  </DropdownItem>
+
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
@@ -153,14 +115,7 @@ class NavBar extends Component {
                       Consultar
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-problema"
-                    >
-                      Detalhes
-                    </Link>
-                  </DropdownItem>
+
                 </DropdownMenu>
               </Dropdown>
 
@@ -180,14 +135,7 @@ class NavBar extends Component {
                       Cadastrar
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/editar-usuario"
-                    >
-                      Editar
-                    </Link>
-                  </DropdownItem>
+
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
@@ -196,14 +144,7 @@ class NavBar extends Component {
                       Consultar
                     </Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/detalhes-usuario"
-                    >
-                      Detalhes
-                    </Link>
-                  </DropdownItem>
+
                 </DropdownMenu>
               </Dropdown>
               <li style={{ position: "absolute", right: "0px", margin: "15px" }}>
