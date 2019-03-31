@@ -11,7 +11,7 @@ class RegisterResourceForm extends Component {
     this.state = {
       fname: "",
       lname: "",
-      email:"",
+      email: "",
       end: "",
       tel: "",
       cel: "",
@@ -19,8 +19,8 @@ class RegisterResourceForm extends Component {
       est: "",
       hab: "",
       areai: "",
-      message1: "",     
-      
+      message1: "",
+
       sweetCreate: false
     };
     console.log(this.props);
@@ -32,39 +32,15 @@ class RegisterResourceForm extends Component {
     this.setState({ sweetCreate: true });
   }
   createResource(method, id) {
-    alert(1);
+
     if (!this.hasErros()) {
 
-     if (method == "create") { 
-      axios
-        .post(env.API + "resource", {
-          fname: this.state.fname,
-          lname: this.state.lname,
-          email:this.state.email,
-          end: this.state.end,
-          tel: this.state.tel,
-          cel: this.state.cel,
-          cid: this.state.cid,
-          est: this.state.est,
-          hab: this.state.hab,
-          areai: this.state.areai,
-          message1: this.state.message1		  
-		  
-        })
-        .then(function (response) {
-          alert(2);
-          console.log(response);
-          window.location = "/cadastro-recurso";
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        } else if (method = "update") {
-          axios
-          .put(env.API + "resource/" + id, {
+      if (method == "create") {
+        axios
+          .post(env.API + "resource", {
             fname: this.state.fname,
             lname: this.state.lname,
-            email:this.state.email,
+            email: this.state.email,
             end: this.state.end,
             tel: this.state.tel,
             cel: this.state.cel,
@@ -72,8 +48,32 @@ class RegisterResourceForm extends Component {
             est: this.state.est,
             hab: this.state.hab,
             areai: this.state.areai,
-            message1: this.state.message1		  
-        
+            message1: this.state.message1
+
+          })
+          .then(function (response) {
+
+            console.log(response);
+            window.location = "/cadastro-recurso";
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else if (method = "update") {
+        axios
+          .put(env.API + "resource/" + id, {
+            fname: this.state.fname,
+            lname: this.state.lname,
+            email: this.state.email,
+            end: this.state.end,
+            tel: this.state.tel,
+            cel: this.state.cel,
+            cid: this.state.cid,
+            est: this.state.est,
+            hab: this.state.hab,
+            areai: this.state.areai,
+            message1: this.state.message1
+
           })
           .then(function (response) {
             console.log(response);
@@ -82,8 +82,8 @@ class RegisterResourceForm extends Component {
           .catch(function (error) {
             console.log(error);
           });
-      
-        }
+
+      }
     }
   }
   componentDidMount() {
@@ -94,7 +94,7 @@ class RegisterResourceForm extends Component {
         .then((response) => {
           console.log(response);
           const data = response.data;
-          this.setState({ fname: data.fname , lname: data.lname, email: data.email, end: data.end ,tel: data.tel ,cel: data.cel,cid: data.cid,est: data.est, hab:data.hab ,areai: data.areai, message1:data.message1 });
+          this.setState({ fname: data.fname, lname: data.lname, email: data.email, end: data.end, tel: data.tel, cel: data.cel, cid: data.cid, est: data.est, hab: data.hab, areai: data.areai, message1: data.message1 });
         })
         .catch(function (error) {
           console.log(error);
@@ -129,15 +129,15 @@ class RegisterResourceForm extends Component {
       return true;
     } else if (this.state.est === "") {
       this.setState({ error: "preencha o campo estado" });
-      return true;    	
-	} else if (this.state.hab === "") {
+      return true;
+    } else if (this.state.hab === "") {
       this.setState({ error: "preencha o campo habilidades e qualificações" });
-      return true;    	
-	} else if (this.state.areai === "") {
+      return true;
+    } else if (this.state.areai === "") {
       this.setState({ error: "preencha o campo area de interesse" });
       return true;
     }
-	return false;
+    return false;
   }
 
 
@@ -164,13 +164,13 @@ class RegisterResourceForm extends Component {
                   placeholder="Digite o sobrenome"
                   value={this.state.lname}
                   onChange={e => this.setState({ lname: e.target.value })} /> <br />
-                 <label className="labelFields">E-mail:</label><br />
+                <label className="labelFields">E-mail:</label><br />
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite o e-mail"
                   value={this.state.email}
-                  onChange={e => this.setState({ email: e.target.value })} /> <br />  
+                  onChange={e => this.setState({ email: e.target.value })} /> <br />
 
                 <label className="labelFields">Endereço:</label><br />
                 <input
@@ -203,7 +203,7 @@ class RegisterResourceForm extends Component {
 
               </ul>
             </div>
-			<div>
+            <div>
               <ul>
                 <label className="labelFields">Cidade</label>
                 <br></br>
@@ -216,7 +216,7 @@ class RegisterResourceForm extends Component {
 
               </ul>
             </div>
-			<div>
+            <div>
               <ul>
                 <label className="labelFields">Estado</label>
                 <br></br>
@@ -229,7 +229,7 @@ class RegisterResourceForm extends Component {
 
               </ul>
             </div>
-			<div>
+            <div>
               <ul>
                 <label className="labelFields">Habilidades e Qualificações</label>
                 <br></br>
@@ -242,26 +242,26 @@ class RegisterResourceForm extends Component {
 
               </ul>
             </div>
-			   <ul>
-                <label className="labelFields">Area de Interesse</label>
-                <br></br>
-                <input
-                  className="inputFields"
-                  type="text"
-                  placeholder="Digite as suas áreas de interesse"
-                  value={this.state.areai}
-                  onChange={e => this.setState({ areai: e.target.value })} />
+            <ul>
+              <label className="labelFields">Area de Interesse</label>
+              <br></br>
+              <input
+                className="inputFields"
+                type="text"
+                placeholder="Digite as suas áreas de interesse"
+                value={this.state.areai}
+                onChange={e => this.setState({ areai: e.target.value })} />
 
-              </ul>
-                  <label className="labelFields" style={{ color: "red" }}>
-                    {this.state.error}
-                  </label>
-          
+            </ul>
+            <label className="labelFields" style={{ color: "red" }}>
+              {this.state.error}
+            </label>
+
 
             <Row>
               <Col>
-              
-              {this.props.id ?
+
+                {this.props.id ?
                   <button
                     type="button"
                     onClick={() => this.goToConsulta("/consultar-recurso")}
@@ -269,7 +269,7 @@ class RegisterResourceForm extends Component {
                   >
                     Consultar Recurso
                 </button> : null}
-            
+
                 <button
                   type="button"
                   onClick={() => { !this.props.id ? this.createResource("create") : this.createResource("update", this.props.id) }}
@@ -279,18 +279,18 @@ class RegisterResourceForm extends Component {
               </button>
               </Col>
             </Row>
-          <SweetAlert
-            success
-            show={this.state.sweetCreate}
-            title="Atenção"
-            onConfirm={() => this.setState({ sweetCreate: false })}
-          >
-            {`Cadastrado ${this.state.fname} com sucesso!`}
-          </SweetAlert>
+            <SweetAlert
+              success
+              show={this.state.sweetCreate}
+              title="Atenção"
+              onConfirm={() => this.setState({ sweetCreate: false })}
+            >
+              {`Cadastrado ${this.state.fname} com sucesso!`}
+            </SweetAlert>
 
 
 
-          </form>       
+          </form>
         </div>
       </div>
 
