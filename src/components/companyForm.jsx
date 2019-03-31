@@ -91,6 +91,9 @@ class CompanyForm extends Component {
         });
     }
   }
+  goToConsulta() {
+    window.location = "consultar-empresa";
+  }
   hasErros() {
     if (this.state.empresa === "") {
       this.setState({ error: "preencha o campo de nome " });
@@ -258,13 +261,23 @@ class CompanyForm extends Component {
             </label>
             <Row>
               <Col>
+                {this.props.id ?
+                  <button
+                    type="button"
+                    onClick={() => this.goToConsulta("/consultar-empresa")}
+                    className="join-btn"
+                  >
+                    Consultar Empresa
+                </button> : null}
+              </Col>
+              <Col>
                 <button
                   type="button"
                   onClick={() => { !this.props.id ? this.createCompany("create") : this.createCompany("update", this.props.id) }}
                   className="join-btn"
                 >
                   {!this.props.id ? "Cadastrar " : "Editar"} Empresa
-              </button>
+               </button>
               </Col>
             </Row>
           </form>
