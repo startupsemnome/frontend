@@ -6,10 +6,16 @@ import HeaderLinks from "../components/institutional/HeaderLinks.jsx";
 import GridContainer from "../components/institutional/GridContainer.jsx";
 import GridItem from "../components/institutional/GridItem.jsx";
 import Parallax from "../components/institutional/Parallax.jsx";
-// nodejs library that concatenates classes
+// nodejs library that concatenates classes 
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "./../assets/jss/material-kit-react/views/components.jsx";
+
+import SectionBasics from "../components/institutional/SectionBasics.jsx";
+import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
+import SectionCompletedExamples from "../components/institutional/SectionCompletedExamples.jsx";
+import Footer from "../components/institutional/Footer.jsx";
+import "./../assets/scss/material-kit-react.scss";
 
 class Institutional extends Component {
   render() {
@@ -43,7 +49,12 @@ class Institutional extends Component {
             </GridContainer>
           </div>
         </Parallax>
-        <InstitutionalForm />
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <SectionCompletedExamples />
+          <SectionCarousel />
+          <SectionBasics />
+        </div>
+        <Footer />
       </div>
     );
   }

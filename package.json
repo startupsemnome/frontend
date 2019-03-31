@@ -57,6 +57,7 @@
     "react-router": "^3.2.0",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-slick": "^0.23.2",
     "react-slidez": "0.0.31",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.0",
@@ -65,6 +66,7 @@
     "redux-thunk": "^2.2.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
+    "slick-carousel": "^1.8.1",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.2",
     "typescript": "^3.3.3333",
@@ -89,6 +91,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-slick": "^0.23.3",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0"
   },
