@@ -20,7 +20,7 @@ class PrivateRoute extends Component {
   }
 
   getAuth() {
-    if (sessionStorage.getItem("user")) {
+    if (localStorage.getItem("userName")) {
       this.setState({
         userAuth: true,
         loaded: true

@@ -3,6 +3,8 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import { Link } from "react-router-dom";
+
 class ContentLoginform extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +39,7 @@ class ContentLoginform extends Component {
         })
         .then(function (response) {
           console.log(response.data);
-          Storage.setItem('userName', response.data.name);
+          localStorage.setItem('userName', response.data.name);
         }).catch((error) => {
           this.setState({ error });
         }
@@ -80,7 +82,7 @@ class ContentLoginform extends Component {
             <p>Ou</p>
             <Row>
               <Col>
-                <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">CADASTRAR</button>
+                <Link to="/institutional" className="join-btn-no-transform mr-1">Ir Para Institucional</Link>
               </Col>
             </Row>
           </div>

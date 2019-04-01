@@ -7,6 +7,13 @@ import {
   DropdownItem
 } from "reactstrap";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { browserHistory } from "react-router";
+
+import { setNavbarOpen } from "./../redux/actions/navbarAction";
+
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -20,11 +27,12 @@ class NavBar extends Component {
     this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
-    console.log(this.props);
+
   }
+
   render() {
     return (
-      <div className="nav-bar">
+      <div className="nav-bar" style={{ display: `${this.props.navbar.isNavbarOpen ? 'initial' : 'none'}` }}>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor">
           <a className="navbar-brand" href="#">
             HACK
@@ -186,4 +194,11 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = state => ({ navbar: state.navbar });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavBar);
+

@@ -1,9 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import Content from "../components/content";
 
-export default class Login extends Component {
+import { setNavbarOpen } from "./../redux/actions/navbarAction";
+
+class Login extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.setNavbarOpen(false);
   }
 
   render() {
@@ -15,3 +24,11 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ isNavbarOpen: state.navbar });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
