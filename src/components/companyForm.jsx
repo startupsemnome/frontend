@@ -44,11 +44,11 @@ class CompanyForm extends Component {
             num: this.state.num,
             rua: this.state.rua
           })
-          .then(function (response) {
+          .then((response) => {
             console.log(response);
             this.props.history.push("/consultar-empresa");
           })
-          .catch(function (error) {
+          .catch((error) => {
             console.log(error);
           });
       } else if (method = "update") {
@@ -65,11 +65,11 @@ class CompanyForm extends Component {
             num: this.state.num,
             rua: this.state.rua
           })
-          .then(function (response) {
+          .then((response) => {
             console.log(response);
             this.props.history.push("/consultar-empresa");
           })
-          .catch(function (error) {
+          .catch((error) => {
             console.log(error);
           });
       }
