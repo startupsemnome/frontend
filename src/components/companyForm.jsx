@@ -46,7 +46,7 @@ class CompanyForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-empresa";
+            this.props.history.push("/consultar-empresa");
           })
           .catch(function (error) {
             console.log(error);
@@ -67,7 +67,7 @@ class CompanyForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-empresa";
+            this.props.history.push("/consultar-empresa");
           })
           .catch(function (error) {
             console.log(error);
@@ -92,7 +92,7 @@ class CompanyForm extends Component {
     }
   }
   goToConsulta() {
-    window.location = "consultar-empresa";
+    this.props.history.push("consultar-empresa");
   }
   hasErros() {
     if (this.state.empresa === "") {
@@ -264,10 +264,10 @@ class CompanyForm extends Component {
                 {this.props.id ?
                   <button
                     type="button"
-                    onClick={() => this.goToConsulta("/consultar-empresa")}
+                    onClick={() => this.props.history.push("/consultar-problema")}
                     className="join-btn"
                   >
-                    Consultar Empresa
+                    Consultar Problemas
                 </button> : null}
               </Col>
               <Col>

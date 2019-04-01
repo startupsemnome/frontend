@@ -13,7 +13,6 @@ class ConsultCompanyForm extends Component {
       userTable: "",
       companyEdit: [null, false],
     };
-    console.log(this.props);
     this.excluirCompany = this.excluirCompany.bind(this);
   }
   excluirCompany(id) {
@@ -121,7 +120,7 @@ class ConsultCompanyForm extends Component {
               </div>
             </div>
           </div> :
-          <CompanyForm edit={this.state.companyEdit[1]} id={this.state.companyEdit[0]} />}
+          <CompanyForm history={this.props.history} edit={this.state.companyEdit[1]} id={this.state.companyEdit[0]} />}
       </div>
     );
   }

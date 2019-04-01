@@ -54,7 +54,8 @@ class RegisterResourceForm extends Component {
           .then(function (response) {
 
             console.log(response);
-            window.location = "/cadastro-recurso";
+            this.props.history.push("/cadastro-recurso");
+            this.props.handleEdit();
           })
           .catch(function (error) {
             console.log(error);
@@ -77,7 +78,8 @@ class RegisterResourceForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-recurso";
+            this.props.history.push("/consultar-recurso");
+            this.props.handleEdit();
           })
           .catch(function (error) {
             console.log(error);
@@ -102,7 +104,8 @@ class RegisterResourceForm extends Component {
     }
   }
   goToConsulta() {
-    window.location = "consultar-recurso";
+    this.props.history.push("consultar-recurso");
+    this.props.handleEdit();
   }
 
   hasErros() {

@@ -9,7 +9,7 @@ export default class ConsultCompany extends Component {
   render() {
     return (
       <div>
-        <ConsultCompanyForm />
+        <ConsultCompanyForm history={this.props.history} />
       </div>
     );
   }
