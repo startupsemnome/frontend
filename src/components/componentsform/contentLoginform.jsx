@@ -38,6 +38,7 @@ class ContentLoginform extends Component {
           password: this.state.password
         })
         .then(function (response) {
+          console.log(response.data)
           localStorage.setItem('userName', response.data.name);
         }).catch((error) => {
           this.setState({ error });
