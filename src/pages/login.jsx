@@ -9,6 +9,7 @@ import { setNavbarOpen } from "./../redux/actions/navbarAction";
 class Login extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.history);
   }
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class Login extends Component {
     return (
       <div className="container">
         <h1 className="h1-main">Login</h1>
-        <Content />
+        <Content history={this.props.history} />
       </div>
     );
   }

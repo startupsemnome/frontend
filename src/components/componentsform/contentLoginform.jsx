@@ -41,9 +41,8 @@ class ContentLoginform extends Component {
           password: this.state.password
         })
         .then(function (response) {
-          console.log(response.data)
           localStorage.setItem('userName', response.data.name);
-          this.history.push('/dashboard');
+          this.props.history.push('/dashboard');
         }).catch((error) => {
           this.setState({ error });
         }
@@ -80,7 +79,7 @@ class ContentLoginform extends Component {
           <div className="labelFields" >
             <Row>
               <Col>
-                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</button>
+                <a type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</a>
               </Col>
             </Row>
             <p>Ou</p>

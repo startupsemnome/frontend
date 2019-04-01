@@ -9,7 +9,7 @@ class Content extends Component {
     return (
       <div className="container">
         <h3 className="contentLogin">Faça seu login</h3>
-        <ContentLoginform />
+        <ContentLoginform history={this.props.history} />
         <br />
         <p>O ContentRegister vai ser aqui</p>
       </div>
