@@ -19,11 +19,11 @@ class ConsultResourceForm extends Component {
 
   findResource() {
 
-    // chama a api do banco com o metodo de delete
+    // Chama a api do banco com o método buscar
     axios
       .post(env.API + "consult-resource", { search: this.state.buscaTable })
       .then(response => {
-        alert("buscou");
+        alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
         this.setState({ users: response.data })
       })
@@ -82,9 +82,10 @@ class ConsultResourceForm extends Component {
               </div>
             </div>
             <div className="row mt-2 mb-2">
+            {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
                 <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
-                <button type="button" onClick={() => this.findResource()}>buscar2</button>
+                <button type="button" onClick={() => this.findResource()}>Buscar Recurso</button>
               </div>
             </div>
             <div className="row">

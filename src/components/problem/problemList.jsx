@@ -10,12 +10,28 @@ class ProblemList extends Component {
     super(props);
     this.state = {
       users: [],
+      buscaTable:"",
       problemListEdit: [null, false],
     };
     console.log(this.props);
 
 
     this.deleteProblem = this.deleteProblem.bind(this);
+  }
+  findProblem() {
+
+    // Chama a api do banco com o método buscar
+    axios
+      .post(env.API + "consult-problem", { search: this.state.buscaTable })
+      .then(response => {
+        alert("Busca Realizada com Sucesso!");
+        // apos excluir carrega novamente os usuarios da tabela
+        this.setState({ users: response.data })
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na busca do item");
+      });
   }
 
   deleteProblem(id) {
@@ -64,7 +80,8 @@ class ProblemList extends Component {
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" />
+                <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
+                <button type="button" onClick={() => this.findProblem()}>Buscar Problema</button>
               </div>
             </div>
             <div className="row">
