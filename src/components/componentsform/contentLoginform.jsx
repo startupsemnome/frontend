@@ -4,9 +4,6 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import { Link } from "react-router-dom";
-import { createBrowserHistory } from "history";
-
-const history = createBrowserHistory();
 
 class ContentLoginform extends Component {
   constructor(props) {
@@ -16,7 +13,6 @@ class ContentLoginform extends Component {
       password: "",
       error: ""
     };
-    console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.validarUser = this.validarUser.bind(this);
   }
@@ -48,6 +44,7 @@ class ContentLoginform extends Component {
           this.setState({ error });
         }
         );
+      this.props.history.push('/institutional');
     }
   }
   render() {
