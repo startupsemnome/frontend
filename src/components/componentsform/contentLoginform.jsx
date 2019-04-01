@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import { Link } from "react-router-dom";
+import { setNavbarOpen } from "./../../redux/actions/navbarAction";
+
 
 class ContentLoginform extends Component {
   constructor(props) {
@@ -37,11 +42,17 @@ class ContentLoginform extends Component {
           login: this.state.name,
           password: this.state.password
         })
-        .then(function (response) {
+        .then((response) => {
           localStorage.setItem('userName', response.data.name);
+          this.props.setNavbarOpen(true);
           this.props.history.push('/dashboard');
         }).catch((error) => {
-          this.setState({ error });
+          if (error.response.status === 401) {
+            this.setState({ error: "Login ou Senha Invalidos" });
+          }
+          else {
+            this.setState({ error: "Error interno tente novamente mais tarde" });
+          }
         }
         );
     }
@@ -73,7 +84,7 @@ class ContentLoginform extends Component {
             onChange={e => this.setState({ password: e.target.value })}
             required
           />
-          <label className="errorForm" style={{ color: "red", display: `${this.props.error ? 'block' : 'none'}` }}>{this.state.error}</label>
+          <label className="errorForm" style={{ color: "red", display: `${this.state.error ? 'block' : 'none'}` }}>{this.state.error}</label>
           <div className="labelFields" >
             <Row>
               <Col>
@@ -93,4 +104,7 @@ class ContentLoginform extends Component {
     );
   }
 }
-export default ContentLoginform; 
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default ContentLoginform;

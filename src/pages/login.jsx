@@ -19,7 +19,7 @@ class Login extends Component {
     return (
       <div className="container">
         <h1 className="h1-main">Login</h1>
-        <Content history={this.props.history} />
+        <Content history={this.props.history} setNavbarOpen={this.props.setNavbarOpen} />
       </div>
     );
   }

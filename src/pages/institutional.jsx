@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { bindActionCreators } from "redux";
+
 import PropTypes from 'prop-types';
 import InstitutionalForm from "../components/institutional/institutionalForm";
 import Header from "../components/institutional/Header.jsx";
@@ -15,9 +19,16 @@ import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
 import SectionCompletedExamples from "../components/institutional/SectionCompletedExamples.jsx";
 import Footer from "../components/institutional/Footer.jsx";
+import { setNavbarOpen } from "./../redux/actions/navbarAction";
+
 import "./../assets/scss/material-kit-react.scss";
 
 class Institutional extends Component {
+
+  componentDidMount() {
+    this.props.setNavbarOpen(false);
+  }
+
   render() {
     const { classes, ...rest } = this.props;
 
@@ -58,6 +69,11 @@ class Institutional extends Component {
       </div>
     );
   }
+
 }
 
-export default withStyles(componentsStyle)(Institutional);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+
+export default withStyles(componentsStyle)(connect(null, mapDispatchToProps)(Institutional));
+
