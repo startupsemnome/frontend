@@ -8,10 +8,7 @@ class Content extends Component {
   render() {
     return (
       <div className="container">
-        <h3 className="contentLogin">Faça seu login</h3>
         <ContentLoginform />
-        <br />
-        <p>O ContentRegister vai ser aqui</p>
       </div>
     );
   }

@@ -75,11 +75,6 @@ class ContentLoginform extends Component {
             <Row>
               <Col>
                 <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</button>
-              </Col>
-            </Row>
-            <p>Ou</p>
-            <Row>
-              <Col>
                 <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">CADASTRAR</button>
               </Col>
             </Row>
