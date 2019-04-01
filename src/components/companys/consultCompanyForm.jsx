@@ -33,13 +33,13 @@ class ConsultCompanyForm extends Component {
     this.setState({ companyEdit: [id, true] })
   }
 
-  findUsers() {
+  findCompany() {
     // Make a request for a user with a given ID
     axios
-      .post(env.API + "consult-resource", { "search": this.state.userTable })
+      .post(env.API + "consult-company", { "search": this.state.userTable })
       .then(response => {
         // handle success
-        alert('foi');
+        alert('Busca Realizada com sucesso');
         const data = response.data;
         this.setState({ users: data });
       })
@@ -79,7 +79,7 @@ class ConsultCompanyForm extends Component {
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
                 <input type="text" className="inputFields" onChange={e => this.setState({ userTable: e.target.value })} />
-                <button type="button" onClick={() => this.findUsers()}>find</button>
+                <button type="button" onClick={() => this.findCompany()}>Buscar Empresas</button>
               </div>
             </div>
             <div className="row">
@@ -103,7 +103,8 @@ class ConsultCompanyForm extends Component {
                           <td>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
-                          <td>{company.email} Tel:{company.tele}</td>
+                          <td>{company.email} 
+                          {company.tele}</td>
                           {/* <td>{company.est}-{company.cid}</td> */}
                           <td>{company.updated_at}</td>
                           <td>{company.created_at}</td>
