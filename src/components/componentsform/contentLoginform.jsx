@@ -11,7 +11,7 @@ class ContentLoginform extends Component {
     this.state = {
       name: "",
       password: "",
-      error: ""
+      error: null
     };
     this.hasErros = this.hasErros.bind(this);
     this.validarUser = this.validarUser.bind(this);
@@ -44,7 +44,6 @@ class ContentLoginform extends Component {
           this.setState({ error });
         }
         );
-      this.props.history.push('/institutional');
     }
   }
   render() {
@@ -74,10 +73,11 @@ class ContentLoginform extends Component {
             onChange={e => this.setState({ password: e.target.value })}
             required
           />
+          <label className="errorForm" style={{ color: "red", display: `${this.props.error ? 'block' : 'none'}` }}></label>
           <div className="labelFields" >
             <Row>
               <Col>
-                <a type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</a>
+                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</button>
               </Col>
             </Row>
             <p>Ou</p>
