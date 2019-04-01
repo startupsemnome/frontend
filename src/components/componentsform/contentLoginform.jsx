@@ -16,6 +16,7 @@ class ContentLoginform extends Component {
       password: "",
       error: ""
     };
+    console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.validarUser = this.validarUser.bind(this);
   }

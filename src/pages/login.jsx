@@ -9,7 +9,6 @@ import { setNavbarOpen } from "./../redux/actions/navbarAction";
 class Login extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.history);
   }
 
   componentDidMount() {
