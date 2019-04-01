@@ -7,13 +7,16 @@ import { Link } from "react-router-dom";
 import { Doughnut, defaults, Chart, Bar } from 'react-chartjs-2';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, } from 'recharts';
 import { Row, Col, Card } from 'react-materialize';
+
+
 import axios from "axios";
 import env from "./../consts";
 
-import LineBarAreaComposedChart from "./graphics/lineBarAreaComposedChart.jsx";
-import StraightAnglePieChart from "./graphics/straightAnglePieChart.jsx";
+
 import DomainRadarChart from "./graphics/domainRadarChart.jsx";
 import ComposedResponsive from "./graphics/composedResponsive.jsx";
+import CardSimple from "./graphics/cardSimple.jsx";
+
 
 class HomeDash extends Component {
   constructor(props) {
@@ -65,7 +68,12 @@ class HomeDash extends Component {
         </div>
         <h4 style={{ display: "none" }}>Dialog Shown/Hidden with Logic</h4>
 
-        <ComposedResponsive />
+        <ComposedResponsive/>
+
+
+        <br></br>
+        <br></br>
+
 
       </div>
     );
