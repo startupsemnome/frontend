@@ -4,6 +4,9 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import { Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 class ContentLoginform extends Component {
   constructor(props) {
@@ -40,6 +43,7 @@ class ContentLoginform extends Component {
         .then(function (response) {
           console.log(response.data)
           localStorage.setItem('userName', response.data.name);
+          this.history.push('/dashboard');
         }).catch((error) => {
           this.setState({ error });
         }
