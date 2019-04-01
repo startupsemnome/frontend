@@ -73,7 +73,7 @@ class ContentLoginform extends Component {
             onChange={e => this.setState({ password: e.target.value })}
             required
           />
-          <label className="errorForm" style={{ color: "red", display: `${this.props.error ? 'block' : 'none'}` }}></label>
+          <label className="errorForm" style={{ color: "red", display: `${this.props.error ? 'block' : 'none'}` }}>{this.state.error}</label>
           <div className="labelFields" >
             <Row>
               <Col>
