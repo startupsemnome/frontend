@@ -28,9 +28,18 @@ class HomeDash extends Component {
       ButtoLogin: false,
       qtdUsers: 0,
       qtdProblem: 0,
+      show: "",
       qtdResource: 0,
       qtdCompany: 0
     };
+  }
+
+  showGrafico(type) {
+    if (this.state.show === type) {
+      this.setState({ show: "" });
+    } else {
+      this.setState({ show: type });
+    }
   }
   render() {
     return (
@@ -39,15 +48,15 @@ class HomeDash extends Component {
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
               <div class="card">
-                <div class="card-body">
+                <div className="card-body">
                   <span className="percentage-number">{this.state.qtdCompany}</span>
-                  <h5 class="card-title">Empresa</h5>
-                  <p class="card-text"> Os dados exibidos à cima são de acordo com a quanidade de empresas cadastradas.</p>
+                  <h5 className="card-title">Empresas</h5>
+                  <p className="card-text"> Os dados exibidos à cima são de acordo com a quanidade de empresas cadastradas.</p>
                   <br></br>
-                  <a href="#" class="btn btn-primary">Saiba mais!</a>
+                  <a href="#" onClick={() => this.showGrafico("COMPANY")} className="btn btn-primary">Saiba mais!</a>
                 </div>
-                <div class="card-footer">
-                  <small class="text-muted">Atualizado à 4 minutos atrás</small>
+                <div className="card-footer">
+                  <small className="text-muted">Atualizado à 4 minutos atrás</small>
                 </div>
                 <div className="df-c">
                 </div>
@@ -57,17 +66,17 @@ class HomeDash extends Component {
 
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <div class="card">
-                <div class="card-body">
+              <div className="card">
+                <div className="card-body">
                   <span className="percentage-number">{this.state.qtdResource}</span>
-                  <h5 class="card-title">Recurso</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <h5 className="card-title">Recursos</h5>
+                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
                   <br></br>
-                  <a href="#" class="btn btn-primary">Saiba mais!</a>
+                  <a href="#" onClick={() => this.showGrafico("RESOURCE")} className="btn btn-primary">Saiba mais!</a>
                 </div>
                 <div className="df-c">
-                  <div class="card-footer">
-                    <small class="text-muted">Atualizado à 4 minutos atrás</small>
+                  <div className="card-footer">
+                    <small className="text-muted">Atualizado à 4 minutos atrás</small>
                   </div>
                 </div>
               </div>
@@ -76,18 +85,18 @@ class HomeDash extends Component {
 
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <div class="card">
-                <div class="card-body">
+              <div className="card">
+                <div className="card-body">
                   <span className="percentage-number">{this.state.qtdProblem}</span>
-                  <h5 class="card-title">Problema</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <h5 className="card-title">Problemas</h5>
+                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
                   <br></br>
-                  <a href="#" class="btn btn-primary">Saiba mais!</a>
+                  <a href="#" onClick={() => this.showGrafico("PROBLEM")} className="btn btn-primary">Saiba mais!</a>
                 </div>
                 <div className="df-c">
                 </div>
-                <div class="card-footer">
-                  <small class="text-muted">Atualizado à 6 minutos atrás</small>
+                <div className="card-footer">
+                  <small className="text-muted">Atualizado à 6 minutos atrás</small>
                 </div>
               </div>
             </div>
@@ -95,24 +104,30 @@ class HomeDash extends Component {
 
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <div class="card">
-                <div class="card-body">
+              <div className="card">
+                <div className="card-body">
                   <span className="percentage-number">{this.state.qtdUsers}</span>
-                  <h5 class="card-title">Usuário</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <h5 className="card-title">Usuários</h5>
+                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
                   <br></br>
-                  <a href="#" class="btn btn-primary">Saiba mais!</a>
+                  <a href="#" onClick={() => this.showGrafico("USER")} className="btn btn-primary">Saiba mais!</a>
                 </div>
                 <div className="df-c">
                 </div>
-                <div class="card-footer">
-                  <small class="text-muted">Atualizado à 8 minutos atrás</small>
+                <div className="card-footer">
+                  <small className="text-muted">Atualizado à 8 minutos atrás</small>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <h4 style={{ display: "none" }}>Dialog Shown/Hidden with Logic</h4>
+
+        <ComposedResponsive type={"COMPANY"} show={this.state.show} qtdAtual={this.state.qtdCompany} />
+        <ComposedResponsive type={"USER"} show={this.state.show} qtdAtual={this.state.qtdUsers} />
+        <ComposedResponsive type={"RESOURCE"} show={this.state.show} qtdAtual={this.state.qtdResource} />
+        <ComposedResponsive type={"PROBLEM"} show={this.state.show} qtdAtual={this.state.qtdProblem} />
+
       </div>
     );
   }
