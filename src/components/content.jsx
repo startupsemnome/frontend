@@ -8,10 +8,8 @@ class Content extends Component {
   render() {
     return (
       <div className="container">
-        <h3 className="contentLogin">Faça seu login</h3>
+        <h3 className="contentLogin">Olá usuario</h3>
         <ContentLoginform history={this.props.history} setNavbarOpen={this.props.setNavbarOpen} />
-        <br />
-        <p>O ContentRegister vai ser aqui</p>
       </div>
     );
   }

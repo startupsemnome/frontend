@@ -87,13 +87,11 @@ class ContentLoginform extends Component {
           <label className="errorForm" style={{ color: "red", display: `${this.state.error ? 'block' : 'none'}` }}>{this.state.error}</label>
           <div className="labelFields" >
             <Row style={{ display: "flex", justifyContent: "space-between" }}>
-              <div className="col-md-4">
-                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</button>
+              <div className="login">
+                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">LOGIN</button>
               </div>
-            </Row>
-            <p>Ou</p>
-            <Row>
-              <div className="col-md-4">
+              <br />
+              <div class="institucional">
                 <Link to="/institutional" className="join-btn-no-transform mr-1">Ir Para Institucional</Link>
               </div>
             </Row>
