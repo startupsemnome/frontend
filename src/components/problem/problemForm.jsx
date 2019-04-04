@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import ConsultResourceForm from "../resource/consultResourceForm";
 
 class ProblemForm extends Component {
   constructor(props) {
@@ -10,16 +11,19 @@ class ProblemForm extends Component {
 
     this.state = {
       empresa: "",
+      users: [],
       solicit: "",
       email: "",
       telef: "",
       nprob: "",
+      modal: false,
       error: "",
       sweetCreate: false
     };
     console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.createProblem = this.createProblem.bind(this);
+    this.findResources = this.findResources.bind(this);
   }
   handleFormSubmit(event) {
     event.preventDefault();
@@ -28,6 +32,21 @@ class ProblemForm extends Component {
   listSolutions() {
     console.log(this.props);
   }
+  loadResources() {
+    // Make a request for a user with a given ID
+    axios
+      .get(env.API + "resource")
+      .then(response => {
+        // handle success
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
+
   createProblem(method, id) {
 
     if (!this.hasErros()) {
@@ -71,6 +90,7 @@ class ProblemForm extends Component {
   }
 
   componentDidMount() {
+    this.loadResources();
     if (this.props.id) {
       const id = this.props.id;
       axios
@@ -85,6 +105,15 @@ class ProblemForm extends Component {
         });
     }
   }
+
+  callResource() {
+
+  }
+
+  findResources() {
+    this.setState({ modal: !this.state.modal })
+  }
+
   hasErros() {
     if (this.state.empresa === "") {
       this.setState({ error: "preencha o campo empresa" });
@@ -182,7 +211,7 @@ class ProblemForm extends Component {
             <Col>
               <button
                 type="button"
-                onClick={() => { this.listSolutions("create") }}
+                onClick={() => { this.findResources() }}
                 className="join-btn"
               >
                 Possiveis Soluções
@@ -198,6 +227,65 @@ class ProblemForm extends Component {
         >
           {`Cadastrado ${this.state.problem} com sucesso!`}
         </SweetAlert>
+        <Modal size="lg" isOpen={this.state.modal} toggle={this.findResources} style={{ width: "100%" }}>
+          <ModalHeader toggle={this.findResources}>Selecione os Recursos Para Esse Problema</ModalHeader>
+          <ModalBody>
+            <Form inline={true}>
+              <FormGroup>
+                <Label for="exampleEmail">Nome <br />
+                  <Input type="email" name="email" id="exampleEmail" placeholder="with " /></Label>
+              </FormGroup>
+              <FormGroup className="ml-2">
+                <Label for="exampleSelect">Formacao <br />
+                  <Input type="select" name="select" id="exampleSelect">
+                    <option>SISTEMAS DA INFORMACAO</option>
+                  </Input></Label>
+              </FormGroup>
+              <FormGroup className="ml-2">
+                <Label for="exampleSelect">Experiencia</Label>
+                <Input type="select" name="select" id="exampleSelect">
+                  <option>1 ANOS</option>
+                </Input>
+              </FormGroup>
+            </Form>
+            <br />
+            <br />
+            <Table dark>
+              <thead>
+                <tr>
+                  <th>Selecionar</th>
+                  <th>Nome</th>
+                  <th>Formacao</th>
+                  <th>Area de Interece</th>
+                  <th>Cidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.users.map(resource => {
+                  return (
+                    <tr>
+                      <td><FormGroup check>
+                        <Label check>
+                          <Input type="checkbox" />{' '}
+                        </Label>
+                      </FormGroup>
+                      </td>
+                      <td>{resource.fname}</td>
+                      <td>{resource.formacao}</td>
+                      <td>{resource.areai}</td>
+                      <td>{resource.cid}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.callResource}>Comunicar Recursos</Button>{' '}
+            <Button color="secondary" onClick={this.findResources}>Voltar</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
