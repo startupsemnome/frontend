@@ -267,6 +267,7 @@ class ProblemForm extends Component {
                       <td><FormGroup check>
                         <Label check>
                           <Input type="checkbox" />{' '}
+                          marcar
                         </Label>
                       </FormGroup>
                       </td>
