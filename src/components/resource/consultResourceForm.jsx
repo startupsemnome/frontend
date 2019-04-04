@@ -70,6 +70,9 @@ class ConsultResourceForm extends Component {
     this.loadResources();
   }
 
+  handleEdit() {
+    this.setState({ resourceListEdit: [null, false] });
+  }
 
   render() {
     return (
@@ -135,7 +138,7 @@ class ConsultResourceForm extends Component {
               </div>
             </div>
           </div> :
-          <RegisterResourceForm edit={this.state.resourceListEdit[1]} id={this.state.resourceListEdit[0]} />}
+          <RegisterResourceForm edit={this.state.resourceListEdit[1]} history={this.props.history} handleEdit={() => this.handleEdit()} id={this.state.resourceListEdit[0]} />}
       </div>
 
     );

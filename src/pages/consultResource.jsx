@@ -9,7 +9,7 @@ export default class ConsultResource extends Component {
   render() {
     return (
       <div>
-        <ConsultResourceForm />
+        <ConsultResourceForm history={this.props.history} />
       </div>
     );
   }

@@ -1,15 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import { Link } from "react-router-dom";
+import { setNavbarOpen } from "./../../redux/actions/navbarAction";
+
+
 class ContentLoginform extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       password: "",
-      error: ""
+      error: null
     };
     this.hasErros = this.hasErros.bind(this);
     this.validarUser = this.validarUser.bind(this);
@@ -35,11 +42,17 @@ class ContentLoginform extends Component {
           login: this.state.name,
           password: this.state.password
         })
-        .then(function (response) {
-          console.log(response.data);
-          Storage.setItem('userName', response.data.name);
+        .then((response) => {
+          localStorage.setItem('userName', response.data.name);
+          this.props.setNavbarOpen(true);
+          this.props.history.push('/dashboard');
         }).catch((error) => {
-          this.setState({ error });
+          if (error.response.status === 401) {
+            this.setState({ error: "Login ou Senha Invalidos" });
+          }
+          else {
+            this.setState({ error: "Error interno tente novamente mais tarde" });
+          }
         }
         );
     }
@@ -71,17 +84,18 @@ class ContentLoginform extends Component {
             onChange={e => this.setState({ password: e.target.value })}
             required
           />
+          <label className="errorForm" style={{ color: "red", display: `${this.state.error ? 'block' : 'none'}` }}>{this.state.error}</label>
           <div className="labelFields" >
-            <Row>
-              <Col>
+            <Row style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="col-md-4">
                 <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1">LOGIN</button>
-              </Col>
+              </div>
             </Row>
             <p>Ou</p>
             <Row>
-              <Col>
-                <button /* onClick={(e) => this.editUser(user.id)}*/ className="join-btn-no-transform mr-1">CADASTRAR</button>
-              </Col>
+              <div className="col-md-4">
+                <Link to="/institutional" className="join-btn-no-transform mr-1">Ir Para Institucional</Link>
+              </div>
             </Row>
           </div>
         </form>
@@ -90,4 +104,7 @@ class ContentLoginform extends Component {
     );
   }
 }
-export default ContentLoginform; 
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default ContentLoginform;
