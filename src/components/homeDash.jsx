@@ -2,24 +2,15 @@ import React, { Component, PureComponent } from "react";
 import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
-import { savePDF } from "@progress/kendo-react-pdf";
 import { Link } from "react-router-dom";
 import { Doughnut, defaults, Chart, Bar } from 'react-chartjs-2';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, } from 'recharts';
 import { Row, Col, Card } from 'react-materialize';
-import ApexCharts from 'apexcharts'
 
 import axios from "axios";
 import env from "./../consts";
 
-
-import DomainRadarChart from "./graphics/domainRadarChart.jsx";
 import ComposedResponsive from "./graphics/composedResponsive.jsx";
-import CardSimple from "./card/cardSimple.jsx";
-import DecksExample from "./card/decksExample.jsx";
-import GroupsExample from "./card/groupsExample.jsx";
-import SizingExample from "./card/sizingExample.jsx";
-
 
 class HomeDash extends Component {
   constructor(props) {
