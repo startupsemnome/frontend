@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { bindActionCreators } from "redux";
 
 import PropTypes from 'prop-types';
@@ -18,20 +17,18 @@ import componentsStyle from "./../assets/jss/material-kit-react/views/components
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
 import SectionCompletedExamples from "../components/institutional/SectionCompletedExamples.jsx";
+import Notificacao from "../components/institutional/notificacao.jsx/index.jsx";
 import Footer from "../components/institutional/Footer.jsx";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
 
 class Institutional extends Component {
-
   componentDidMount() {
     this.props.setNavbarOpen(false);
   }
-
   render() {
     const { classes, ...rest } = this.props;
-
     return (
       <div>
         <Header
@@ -45,7 +42,6 @@ class Institutional extends Component {
           }}
           {...rest}
         />
-
         <Parallax image={require("./../assets/img/bg4.jpg")}>
           <div className={classes.container}>
             <GridContainer>
@@ -64,14 +60,13 @@ class Institutional extends Component {
           <SectionCompletedExamples />
           <SectionCarousel />
           <SectionBasics />
+          <Notificacao />
         </div>
         <Footer />
       </div>
     );
   }
-
 }
-
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen }, dispatch);
 
