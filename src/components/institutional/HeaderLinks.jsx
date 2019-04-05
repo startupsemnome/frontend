@@ -1,5 +1,7 @@
 /*eslint-disable*/
 import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 // react components for routing our app without refresh
 
 // @material-ui/core components
@@ -34,11 +36,11 @@ function HeaderLinks({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Link
-          to="/login"
+          to={this.props.auth.login ? '/dashboard' : '/login'}
           color="transparent"
           className={classes.navLink}
         >
-          Login
+          {this.props.auth.login ? 'Dashboard' : 'Login'}
         </Link>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -62,4 +64,8 @@ function HeaderLinks({ ...props }) {
   );
 }
 
-export default withStyles(headerLinksStyle)(HeaderLinks);
+const mapStateToProps = state => ({ auth: state.auth });
+
+export default withStyles(headerLinksStyle)(connect(mapStateToProps, null)(HeaderLinks));
+
+

@@ -4,6 +4,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
+import { ToastMessage } from "react-toastr";
 
 class ProblemForm extends Component {
   constructor(props) {
