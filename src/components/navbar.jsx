@@ -12,6 +12,7 @@ import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
+import { Logout } from "./../redux/actions/authAction";
 
 
 class NavBar extends Component {
@@ -160,10 +161,10 @@ class NavBar extends Component {
 
                 </DropdownMenu>
               </Dropdown>
-              
+
 
               <li style={{ position: "absolute", right: "0px", margin: "15px" }}>
-                <Link to="/login" className="nav-link">
+                <Link onClick={() => this.props.Logout()} to="/login" className="nav-link">
                   SAIR
                 </Link>
               </li>
@@ -197,7 +198,7 @@ class NavBar extends Component {
 
 const mapStateToProps = state => ({ navbar: state.navbar });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setNavbarOpen }, dispatch);
+  bindActionCreators({ setNavbarOpen, Logout }, dispatch);
 export default connect(
   mapStateToProps,
   mapDispatchToProps

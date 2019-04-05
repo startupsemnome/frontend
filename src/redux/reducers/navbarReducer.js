@@ -1,6 +1,5 @@
 const navbar = {
   isNavbarOpen: false,
-  //user: {name: "Ronifer Silva"}
 };
 
 export default (state = navbar, action) => {

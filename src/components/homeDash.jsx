@@ -1,4 +1,7 @@
 import React, { Component, PureComponent } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
@@ -11,6 +14,13 @@ import axios from "axios";
 import env from "./../consts";
 
 import ComposedResponsive from "./graphics/composedResponsive.jsx";
+import CardSimple from "./card/cardSimple.jsx";
+import DecksExample from "./card/decksExample.jsx";
+import GroupsExample from "./card/groupsExample.jsx";
+import SizingExample from "./card/sizingExample.jsx";
+
+import { setNavbarOpen } from "./../redux/actions/navbarAction";
+
 
 class HomeDash extends Component {
   constructor(props) {
@@ -183,6 +193,7 @@ class HomeDash extends Component {
   }
 
   componentDidMount() {
+    this.props.setNavbarOpen(true);
     this.loadQtdUsers();
     this.loadQtdProblem();
     this.loadQtdResource();
@@ -190,4 +201,11 @@ class HomeDash extends Component {
   }
 }
 
-export default HomeDash;
+const mapStateToProps = state => ({ navbar: state.navbar });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeDash);
+

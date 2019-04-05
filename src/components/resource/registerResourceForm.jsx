@@ -12,6 +12,7 @@ class RegisterResourceForm extends Component {
       fname: "",
       lname: "",
       email: "",
+      formacao: "",
       end: "",
       tel: "",
       cel: "",
@@ -44,6 +45,7 @@ class RegisterResourceForm extends Component {
             end: this.state.end,
             tel: this.state.tel,
             cel: this.state.cel,
+            formacao: this.state.formacao,
             cid: this.state.cid,
             est: this.state.est,
             hab: this.state.hab,
@@ -69,6 +71,7 @@ class RegisterResourceForm extends Component {
             end: this.state.end,
             tel: this.state.tel,
             cel: this.state.cel,
+            formacao: this.state.formacao,
             cid: this.state.cid,
             est: this.state.est,
             hab: this.state.hab,
@@ -96,7 +99,7 @@ class RegisterResourceForm extends Component {
         .then((response) => {
           console.log(response);
           const data = response.data;
-          this.setState({ fname: data.fname, lname: data.lname, email: data.email, end: data.end, tel: data.tel, cel: data.cel, cid: data.cid, est: data.est, hab: data.hab, areai: data.areai, message1: data.message1 });
+          this.setState({ fname: data.fname, formacao: data.formacao, lname: data.lname, email: data.email, end: data.end, tel: data.tel, cel: data.cel, cid: data.cid, est: data.est, hab: data.hab, areai: data.areai, message1: data.message1 });
         })
         .catch(function (error) {
           console.log(error);
@@ -117,6 +120,9 @@ class RegisterResourceForm extends Component {
       return true;
     } else if (this.state.email === "") {
       this.setState({ error: "preencha o campo email" });
+      return true;
+    } else if (this.state.formacao === "") {
+      this.setState({ error: "preencha o campo formacao" });
       return true;
     } else if (this.state.end === "") {
       this.setState({ error: "preencha o campo endereço" });
@@ -242,6 +248,19 @@ class RegisterResourceForm extends Component {
                   placeholder="Digite as suas habilidades e qualificações"
                   value={this.state.hab}
                   onChange={e => this.setState({ hab: e.target.value })} />
+
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <label className="labelFields">Formacao Superior</label>
+                <br></br>
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite as sua formacao superior"
+                  value={this.state.formacao}
+                  onChange={e => this.setState({ formacao: e.target.value })} />
 
               </ul>
             </div>

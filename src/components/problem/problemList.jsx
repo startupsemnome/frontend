@@ -10,7 +10,7 @@ class ProblemList extends Component {
     super(props);
     this.state = {
       users: [],
-      buscaTable:"",
+      buscaTable: "",
       problemListEdit: [null, false],
     };
     console.log(this.props);
@@ -105,7 +105,7 @@ class ProblemList extends Component {
                       return (
                         <tr key={`problemTable${problem.id}`}>
                           <td>{problem.id}</td>
-                          <td>{problem.empresa}</td>
+                          <td>{problem.company.empresa}</td>
                           <td>{problem.solicit}</td>
                           <td>{problem.email}</td>
                           <td>{problem.telef}</td>
