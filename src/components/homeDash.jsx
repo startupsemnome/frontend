@@ -13,11 +13,7 @@ import { Row, Col, Card } from 'react-materialize';
 import axios from "axios";
 import env from "./../consts";
 
-import ComposedResponsive from "./graphics/composedResponsive.jsx";
-import CardSimple from "./card/cardSimple.jsx";
-import DecksExample from "./card/decksExample.jsx";
-import GroupsExample from "./card/groupsExample.jsx";
-import SizingExample from "./card/sizingExample.jsx";
+import ComposedResponsive from "./graphics/composedResponsive.jsx"
 
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
