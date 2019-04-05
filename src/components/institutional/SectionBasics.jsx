@@ -1,202 +1,101 @@
-import React from "react";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import React, { Component } from "react";
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 
-// @material-ui/icons
-import People from "@material-ui/icons/People";
-import Check from "@material-ui/icons/Check";
-// core components
-import GridContainer from "./GridContainer.jsx";
-import GridItem from "./GridItem.jsx";
-import Button from "./Button.jsx";
-import CustomInput from "./CustomInput.jsx";
-import basicsStyle from "./basicsStyle.jsx";
 
-class SectionBasics extends React.Component {
+
+class SectionBasics extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: [24, 22],
-      selectedEnabled: "b",
-      checkedA: true,
-      checkedB: false
+      nome: "",
+      empresa: "",
+      cnpj: "",
+      categoria: "",
+      problema: "",
+      sweetCreate: false
     };
-    this.handleChangeEnabled = this.handleChangeEnabled.bind(this);
   }
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
-  handleChangeEnabled(event) {
-    this.setState({ selectedEnabled: event.target.value });
-  }
-  handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked
-    });
-  }
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.sections}>
-        <div className={classes.container}>
-          <div className={classes.space50} />
-          <div id="inputs">
-            <div className={classes.title}>
-              <h3>Entre em Contato</h3>
+      <div className="App">
+        <div>
+          <form className="signupForm">
+            <label className="labelFields">Nome</label><br />
+            <input
+              className="inputFields"
+              type="text"
+              placeholder="Digite o seu nome"
+              value={this.state.fname}
+              onChange={e => this.setState({ nome: e.target.value })} />
+            <div>
+              <ul>
+                <br />
+
+                <label className="labelFields">Empresa:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Nome da Empresa"
+                  value={this.state.lname}
+                  onChange={e => this.setState({ empresa: e.target.value })} /> <br />
+                <label className="labelFields">CNPJ::</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite o CNPJ"
+                  value={this.state.cnpj}
+                  onChange={e => this.setState({ cnpj: e.target.value })} /> <br />
+
+                <label className="labelFields">Categoria:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite a categoria"
+                  value={this.state.categoria}
+                  onChange={e => this.setState({ end: e.target.value })} /><br />
+
+                <label className="labelFields">Problema:</label><br />
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite o problema"
+                  value={this.state.problema}
+                  onChange={e => this.setState({ tel: e.target.value })} /><br />
+              </ul>
             </div>
-            <GridContainer>
-              <GridItem xs={12} sm={4} md={4} lg={3}>
-                <CustomInput
-                  id="nome"
-                  inputProps={{
-                    placeholder: "Nome"
-                  }}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={4} md={4} lg={3}>
-                <CustomInput
-                  labelText="Nome da Empresa"
-                  id="float"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={4} md={4} lg={3}>
-                <CustomInput
-                  labelText="With material Icons"
-                  id="material"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <People />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={4} md={4} lg={3}>
-                <CustomInput
-                  labelText="With Font Awesome Icons"
-                  id="font-awesome"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <i className="fas fa-users" />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              </GridItem>
-            </GridContainer>
-          </div>
-          <div className={classes.space70} />
-          <div id="checkRadios">
-            <GridContainer>
-              <GridItem xs={12} sm={6} md={4} lg={3}>
-                <div className={classes.title}>
-                  <h3>Categoria</h3>
-                </div>
-                <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
+            <br /><br />
+            <label className="labelFields" style={{ color: "red" }}>
+              {this.state.error}
+            </label>
+
+            <Row>
+              <Col>
+                {this.props.id ?
+                  <button
+                    type="button"
+                    //onClick={() => this.goToConsulta("/consultar-recurso")}
+                    className="join-btn w-25"
+                  >
+                    Enviar
+                  </button> : null}
+
+                <button
+                  type="button"
+                  //onClick={() => { !this.props.id ? this.createResource("create") : this.createResource("update", this.props.id) }}
+                  className="join-btn"
                 >
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        tabIndex={-1}
-                        onClick={() => this.handleToggle(21)}
-                        checkedIcon={<Check className={classes.checkedIcon} />}
-                        icon={<Check className={classes.uncheckedIcon} />}
-                        classes={{ checked: classes.checked }}
-                      />
-                    }
-                    classes={{ label: classes.label }}
-                    label="Unchecked"
-                  />
-                </div>
-                <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
-                >
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        tabIndex={-1}
-                        onClick={() => this.handleToggle(22)}
-                        checked={
-                          this.state.checked.indexOf(22) !== -1 ? true : false
-                        }
-                        checkedIcon={<Check className={classes.checkedIcon} />}
-                        icon={<Check className={classes.uncheckedIcon} />}
-                        classes={{ checked: classes.checked }}
-                      />
-                    }
-                    classes={{ label: classes.label }}
-                    label="Checked"
-                  />
-                </div>
-                <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
-                >
-                </div>
-                <div
-                  className={
-                    classes.checkboxAndRadio +
-                    " " +
-                    classes.checkboxAndRadioHorizontal
-                  }
-                >
-                </div>
-              </GridItem>
-            </GridContainer>
-          </div>
-          <div id="buttons">
-            <div className={classes.title}>
-            </div>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={8}>
-                <Button color="success">Success</Button>
-                <Button color="warning">Warning</Button>
-              </GridItem>
-            </GridContainer>
-          </div>
+                  Enviar
+              </button>
+              </Col>
+            </Row>
+          </form>
         </div>
       </div>
     );
   }
 }
-
-export default withStyles(basicsStyle)(SectionBasics);
+export default SectionBasics;
