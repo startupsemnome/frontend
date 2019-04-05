@@ -51,9 +51,9 @@ class Institutional extends Component {
             <GridContainer>
               <GridItem>
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Conectando Mentes</h1>
+                  <h1 className={classes.title}>Connecting Minds</h1>
                   <h3 className={classes.subtitle}>
-                    A melhor solução para o seu negócio.
+                    The Perfect Solutions For Your Business.
                   </h3>
                 </div>
               </GridItem>
