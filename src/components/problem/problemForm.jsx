@@ -4,7 +4,8 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-import { ToastMessage } from "react-toastr";
+import { toastr } from 'react-redux-toastr'
+
 
 class ProblemForm extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class ProblemForm extends Component {
     console.log(this.props);
     this.hasErros = this.hasErros.bind(this);
     this.createProblem = this.createProblem.bind(this);
+    this.callResource = this.callResource.bind(this);
     this.findResources = this.findResources.bind(this);
   }
   handleFormSubmit(event) {
@@ -108,6 +110,8 @@ class ProblemForm extends Component {
   }
 
   callResource() {
+    alert(2);
+    toastr.error('Preencha o campo senha');
 
   }
 
@@ -234,7 +238,7 @@ class ProblemForm extends Component {
             <Form inline={true}>
               <FormGroup>
                 <Label for="exampleEmail">Nome <br />
-                  <Input type="email" name="email" id="exampleEmail" placeholder="with " /></Label>
+                  <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
               </FormGroup>
               <FormGroup className="ml-2">
                 <Label for="exampleSelect">Formacao <br />
@@ -284,7 +288,7 @@ class ProblemForm extends Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.callResource}>Comunicar Recursos</Button>{' '}
+            <Button color="primary" onClick={() => this.callResource}>Comunicar Recursos</Button>{' '}
             <Button color="secondary" onClick={this.findResources}>Voltar</Button>
           </ModalFooter>
         </Modal>
