@@ -9,7 +9,7 @@ class Content extends Component {
     return (
       <div className="container">
         <h3 className="contentLogin">Olá usuario</h3>
-        <ContentLoginform history={this.props.history} setNavbarOpen={this.props.setNavbarOpen} />
+        <ContentLoginform history={this.props.history} setLogin={this.props.setLogin} setNavbarOpen={this.props.setNavbarOpen} />
       </div>
     );
   }

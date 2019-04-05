@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 // react components for routing our app without refresh
@@ -20,48 +20,56 @@ import { Link } from "react-router-dom";
 import headerLinksStyle from "./../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
 
-function HeaderLinks({ ...props }) {
-  const { classes } = props;
-  return (
-    <List className={classes.list}>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="https://www.creative-tim.com/product/material-kit-react"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-          <CloudDownload className={classes.icons} /> Contato
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Link
-          to={this.props.auth.login ? '/dashboard' : '/login'}
-          color="transparent"
-          className={classes.navLink}
-        >
-          {this.props.auth.login ? 'Dashboard' : 'Login'}
-        </Link>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-tooltip"
-          title="Follow us on instagram"
-          placement={window.innerWidth > 959 ? "top" : "left"}
-          classes={{ tooltip: classes.tooltip }}
-        >
+class HeaderLinks extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+    const { classes } = this.props;
+    return (
+      <List className={classes.list}>
+        <ListItem className={classes.listItem}>
           <Button
+            href="https://www.creative-tim.com/product/material-kit-react"
             color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial"
             target="_blank"
             className={classes.navLink}
           >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-    </List>
-  );
+            <CloudDownload className={classes.icons} /> Contato
+        </Button>
+        </ListItem>
+        <ListItem className={classes.listItem}>
+          <Link
+            to="/login"
+            to={this.props.auth.login ? '/dashboard' : '/login'}
+            color="transparent"
+            className={classes.navLink}
+          >
+            {this.props.auth.login ? 'Dashboard' : 'Login'}
+          </Link>
+        </ListItem>
+        <ListItem className={classes.listItem}>
+          <Tooltip
+            id="instagram-tooltip"
+            title="Follow us on instagram"
+            placement={window.innerWidth > 959 ? "top" : "left"}
+            classes={{ tooltip: classes.tooltip }}
+          >
+            <Button
+              color="transparent"
+              href="https://www.instagram.com/CreativeTimOfficial"
+              target="_blank"
+              className={classes.navLink}
+            >
+              <i className={classes.socialIcons + " fab fa-instagram"} />
+            </Button>
+          </Tooltip>
+        </ListItem>
+      </List>
+    );
+  }
 }
 
 const mapStateToProps = state => ({ auth: state.auth });
