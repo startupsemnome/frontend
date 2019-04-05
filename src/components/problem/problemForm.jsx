@@ -25,7 +25,9 @@ class ProblemForm extends Component {
     event.preventDefault();
     this.setState({ sweetCreate: true });
   }
-
+  listSolutions() {
+    console.log(this.props);
+  }
   createProblem(method, id) {
 
     if (!this.hasErros()) {
@@ -41,7 +43,7 @@ class ProblemForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-problema";
+            window.location = "/cadastrar-problema";
           })
           .catch(function (error) {
             console.log(error);
@@ -173,6 +175,17 @@ class ProblemForm extends Component {
                 className="join-btn"
               >
                 {!this.props.id ? "Criar" : "Editar"} Problema
+              </button>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <button
+                type="button"
+                onClick={() => { this.listSolutions("create") }}
+                className="join-btn"
+              >
+                Possiveis Soluções
               </button>
             </Col>
           </Row>

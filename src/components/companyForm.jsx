@@ -44,11 +44,11 @@ class CompanyForm extends Component {
             num: this.state.num,
             rua: this.state.rua
           })
-          .then(function (response) {
+          .then((response) => {
             console.log(response);
-            window.location = "/consultar-empresa";
+            this.props.history.push("/consultar-empresa");
           })
-          .catch(function (error) {
+          .catch((error) => {
             console.log(error);
           });
       } else if (method = "update") {
@@ -65,11 +65,11 @@ class CompanyForm extends Component {
             num: this.state.num,
             rua: this.state.rua
           })
-          .then(function (response) {
+          .then((response) => {
             console.log(response);
-            window.location = "/consultar-empresa";
+            this.props.history.push("/consultar-empresa");
           })
-          .catch(function (error) {
+          .catch((error) => {
             console.log(error);
           });
       }
@@ -90,6 +90,9 @@ class CompanyForm extends Component {
           console.log(error);
         });
     }
+  }
+  goToConsulta() {
+    this.props.history.push("consultar-empresa");
   }
   hasErros() {
     if (this.state.empresa === "") {
@@ -258,13 +261,23 @@ class CompanyForm extends Component {
             </label>
             <Row>
               <Col>
+                {this.props.id ?
+                  <button
+                    type="button"
+                    onClick={() => this.props.history.push("/consultar-problema")}
+                    className="join-btn"
+                  >
+                    Consultar Problemas
+                </button> : null}
+              </Col>
+              <Col>
                 <button
                   type="button"
                   onClick={() => { !this.props.id ? this.createCompany("create") : this.createCompany("update", this.props.id) }}
                   className="join-btn"
                 >
                   {!this.props.id ? "Cadastrar " : "Editar"} Empresa
-              </button>
+               </button>
               </Col>
             </Row>
           </form>

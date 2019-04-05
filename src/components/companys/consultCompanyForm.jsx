@@ -10,9 +10,9 @@ class ConsultCompanyForm extends Component {
     super(props);
     this.state = {
       users: [],
+      userTable: "",
       companyEdit: [null, false],
     };
-    console.log(this.props);
     this.excluirCompany = this.excluirCompany.bind(this);
   }
   excluirCompany(id) {
@@ -33,6 +33,21 @@ class ConsultCompanyForm extends Component {
     this.setState({ companyEdit: [id, true] })
   }
 
+  findCompany() {
+    // Make a request for a user with a given ID
+    axios
+      .post(env.API + "consult-company", { "search": this.state.userTable })
+      .then(response => {
+        // handle success
+        alert('Busca Realizada com sucesso');
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na busca");
+      });
+  }
   loadCompanys() {
     // Make a request for a user with a given ID
     axios
@@ -63,7 +78,8 @@ class ConsultCompanyForm extends Component {
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" />
+                <input type="text" className="inputFields" onChange={e => this.setState({ userTable: e.target.value })} />
+                <button type="button" onClick={() => this.findCompany()}>Buscar Empresas</button>
               </div>
             </div>
             <div className="row">
@@ -83,11 +99,12 @@ class ConsultCompanyForm extends Component {
                   <tbody>
                     {this.state.users.map(company => {
                       return (
-                        <tr>
+                        <tr key={`userTable${company.id}`}>
                           <td>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
-                          <td>{company.email} Tel:{company.tele}</td>
+                          <td>{company.email} 
+                          {company.tele}</td>
                           {/* <td>{company.est}-{company.cid}</td> */}
                           <td>{company.updated_at}</td>
                           <td>{company.created_at}</td>
@@ -104,7 +121,7 @@ class ConsultCompanyForm extends Component {
               </div>
             </div>
           </div> :
-          <CompanyForm edit={this.state.companyEdit[1]} id={this.state.companyEdit[0]} />}
+          <CompanyForm history={this.props.history} edit={this.state.companyEdit[1]} id={this.state.companyEdit[0]} />}
       </div>
     );
   }

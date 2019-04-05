@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
-    "@google-cloud/automl": "^0.1.4",
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "@progress/kendo-drawing": "^1.5.8",
     "@progress/kendo-react-buttons": "^2.7.1",
     "@progress/kendo-react-pdf": "^2.7.1",
@@ -66,6 +67,8 @@
     "react-router": "^3.2.0",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-slick": "^0.23.2",
+    "react-slidez": "0.0.31",
     "reactstrap": "^7.1.0",
     "recharts": "^1.5.0",
     "redux": "^4.0.0",
@@ -75,6 +78,7 @@
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "semantic-ui-react": "^0.86.0",
+    "slick-carousel": "^1.8.1",
     "style-loader": "0.23.1",
     "tabler-react": "^1.29.0",
     "terser-webpack-plugin": "1.2.2",
@@ -100,6 +104,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-slick": "^0.23.3",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0"
   },

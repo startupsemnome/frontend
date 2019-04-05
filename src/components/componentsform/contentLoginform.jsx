@@ -1,57 +1,108 @@
 import React, { Component } from "react";
-import { Button } from "@progress/kendo-react-buttons";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import { Row, Col } from "reactstrap";
+import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
 import { Link } from "react-router-dom";
-import "./../../bootstrap.min.css";
+import { setNavbarOpen } from "./../../redux/actions/navbarAction";
+
+
 class ContentLoginform extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lpassword: "",
-      ButtoRegistro: false,
+      name: "",
+      password: "",
+      error: null
     };
+    this.hasErros = this.hasErros.bind(this);
+    this.validarUser = this.validarUser.bind(this);
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.setState({ SweetCreate: true })
+  }
+  hasErros() {
+    if (this.state.name === "") {
+      this.setState({ error: "preencha o campo login" });
+      return true;
+    } else if (this.state.password === "") {
+      this.setState({ error: "preencha o campo senha" });
+      return true;
+    }
+    return false;
+  }
+  validarUser() {
+    if (!this.hasErros()) {
+      axios
+        .post(env.API + "login", {
+          login: this.state.name,
+          password: this.state.password
+        })
+        .then((response) => {
+          localStorage.setItem('userName', response.data.name);
+          this.props.setNavbarOpen(true);
+          this.props.history.push('/dashboard');
+        }).catch((error) => {
+          if (error.response.status === 401) {
+            this.setState({ error: "Login ou Senha Invalidos" });
+          }
+          else {
+            this.setState({ error: "Error interno tente novamente mais tarde" });
+          }
+        }
+        );
+    }
   }
   render() {
     return (
-      <div className="App">
-        <form action="/action_page.php">
-          <label className="conlono col-md-3">Nome da Organização</label>
+      <div className="loginUser col-md-12">
+        <form>
+          <label className="labelFields nome">Nome do Usuario</label>
           <input
-            className="contentlo col-md-6"
+            className="inputFields"
             type="text"
-            id="fname"
+            id="name"
             name="nome"
             placeholder="Nome de login"
-            value={this.state.fname}
-            onChange={e => this.setState({ fname: e.target.value })}
+            value={this.state.name}
+            onChange={e => this.setState({ name: e.target.value })}
             required
           />
-          <label className="conlose col-md-3">Senha</label>
+          <label className="labelFields senha">Senha</label>
           <input
-            className="contentlo  col-md-6"
+            className="inputFields"
             type="password"
-            max="11"
-            id="lpassword"
-            name="lastname"
+            min="8"
+            id="password"
+            name="pastname"
             placeholder="Senha de login"
-            value={this.state.lpassword}
-            onChange={e => this.setState({ lpassword: e.target.value })}
+            value={this.state.password}
+            onChange={e => this.setState({ password: e.target.value })}
             required
           />
-          <div className="row bottonrform" >
-            <Button isOpen={this.state.ButtoRegistro} className="regemp btn btn-success">
-              <Link to="/registro-empresa" className="buttonRegistro">
-                Login
-                </Link>
-            </Button>
+          <label className="errorForm" style={{ color: "red", display: `${this.state.error ? 'block' : 'none'}` }}>{this.state.error}</label>
+          <div className="labelFields" >
+            <Row style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="login">
+                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">LOGIN</button>
+              </div>
+              <br />
+              <div class="institucional">
+                <Link to="/institutional" className="join-btn-no-transform mr-1">Ir Para Institucional</Link>
+              </div>
+            </Row>
           </div>
         </form>
-      </div>
+
+      </div >
     );
   }
 }
-export default ContentLoginform; 
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default ContentLoginform;
