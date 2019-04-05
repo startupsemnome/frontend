@@ -35,7 +35,7 @@ class Institutional extends Component {
     return (
       <div>
         <Header
-          brand="Startup"
+          brand="Resource Manager"
           rightLinks={<HeaderLinks />}
           fixed
           color="transparent"
