@@ -45,6 +45,7 @@ class ContentLoginform extends Component {
         .then((response) => {
           localStorage.setItem('userName', response.data.name);
           this.props.setNavbarOpen(true);
+          this.props.setLogin(true);
           this.props.history.push('/dashboard');
         }).catch((error) => {
           if (error.response.status === 401) {
@@ -87,12 +88,13 @@ class ContentLoginform extends Component {
           <label className="errorForm" style={{ color: "red", display: `${this.state.error ? 'block' : 'none'}` }}>{this.state.error}</label>
           <div className="labelFields" >
             <Row style={{ display: "flex", justifyContent: "space-between" }}>
-              <div className="login">
-                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">LOGIN</button>
+
+              <div class="institucional">
+                <Link to="/institutional" className="join-btn-no-transform mr-1">Ver Institucional</Link>
               </div>
               <br />
-              <div class="institucional">
-                <Link to="/institutional" className="join-btn-no-transform mr-1">Ir Para Institucional</Link>
+              <div className="login">
+                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">Ir Para LOGIN</button>
               </div>
             </Row>
           </div>
