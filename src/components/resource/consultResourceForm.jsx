@@ -88,8 +88,8 @@ class ConsultResourceForm extends Component {
             {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
                 <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
-                <button type="button" onClick={() => this.findResource()}>Buscar Recurso</button>
               </div>
+              <button type="button" className="join-btn-leo" onClick={() => this.findResource()}>Buscar Recurso</button>
             </div>
             <div className="row">
               <div className="col-md-12">

@@ -15,6 +15,7 @@ class RegisterUser extends Component {
         <Row>
           <Col>
             <h1 className="h1-main">Cadastrar Usuario</h1>
+            <br/><br/>            
           </Col>
         </Row>
         <Row>

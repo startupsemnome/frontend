@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from "axios";
-import env from "./../consts";
+import env from "../../consts";
 class CompanyForm extends Component {
   constructor(props) {
     super(props);
@@ -135,7 +135,7 @@ class CompanyForm extends Component {
         <div>
           <form className="signupForm form-inline">
 
-            <label className="labelFields">Nome da Organização: </label>
+            <label className="labelFields nome">Nome da Organização: </label>
             <input
               className="inputFields"
               type="text"
