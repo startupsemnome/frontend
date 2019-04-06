@@ -17,7 +17,7 @@ import componentsStyle from "./../assets/jss/material-kit-react/views/components
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
 import SectionCompletedExamples from "../components/institutional/SectionCompletedExamples.jsx";
-import Notificacao from "../components/institutional/notificacao.jsx/index.jsx";
+import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
