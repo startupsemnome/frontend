@@ -1,19 +1,22 @@
 import React, { Component, PureComponent } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
-import { savePDF } from "@progress/kendo-react-pdf";
 import { Link } from "react-router-dom";
 import { Doughnut, defaults, Chart, Bar } from 'react-chartjs-2';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, } from 'recharts';
 import { Row, Col, Card } from 'react-materialize';
+
 import axios from "axios";
 import env from "./../consts";
 
-import LineBarAreaComposedChart from "./graphics/lineBarAreaComposedChart.jsx";
-import StraightAnglePieChart from "./graphics/straightAnglePieChart.jsx";
-import DomainRadarChart from "./graphics/domainRadarChart.jsx";
-import ComposedResponsive from "./graphics/composedResponsive.jsx";
+import ComposedResponsive from "./graphics/composedResponsive.jsx"
+
+import { setNavbarOpen } from "./../redux/actions/navbarAction";
+
 
 class HomeDash extends Component {
   constructor(props) {
@@ -22,9 +25,18 @@ class HomeDash extends Component {
       ButtoLogin: false,
       qtdUsers: 0,
       qtdProblem: 0,
+      show: "",
       qtdResource: 0,
       qtdCompany: 0
     };
+  }
+
+  showGrafico(type) {
+    if (this.state.show === type) {
+      this.setState({ show: "" });
+    } else {
+      this.setState({ show: type });
+    }
   }
   render() {
     return (
@@ -32,40 +44,86 @@ class HomeDash extends Component {
         <div className="row">
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <span className="percentage-number">{this.state.qtdCompany}</span>
-            </div>
-            <div className="df-c">
-              <p>EMPRESAS </p>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-3 box">
-            <div className="df-c">
-              <span className="percentage-number">{this.state.qtdResource}</span>
-            </div>
-            <div className="df-c">
-              <p>RECURSO </p>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-3 box">
-            <div className="df-c">
-              <span className="percentage-number">{this.state.qtdProblem}</span>
-            </div>
-            <div className="df-c">
-              <p>PROBLEMA </p>
+              <div class="card">
+                <div className="card-body">
+                  <span className="percentage-number">{this.state.qtdCompany}</span>
+                  <h5 className="card-title">Empresas</h5>
+                  <p className="card-text"> Os dados exibidos à cima são de acordo com a quanidade de empresas cadastradas.</p>
+                  <br></br>
+                  <a href="#" onClick={() => this.showGrafico("COMPANY")} className="btn btn-primary">Saiba mais!</a>
+                </div>
+                <div className="card-footer">
+                  <small className="text-muted">Atualizado à 4 minutos atrás</small>
+                </div>
+                <div className="df-c">
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <span className="percentage-number">{this.state.qtdUsers}</span>
+              <div className="card">
+                <div className="card-body">
+                  <span className="percentage-number">{this.state.qtdResource}</span>
+                  <h5 className="card-title">Recursos</h5>
+                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <br></br>
+                  <a href="#" onClick={() => this.showGrafico("RESOURCE")} className="btn btn-primary">Saiba mais!</a>
+                </div>
+                <div className="df-c">
+                  <div className="card-footer">
+                    <small className="text-muted">Atualizado à 4 minutos atrás</small>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <p>USUARIO </p>
+              <div className="card">
+                <div className="card-body">
+                  <span className="percentage-number">{this.state.qtdProblem}</span>
+                  <h5 className="card-title">Problemas</h5>
+                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <br></br>
+                  <a href="#" onClick={() => this.showGrafico("PROBLEM")} className="btn btn-primary">Saiba mais!</a>
+                </div>
+                <div className="df-c">
+                </div>
+                <div className="card-footer">
+                  <small className="text-muted">Atualizado à 6 minutos atrás</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm-12 col-md-3 box">
+            <div className="df-c">
+              <div className="card">
+                <div className="card-body">
+                  <span className="percentage-number">{this.state.qtdUsers}</span>
+                  <h5 className="card-title">Usuários</h5>
+                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <br></br>
+                  <a href="#" onClick={() => this.showGrafico("USER")} className="btn btn-primary">Saiba mais!</a>
+                </div>
+                <div className="df-c">
+                </div>
+                <div className="card-footer">
+                  <small className="text-muted">Atualizado à 8 minutos atrás</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <h4 style={{ display: "none" }}>Dialog Shown/Hidden with Logic</h4>
 
-        <ComposedResponsive />
+        <ComposedResponsive type={"COMPANY"} show={this.state.show} qtdAtual={this.state.qtdCompany} />
+        <ComposedResponsive type={"USER"} show={this.state.show} qtdAtual={this.state.qtdUsers} />
+        <ComposedResponsive type={"RESOURCE"} show={this.state.show} qtdAtual={this.state.qtdResource} />
+        <ComposedResponsive type={"PROBLEM"} show={this.state.show} qtdAtual={this.state.qtdProblem} />
 
       </div>
     );
@@ -131,6 +189,7 @@ class HomeDash extends Component {
   }
 
   componentDidMount() {
+    this.props.setNavbarOpen(true);
     this.loadQtdUsers();
     this.loadQtdProblem();
     this.loadQtdResource();
@@ -138,4 +197,11 @@ class HomeDash extends Component {
   }
 }
 
-export default HomeDash;
+const mapStateToProps = state => ({ navbar: state.navbar });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeDash);
+

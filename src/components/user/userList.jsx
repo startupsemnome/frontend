@@ -10,17 +10,16 @@ class UserList extends Component {
     super(props);
     this.state = {
       users: [],
-      buscaTable: "",
+      buscaUser: "",
       userListEdit: [null, false],
     };
     this.excluirUser = this.excluirUser.bind(this);
   }
 
-  findUser() {
-
+  buscarUsuario() {
     // Chama a api do banco com o método buscar
     axios
-      .post(env.API + "consult-user", { search: this.state.buscaTable })
+      .post(env.API + "consult-user", { search: this.state.buscaUser })
       .then(response => {
         alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
@@ -79,8 +78,8 @@ class UserList extends Component {
             <div className="row mt-2 mb-2">
             {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable}/>
-                <button type="button" onClick={() => this.findUser()}>Buscar Usuarios</button>
+                <input type="text" className="inputFields" onChange={e => this.setState({ buscaUser: e.target.value })} value={this.state.buscaUser}/>
+                <button type="button" onClick={() => this.buscarUsuario()}>Buscar Usuarios</button>
               </div>
             </div>
             <div className="row">

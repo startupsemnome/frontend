@@ -10,7 +10,7 @@ class ProblemList extends Component {
     super(props);
     this.state = {
       users: [],
-      buscaTable:"",
+      buscaTable: "",
       problemListEdit: [null, false],
     };
     console.log(this.props);
@@ -80,7 +80,7 @@ class ProblemList extends Component {
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
+                <input type="text" className="inputFields"  onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
                 <button type="button" onClick={() => this.findProblem()}>Buscar Problema</button>
               </div>
             </div>
@@ -105,7 +105,7 @@ class ProblemList extends Component {
                       return (
                         <tr key={`problemTable${problem.id}`}>
                           <td>{problem.id}</td>
-                          <td>{problem.empresa}</td>
+                          <td>{problem.company.empresa}</td>
                           <td>{problem.solicit}</td>
                           <td>{problem.email}</td>
                           <td>{problem.telef}</td>
