@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 
 import Content from "../components/content";
 
+import { setLogin } from "./../redux/actions/authAction";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 class Login extends Component {
@@ -19,7 +20,7 @@ class Login extends Component {
     return (
       <div className="container">
         <h1 className="h1-main">Login</h1>
-        <Content history={this.props.history} setNavbarOpen={this.props.setNavbarOpen} />
+        <Content history={this.props.history} setLogin={this.props.setLogin} setNavbarOpen={this.props.setNavbarOpen} />
       </div>
     );
   }
@@ -27,7 +28,7 @@ class Login extends Component {
 
 const mapStateToProps = state => ({ isNavbarOpen: state.navbar });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setNavbarOpen }, dispatch);
+  bindActionCreators({ setNavbarOpen, setLogin }, dispatch);
 export default connect(
   mapStateToProps,
   mapDispatchToProps

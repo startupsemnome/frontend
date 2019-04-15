@@ -76,7 +76,7 @@ class ConsultResourceForm extends Component {
 
   render() {
     return (
-      <div className="container col-md-12">
+      <div className="container col-md-12" style={{ backgroundColor: `${this.props.cor ? this.props.cor : ''}` }}>
         {!this.state.resourceListEdit[1] ?
           <div>
             <div className="row">
@@ -85,7 +85,7 @@ class ConsultResourceForm extends Component {
               </div>
             </div>
             <div className="row mt-2 mb-2">
-            {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
+              {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
                 <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
                 <button type="button" onClick={() => this.findResource()}>Buscar Recurso</button>
@@ -96,17 +96,15 @@ class ConsultResourceForm extends Component {
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">ID</th>
                       <th scope="col">Nome</th>
-                      <th scope="col">Sobrenome</th>
                       <th scope="col">Email</th>
                       <th scope="col">Telefone</th>
                       <th scope="col">Cidade</th>
-                      <th scope="col">Estado</th>
+
                       <th scope="col">Area de Interesse</th>
-                      <th scope="col">Habilidades e Qualificações</th>
-                      <th scope="col">Ultima Atualização</th>
-                      <th scope="col">Data Criação</th>
+
+
+
                       <th scope="col">Opções</th>
                     </tr>
                   </thead>
@@ -114,17 +112,17 @@ class ConsultResourceForm extends Component {
                     {this.state.users.map(resource => {
                       return (
                         <tr>
-                          <td>{resource.id}</td>
+
                           <td>{resource.fname}</td>
-                          <td>{resource.lname}</td>
+
                           <td>{resource.email}</td>
                           <td>{resource.tel}</td>
                           <td>{resource.cid}</td>
-                          <td>{resource.est}</td>
+
                           <td>{resource.areai}</td>
-                          <td>{resource.hab}</td>
-                          <td>{resource.updated_at}</td>
-                          <td>{resource.created_at}</td>
+
+
+
                           <td>
                             <button onClick={(e) => this.editResource(resource.id)} className="join-btn-no-transform mr-1">Detalhe</button>
                             <button onClick={(e) => this.editResource(resource.id)} className="join-btn-no-transform mr-1">Editar</button>
