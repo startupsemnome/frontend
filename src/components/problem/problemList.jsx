@@ -14,8 +14,6 @@ class ProblemList extends Component {
       problemListEdit: [null, false],
     };
     console.log(this.props);
-
-
     this.deleteProblem = this.deleteProblem.bind(this);
   }
   findProblem() {
@@ -81,9 +79,9 @@ class ProblemList extends Component {
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
                 <input type="text" className="inputFields"  onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
-                <button type="button" onClick={() => this.findProblem()}>Buscar Problema</button>
               </div>
             </div>
+                <button type="button" className="join-btn-leo" onClick={() => this.findProblem()}>Buscar Problema</button>
             <div className="row">
               <div className="col-md-12">
                 <table class="table">
@@ -103,7 +101,7 @@ class ProblemList extends Component {
                   <tbody>
                     {this.state.users.map(problem => {
                       return (
-                        <tr key={`problemTable${problem.id}`}>
+                        <tr>
                           <td>{problem.id}</td>
                           <td>{problem.company.empresa}</td>
                           <td>{problem.solicit}</td>

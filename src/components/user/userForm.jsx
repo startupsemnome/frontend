@@ -97,7 +97,7 @@ class UserForm extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
+      <div className="loginUser col-md-12">
         <form className="signupForm">
           <ul class="noBullet">
             <li>

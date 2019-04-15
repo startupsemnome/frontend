@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
-import CompanyForm from "./../companyForm";
+import CompanyForm from "./companyForm";
 
 class ConsultCompanyForm extends Component {
   constructor(props) {
@@ -79,9 +79,9 @@ class ConsultCompanyForm extends Component {
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
                 <input type="text" className="inputFields" onChange={e => this.setState({ userTable: e.target.value })} />
-                <button type="button" onClick={() => this.findCompany()}>Buscar Empresas</button>
               </div>
             </div>
+                <button type="button" className="join-btn-leo" onClick={() => this.findCompany()}>Buscar Empresas</button>
             <div className="row">
               <div className="col-md-12">
                 <table className="table">

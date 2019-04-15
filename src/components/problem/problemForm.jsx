@@ -65,7 +65,7 @@ class ProblemForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/cadastrar-problema";
+            window.location = "/consultar-problema";
           })
           .catch(function (error) {
             console.log(error);
@@ -144,15 +144,15 @@ class ProblemForm extends Component {
         <form className="signupForm">
           <ul class="noBullet">
             <li>
-              <label className="labelFields col-md-2">Empresa:</label>
-              <input
-                className="inputFields"
-                type="text"
-                placeholder="Digite o nome da empresa"
-                value={this.state.empresa}
-                onChange={e => this.setState({ empresa: e.target.value })}
-                required
-              />
+            <label className="labelFields col-md-2">Empresa:</label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o email do solicitante"
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
+              required
+          />
             </li>
           </ul>
           <label className="labelFields col-md-2">Solicitante:</label>
@@ -202,13 +202,14 @@ class ProblemForm extends Component {
           </label>
           <Row>
             <Col>
+            
               <button
                 type="button"
                 onClick={() => { !this.props.id ? this.createProblem("create") : this.createProblem("update", this.props.id) }}
                 className="join-btn"
               >
                 {!this.props.id ? "Criar" : "Editar"} Problema
-              </button>
+              </button>:
             </Col>
           </Row>
           <Row>
