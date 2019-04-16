@@ -39,7 +39,16 @@ class HeaderLinks extends Component {
           >
             <CloudDownload className={classes.icons} /> Contato
         </Button>
+          <Button
+            href="/lista-projetos"
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            Notificações <br></br><span class="badge badge-light">9</span>
+          </Button>
         </ListItem>
+
         <ListItem className={classes.listItem}>
           <Link
             to="/login"
@@ -49,7 +58,9 @@ class HeaderLinks extends Component {
           >
             {this.props.auth.login ? 'Dashboard' : 'Login'}
           </Link>
+
         </ListItem>
+
         <ListItem className={classes.listItem}>
           <Tooltip
             id="instagram-tooltip"
