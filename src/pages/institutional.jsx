@@ -40,8 +40,7 @@ class Institutional extends Component {
           fixed
           color="transparent"
           changeColorOnScroll={{
-            height: 400,
-            color: "white"
+            height: 400
           }}
           {...rest}
         />

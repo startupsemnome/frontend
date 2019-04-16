@@ -22,10 +22,10 @@ class SectionBasics extends Component {
     return (
       <div className="App">
         <div>
-          <form className="signupForm">
-            <label className="labelFields">Nome</label><br />
+          <form className="signupFor">
+            <label className="labelField">Nome</label><br />
             <input
-              className="inputFields"
+              className="inputField"
               type="text"
               placeholder="Digite o seu nome"
               value={this.state.fname}
