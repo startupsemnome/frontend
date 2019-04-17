@@ -45,7 +45,7 @@ class HeaderLinks extends Component {
             target="_blank"
             className={classes.navLink}
           >
-            Notificações <br></br><span class="badge badge-light">9</span>
+            Notificações <br></br><span class="badge badge-light"></span>
           </Button>
         </ListItem>
 
