@@ -27,10 +27,10 @@ class ModalReturn extends React.Component {
             Obrigado!
             <br></br>
             <br></br>
-            Você será direcionado para uma segunda fase! :)
+            Você será direcionado para a página anterior! :)
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={this.toggle}>Ok</Button>
+            <Button color="success" href="/institutional" onClick={this.toggle}>Ok</Button>
           </ModalFooter>
         </Modal>
       </div>

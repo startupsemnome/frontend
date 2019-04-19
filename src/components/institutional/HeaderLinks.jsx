@@ -39,18 +39,12 @@ class HeaderLinks extends Component {
           >
             <CloudDownload className={classes.icons} /> Contato
         </Button>
-          <Button
-            href="/lista-projetos"
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
-            Notificações <br></br><span class="badge badge-light"></span>
-          </Button>
+
         </ListItem>
 
         <ListItem className={classes.listItem}>
           <Link
+
             to="/login"
             to={this.props.auth.login ? '/dashboard' : '/login'}
             color="transparent"
@@ -58,7 +52,17 @@ class HeaderLinks extends Component {
           >
             {this.props.auth.login ? 'Dashboard' : 'Login'}
           </Link>
+        </ListItem>
 
+        <ListItem className={classes.listItem}>
+          <Link
+            to="/lista-projetos"
+            to={this.props.auth.login ? '/lista-projetos' : '/lista-projetos'}
+            color="transparent"
+            className={classes.navLink}
+          >
+            {this.props.auth.login ? 'Notificações' : 'Lista de Projetos'}
+          </Link>
         </ListItem>
 
         <ListItem className={classes.listItem}>
