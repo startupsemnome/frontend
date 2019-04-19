@@ -1,9 +1,24 @@
 .navbar {
   &-cor {
-    background-color: #333333 !important;
+    background-color: #eee4e4 !important;
   }
 
   button {
-    color: $colorMain;
+    color: rgba#1d1c1cde;
   }
+}
+div.nav-bar a.navbar-brand{
+   color: rgba(14, 13, 13, 0.67);
+}
+ ul.navbar-nav.w-100 li a.nav-link{
+  color: rgba(14, 13, 13, 0.67);
+}
+li.nav-item.nav-item.active a.nav-link{
+  color: rgba(14, 13, 13, 0.67);
+}
+div.dropdown button.dropdown-toggle.btn.btn-link{
+  color: rgba(14, 13, 13, 0.67);
+}
+div.dropdown-menu button.dropdown-item{
+  color: rgba(14, 13, 13, 0.67);
 }

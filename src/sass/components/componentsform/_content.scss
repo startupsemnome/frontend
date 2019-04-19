@@ -1,3 +1,7 @@
+// dbe020cc
+// h1 #262829
+// h3 #7a7474e6
+ 
 /*ContentLoginform*/
 .labelFields p{
   text-align: center;
@@ -9,7 +13,7 @@
   margin-top:3px;
 }
 .loginUser.col-md-12 {
-  border: 8px #1a9393 outset;
+  // border: 8px #1a9393 outset;
   border-radius: 22px;
   margin: auto;
   padding: 10px;
@@ -23,16 +27,16 @@
     margin-left: 2px;
     margin-right: 1px;
     margin-top: 1px;
+    text-align: left;
   }
   .join-btn-no-transform.mr-1.login{
   width: 172px;
 }
 .institucional{
     margin-bottom: 2px;
-    margin-top: 1px;
     margin-left: 2px;
     margin-right: 1px;
-    margin-top: 9px;
+    margin-top: 13px;
   }
 #name,#password{
   text-align: center;
@@ -64,7 +68,7 @@ a.buttonRegistro {
 h1.companyRe{
   text-align: center;
   font-size: 30px;
-  color: #999;
+  color:#1b1919;
   margin-bottom:10px;
   margin-toP:3px;
 }
@@ -111,7 +115,7 @@ h1.companyRe{
 
 /*Content*/
 h3.contentLogin{
-    color: rgb(95, 93, 93);
+    color: rgb(34, 33, 33);
     font-size: 30px;
     text-align: center;
     margin: 10px;
