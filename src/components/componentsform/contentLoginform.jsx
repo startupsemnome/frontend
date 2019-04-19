@@ -90,11 +90,11 @@ class ContentLoginform extends Component {
             <Row style={{ display: "flex", justifyContent: "space-between" }}>
 
               <div class="institucional">
-                <Link to="/institutional" className="join-btn-no-transform mr-1">Ver Institucional</Link>
+                <Link to="/institutional" className="join-btn-no-transform mr-1">Institucional</Link>
               </div>
               <br />
               <div className="login">
-                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">Ir Para LOGIN</button>
+                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">Login</button>
               </div>
             </Row>
           </div>
