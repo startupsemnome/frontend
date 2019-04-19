@@ -7,13 +7,14 @@ import {
   DropdownItem
 } from "reactstrap";
 
+import logo from "../images/logo-resource.jpg";
+
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 import { Logout } from "./../redux/actions/authAction";
-
 
 class NavBar extends Component {
   constructor(props) {
@@ -28,15 +29,32 @@ class NavBar extends Component {
     this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
-
   }
 
   render() {
     return (
-      <div className="nav-bar" style={{ display: `${this.props.navbar.isNavbarOpen ? 'initial' : 'none'}` }}>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor">
+      <div
+        className="nav-bar"
+        style={{
+          display: `${this.props.navbar.isNavbarOpen ? "initial" : "none"}`
+        }}
+      >
+        <nav
+          className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor"
+          style={{ height: "60px" }}
+        >
           <a className="navbar-brand" href="#">
-            HACK
+            <img
+              src={logo}
+              style={{
+                width: "80px",
+                border: "3px solid #6e6029",
+                borderRadius: "50px",
+                marginTop: "3px"
+              }}
+              alt="logo"
+              title="logo"
+            />
           </a>
           <button
             className="navbar-toggler"
@@ -51,31 +69,46 @@ class NavBar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav w-100">
-              <li className="nav-item active" style={{ margin: "15px" }} >
+              <li className="nav-item active" style={{ margin: "15px" }}>
                 <Link to="/dashboard" className="nav-link">
                   DASHBOARD
                 </Link>
               </li>
-              <li className="nav-item active" style={{ margin: "15px" }} >
+              <li className="nav-item active" style={{ margin: "15px" }}>
                 <Link to="/institutional" className="nav-link">
                   INSTITUCIONAL
                 </Link>
               </li>
 
-              <Dropdown isOpen={this.state.NavLinkEmpresa} toggle={this.toggleEmpresa} style={{ margin: "10px" }} >
-                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>EMPRESA</DropdownToggle>
+              <Dropdown
+                isOpen={this.state.NavLinkEmpresa}
+                toggle={this.toggleEmpresa}
+                style={{ margin: "10px" }}
+              >
+                <DropdownToggle
+                  color="link"
+                  style={{ textDecoration: "none", marginTop: "3px" }}
+                  caret
+                >
+                  EMPRESA
+                </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
-                    <Link to="/cadastro-empresa" className="nav-link text-secondary">
+                    <Link
+                      to="/cadastro-empresa"
+                      className="nav-link text-secondary"
+                    >
                       Cadastrar
                     </Link>
                   </DropdownItem>
                   <DropdownItem>
-                    <Link className="nav-link text-secondary" to="/consultar-empresa" >
+                    <Link
+                      className="nav-link text-secondary"
+                      to="/consultar-empresa"
+                    >
                       Consultar
                     </Link>
                   </DropdownItem>
-
                 </DropdownMenu>
               </Dropdown>
               <Dropdown
@@ -83,7 +116,13 @@ class NavBar extends Component {
                 toggle={this.toggleRecurso}
                 style={{ margin: "10px" }}
               >
-                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>RECURSO</DropdownToggle>
+                <DropdownToggle
+                  color="link"
+                  style={{ textDecoration: "none", marginTop: "3px" }}
+                  caret
+                >
+                  RECURSO
+                </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link
@@ -103,12 +142,21 @@ class NavBar extends Component {
                       Consultar
                     </Link>
                   </DropdownItem>
-
                 </DropdownMenu>
               </Dropdown>
 
-              <Dropdown isOpen={this.state.NavLinkProblem} toggle={this.toggle} style={{ margin: "10px" }} >
-                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>PROBLEMA</DropdownToggle>
+              <Dropdown
+                isOpen={this.state.NavLinkProblem}
+                toggle={this.toggle}
+                style={{ margin: "10px" }}
+              >
+                <DropdownToggle
+                  color="link"
+                  style={{ textDecoration: "none", marginTop: "3px" }}
+                  caret
+                >
+                  PROBLEMA
+                </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link
@@ -120,7 +168,6 @@ class NavBar extends Component {
                     </Link>
                   </DropdownItem>
 
-
                   <DropdownItem>
                     <Link
                       className="nav-link text-secondary"
@@ -129,7 +176,6 @@ class NavBar extends Component {
                       Consultar
                     </Link>
                   </DropdownItem>
-
                 </DropdownMenu>
               </Dropdown>
 
@@ -138,7 +184,13 @@ class NavBar extends Component {
                 toggle={this.toggleUsuario}
                 style={{ margin: "10px" }}
               >
-                <DropdownToggle color="link" style={{ textDecoration: "none", marginTop: "3px" }} caret>USUARIO</DropdownToggle>
+                <DropdownToggle
+                  color="link"
+                  style={{ textDecoration: "none", marginTop: "3px" }}
+                  caret
+                >
+                  USUARIO
+                </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
                     <Link
@@ -158,13 +210,17 @@ class NavBar extends Component {
                       Consultar
                     </Link>
                   </DropdownItem>
-
                 </DropdownMenu>
               </Dropdown>
 
-
-              <li style={{ position: "absolute", right: "0px", margin: "15px" }}>
-                <Link onClick={() => this.props.Logout()} to="/login" className="nav-link">
+              <li
+                style={{ position: "absolute", right: "0px", margin: "15px" }}
+              >
+                <Link
+                  onClick={() => this.props.Logout()}
+                  to="/login"
+                  className="nav-link"
+                >
                   SAIR
                 </Link>
               </li>
@@ -203,4 +259,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(NavBar);
-
