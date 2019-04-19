@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
@@ -152,130 +152,126 @@ class RegisterResourceForm extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div>
-          <form className="signupForm">
-            <label className="labelFields">Nome</label><br />
-            <input
-              className="inputFields"
-              type="text"
-              placeholder="Digite o seu nome"
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })} />
-            <div>
-              <ul>
-                <br />
-
-                <label className="labelFields">Sobrenome:</label><br />
+      <div className="loginUser col-md-12">        
+        <form className="signupForm">
+          <ul class ="noBullet">
+              <li>
+                <label className="labelFields col-md-2">Nome:</label>
+                <input
+                  className="inputFields"
+                  type="text"
+                  placeholder="Digite o seu nome"
+                  value={this.state.fname}
+                  onChange={e => this.setState({ fname: e.target.value })}
+                  required
+                />
+              </li>
+           </ul>               
+               <label className="labelFields col-md-2">Sobrenome:</label><br />
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite o sobrenome"
                   value={this.state.lname}
-                  onChange={e => this.setState({ lname: e.target.value })} /> <br />
-                <label className="labelFields">E-mail:</label><br />
+                  onChange={e => this.setState({ lname: e.target.value })} 
+                  required
+                  /> 
+                  <br/><br/>
+                <label className="labelFields col-md-2">E-mail:</label>
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite o e-mail"
                   value={this.state.email}
-                  onChange={e => this.setState({ email: e.target.value })} /> <br />
-
-                <label className="labelFields">Endereço:</label><br />
+                  onChange={e => this.setState({ email: e.target.value })}
+                  required
+                /> 
+                  
+                  <br/><br/>
+                <label className="labelFields col-md-2">Endereço:</label>
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite o endereço"
                   value={this.state.end}
-                  onChange={e => this.setState({ end: e.target.value })} /><br />
-
-                <label className="labelFields">Telefone:</label><br />
+                  onChange={e => this.setState({ end: e.target.value })} 
+                  required
+                  />
+                <br/><br/>                
+                <label className="labelFields col-md-2">Telefone:</label>
                 <input
                   className="inputFields"
                   type="number"
                   placeholder="Digite o telefone do responsável"
                   value={this.state.tel}
-                  onChange={e => this.setState({ tel: e.target.value })} /><br />
-              </ul>
-            </div>
-            <br /><br />
-            <div>
-              <ul>
-                <label className="labelFields">Celular</label>
-                <br></br>
+                  onChange={e => this.setState({ tel: e.target.value })} 
+                  required
+                  />
+                  <br/><br/>                      
+                <label className="labelFields col-md-2">Celular</label>                
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite o celular do responsável"
                   value={this.state.cel}
-                  onChange={e => this.setState({ cel: e.target.value })} />
-
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <label className="labelFields">Cidade</label>
-                <br></br>
+                  onChange={e => this.setState({ cel: e.target.value })} 
+                  required
+                />
+                <br/><br/>        
+                <label className="labelFields col-md-2">Cidade</label>
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite a cidade do responsável"
                   value={this.state.cid}
-                  onChange={e => this.setState({ cid: e.target.value })} />
-
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <label className="labelFields">Estado</label>
-                <br></br>
+                  onChange={e => this.setState({ cid: e.target.value })} 
+                  required
+                />           
+                <br/><br/>
+                <label className="labelFields col-md-2">Estado</label>                
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite o estado do responsável"
                   value={this.state.est}
-                  onChange={e => this.setState({ est: e.target.value })} />
-
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <label className="labelFields">Habilidades e Qualificações</label>
-                <br></br>
+                  onChange={e => this.setState({ est: e.target.value })}
+                  required 
+                  />         
+                <br/><br/>          
+                <label className="labelFields col-md-12">Habilidades e Qualificações</label>
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite as suas habilidades e qualificações"
                   value={this.state.hab}
-                  onChange={e => this.setState({ hab: e.target.value })} />
-
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <label className="labelFields">Formacao Superior</label>
-                <br></br>
+                  onChange={e => this.setState({ hab: e.target.value })} 
+                  required
+                />    
+                <br/><br/>     
+                <label className="labelFields col-md-12">Formacao Superior</label>
                 <input
                   className="inputFields"
                   type="text"
                   placeholder="Digite as sua formacao superior"
                   value={this.state.formacao}
-                  onChange={e => this.setState({ formacao: e.target.value })} />
-
-              </ul>
-            </div>
-            <ul>
-              <label className="labelFields">Area de Interesse</label>
-              <br></br>
+                  onChange={e => this.setState({ formacao: e.target.value })} 
+                  required
+                /> 
+                
+                <br/><br/>               
+              <label className="labelFields col-md-12">Area de Interesse</label>
               <input
                 className="inputFields"
                 type="text"
                 placeholder="Digite as suas áreas de interesse"
                 value={this.state.areai}
-                onChange={e => this.setState({ areai: e.target.value })} />
+                onChange={e => this.setState({ areai: e.target.value })} 
+                required
+                />
+                <br/><br/>              
 
-            </ul>
-            <label className="labelFields" style={{ color: "red" }}>
+            
+            <label className="labelFields col-md-2" style={{ color: "red" }}>
               {this.state.error}
             </label>
 
@@ -312,8 +308,7 @@ class RegisterResourceForm extends Component {
 
 
 
-          </form>
-        </div>
+          </form>        
       </div>
 
     );

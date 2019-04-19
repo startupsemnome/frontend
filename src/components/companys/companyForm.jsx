@@ -131,26 +131,26 @@ class CompanyForm extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div>
-          <form className="signupForm form-inline">
-
-            <label className="labelFields nome">Nome da Organização: </label>
+      <div className="loginUser col-md-12">        
+          <form className="signupForm">
+            <ul class ="noBullet">
+              <li>
+                <label className="labelFields col-md-12">Nome da Organização: </label>
+                <input
+                  className="inputFields col-md-10"
+                  type="text"
+                  id="empresa"
+                  name="firstname"
+                  placeholder="Nome da empresa"
+                  value={this.state.empresa}
+                  onChange={e => this.setState({ empresa: e.target.value })}
+                  required
+                />
+                </li>
+           </ul>
+            <label className="labelFields col-md-2">CNPJ :</label>
             <input
-              className="inputFields"
-              type="text"
-              id="empresa"
-              name="firstname"
-              placeholder="Nome da empresa"
-              value={this.state.empresa}
-              onChange={e => this.setState({ empresa: e.target.value })}
-              required
-            />
-
-
-            <label className="labelFields">CNPJ</label><br />
-            <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="number"
               id="cnpj"
               name="lastname"
@@ -159,11 +159,10 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ cnpj: e.target.value })}
               required
             />
-
-
-            <label className="labelFields">Email</label><br />
+            <br/><br/>
+            <label className="labelFields col-md-2">Email :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="email"
               id="email"
               name="email"
@@ -172,10 +171,10 @@ class CompanyForm extends Component {
               onChange={e => this.setState({ email: e.target.value })}
               required
             />
-
-            <label className="labelFields">Telefone da empresa</label><br />
+             <br/><br/> 
+            <label className="labelFields col-md-12">Telefone da empresa :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="tel"
               id="tele"
               name="telefone"
@@ -185,9 +184,9 @@ class CompanyForm extends Component {
               required
             />
             <br /><br />
-            <label className="labelFields">Estado</label><br />
+            <label className="labelFields col-md-2">Estado :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="text"
               id="est"
               name="estado"
@@ -197,9 +196,9 @@ class CompanyForm extends Component {
               required
             />
             <br /><br />
-            <label className="labelFields">Cidade</label><br />
+            <label className="labelFields col-md-2">Cidade :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="text"
               id="cid"
               name="cidade"
@@ -209,9 +208,9 @@ class CompanyForm extends Component {
               required
             />
             <br></br>
-            <label className="labelFields">Bairro</label><br />
+            <label className="labelFields col-md-2">Bairro :</label>
             <input
-              className="inputFields"
+              className=" inputFields col-md-10"
               type="text"
               id="bair"
               name="bairro"
@@ -221,9 +220,9 @@ class CompanyForm extends Component {
               required
             />
             <br /><br />
-            <label className="labelFields">Rua</label><br />
+            <label className="labelFields col-md-2">Rua :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="text"
               id="rua"
               name="rua"
@@ -233,9 +232,9 @@ class CompanyForm extends Component {
               required
             />
             <br /><br />
-            <label className="labelFields">Numero</label><br />
+            <label className="labelFields col-md-2">Numero :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               type="number"
               id="num"
               name="numero"
@@ -245,10 +244,9 @@ class CompanyForm extends Component {
               required
             />
             <br /><br />
-
-            <label className="labelFields">Assunto</label><br />
+            <label className="labelFields col-md-2">Assunto :</label>
             <input
-              className="inputFields"
+              className="inputFields col-md-10"
               id="message"
               name="message"
               placeholder="Descreva pouco sobre a necessidade da sua empresa"
@@ -256,7 +254,7 @@ class CompanyForm extends Component {
               value={this.state.message}
             />
 
-            <label className="labelFields" style={{ color: "red" }}>
+            <label className="labelFields col-md-2" style={{ color: "red" }}>
               {this.state.error}
             </label>
             <Row>
@@ -289,7 +287,7 @@ class CompanyForm extends Component {
           >
             {`Cadastrado ${this.state.empresa} com sucesso!!!!}`}
           </SweetAlert>
-        </div>
+        
       </div>
     );
   }
