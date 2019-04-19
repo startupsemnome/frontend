@@ -130,7 +130,7 @@ class ConsultCompanyForm extends Component {
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
                           <td>
-                            {company.email}
+                            {company.email} <br />
                             {company.tele}
                           </td>
                           {/* <td>{company.est}-{company.cid}</td> */}
@@ -140,19 +140,25 @@ class ConsultCompanyForm extends Component {
                             <button
                               onClick={e => this.editCompany(company.id)}
                               className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
                             >
                               Detalhe
                             </button>
                             <button
                               onClick={e => this.editCompany(company.id)}
                               className="join-btn-no-transform mr-1"
-                              style={{ widht: "20px;" }}
+                              style={{
+                                width: "100%",
+                                marginBottom: "5px",
+                                marginLeft: "5px"
+                              }}
                             >
                               Editar
                             </button>
                             <button
                               onClick={e => this.excluirCompany(company.id)}
                               className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
                             >
                               Excluir
                             </button>
