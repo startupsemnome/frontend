@@ -323,22 +323,21 @@ class CompanyForm extends Component {
             />
           </div>
 
-          <label className="labelFields col-md-5" style={{ color: "red;" }}>
+          <label className="labelFields col-md-12" style={{ color: "red;" }}>
             {this.state.error}
           </label>
-          <Col className="col-md-12 d-flex justify-content-end">
+          <Col className="col-md-12 d-flex justify-content-center">
             {this.props.id ? (
               <button
                 type="button"
                 onClick={() => this.props.history.push("/consultar-problema")}
                 className="join-btn-no-transform mr-1 login"
-                style={{ width: "38%" }}
+                style={{ width: "25%", margin: "0px" }}
               >
                 Consultar Problemas
               </button>
             ) : null}
-          </Col>
-          <Col className="col-md-12 d-flex justify-content-end">
+            <div />
             <button
               type="button"
               onClick={() => {
@@ -347,7 +346,7 @@ class CompanyForm extends Component {
                   : this.createCompany("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
-              style={{ width: "38%" }}
+              style={{ width: "25%", margin: "0px" }}
             >
               {!this.props.id ? "Cadastrar " : "Editar"} Empresa
             </button>

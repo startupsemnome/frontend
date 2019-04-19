@@ -11,7 +11,7 @@ class ConsultCompanyForm extends Component {
     this.state = {
       users: [],
       userTable: "",
-      companyEdit: [null, false],
+      companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
   }
@@ -21,7 +21,7 @@ class ConsultCompanyForm extends Component {
       .delete(env.API + "company/" + id)
       .then(response => {
         alert(" Excluido com sucesso! ");
-        //apos excluir carrega novamente os usuarios da tabela 
+        //apos excluir carrega novamente os usuarios da tabela
         this.loadCompanys();
       })
       .catch(error => {
@@ -30,16 +30,16 @@ class ConsultCompanyForm extends Component {
       });
   }
   editCompany(id) {
-    this.setState({ companyEdit: [id, true] })
+    this.setState({ companyEdit: [id, true] });
   }
 
   findCompany() {
     // Make a request for a user with a given ID
     axios
-      .post(env.API + "consult-company", { "search": this.state.userTable })
+      .post(env.API + "consult-company", { search: this.state.userTable })
       .then(response => {
         // handle success
-        alert('Busca Realizada com sucesso');
+        alert("Busca Realizada com sucesso");
         const data = response.data;
         this.setState({ users: data });
       })
@@ -69,7 +69,7 @@ class ConsultCompanyForm extends Component {
   render() {
     return (
       <div className="container col-md-8">
-        {!this.state.companyEdit[1] ?
+        {!this.state.companyEdit[1] ? (
           <div>
             <div className="row">
               <div className="col-md-12">
@@ -78,10 +78,26 @@ class ConsultCompanyForm extends Component {
             </div>
             <div className="row mt-2 mb-2">
               <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" onChange={e => this.setState({ userTable: e.target.value })} />
+                <input
+                  type="text"
+                  className="inputFields col-md-10"
+                  style={{ width: "100%", marginleft: "10px" }}
+                  onChange={e => this.setState({ userTable: e.target.value })}
+                />
+                <button
+                  type="button"
+                  className="join-btn-no-transform mr-1 login col-md-2"
+                  style={{
+                    width: "100%",
+                    borderRadius: "20px",
+                    marginLeft: "10px"
+                  }}
+                  onClick={() => this.findCompany()}
+                >
+                  Buscar
+                </button>
               </div>
             </div>
-                <button type="button" className="join-btn-leo" onClick={() => this.findCompany()}>Buscar Empresas</button>
             <div className="row">
               <div className="col-md-12">
                 <table className="table">
@@ -103,15 +119,32 @@ class ConsultCompanyForm extends Component {
                           <td>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
-                          <td>{company.email} 
-                          {company.tele}</td>
+                          <td>
+                            {company.email}
+                            {company.tele}
+                          </td>
                           {/* <td>{company.est}-{company.cid}</td> */}
                           <td>{company.updated_at}</td>
                           <td>{company.created_at}</td>
                           <td>
-                            <button onClick={(e) => this.editCompany(company.id)} className="join-btn-no-transform mr-1">Detalhe</button>
-                            <button onClick={(e) => this.editCompany(company.id)} className="join-btn-no-transform mr-1">Editar</button>
-                            <button onClick={(e) => this.excluirCompany(company.id)} className="join-btn-no-transform mr-1">Excluir</button>
+                            <button
+                              onClick={e => this.editCompany(company.id)}
+                              className="join-btn-no-transform mr-1"
+                            >
+                              Detalhe
+                            </button>
+                            <button
+                              onClick={e => this.editCompany(company.id)}
+                              className="join-btn-no-transform mr-1"
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={e => this.excluirCompany(company.id)}
+                              className="join-btn-no-transform mr-1"
+                            >
+                              Excluir
+                            </button>
                           </td>
                         </tr>
                       );
@@ -120,8 +153,14 @@ class ConsultCompanyForm extends Component {
                 </table>
               </div>
             </div>
-          </div> :
-          <CompanyForm history={this.props.history} edit={this.state.companyEdit[1]} id={this.state.companyEdit[0]} />}
+          </div>
+        ) : (
+          <CompanyForm
+            history={this.props.history}
+            edit={this.state.companyEdit[1]}
+            id={this.state.companyEdit[0]}
+          />
+        )}
       </div>
     );
   }
