@@ -150,7 +150,7 @@ class ConsultCompanyForm extends Component {
                               style={{
                                 width: "100%",
                                 marginBottom: "5px",
-                                marginLeft: "5px"
+                                marginTop: "5px"
                               }}
                             >
                               Editar
