@@ -77,10 +77,18 @@ class ConsultCompanyForm extends Component {
               </div>
             </div>
             <div className="row mt-2 mb-2">
-              <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
+              <div
+                className="col-md-12"
+                style={{
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
+                }}
+              >
                 <input
                   type="text"
-                  className="inputFields col-md-10"
+                  className="inputFields col-md-9"
                   style={{ width: "100%", marginleft: "10px" }}
                   onChange={e => this.setState({ userTable: e.target.value })}
                 />
@@ -100,10 +108,12 @@ class ConsultCompanyForm extends Component {
             </div>
             <div className="row">
               <div className="col-md-12">
-                <table className="table">
+                <table className="table table-main">
                   <thead>
                     <tr>
-                      <th scope="col">ID</th>
+                      <th scope="col" style={{ display: "none" }}>
+                        ID
+                      </th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Cnpj</th>
                       <th scope="col">Contato</th>
@@ -116,7 +126,7 @@ class ConsultCompanyForm extends Component {
                     {this.state.users.map(company => {
                       return (
                         <tr key={`userTable${company.id}`}>
-                          <td>{company.id}</td>
+                          <td style={{ display: "none" }}>{company.id}</td>
                           <td>{company.empresa}</td>
                           <td>{company.cnpj}</td>
                           <td>
@@ -136,6 +146,7 @@ class ConsultCompanyForm extends Component {
                             <button
                               onClick={e => this.editCompany(company.id)}
                               className="join-btn-no-transform mr-1"
+                              style={{ widht: "20px;" }}
                             >
                               Editar
                             </button>
