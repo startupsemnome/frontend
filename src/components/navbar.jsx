@@ -70,13 +70,14 @@ class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav w-100">
               <li className="nav-item active" style={{ margin: "15px" }}>
-                <Link to="/dashboard" className="nav-link">
-                  DASHBOARD
-                </Link>
-              </li>
-              <li className="nav-item active" style={{ margin: "15px" }}>
                 <Link to="/institutional" className="nav-link">
                   INSTITUCIONAL
+                </Link>
+              </li>
+
+              <li className="nav-item active" style={{ margin: "15px" }}>
+                <Link to="/dashboard" className="nav-link">
+                  DASHBOARD
                 </Link>
               </li>
 
