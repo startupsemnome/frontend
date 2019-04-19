@@ -7,9 +7,13 @@ class Content extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <h3 className="contentLogin">Olá usuario</h3>
-        <ContentLoginform history={this.props.history} setLogin={this.props.setLogin} setNavbarOpen={this.props.setNavbarOpen} />
+      <div className="containerLogin" style={{ marginTop: "90px" }}>
+        <h3 className="contentLogin">Seja bem Vindo!</h3>
+        <ContentLoginform
+          history={this.props.history}
+          setLogin={this.props.setLogin}
+          setNavbarOpen={this.props.setNavbarOpen}
+        />
       </div>
     );
   }

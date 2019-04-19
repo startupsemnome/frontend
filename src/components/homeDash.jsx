@@ -6,17 +6,23 @@ import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
 import { Link } from "react-router-dom";
-import { Doughnut, defaults, Chart, Bar } from 'react-chartjs-2';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, } from 'recharts';
-import { Row, Col, Card } from 'react-materialize';
+import { Doughnut, defaults, Chart, Bar } from "react-chartjs-2";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip
+} from "recharts";
+import { Row, Col, Card } from "react-materialize";
 
 import axios from "axios";
 import env from "./../consts";
 
-import ComposedResponsive from "./graphics/composedResponsive.jsx"
+import ComposedResponsive from "./graphics/composedResponsive.jsx";
 
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
-
 
 class HomeDash extends Component {
   constructor(props) {
@@ -25,7 +31,7 @@ class HomeDash extends Component {
       ButtoLogin: false,
       qtdUsers: 0,
       qtdProblem: 0,
-      show: "",
+      show: "USER",
       qtdResource: 0,
       qtdCompany: 0
     };
@@ -46,17 +52,25 @@ class HomeDash extends Component {
             <div className="df-c">
               <div class="card">
                 <div className="card-body">
-                  <span className="percentage-number">{this.state.qtdCompany}</span>
+                  <span className="percentage-number">
+                    {this.state.qtdCompany}
+                  </span>
                   <h5 className="card-title">Empresas</h5>
-                  <p className="card-text"> Os dados exibidos à cima são de acordo com a quanidade de empresas cadastradas.</p>
-                  <br></br>
-                  <a href="#" onClick={() => this.showGrafico("COMPANY")} className="btn btn-primary">Saiba mais!</a>
+                  <br />
+                  <a
+                    href="#"
+                    onClick={() => this.showGrafico("COMPANY")}
+                    className="btn btn-primary"
+                  >
+                    Ver Gráfico
+                  </a>
                 </div>
                 <div className="card-footer">
-                  <small className="text-muted">Atualizado à 4 minutos atrás</small>
+                  <small className="text-muted">
+                    <Link to="/consultar-empresa">Lista De Empresas</Link>
+                  </small>
                 </div>
-                <div className="df-c">
-                </div>
+                <div className="df-c" />
               </div>
             </div>
           </div>
@@ -65,15 +79,24 @@ class HomeDash extends Component {
             <div className="df-c">
               <div className="card">
                 <div className="card-body">
-                  <span className="percentage-number">{this.state.qtdResource}</span>
+                  <span className="percentage-number">
+                    {this.state.qtdResource}
+                  </span>
                   <h5 className="card-title">Recursos</h5>
-                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <br></br>
-                  <a href="#" onClick={() => this.showGrafico("RESOURCE")} className="btn btn-primary">Saiba mais!</a>
+                  <br />
+                  <a
+                    href="#"
+                    onClick={() => this.showGrafico("RESOURCE")}
+                    className="btn btn-primary"
+                  >
+                    Ver Gráfico
+                  </a>
                 </div>
                 <div className="df-c">
                   <div className="card-footer">
-                    <small className="text-muted">Atualizado à 4 minutos atrás</small>
+                    <small className="text-muted">
+                      <Link to="/consultar-recurso">Lista De Recursos</Link>
+                    </small>
                   </div>
                 </div>
               </div>
@@ -84,16 +107,24 @@ class HomeDash extends Component {
             <div className="df-c">
               <div className="card">
                 <div className="card-body">
-                  <span className="percentage-number">{this.state.qtdProblem}</span>
+                  <span className="percentage-number">
+                    {this.state.qtdProblem}
+                  </span>
                   <h5 className="card-title">Problemas</h5>
-                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <br></br>
-                  <a href="#" onClick={() => this.showGrafico("PROBLEM")} className="btn btn-primary">Saiba mais!</a>
+                  <br />
+                  <a
+                    href="#"
+                    onClick={() => this.showGrafico("PROBLEM")}
+                    className="btn btn-primary"
+                  >
+                    Ver Gráfico
+                  </a>
                 </div>
-                <div className="df-c">
-                </div>
+                <div className="df-c" />
                 <div className="card-footer">
-                  <small className="text-muted">Atualizado à 6 minutos atrás</small>
+                  <small className="text-muted">
+                    <Link to="/consultar-problema">Lista De Problemas</Link>
+                  </small>
                 </div>
               </div>
             </div>
@@ -103,16 +134,24 @@ class HomeDash extends Component {
             <div className="df-c">
               <div className="card">
                 <div className="card-body">
-                  <span className="percentage-number">{this.state.qtdUsers}</span>
+                  <span className="percentage-number">
+                    {this.state.qtdUsers}
+                  </span>
                   <h5 className="card-title">Usuários</h5>
-                  <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <br></br>
-                  <a href="#" onClick={() => this.showGrafico("USER")} className="btn btn-primary">Saiba mais!</a>
+                  <br />
+                  <a
+                    href="#"
+                    onClick={() => this.showGrafico("USER")}
+                    className="btn btn-primary"
+                  >
+                    Ver Gráfico
+                  </a>
                 </div>
-                <div className="df-c">
-                </div>
+                <div className="df-c" />
                 <div className="card-footer">
-                  <small className="text-muted">Atualizado à 8 minutos atrás</small>
+                  <small className="text-muted">
+                    <Link to="/consultar-usuario">Lista De Usuarios</Link>
+                  </small>
                 </div>
               </div>
             </div>
@@ -120,11 +159,26 @@ class HomeDash extends Component {
         </div>
         <h4 style={{ display: "none" }}>Dialog Shown/Hidden with Logic</h4>
 
-        <ComposedResponsive type={"COMPANY"} show={this.state.show} qtdAtual={this.state.qtdCompany} />
-        <ComposedResponsive type={"USER"} show={this.state.show} qtdAtual={this.state.qtdUsers} />
-        <ComposedResponsive type={"RESOURCE"} show={this.state.show} qtdAtual={this.state.qtdResource} />
-        <ComposedResponsive type={"PROBLEM"} show={this.state.show} qtdAtual={this.state.qtdProblem} />
-
+        <ComposedResponsive
+          type={"COMPANY"}
+          show={this.state.show}
+          qtdAtual={this.state.qtdCompany}
+        />
+        <ComposedResponsive
+          type={"USER"}
+          show={this.state.show}
+          qtdAtual={this.state.qtdUsers}
+        />
+        <ComposedResponsive
+          type={"RESOURCE"}
+          show={this.state.show}
+          qtdAtual={this.state.qtdResource}
+        />
+        <ComposedResponsive
+          type={"PROBLEM"}
+          show={this.state.show}
+          qtdAtual={this.state.qtdProblem}
+        />
       </div>
     );
   }
@@ -204,4 +258,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(HomeDash);
-

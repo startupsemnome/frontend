@@ -6,7 +6,8 @@
 .h1-main {
   font-size: 25px;
   font-weight: 700;
-  color:#1b1919;    // color: $colorMain;
+  color: white;
+  font-weight: 700;
   text-align: center;
 }
 .h3-main {
@@ -14,4 +15,12 @@
   font-weight: 700;
   color: $colorMain;
   text-align: left;
+}
+
+table {
+  color: #030303 !important;
+  background-color: rgb(250, 255, 189) !important;
+  & th {
+    border-top: 1px solid #211f1f !important;
+  }
 }
