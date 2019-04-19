@@ -76,11 +76,11 @@ class ConsultResourceForm extends Component {
 
   render() {
     return (
-      <div className="container col-md-10" style={{ backgroundColor: `${this.props.cor ? this.props.cor : ''}` }}>
+      <div className="container col-md-8" style={{ backgroundColor: `${this.props.cor ? this.props.cor : ''}` }}>
         {!this.state.resourceListEdit[1] ?
           <div>
             <div className="row">
-              <div className="col-md-10">
+              <div className="col-md-12">
                 <h1 className="h1-main">Listar Recursos</h1>
               </div>
             </div>
