@@ -63,7 +63,7 @@ class Institutional extends Component {
           <HowWorking />
           <SectionCarousel />
           <SectionBasics />
-          <Notificacao />
+          {/* <Notificacao /> */}
         </div>
         <br />
         <br />
