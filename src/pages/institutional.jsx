@@ -32,13 +32,12 @@ class Institutional extends Component {
     return (
       <div>
         <Header
-          brand="Material Kit React"
+          brand="Resource Manager"
           rightLinks={<HeaderLinks />}
           fixed
           color="transparent"
           changeColorOnScroll={{
-            height: 400,
-            color: "white"
+            height: 400
           }}
           {...rest}
         />
@@ -47,9 +46,9 @@ class Institutional extends Component {
             <GridContainer>
               <GridItem>
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Material Kit React.</h1>
+                  <h1 className={classes.title}>Connecting Minds</h1>
                   <h3 className={classes.subtitle}>
-                    A Badass Material-UI Kit based on Material Design.
+                    The Perfect Solutions For Your Business.
                   </h3>
                 </div>
               </GridItem>

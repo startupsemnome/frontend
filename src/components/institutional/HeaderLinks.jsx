@@ -19,25 +19,18 @@ import { Link } from "react-router-dom";
 
 import headerLinksStyle from "./../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
-
-class HeaderLinks extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-
-    const { classes } = this.props;
-    return (
-      <List className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <Button
-            href="https://www.creative-tim.com/product/material-kit-react"
-            color="transparent"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <CloudDownload className={classes.icons} /> Contato
+function HeaderLinks({ ...props }) {
+  const { classes } = props;
+  return (
+    <List className={classes.list}>
+      <ListItem className={classes.listItem}>
+        <Button
+          href=""
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+         Entre em Contato
         </Button>
           <Button
             href="/lista-projetos"
@@ -86,5 +79,3 @@ class HeaderLinks extends Component {
 const mapStateToProps = state => ({ auth: state.auth });
 
 export default withStyles(headerLinksStyle)(connect(mapStateToProps, null)(HeaderLinks));
-
-

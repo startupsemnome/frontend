@@ -11,6 +11,7 @@
   margin-top: 30px;
   cursor: pointer;
   transition: 0.4s;
+
   &:hover {
     background: rgba(20, 20, 20, 0.8);
     padding: 10px 80px;
@@ -18,7 +19,7 @@
 }
 
 .join-btn-no-transform {
-  border: 1px solid rgba(0,0,0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.6);
   font-size: 16px;
   color: white;
@@ -26,6 +27,7 @@
   border-radius: 2px;
   margin: auto;
   cursor: pointer;
+
   &:hover {
     background: rgba(20, 20, 20, 0.8);
   }
