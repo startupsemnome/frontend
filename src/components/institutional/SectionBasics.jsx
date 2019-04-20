@@ -88,8 +88,17 @@ class SectionBasics extends Component {
             <br />
             <br />
             <Row>
-              <Col>
-                <button type="button" className="join-btn">
+              <Col
+                style={{
+                  display: "flex",
+                  justifyContent: "center"
+                }}
+              >
+                <button
+                  type="button"
+                  className="join-btn-no-transform mr-1 login"
+                  style={{ width: "100%" }}
+                >
                   Cadastrar
                 </button>
               </Col>
