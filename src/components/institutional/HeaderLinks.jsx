@@ -30,12 +30,25 @@ class HeaderLinks extends Component {
       <List className={classes.list}>
         <ListItem className={classes.listItem}>
           <Button
-            href="https://www.creative-tim.com/product/material-kit-react"
+            href="#header1"
             color="transparent"
-            target="_blank"
             className={classes.navLink}
           >
             Sobre nós
+          </Button>
+          <Button
+            href="#header2"
+            color="transparent"
+            className={classes.navLink}
+          >
+            Clientes
+          </Button>
+          <Button
+            href="#header3"
+            color="transparent"
+            className={classes.navLink}
+          >
+            Cadastro
           </Button>
           <Link
             to="/lista-projetos"
