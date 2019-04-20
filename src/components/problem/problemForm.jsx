@@ -141,88 +141,113 @@ class ProblemForm extends Component {
   render() {
     return (
       <div className="loginUser col-md-12">
-        <form className="signupForm">
-          <ul class="noBullet">
-            <li>
-              <label className="labelFields col-md-12">Empresa:</label>
-              <input
-                className="inputFields col-md-10"
-                type="text"
-                placeholder="Digite o email do solicitante"
-                value={this.state.empresa}
-                onChange={e => this.setState({ empresa: e.target.value })}
-                required
-              />
-            </li>
-          </ul>
-          <label className="labelFields col-md-2">Solicitante:</label>
-          <input
-            className="inputFields col-md-10"
-            type="text"
-            placeholder="Digite o nome do solicitante"
-            value={this.state.solicit}
-            onChange={e => this.setState({ solicit: e.target.value })}
-            required
-          />
-          <br></br>
-          <label className="labelFields col-md-2">Email:</label>
-          <input
-            className="inputFields col-md-10"
-            type="text"
-            placeholder="Digite o email do solicitante"
-            value={this.state.email}
-            onChange={e => this.setState({ email: e.target.value })}
-            required
-          />
-
-          <br></br>
-          <label className="labelFields col-md-2">Telefone:</label>
-          <input
-            className="inputFields col-md-10"
-            type="number"
-            placeholder="Digite o telefone do solicitante"
-            value={this.state.telef}
-            onChange={e => this.setState({ telef: e.target.value })}
-            required
-          />
-
-          <br></br>
-          <label className="labelFields col-md-12">Novo Problema:</label>
-          <input
-            className="inputFields col-md-10"
-            type="text"
-            placeholder="Descreva o problema"
-            value={this.state.nprob}
-            onChange={e => this.setState({ nprob: e.target.value })}
-            required
-          />
-
-          <label className="labelFields" style={{ color: "red" }}>
+        <form className="signupForm form-inline">
+          <div className="col-md-7">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Empresa:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o email do solicitante"
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-5">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Solicitante:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o nome do solicitante"
+              value={this.state.solicit}
+              onChange={e => this.setState({ solicit: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-8">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Email:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o email do solicitante"
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-4">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Telefone:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="number"
+              placeholder="Digite o telefone do solicitante"
+              value={this.state.telef}
+              onChange={e => this.setState({ telef: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Novo Problema:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Descreva o problema"
+              value={this.state.nprob}
+              onChange={e => this.setState({ nprob: e.target.value })}
+              required
+            />
+          </div>
+          <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
-          <Row>
-            <Col>
-
-              <button
-                type="button"
-                onClick={() => { !this.props.id ? this.createProblem("create") : this.createProblem("update", this.props.id) }}
-                className="join-btn"
-              >
-                {!this.props.id ? "Criar" : "Editar"} Problema
+          <Col className="col-md-12 d-flex justify-content-center">
+            <button
+              type="button"
+              onClick={() => {
+                !this.props.id
+                  ? this.createProblem("create")
+                  : this.createProblem("update", this.props.id)
+              }}
+              className="join-btn-no-transform mr-1 login"
+              style={{ width: "25%", margin: "0px" }}
+            >
+              {!this.props.id ? "Criar" : "Editar"} Problema
               </button>:
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <button
-                type="button"
-                onClick={() => { this.findResources() }}
-                className="join-btn"
-              >
-                Possiveis Soluções
+            <div />
+            <button
+              type="button"
+              onClick={() => { this.findResources() }}
+              className="join-btn-no-transform mr-1 login"
+              style={{ width: "25%", margin: "0px" }}
+            >
+              Possiveis Soluções
               </button>
-            </Col>
-          </Row>
+          </Col>
         </form>
         <SweetAlert
           success

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
 import env from "../../consts";
 class CompanyForm extends Component {
@@ -97,7 +96,7 @@ class CompanyForm extends Component {
             rua: data.rua
           });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     }
@@ -323,7 +322,7 @@ class CompanyForm extends Component {
             />
           </div>
 
-          <label className="labelFields col-md-12" style={{ color: "red;" }}>
+          <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
           <Col className="col-md-12 d-flex justify-content-center">
