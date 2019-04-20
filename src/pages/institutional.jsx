@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import InstitutionalForm from "../components/institutional/institutionalForm";
 import Header from "../components/institutional/Header.jsx";
 import HeaderLinks from "../components/institutional/HeaderLinks.jsx";
 import GridContainer from "../components/institutional/GridContainer.jsx";
 import GridItem from "../components/institutional/GridItem.jsx";
 import Parallax from "../components/institutional/Parallax.jsx";
-// nodejs library that concatenates classes 
+// nodejs library that concatenates classes
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "./../assets/jss/material-kit-react/views/components.jsx";
 
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
-import SectionCompletedExamples from "../components/institutional/SectionCompletedExamples.jsx";
+import HowWorking from "../components/institutional/HowWorking.jsx";
 import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
@@ -41,7 +41,11 @@ class Institutional extends Component {
           }}
           {...rest}
         />
-        <Parallax image={require("./../assets/img/bg4.jpg")}>
+        <Parallax
+          image={
+            "https://www.awal.com/hubfs/Awal%20-%20February%202018%20Folder/Images/Monday-finding_a_manager_v1.jpg"
+          }
+        >
           <div className={classes.container}>
             <GridContainer>
               <GridItem>
@@ -56,12 +60,15 @@ class Institutional extends Component {
           </div>
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <SectionCompletedExamples />
+          <HowWorking />
           <SectionCarousel />
           <SectionBasics />
-          <Notificacao />
+          {/* <Notificacao /> */}
         </div>
-        <Footer />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
@@ -69,5 +76,9 @@ class Institutional extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen }, dispatch);
 
-export default withStyles(componentsStyle)(connect(null, mapDispatchToProps)(Institutional));
-
+export default withStyles(componentsStyle)(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Institutional)
+);

@@ -42,15 +42,18 @@ class HeaderLinks extends Component {
 =======
             Sobre nós
           </Button>
-          <Button
-            href="/lista-projetos"
+          <Link
+            to="/lista-projetos"
             color="transparent"
-            target="_blank"
             className={classes.navLink}
           >
             Notificações <br />
             <span class="badge badge-light" />
+<<<<<<< HEAD
           </Button>
+>>>>>>> develop
+=======
+          </Link>
 >>>>>>> develop
         </ListItem>
 
