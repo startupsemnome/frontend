@@ -30,52 +30,56 @@ function HeaderLinks({ ...props }) {
           target="_blank"
           className={classes.navLink}
         >
-         Entre em Contato
+          Entre em Contato
         </Button>
+        <Button
+          href="/lista-projetos"
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+          Notificações <br />
+          <span class="badge badge-light" />
+        </Button>
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Link
+          to="/login"
+          to={this.props.auth.login ? "/dashboard" : "/login"}
+          color="transparent"
+          className={classes.navLink}
+        >
+          {this.props.auth.login ? "Dashboard" : "Login"}
+        </Link>
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
+        <Tooltip
+          id="instagram-tooltip"
+          title="Follow us on instagram"
+          placement={window.innerWidth > 959 ? "top" : "left"}
+          classes={{ tooltip: classes.tooltip }}
+        >
           <Button
-            href="/lista-projetos"
             color="transparent"
+            href="https://www.instagram.com/CreativeTimOfficial"
             target="_blank"
             className={classes.navLink}
           >
-            Notificações <br></br><span class="badge badge-light"></span>
+            <i className={classes.socialIcons + " fab fa-instagram"} />
           </Button>
-        </ListItem>
-
-        <ListItem className={classes.listItem}>
-          <Link
-            to="/login"
-            to={this.props.auth.login ? '/dashboard' : '/login'}
-            color="transparent"
-            className={classes.navLink}
-          >
-            {this.props.auth.login ? 'Dashboard' : 'Login'}
-          </Link>
-
-        </ListItem>
-
-        <ListItem className={classes.listItem}>
-          <Tooltip
-            id="instagram-tooltip"
-            title="Follow us on instagram"
-            placement={window.innerWidth > 959 ? "top" : "left"}
-            classes={{ tooltip: classes.tooltip }}
-          >
-            <Button
-              color="transparent"
-              href="https://www.instagram.com/CreativeTimOfficial"
-              target="_blank"
-              className={classes.navLink}
-            >
-              <i className={classes.socialIcons + " fab fa-instagram"} />
-            </Button>
-          </Tooltip>
-        </ListItem>
-      </List>
-    );
-  }
+        </Tooltip>
+      </ListItem>
+    </List>
+  );
 }
 
 const mapStateToProps = state => ({ auth: state.auth });
 
-export default withStyles(headerLinksStyle)(connect(mapStateToProps, null)(HeaderLinks));
+export default withStyles(headerLinksStyle)(
+  connect(
+    mapStateToProps,
+    null
+  )(HeaderLinks)
+);
