@@ -152,7 +152,7 @@ class ProblemForm extends Component {
             <input
               className="inputFields col-md-12"
               type="text"
-              placeholder="Digite o email do solicitante"
+              placeholder="Digite o nome da empresa do solicitante"
               value={this.state.empresa}
               onChange={e => this.setState({ empresa: e.target.value })}
               required
