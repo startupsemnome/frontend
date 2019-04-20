@@ -18,7 +18,6 @@ class ConsultResourceForm extends Component {
   }
 
   findResource() {
-
     // Chama a api do banco com o método buscar
     axios
       .post(env.API + "consult-resource", { search: this.state.buscaTable })
@@ -49,8 +48,6 @@ class ConsultResourceForm extends Component {
   editResource(id) {
     this.setState({ resourceListEdit: [id, true] })
   }
-
-
   loadResources() {
     // Make a request for a user with a given ID
     axios
@@ -69,15 +66,13 @@ class ConsultResourceForm extends Component {
     console.log("teste");
     this.loadResources();
   }
-
   handleEdit() {
     this.setState({ resourceListEdit: [null, false] });
   }
-
   render() {
     return (
-      <div className="container col-md-8" style={{ backgroundColor: `${this.props.cor ? this.props.cor : ''}` }}>
-        {!this.state.resourceListEdit[1] ?
+      <div className="container col-md-8">
+        {!this.state.resourceListEdit[1] ? (
           <div>
             <div className="row">
               <div className="col-md-12">
@@ -86,47 +81,85 @@ class ConsultResourceForm extends Component {
             </div>
             <div className="row mt-2 mb-2">
               {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
-              <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
+              <div
+                className="col-md-12"
+                style={{
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
+                }}
+              >
+                <input
+                  type="text"
+                  className="inputFields col-md-9"
+                  style={{ width: "100%", marginleft: "10px" }}
+                  onChange={e => this.setState({ buscaTable: e.target.value })} 
+                />
+                <button
+                  type="button"
+                  className="join-btn-no-transform mr-1 login col-md-2"
+                  style={{
+                    width: "100%",
+                    borderRadius: "20px",
+                    marginLeft: "10px"
+                  }}
+                  onClick={() => this.findResource()}
+                >
+                  Buscar
+                </button>
               </div>
-              <button type="button" className="join-btn-leo" onClick={() => this.findResource()}>Buscar Recurso</button>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <table class="table">
+                <table class="table table-main">
                   <thead>
                     <tr>
+                      <th scope="col" style={{ display: "none" }}>ID</th>
                       <th scope="col">Nome</th>
                       <th scope="col">Email</th>
                       <th scope="col">Telefone</th>
                       <th scope="col">Cidade</th>
-
                       <th scope="col">Area de Interesse</th>
-
-
-
                       <th scope="col">Opções</th>
                     </tr>
                   </thead>
                   <tbody>
                     {this.state.users.map(resource => {
                       return (
-                        <tr>
-
+                        <tr key={`buscaTable${resource.id}`}>
+                          <td style={{ display: "none" }}>{resource.id}</td>
                           <td>{resource.fname}</td>
-
                           <td>{resource.email}</td>
                           <td>{resource.tel}</td>
                           <td>{resource.cid}</td>
-
                           <td>{resource.areai}</td>
-
-
-
                           <td>
-                            <button onClick={(e) => this.editResource(resource.id)} className="join-btn-no-transform mr-1">Detalhe</button>
-                            <button onClick={(e) => this.editResource(resource.id)} className="join-btn-no-transform mr-1">Editar</button>
-                            <button onClick={(e) => this.excluirResource(resource.id)} className="join-btn-no-transform mr-1">Excluir</button>
+                            <button
+                              onClick={(e) => this.editResource(resource.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
+                            >
+                              Detalhes
+                            </button>
+                            <button
+                              onClick={(e) => this.editResource(resource.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{
+                                width: "100%",
+                                marginBottom: "5px",
+                                marginTop: "5px"
+                              }}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={(e) => this.excluirResource(resource.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
+                            >
+                              Excluir
+                            </button>
                           </td>
                         </tr>
                       );
@@ -135,10 +168,16 @@ class ConsultResourceForm extends Component {
                 </table>
               </div>
             </div>
-          </div> :
-          <RegisterResourceForm edit={this.state.resourceListEdit[1]} history={this.props.history} handleEdit={() => this.handleEdit()} id={this.state.resourceListEdit[0]} />}
+          </div>
+        ) : (
+            <RegisterResourceForm
+              edit={this.state.resourceListEdit[1]}
+              history={this.props.history}
+              handleEdit={() => this.handleEdit()}
+              id={this.state.resourceListEdit[0]}
+            />
+          )}
       </div>
-
     );
   }
 }

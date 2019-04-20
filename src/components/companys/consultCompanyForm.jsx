@@ -84,8 +84,7 @@ class ConsultCompanyForm extends Component {
                   justifyContent: "center",
                   backgroundColor: "rgb(26, 134, 135)",
                   display: "flex"
-                }}
-              >
+                }}>
                 <input
                   type="text"
                   className="inputFields col-md-9"
@@ -100,8 +99,7 @@ class ConsultCompanyForm extends Component {
                     borderRadius: "20px",
                     marginLeft: "10px"
                   }}
-                  onClick={() => this.findCompany()}
-                >
+                  onClick={() => this.findCompany()}>
                   Buscar
                 </button>
               </div>
@@ -142,7 +140,7 @@ class ConsultCompanyForm extends Component {
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
-                              Detalhe
+                              Detalhes
                             </button>
                             <button
                               onClick={e => this.editCompany(company.id)}
@@ -172,12 +170,12 @@ class ConsultCompanyForm extends Component {
             </div>
           </div>
         ) : (
-          <CompanyForm
-            history={this.props.history}
-            edit={this.state.companyEdit[1]}
-            id={this.state.companyEdit[0]}
-          />
-        )}
+            <CompanyForm
+              history={this.props.history}
+              edit={this.state.companyEdit[1]}
+              id={this.state.companyEdit[0]}
+            />
+          )}
       </div>
     );
   }

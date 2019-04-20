@@ -111,7 +111,7 @@ class ProblemForm extends Component {
 
   callResource() {
     this.setState({ modal: !this.state.modal })
-    alert("sera comunicado os recursos");
+    alert("Será comunicado os recursos");
   }
 
   findResources() {
@@ -144,15 +144,15 @@ class ProblemForm extends Component {
         <form className="signupForm">
           <ul class="noBullet">
             <li>
-            <label className="labelFields col-md-12">Empresa:</label>
-            <input
-              className="inputFields col-md-10"
-              type="text"
-              placeholder="Digite o email do solicitante"
-              value={this.state.empresa}
-              onChange={e => this.setState({ empresa: e.target.value })}
-              required
-          />
+              <label className="labelFields col-md-12">Empresa:</label>
+              <input
+                className="inputFields col-md-10"
+                type="text"
+                placeholder="Digite o email do solicitante"
+                value={this.state.empresa}
+                onChange={e => this.setState({ empresa: e.target.value })}
+                required
+              />
             </li>
           </ul>
           <label className="labelFields col-md-2">Solicitante:</label>
@@ -202,7 +202,7 @@ class ProblemForm extends Component {
           </label>
           <Row>
             <Col>
-            
+
               <button
                 type="button"
                 onClick={() => { !this.props.id ? this.createProblem("create") : this.createProblem("update", this.props.id) }}
