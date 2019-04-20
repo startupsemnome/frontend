@@ -19,14 +19,12 @@ import { Link } from "react-router-dom";
 
 import headerLinksStyle from "./../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
-
 class HeaderLinks extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-
     const { classes } = this.props;
     return (
       <List className={classes.list}>
@@ -37,21 +35,36 @@ class HeaderLinks extends Component {
             target="_blank"
             className={classes.navLink}
           >
+<<<<<<< HEAD
             <CloudDownload className={classes.icons} /> Contato
         </Button>
 
+=======
+            Sobre nós
+          </Button>
+          <Button
+            href="/lista-projetos"
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            Notificações <br />
+            <span class="badge badge-light" />
+          </Button>
+>>>>>>> develop
         </ListItem>
 
         <ListItem className={classes.listItem}>
           <Link
 
             to="/login"
-            to={this.props.auth.login ? '/dashboard' : '/login'}
+            to={this.props.auth.login ? "/dashboard" : "/login"}
             color="transparent"
             className={classes.navLink}
           >
-            {this.props.auth.login ? 'Dashboard' : 'Login'}
+            {this.props.auth.login ? "Dashboard" : "Login"}
           </Link>
+<<<<<<< HEAD
         </ListItem>
 
         <ListItem className={classes.listItem}>
@@ -63,6 +76,8 @@ class HeaderLinks extends Component {
           >
             {this.props.auth.login ? 'Notificações' : 'Lista de Projetos'}
           </Link>
+=======
+>>>>>>> develop
         </ListItem>
 
         <ListItem className={classes.listItem}>
@@ -89,6 +104,9 @@ class HeaderLinks extends Component {
 
 const mapStateToProps = state => ({ auth: state.auth });
 
-export default withStyles(headerLinksStyle)(connect(mapStateToProps, null)(HeaderLinks));
-
-
+export default withStyles(headerLinksStyle)(
+  connect(
+    mapStateToProps,
+    null
+  )(HeaderLinks)
+);

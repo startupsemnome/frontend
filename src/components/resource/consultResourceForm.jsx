@@ -76,7 +76,7 @@ class ConsultResourceForm extends Component {
 
   render() {
     return (
-      <div className="container col-md-12" style={{ backgroundColor: `${this.props.cor ? this.props.cor : ''}` }}>
+      <div className="container col-md-8" style={{ backgroundColor: `${this.props.cor ? this.props.cor : ''}` }}>
         {!this.state.resourceListEdit[1] ?
           <div>
             <div className="row">

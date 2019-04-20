@@ -11,6 +11,8 @@ export default class RegisterResource extends Component {
     return (
       <div className="container">
         <h1 className="h1-main">Cadastrar Recurso</h1>
+        <br />
+        <br />
         <RegisterResourceForm />
       </div>
     );

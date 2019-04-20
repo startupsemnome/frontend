@@ -1,5 +1,5 @@
 const navbar = {
-  isNavbarOpen: false,
+  isNavbarOpen: (localStorage.getItem("userName") ? true : false ),
 };
 
 export default (state = navbar, action) => {

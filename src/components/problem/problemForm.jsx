@@ -140,13 +140,13 @@ class ProblemForm extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
+      <div className="loginUser col-md-12">
         <form className="signupForm">
           <ul class="noBullet">
             <li>
-            <label className="labelFields col-md-2">Empresa:</label>
+            <label className="labelFields col-md-12">Empresa:</label>
             <input
-              className="inputFields col-md-12"
+              className="inputFields col-md-10"
               type="text"
               placeholder="Digite o email do solicitante"
               value={this.state.empresa}
@@ -157,7 +157,7 @@ class ProblemForm extends Component {
           </ul>
           <label className="labelFields col-md-2">Solicitante:</label>
           <input
-            className="inputFields"
+            className="inputFields col-md-10"
             type="text"
             placeholder="Digite o nome do solicitante"
             value={this.state.solicit}
@@ -167,7 +167,7 @@ class ProblemForm extends Component {
           <br></br>
           <label className="labelFields col-md-2">Email:</label>
           <input
-            className="inputFields col-md-12"
+            className="inputFields col-md-10"
             type="text"
             placeholder="Digite o email do solicitante"
             value={this.state.email}
@@ -178,7 +178,7 @@ class ProblemForm extends Component {
           <br></br>
           <label className="labelFields col-md-2">Telefone:</label>
           <input
-            className="inputFields col-md-12"
+            className="inputFields col-md-10"
             type="number"
             placeholder="Digite o telefone do solicitante"
             value={this.state.telef}
@@ -187,9 +187,9 @@ class ProblemForm extends Component {
           />
 
           <br></br>
-          <label className="labelFields col-md-2">Novo Problema:</label>
+          <label className="labelFields col-md-12">Novo Problema:</label>
           <input
-            className="inputFields col-md-12"
+            className="inputFields col-md-10"
             type="text"
             placeholder="Descreva o problema"
             value={this.state.nprob}

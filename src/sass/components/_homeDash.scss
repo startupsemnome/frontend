@@ -2,18 +2,18 @@ h1 {
   color: #262829;
   font-weight: bold;
 }
-.buttons-right>button {
+.buttons-right > button {
   float: right;
   margin: 5px;
 }
 
-.buttonLogin{
-  color:#fff;
-  font-size:25px;
-  text-decoration:none;
+.buttonLogin {
+  color: #fff;
+  font-size: 25px;
+  text-decoration: none;
 }
- a:hover {
-    color: inherit; 
+a:hover {
+  color: inherit;
 }
 .percentage-number {
   color: #202422;
@@ -35,7 +35,16 @@ h1 {
   padding: 20px 9px;
 }
 
-.df-c{
+.df-c {
   display: flex;
   justify-content: center;
+}
+
+.recharts-wrapper {
+  background-color: #103754;
+  color: white;
+}
+
+text {
+  color: white;
 }

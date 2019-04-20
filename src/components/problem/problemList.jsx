@@ -68,7 +68,7 @@ class ProblemList extends Component {
   }
   render() {
     return (
-      <div className="container col-md-12">
+      <div className="container col-md-8">
         {!this.state.problemListEdit[1] ?
           <div>
             <div className="row">
