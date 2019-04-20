@@ -19,7 +19,7 @@ class SectionBasics extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: "50px" }}>
         <div>
           <h1 className="footer-H1-Question">Deseja cadastrar o seu perfil?</h1>
         </div>

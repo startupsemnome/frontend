@@ -13,6 +13,11 @@ import carouselStyle from "./carouselStyle.jsx";
 import image3 from "./../../assets/img/bg3.jpg";
 
 class SectionCarousel extends React.Component {
+  componentDidMount() {
+    var slicks = document.getElementsByClassName("slick-arrow");
+    slicks[0].style.display = "none";
+    slicks[1].style.display = "none";
+  }
   render() {
     const { classes } = this.props;
     const settings = {
@@ -30,7 +35,14 @@ class SectionCarousel extends React.Component {
         </div>
         <div
           className="col-md-offset-2 col-md-8"
-          style={{ margin: "auto", marginTop: "40px", maxWidth: "71%" }}
+          style={{
+            margin: "auto",
+            marginTop: "40px",
+            maxWidth: "68%",
+            webkitBoxShadow: "0px 0px 29px -3px rgba(99,98,99,1)",
+            mozBoxShadow: "0px 0px 29px -3px rgba(99,98,99,1)",
+            boxShadow: "0px 0px 29px -3px rgba(99,98,99,1)"
+          }}
         >
           <Carousel {...settings}>
             <div>
