@@ -149,7 +149,6 @@ class RegisterResourceForm extends Component {
     return false;
   }
 
-
   render() {
     return (
       <div className="loginUser col-md-12">
