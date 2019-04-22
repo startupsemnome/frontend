@@ -22,6 +22,7 @@ import Footer from "../components/institutional/Footer.jsx";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
+import { Helmet } from "react-helmet";
 
 class Institutional extends Component {
   componentDidMount() {
@@ -31,6 +32,13 @@ class Institutional extends Component {
     const { classes, ...rest } = this.props;
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content="página institucional responsável por apresentar nosso produto/negócio e possibilitará o acesso do usuário." />
+          <meta name="keywords" content="site, tela inicial, resource manager, institucional" />
+          <meta name="author" content="Equipe Resource Manager" />
+          <title>Resource Manager</title>
+        </Helmet>
         <Header
           brand="Resource Manager"
           rightLinks={<HeaderLinks />}
