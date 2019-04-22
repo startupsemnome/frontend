@@ -4,7 +4,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-
+import AcceptResourceForm from "./acceptResourceForm";
 
 
 
@@ -247,6 +247,9 @@ class ProblemForm extends Component {
             >
               Possiveis Soluções
               </button>
+                       
+            <AcceptResourceForm />
+
           </Col>
         </form>
         <SweetAlert
@@ -266,13 +269,14 @@ class ProblemForm extends Component {
                   <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
               </FormGroup>
               <FormGroup className="ml-2">
-                <Label for="exampleSelect">Formacao <br />
+                <Label for="exampleSelect">Formação <br />
                   <Input type="select" name="select" id="exampleSelect">
                     <option>SISTEMAS DA INFORMACAO</option>
+                    <option>CIÊNCIA DA COMPUTAÇÃO</option>
                   </Input></Label>
               </FormGroup>
               <FormGroup className="ml-2">
-                <Label for="exampleSelect">Experiencia</Label>
+                <Label for="exampleSelect">Experiência</Label>
                 <Input type="select" name="select" id="exampleSelect">
                   <option>1 ANOS</option>
                 </Input>
@@ -285,8 +289,8 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
-                  <th>Formacao</th>
-                  <th>Area de Interece</th>
+                  <th>Formação</th>
+                  <th>Area de Interesse</th>
                   <th>Cidade</th>
                 </tr>
               </thead>
