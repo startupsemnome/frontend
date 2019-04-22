@@ -1,23 +1,28 @@
 import React, { Component } from "react";
 import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
+import axios from "axios";
+import env from "./../../consts";
+import ConsultResourceForm from "../resource/consultResourceForm";
 
 class AcceptResourceForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      users:[],
+      name:"Leonardo",
+      error:""
     };
-
+    // this.hasErros = this.hasErros.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   }
-
+  
   render() {
     return (        
          <div>
@@ -27,17 +32,66 @@ class AcceptResourceForm extends React.Component {
             onClick={this.toggle}>
               Recursos Aceitos  
         </Button>
-
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+            
+        
+        <Modal size ="lg" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Recursos Aceitos</ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <Form inline={true}>
+              {/* <FormGroup>
+                <Label for="exampleEmail">Nome <br />
+                  <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
+              </FormGroup> */}
+              {/* <FormGroup className="ml-2">
+                <Label for="exampleSelect">Formação <br />
+                  <Input type="select" name="select" id="exampleSelect">
+                    <option>SISTEMAS DA INFORMACAO</option>
+                    <option>CIÊNCIA DA COMPUTAÇÃO</option>
+                  </Input></Label> */}
+              {/* </FormGroup> */}
+              {<FormGroup className="ml-2">
+                <Label for="exampleSelect">Habilidades</Label>
+                <Input type="select" name="select" id="exampleSelect">
+                  <option>Desenvolvimento de Sistemas WEB</option>
+                  <option>Gerenciamento de Projetos</option>
+                  <option>Infraestrutura e Redes</option>
+                  <option>Ramo Hospitalar</option>
+                </Input>
+              </FormGroup> }
+            </Form>
+            <br />
+            <br />
+            <Table dark>
+              <thead>
+                <tr>                  
+                  <th>Nome</th>
+                  <th>Formação</th>
+                  <th>Habilidades</th>
+                  <th>Experiência</th>
+                  <th>Contato</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.users.map(resource => {
+                  return (
+                    <tr>                      
+                      <td>Wandell</td>
+                      <td>{resource.formacao}</td>
+                      <td>{resource.hab}</td>
+                      <td>{resource.cid}</td>
+                      <td>{resource.email}<br />
+                      {resource.cel}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </ModalBody>
           <ModalFooter>
-            <Button className="join-btn-no-transform mr-1 login" onClick={this.toggle}>Do Something</Button>{' '}
-            <Button className="join-btn-no-transform mr-1 login" onClick={this.toggle}>Cancel</Button>
+            <Button className="join-btn-no-transform mr-1 login" onClick={this.toggle}>Enviar Proposta</Button>{' '}
+            <Button className="join-btn-no-transform mr-1 login" onClick={this.toggle}>Voltar</Button>
           </ModalFooter>
-        </Modal>
+        </Modal>      
       </div>
     );
   }
