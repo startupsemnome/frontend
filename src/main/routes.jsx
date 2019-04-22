@@ -35,6 +35,7 @@ import EditResource from "../pages/editResource";
 import RegisterUsuario from "../pages/registerUser";
 import Login from "../pages/login";
 import Institutional from "../pages/institutional";
+import RecursoSelecionado from "../pages/recursoSelecionado";
 
 // Page Accept
 import Accept from "../pages/accept";
@@ -57,6 +58,7 @@ export default class Routes extends Component {
           <Route exact={true} path="/institutional" component={Institutional} />
           <Route exact={true} path="/" component={Institutional} />
           <Route exact={true} path="/login" component={Login} />
+          <Route exact={true} path="/recurso-seleciondo" component={RecursoSelecionado} />
 
           <PrivateRoute exact={true} path="/lista-projetos" component={ListProjects} />
           <PrivateRoute exact={true} path="/dashboard" component={Dashboard} />
