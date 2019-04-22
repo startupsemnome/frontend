@@ -31,7 +31,7 @@ class SectionCarousel extends React.Component {
     return (
       <div>
         <div>
-          <h1 className="footer-H1-Question">Quem Já esta usando a gente?</h1>
+          <h1 id="header2" className="footer-H1-Question">Quem Já esta usando a gente?</h1>
         </div>
         <div
           className="col-md-offset-2 col-md-8"

@@ -30,12 +30,25 @@ class HeaderLinks extends Component {
       <List className={classes.list}>
         <ListItem className={classes.listItem}>
           <Button
-            href="https://www.creative-tim.com/product/material-kit-react"
+            href="#header1"
             color="transparent"
-            target="_blank"
             className={classes.navLink}
           >
             Sobre nós
+          </Button>
+          <Button
+            href="#header2"
+            color="transparent"
+            className={classes.navLink}
+          >
+            Clientes
+          </Button>
+          <Button
+            href="#header3"
+            color="transparent"
+            className={classes.navLink}
+          >
+            Cadastro
           </Button>
           <Link
             to="/lista-projetos"
@@ -56,24 +69,6 @@ class HeaderLinks extends Component {
           >
             {this.props.auth.login ? "Dashboard" : "Login"}
           </Link>
-        </ListItem>
-
-        <ListItem className={classes.listItem}>
-          <Tooltip
-            id="instagram-tooltip"
-            title="Follow us on instagram"
-            placement={window.innerWidth > 959 ? "top" : "left"}
-            classes={{ tooltip: classes.tooltip }}
-          >
-            <Button
-              color="transparent"
-              href="https://www.instagram.com/CreativeTimOfficial"
-              target="_blank"
-              className={classes.navLink}
-            >
-              <i className={classes.socialIcons + " fab fa-instagram"} />
-            </Button>
-          </Tooltip>
         </ListItem>
       </List>
     );

@@ -23,7 +23,7 @@ class HowWorking extends React.Component {
     return (
       <div className="row">
         <div>
-          <h1 className="footer-H1-Question">
+          <h1 id="header1" className="footer-H1-Question">
             Como funciona nossa plataforma?
           </h1>
         </div>
