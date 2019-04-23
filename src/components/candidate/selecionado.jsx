@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import SweetAlert from "react-bootstrap-sweetalert";
-import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import axios from "axios";
-import env from "./../../consts";
-import { Link } from "react-router-dom";
+import React, { Component } from "./node_modules/react";
+import SweetAlert from "./node_modules/react-bootstrap-sweetalert";
+import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from "./node_modules/reactstrap";
+import axios from "./node_modules/axios";
+import env from "../../consts";
+import { Link } from "./node_modules/react-router-dom";
 class Selecionado extends Component {
   //class CompanyForm extends Component 
   constructor(props) {

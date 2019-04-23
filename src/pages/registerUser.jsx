@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserForm from "../components/user/userForm";
-import { Row, Col } from "reactstrap";
+import { Row, Col } from "../components/node_modules/reactstrap";
 import { Helmet } from "react-helmet";
 
 class RegisterUser extends Component {

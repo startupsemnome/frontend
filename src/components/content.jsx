@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "./node_modules/react";
 import ContentRegister from "./componentsform/contentRegister";
 import ContentLoginform from "./componentsform/contentLoginform";
 class Content extends Component {

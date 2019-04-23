@@ -5,8 +5,8 @@ import { Switch, Route, Router, IndexRoute } from "react-router-dom";
 import { browserHistory } from "react-router";
 
 // Components
-import Navbar from "./../components/navbar";
-import Footer from "./../components/footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 import PrivateRoute from "./privateRoutes";
 // Pages
 import Dashboard from "../pages/home";

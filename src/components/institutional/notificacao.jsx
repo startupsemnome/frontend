@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from 'reactstrap';
+import React from './node_modules/react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from './node_modules/reactstrap';
 
 class Notificacao extends React.Component {
   constructor(props) {

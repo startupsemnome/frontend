@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Progress } from 'reactstrap';
+import React, { Component } from "./node_modules/react";
+import { Button, Form, FormGroup, Label, Input, FormText } from './node_modules/reactstrap';
+import { Progress } from './node_modules/reactstrap';
 
 class DetailsCompanyForm extends Component {
   constructor(props) {

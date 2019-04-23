@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
-import SweetAlert from "react-bootstrap-sweetalert";
-import axios from "axios";
-import env from "./../../consts";
+import React, { Component } from "./node_modules/react";
+import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "./node_modules/reactstrap";
+import SweetAlert from "./node_modules/react-bootstrap-sweetalert";
+import axios from "./node_modules/axios";
+import env from "../../consts";
 
 
 class RegisterResourceForm extends Component {

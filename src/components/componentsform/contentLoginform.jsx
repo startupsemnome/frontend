@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "./node_modules/react";
+import { connect } from "./node_modules/react-redux";
 import { bindActionCreators } from "redux";
 
-import { Row, Col } from "reactstrap";
-import SweetAlert from "react-bootstrap-sweetalert";
-import axios from "axios";
-import env from "./../../consts";
-import { Link } from "react-router-dom";
-import { setNavbarOpen } from "./../../redux/actions/navbarAction";
+import { Row, Col } from "./node_modules/reactstrap";
+import SweetAlert from "./node_modules/react-bootstrap-sweetalert";
+import axios from "./node_modules/axios";
+import env from "../../consts";
+import { Link } from "./node_modules/react-router-dom";
+import { setNavbarOpen } from "../../redux/actions/navbarAction";
 
 class ContentLoginform extends Component {
   constructor(props) {

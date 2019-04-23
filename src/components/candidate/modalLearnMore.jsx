@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React from './node_modules/react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from './node_modules/reactstrap';
 
 class ModalLearnMore extends React.Component {
   constructor(props) {

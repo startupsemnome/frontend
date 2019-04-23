@@ -1,5 +1,5 @@
-import React from 'react';
-import { Jumbotron, Alert } from 'reactstrap';
+import React from './node_modules/react';
+import { Jumbotron, Alert } from './node_modules/reactstrap';
 import TableProjects from "./tableProjects";
 import ModalReturn from "./modalReturn";
 

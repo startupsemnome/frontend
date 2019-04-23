@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "./node_modules/react";
+import { Link } from "./node_modules/react-router-dom";
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
-} from "reactstrap";
+} from "./node_modules/reactstrap";
 
 import logo from "../images/logo-resource.jpg";
 
-import { connect } from "react-redux";
+import { connect } from "./node_modules/react-redux";
 import { bindActionCreators } from "redux";
-import { browserHistory } from "react-router";
+import { browserHistory } from "./node_modules/react-router";
 
-import { setNavbarOpen } from "./../redux/actions/navbarAction";
-import { Logout } from "./../redux/actions/authAction";
+import { setNavbarOpen } from "../redux/actions/navbarAction";
+import { Logout } from "../redux/actions/authAction";
 
 class NavBar extends Component {
   constructor(props) {

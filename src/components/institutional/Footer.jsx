@@ -1,13 +1,13 @@
 /*eslint-disable*/
-import React from "react";
+import React from "./node_modules/react";
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
+import PropTypes from "./node_modules/prop-types";
 // nodejs library that concatenates classes
-import classNames from "classnames";
-import { List, ListItem, withStyles } from "@material-ui/core";
+import classNames from "./node_modules/classnames";
+import { List, ListItem, withStyles } from "./node_modules/@material-ui/core";
 
 // @material-ui/icons
-import Favorite from "@material-ui/icons/Favorite";
+import Favorite from "./node_modules/@material-ui/icons/Favorite";
 
 import footerStyle from "./footerStyle.jsx";
 

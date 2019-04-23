@@ -1,5 +1,5 @@
-import React from 'react';
-import { Table } from 'reactstrap';
+import React from './node_modules/react';
+import { Table } from './node_modules/reactstrap';
 import ModalLearnMore from "./modalLearnMore";
 
 class TableProjects extends React.Component {

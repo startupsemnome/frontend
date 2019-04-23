@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from './node_modules/react';
 import {
   ResponsiveContainer, ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-} from 'recharts';
+} from './node_modules/recharts';
 
 export default class ComposedResponsive extends PureComponent {
   static jsfiddleUrl = '//jsfiddle.net/alidingling/9wnuL90w/';

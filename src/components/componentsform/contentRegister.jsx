@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "./node_modules/react";
 import "./../../bootstrap.min.css";
 
 class ContentRegister extends Component {

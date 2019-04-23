@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
-import SweetAlert from "react-bootstrap-sweetalert";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import React, { Component } from "./node_modules/react";
+import { Row, Col } from "./node_modules/reactstrap";
+import SweetAlert from "./node_modules/react-bootstrap-sweetalert";
+import { Button, Form, FormGroup, Label, Input, FormText } from './node_modules/reactstrap';
 
 class EditCompanyForm extends Component {
   constructor(props) {

@@ -1,23 +1,23 @@
 /*eslint-disable*/
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "./node_modules/react";
+import { connect } from "./node_modules/react-redux";
 import { bindActionCreators } from "redux";
 // react components for routing our app without refresh
 
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
+import withStyles from "./node_modules/@material-ui/core/styles/withStyles";
+import List from "./node_modules/@material-ui/core/List";
+import ListItem from "./node_modules/@material-ui/core/ListItem";
+import Tooltip from "./node_modules/@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
+import { Apps, CloudDownload } from "./node_modules/@material-ui/icons";
 
 // core components
 import Button from "./Button.jsx";
-import { Link } from "react-router-dom";
+import { Link } from "./node_modules/react-router-dom";
 
-import headerLinksStyle from "./../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
+import headerLinksStyle from "../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
 class HeaderLinks extends Component {
   constructor(props) {

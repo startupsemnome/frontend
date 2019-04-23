@@ -1,12 +1,12 @@
-import React, { Component, PureComponent } from "react";
-import { connect } from "react-redux";
+import React, { Component, PureComponent } from "./node_modules/react";
+import { connect } from "./node_modules/react-redux";
 import { bindActionCreators } from "redux";
 
 import "./../bootstrap.min.css";
-import ReactDOM from "react-dom";
-import { Button } from "@progress/kendo-react-buttons";
-import { Link } from "react-router-dom";
-import { Doughnut, defaults, Chart, Bar } from "react-chartjs-2";
+import ReactDOM from "./node_modules/react-dom";
+import { Button } from "./node_modules/@progress/kendo-react-buttons";
+import { Link } from "./node_modules/react-router-dom";
+import { Doughnut, defaults, Chart, Bar } from "./node_modules/react-chartjs-2";
 import {
   AreaChart,
   Area,
@@ -14,15 +14,15 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip
-} from "recharts";
-import { Row, Col, Card } from "react-materialize";
+} from "./node_modules/recharts";
+import { Row, Col, Card } from "./node_modules/react-materialize";
 
-import axios from "axios";
-import env from "./../consts";
+import axios from "./node_modules/axios";
+import env from "../consts";
 
 import ComposedResponsive from "./graphics/composedResponsive.jsx";
 
-import { setNavbarOpen } from "./../redux/actions/navbarAction";
+import { setNavbarOpen } from "../redux/actions/navbarAction";
 
 class HomeDash extends Component {
   constructor(props) {

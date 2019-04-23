@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
-import SweetAlert from "react-bootstrap-sweetalert";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import axios from "axios";
-import env from "./../../consts";
+import React, { Component } from "./node_modules/react";
+import { Row, Col } from "./node_modules/reactstrap";
+import SweetAlert from "./node_modules/react-bootstrap-sweetalert";
+import { Button, Form, FormGroup, Label, Input, FormText } from './node_modules/reactstrap';
+import axios from "./node_modules/axios";
+import env from "../../consts";
 class InstitutionalForm extends Component {
   constructor(props) {
     super(props);

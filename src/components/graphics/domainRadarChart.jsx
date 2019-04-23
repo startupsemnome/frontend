@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from './node_modules/react';
 import {
   Radar, RadarChart, PolarGrid, Legend,
   PolarAngleAxis, PolarRadiusAxis,
-} from 'recharts';
+} from './node_modules/recharts';
 
 const data = [
   {
