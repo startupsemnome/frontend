@@ -97,62 +97,78 @@ class UserForm extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
-        <form className="signupForm">
-          <ul class="noBullet">
-            <li>
-              <label className="labelFields col-md-2">Nome:</label>
-              <input
-                className="inputFields col-md-12"
-                type="text"
-                placeholder="Digite o seu nome"
-                value={this.state.name}
-                onChange={e => this.setState({ name: e.target.value })}
-                required
-              />
-            </li>
-          </ul>
-          <label className="labelFields col-md-2">Email:</label>
-          <input
-            className="inputFields col-md-12"
-            type="email"
-            placeholder="Digite o sobrenome"
-            value={this.state.email}
-            onChange={e => this.setState({ email: e.target.value })}
-            required
-          />
-
-          <label className="labelFields col-md-2">Senha:</label>
-          <input
-            className="inputFields col-md-12"
-            type="password"
-            placeholder="Ex: 1234"
-            value={this.state.password}
-            onChange={e => this.setState({ password: e.target.value })}
-            required
-          />
-          <label className="labelFields" style={{ color: "red" }}>
+      <div className="loginUser col-md-12">
+        <form className="signupForm form-inline">
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Nome do Usuario:{" "}
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o seu nome"
+              value={this.state.name}
+              onChange={e => this.setState({ name: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-7">
+            <label className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Email:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="email"
+              placeholder="Digite o sobrenome"
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-5">
+            <label className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Senha:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="password"
+              placeholder="Ex: 1234"
+              value={this.state.password}
+              onChange={e => this.setState({ password: e.target.value })}
+              required
+            />
+          </div>
+          <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
-          <Row>
-            <Col>
-              {this.props.id ?
-                <button
-                  type="button"
-                  onClick={() => this.goToConsulta("/consultar-usuarios")}
-                  className="join-btn w-25"
-                >
-                  Consultar Usuarios
-              </button> : null}
+          <Col className="col-md-12 d-flex justify-content-center">
+            {this.props.id ? (
               <button
                 type="button"
-                onClick={() => { !this.props.id ? this.createUser("create") : this.createUser("update", this.props.id) }}
-                className="join-btn w-25"
+                onClick={() => this.goToConsulta("/consultar-usuarios")}
+                className="join-btn-no-transform mr-1 login"
+                style={{ width: "25%", margin: "0px" }}
               >
-                {!this.props.id ? "Criar" : "Editar"} Usuário
-              </button>
-            </Col>
-          </Row>
+                Consultar Usuarios
+                </button>
+            ) : null}
+            <div />
+            <button
+              type="button"
+              onClick={() => { !this.props.id ? this.createUser("create") : this.createUser("update", this.props.id) }}
+              className="join-btn-no-transform mr-1 login"
+              style={{ width: "25%", margin: "0px" }}
+            >
+              {!this.props.id ? "Criar" : "Editar"} Usuário
+            </button>
+          </Col>
         </form>
         <SweetAlert
           success
@@ -166,5 +182,4 @@ class UserForm extends Component {
     );
   }
 }
-
 export default UserForm;

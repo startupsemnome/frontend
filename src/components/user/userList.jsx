@@ -67,8 +67,8 @@ class UserList extends Component {
   }
   render() {
     return (
-      <div className="container col-md-12">
-        {!this.state.userListEdit[1] ?
+      <div className="container col-md-8">
+        {!this.state.userListEdit[1] ? (
           <div>
             <div className="row">
               <div className="col-md-12">
@@ -76,18 +76,41 @@ class UserList extends Component {
               </div>
             </div>
             <div className="row mt-2 mb-2">
-            {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
-              <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields" onChange={e => this.setState({ buscaUser: e.target.value })} value={this.state.buscaUser}/>
-                <button type="button" onClick={() => this.buscarUsuario()}>Buscar Usuarios</button>
+              {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
+              <div className="col-md-12"
+                style={{
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
+                }}>
+                <input
+                  type="text"
+                  className="inputFields col-md-9"
+                  style={{ width: "100%", marginleft: "10px" }}
+                  onChange={e => this.setState({ buscaUser: e.target.value })}
+                />
+                <button
+                  type="button"
+                  className="join-btn-no-transform mr-1 login col-md-2"
+                  style={{
+                    width: "100%",
+                    borderRadius: "20px",
+                    marginLeft: "10px"
+                  }}
+                  onClick={() => this.buscarUsuario()}>
+                  Buscar
+                </button>
               </div>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <table class="table">
+                <table className="table table-main">
                   <thead>
                     <tr>
-                      <th scope="col">ID</th>
+                      <th scope="col" style={{ display: "none" }}>
+                        ID
+                      </th>
                       <th scope="col">Nome</th>
                       <th scope="col">Email</th>
                       <th scope="col">Ultima Atualização</th>
@@ -98,16 +121,38 @@ class UserList extends Component {
                   <tbody>
                     {this.state.users.map(user => {
                       return (
-                        <tr key={`userTable${user.id}`}>
-                          <td>{user.id}</td>
+                        <tr key={`buscaUser${user.id}`}>
+                          <td style={{ display: "none" }}>{user.id}</td>
                           <td>{user.name}</td>
                           <td>{user.email}</td>
                           <td>{user.updated_at}</td>
                           <td>{user.created_at}</td>
                           <td>
-                            <button onClick={(e) => this.editUser(user.id)} className="join-btn-no-transform mr-1">Detalhe</button>
-                            <button onClick={(e) => this.editUser(user.id)} className="join-btn-no-transform mr-1">Editar</button>
-                            <button onClick={(e) => this.excluirUser(user.id)} className="join-btn-no-transform mr-1">Excluir</button>
+                            <button
+                              onClick={(e) => this.editUser(user.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
+                            >
+                              Detalhes
+                            </button>
+                            <button
+                              onClick={(e) => this.editUser(user.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{
+                                width: "100%",
+                                marginBottom: "5px",
+                                marginTop: "5px"
+                              }}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={(e) => this.excluirUser(user.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
+                            >
+                              Excluir
+                            </button>
                           </td>
                         </tr>
                       );
@@ -116,8 +161,14 @@ class UserList extends Component {
                 </table>
               </div>
             </div>
-          </div> :
-          <UserForm edit={this.state.userListEdit[1]} id={this.state.userListEdit[0]} />}
+          </div>
+        ) : (
+            <UserForm
+              history={this.props.history}
+              edit={this.state.userListEdit[1]}
+              id={this.state.userListEdit[0]}
+            />
+          )}
       </div>
     );
   }

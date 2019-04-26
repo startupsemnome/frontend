@@ -1,59 +1,66 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { bindActionCreators } from "redux";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import InstitutionalForm from "../components/institutional/institutionalForm";
 import Header from "../components/institutional/Header.jsx";
 import HeaderLinks from "../components/institutional/HeaderLinks.jsx";
 import GridContainer from "../components/institutional/GridContainer.jsx";
 import GridItem from "../components/institutional/GridItem.jsx";
 import Parallax from "../components/institutional/Parallax.jsx";
-// nodejs library that concatenates classes 
+// nodejs library that concatenates classes
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "./../assets/jss/material-kit-react/views/components.jsx";
 
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
-import SectionCompletedExamples from "../components/institutional/SectionCompletedExamples.jsx";
+import HowWorking from "../components/institutional/HowWorking.jsx";
+import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
+import { Helmet } from "react-helmet";
 
 class Institutional extends Component {
-
   componentDidMount() {
     this.props.setNavbarOpen(false);
   }
-
   render() {
     const { classes, ...rest } = this.props;
-
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content="página institucional responsável por apresentar nosso produto/negócio e possibilitará o acesso do usuário." />
+          <meta name="keywords" content="site, tela inicial, resource manager, institucional" />
+          <meta name="author" content="Equipe Resource Manager" />
+          <title>Resource Manager</title>
+        </Helmet>
         <Header
-          brand="Material Kit React"
+          brand="Resource Manager"
           rightLinks={<HeaderLinks />}
           fixed
           color="transparent"
           changeColorOnScroll={{
-            height: 400,
-            color: "white"
+            height: 400
           }}
           {...rest}
         />
-
-        <Parallax image={require("./../assets/img/bg4.jpg")}>
+        <Parallax
+          image={
+            "https://www.awal.com/hubfs/Awal%20-%20February%202018%20Folder/Images/Monday-finding_a_manager_v1.jpg"
+          }
+        >
           <div className={classes.container}>
             <GridContainer>
               <GridItem>
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Material Kit React.</h1>
+                  <h1 className={classes.title}>Connecting Minds</h1>
                   <h3 className={classes.subtitle}>
-                    A Badass Material-UI Kit based on Material Design.
+                    The Perfect Solutions For Your Business.
                   </h3>
                 </div>
               </GridItem>
@@ -61,19 +68,25 @@ class Institutional extends Component {
           </div>
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <SectionCompletedExamples />
+          <HowWorking />
           <SectionCarousel />
           <SectionBasics />
+          {/* <Notificacao /> */}
         </div>
-        <Footer />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
-
 }
-
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen }, dispatch);
 
-export default withStyles(componentsStyle)(connect(null, mapDispatchToProps)(Institutional));
-
+export default withStyles(componentsStyle)(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Institutional)
+);

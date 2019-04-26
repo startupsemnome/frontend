@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
-import env from "../../consts";
+import env from "./../../consts";
 import ProblemForm from "./problemForm";
 
 class ProblemList extends Component {
@@ -14,12 +14,9 @@ class ProblemList extends Component {
       problemListEdit: [null, false],
     };
     console.log(this.props);
-
-
     this.deleteProblem = this.deleteProblem.bind(this);
   }
   findProblem() {
-
     // Chama a api do banco com o método buscar
     axios
       .post(env.API + "consult-problem", { search: this.state.buscaTable })
@@ -33,7 +30,6 @@ class ProblemList extends Component {
         console.log(error + "Erro na busca do item");
       });
   }
-
   deleteProblem(id) {
     // chama a api do banco com o metodo de delete
     axios
@@ -70,8 +66,8 @@ class ProblemList extends Component {
   }
   render() {
     return (
-      <div className="container col-md-12">
-        {!this.state.problemListEdit[1] ?
+      <div className="container col-md-8">
+        {!this.state.problemListEdit[1] ? (
           <div>
             <div className="row">
               <div className="col-md-12">
@@ -79,21 +75,44 @@ class ProblemList extends Component {
               </div>
             </div>
             <div className="row mt-2 mb-2">
-              <div className="col-md-12" style={{ backgroundColor: "#1a8687" }}>
-                <input type="text" className="inputFields"  onChange={e => this.setState({ buscaTable: e.target.value })} value={this.state.buscaTable} />
-                <button type="button" onClick={() => this.findProblem()}>Buscar Problema</button>
+              <div
+                className="col-md-12"
+                style={{
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
+                }}
+              >
+                <input
+                  type="text"
+                  className="inputFields"
+                  style={{ width: "100%", marginleft: "10px" }}
+                  onChange={e => this.setState({ buscaTable: e.target.value })}
+                />
+                <button
+                  type="button"
+                  className="join-btn-no-transform mr-1 login col-md-2"
+                  style={{
+                    width: "100%",
+                    borderRadius: "20px",
+                    marginLeft: "10px"
+                  }}
+                  onClick={() => this.findProblem()}
+                >
+                  Buscar
+                </button>
               </div>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <table class="table">
+                <table class="table table-main">
                   <thead>
                     <tr>
-                      <th scope="col">ID</th>
+                      <th scope="col" style={{ display: "none" }}>ID</th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Solicitante</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Telefone</th>
+                      <th scope="col">Contatos</th>
                       <th scope="col">Problema</th>
                       <th scope="col">Ultima Atualização</th>
                       <th scope="col">Data Criação</th>
@@ -103,19 +122,42 @@ class ProblemList extends Component {
                   <tbody>
                     {this.state.users.map(problem => {
                       return (
-                        <tr key={`problemTable${problem.id}`}>
-                          <td>{problem.id}</td>
+                        <tr key={`buscaTable${problem.id}`}>
+                          <td style={{ display: "none" }}>{problem.id}</td>
                           <td>{problem.company.empresa}</td>
                           <td>{problem.solicit}</td>
-                          <td>{problem.email}</td>
-                          <td>{problem.telef}</td>
+                          <td>
+                            {problem.email} <br />
+                            {problem.telef}</td>
                           <td>{problem.nprob}</td>
                           <td>{problem.updated_at}</td>
                           <td>{problem.created_at}</td>
                           <td>
-                            <button onClick={(e) => this.editProblem(problem.id)} className="join-btn-no-transform mr-1">Detalhes</button>
-                            <button onClick={(e) => this.editProblem(problem.id)} className="join-btn-no-transform mr-1">Editar</button>
-                            <button onClick={(e) => this.deleteProblem(problem.id)} className="join-btn-no-transform mr-1">Excluir</button>
+                            <button
+                              onClick={(e) => this.editProblem(problem.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
+                            >
+                              Detalhes
+                            </button>
+                            <button
+                              onClick={(e) => this.editProblem(problem.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{
+                                width: "100%",
+                                marginBottom: "5px",
+                                marginTop: "5px"
+                              }}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={(e) => this.deleteProblem(problem.id)}
+                              className="join-btn-no-transform mr-1"
+                              style={{ width: "100%" }}
+                            >
+                              Excluir
+                            </button>
                           </td>
                         </tr>
                       );
@@ -124,8 +166,14 @@ class ProblemList extends Component {
                 </table>
               </div>
             </div>
-          </div> :
-          <ProblemForm edit={this.state.problemListEdit[1]} id={this.state.problemListEdit[0]} />}
+          </div>
+        ) : (
+            <ProblemForm
+              history={this.props.history}
+              edit={this.state.problemListEdit[1]}
+              id={this.state.problemListEdit[0]}
+            />
+          )}
       </div>
     );
   }

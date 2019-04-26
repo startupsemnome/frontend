@@ -1,9 +1,20 @@
 .navbar {
-  &-cor {
-    background-color: #333333 !important;
-  }
-
   button {
-    color: $colorMain;
+    color: rgba#1d1c1cde;
   }
+}
+div.nav-bar a.navbar-brand {
+  color: white;
+}
+ul.navbar-nav.w-100 li a.nav-link {
+  color: white;
+}
+li.nav-item.nav-item.active a.nav-link {
+  color: white;
+}
+div.dropdown button.dropdown-toggle.btn.btn-link {
+  color: white;
+}
+div.dropdown-menu button.dropdown-item {
+  color: white;
 }

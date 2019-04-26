@@ -1,118 +1,116 @@
+// dbe020cc
+// h1 #262829
+// h3 #7a7474e6
+
 /*ContentLoginform*/
-.labelFields p{
+.labelFields p {
   text-align: center;
 }
-.conlono{
+.conlono {
   padding-left: 1px;
   padding-right: 0px;
   margin-left: 1px;
-  margin-top:3px;
+  margin-top: 3px;
 }
 .loginUser.col-md-12 {
-  border: 8px #1a9393 outset;
-  border-radius: 22px;
-  margin: auto;
-  padding: 10px;
-  box-shadow: 2px 0px 7px 4px rgba(138, 137, 137, 0.531);
-  max-width: 790px;
-  min-height: 350px;
+  min-height: 320px;
+  padding: 10px 0px;
+  background-color: #3c3f3f;
+  display: flex;
+  justify-content: center;
 }
-.login{
-    margin-bottom: 4px;
-    padding-right: 1px;
-    margin-left: 2px;
-    margin-right: 1px;
-    margin-top: 1px;
-  }
-  .join-btn-no-transform.mr-1.login{
-  width: 172px;
-}
-.institucional{
-    margin-bottom: 2px;
-    margin-top: 1px;
-    margin-left: 2px;
-    margin-right: 1px;
-    margin-top: 9px;
-  }
-#name,#password{
+.login {
   text-align: center;
 }
-.labelFields.nome, .labelFields.senha{
-text-align: center;
+.join-btn-no-transform.mr-1.login {
+  width: 172px;
 }
-.conlose{
+.institucional {
+  margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 1px;
+}
+#name,
+#password {
+  text-align: center;
+}
+.labelFields.nome,
+.labelFields.senha {
+  text-align: center;
+}
+.conlose {
   padding-right: 0px;
   padding-left: 1px;
   margin-left: 1px;
 }
-.contentlo{
-margin-top: 3px;
+.contentlo {
+  margin-top: 3px;
 }
 a.buttonRegistro {
   text-decoration: none;
   color: #fff;
 }
-.row.bottonrform{
+.row.bottonrform {
   margin-left: 1px;
   margin-top: 10px;
   padding-top: 5px;
-
 }
 
 /*Contentregister*/
 
-h1.companyRe{
+h1.companyRe {
   text-align: center;
   font-size: 30px;
-  color: #999;
-  margin-bottom:10px;
-  margin-toP:3px;
+  color: #1b1919;
+  margin-bottom: 10px;
+  margin-top: 3px;
 }
 
-.acr{
- margin-top:2px;
- margin-bottom:2px;
+.acr {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 .acr.nomee {
   margin-left: 14px;
 }
-.acr.cnpjcr{
+.acr.cnpjcr {
   margin-left: 14px;
 }
-.acr.ruacr{
+.acr.ruacr {
   margin-left: 14px;
 }
-.acr.numce{
+.acr.numce {
   margin-left: 14px;
 }
-.acr.bairoce{
+.acr.bairoce {
   margin-left: 14px;
 }
-.acr.estce{
+.acr.estce {
   margin-left: 14px;
 }
-.acr.emace{
+.acr.emace {
   margin-left: 14px;
 }
-.acr.telce{
+.acr.telce {
   margin-left: 14px;
 }
-.acr.asce{
+.acr.asce {
   margin-left: 30px;
   text-align: center;
   border: 0px;
   font-size: 20px;
 }
-.acr.astce{
+.acr.astce {
   margin-top: 10px;
   text-align: center;
   font-size: 25px;
 }
 
 /*Content*/
-h3.contentLogin{
-    color: rgb(95, 93, 93);
-    font-size: 30px;
-    text-align: center;
-    margin: 10px;
+h3.contentLogin {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  margin: 10px;
 }

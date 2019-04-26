@@ -9,7 +9,6 @@ import env from "./../../consts";
 import { Link } from "react-router-dom";
 import { setNavbarOpen } from "./../../redux/actions/navbarAction";
 
-
 class ContentLoginform extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,7 @@ class ContentLoginform extends Component {
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    this.setState({ SweetCreate: true })
+    this.setState({ SweetCreate: true });
   }
   hasErros() {
     if (this.state.name === "") {
@@ -35,6 +34,9 @@ class ContentLoginform extends Component {
     }
     return false;
   }
+  goToInstitutional() {
+    this.props.history.push("/institutional");
+  }
   validarUser() {
     if (!this.hasErros()) {
       axios
@@ -42,26 +44,27 @@ class ContentLoginform extends Component {
           login: this.state.name,
           password: this.state.password
         })
-        .then((response) => {
-          localStorage.setItem('userName', response.data.name);
+        .then(response => {
+          localStorage.setItem("userName", response.data.name);
           this.props.setNavbarOpen(true);
           this.props.setLogin(true);
-          this.props.history.push('/dashboard');
-        }).catch((error) => {
+          this.props.history.push("/dashboard");
+        })
+        .catch(error => {
           if (error.response.status === 401) {
             this.setState({ error: "Login ou Senha Invalidos" });
+          } else {
+            this.setState({
+              error: "Error interno tente novamente mais tarde"
+            });
           }
-          else {
-            this.setState({ error: "Error interno tente novamente mais tarde" });
-          }
-        }
-        );
+        });
     }
   }
   render() {
     return (
       <div className="loginUser col-md-12">
-        <form>
+        <form style={{ marginTop: "50px", width: "80%" }}>
           <label className="labelFields nome">Nome do Usuario</label>
           <input
             className="inputFields"
@@ -85,22 +88,40 @@ class ContentLoginform extends Component {
             onChange={e => this.setState({ password: e.target.value })}
             required
           />
-          <label className="errorForm" style={{ color: "red", display: `${this.state.error ? 'block' : 'none'}` }}>{this.state.error}</label>
-          <div className="labelFields" >
-            <Row style={{ display: "flex", justifyContent: "space-between" }}>
-
+          <label
+            className="errorForm"
+            style={{
+              color: "red",
+              display: `${this.state.error ? "block" : "none"}`
+            }}
+          >
+            {this.state.error}
+          </label>
+          <div className="labelFields">
+            <Row style={{ display: "flex", justifyContent: "center" }}>
               <div class="institucional">
-                <Link to="/institutional" className="join-btn-no-transform mr-1">Ver Institucional</Link>
+                <button
+                  type="button"
+                  onClick={() => this.goToInstitutional()}
+                  className="join-btn-no-transform mr-1 login"
+                >
+                  Página Inicial
+                </button>
               </div>
               <br />
               <div className="login">
-                <button type="button" onClick={() => this.validarUser()} className="join-btn-no-transform mr-1 login">Ir Para LOGIN</button>
+                <button
+                  type="button"
+                  onClick={() => this.validarUser()}
+                  className="join-btn-no-transform mr-1 login"
+                >
+                  Login
+                </button>
               </div>
             </Row>
           </div>
         </form>
-
-      </div >
+      </div>
     );
   }
 }

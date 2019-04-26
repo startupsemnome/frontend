@@ -7,6 +7,8 @@ import Content from "../components/content";
 import { setLogin } from "./../redux/actions/authAction";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
+import { Helmet } from "react-helmet";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -19,8 +21,19 @@ class Login extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="h1-main">Login</h1>
-        <Content history={this.props.history} setLogin={this.props.setLogin} setNavbarOpen={this.props.setNavbarOpen} />
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content="página responsável por validar login e senha e conceder ou não o acesso ao usuário." />
+          <meta name="keywords" content="site, usuários, recursos, logar, administrativo" />
+          <meta name="author" content="Equipe Resource Manager" />
+          <title>Login</title>
+        </Helmet>
+
+        <Content
+          history={this.props.history}
+          setLogin={this.props.setLogin}
+          setNavbarOpen={this.props.setNavbarOpen}
+        />
       </div>
     );
   }
