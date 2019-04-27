@@ -278,7 +278,11 @@ class ProblemForm extends Component {
               <FormGroup className="ml-2">
                 <Label for="exampleSelect">Experiência</Label>
                 <Input type="select" name="select" id="exampleSelect">
-                  <option>1 ANOS</option>
+                  <option>1 ANO</option>
+                  <option>2 ANOS</option>
+                  <option>3 ANOS</option>
+                  <option>4 ANOS</option>
+
                 </Input>
               </FormGroup>
             </Form>
