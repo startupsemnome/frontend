@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Card, CardTitle, CardText } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import CompanyForm from "./companyForm";
+import { cardTitle } from "../../assets/jss/material-kit-react";
 
 class ConsultCompanyForm extends Component {
   constructor(props) {
@@ -104,6 +105,29 @@ class ConsultCompanyForm extends Component {
                 </button>
               </div>
             </div>
+            {/* <div class="card">
+              <div className="card-body">
+                <h5 className="card-title"></h5>
+                <div className="card-footer">
+                </div>
+              </div>
+            </div> */}
+            <Card
+              body outline style={{
+                maxWidth: "314px",
+                minHeight: "285px",
+                marginLeft: "-110px",
+                border: "20px solid #343a40"
+              }}
+            >
+              <CardTitle>
+                <h1>Empresa<br /> Company</h1>
+              </CardTitle>
+              <CardText>
+
+              </CardText>
+            </Card>
+
             <div className="row">
               <div className="col-md-12">
                 <table className="table table-main">
