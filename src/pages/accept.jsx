@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ListProjects from "../components/candidate/listProjects";
+import Projects from "../components/candidate/projects";
 import { Helmet } from "react-helmet";
 
 
@@ -18,7 +18,7 @@ class Accept extends Component {
           <meta name="author" content="Equipe Resource Manager" />
           <title>Projetos Aceitos</title>
         </Helmet>
-        <ListProjects />
+        <Projects />
       </div>
     );
   }

@@ -55,7 +55,7 @@ class HeaderLinks extends Component {
             color="transparent"
             className={classes.navLink}
           >
-            Notificações <br />
+            Projetos <br />
             <span class="badge badge-light" />
           </Link>
         </ListItem>

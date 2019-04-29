@@ -38,7 +38,7 @@ import Institutional from "../pages/institutional";
 
 // Page Accept
 import Accept from "../pages/accept";
-import ListProjects from "../components/candidate/listProjects";
+import Projects from "../components/candidate/projects";
 
 import UserList from "../components/user/userList";
 import ContentRegister from "../components/componentsform/contentRegister";
@@ -58,7 +58,7 @@ export default class Routes extends Component {
           <Route exact={true} path="/" component={Institutional} />
           <Route exact={true} path="/login" component={Login} />
 
-          <PrivateRoute exact={true} path="/lista-projetos" component={ListProjects} />
+          <PrivateRoute exact={true} path="/lista-projetos" component={Projects} />
           <PrivateRoute exact={true} path="/dashboard" component={Dashboard} />
 
           <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />

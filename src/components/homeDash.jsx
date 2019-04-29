@@ -31,7 +31,7 @@ class HomeDash extends Component {
       ButtoLogin: false,
       qtdUsers: 0,
       qtdProblem: 0,
-      show: "USER",
+      show: "USER, COMPANY, PROBLEM, RESOURCE",
       qtdResource: 0,
       qtdCompany: 0
     };
@@ -129,6 +129,7 @@ class HomeDash extends Component {
               </div>
             </div>
           </div>
+
 
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">

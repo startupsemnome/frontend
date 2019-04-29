@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditProblemForm from "../components/problem/editProblemForm"
+import EditProblemForm from "../components/problem/editProblemForm";
 import { Helmet } from "react-helmet";
 
 export default class EditProblem extends Component {
