@@ -126,7 +126,7 @@ class Projects extends Component {
                           <td>{problem.solicit}</td>
                           <td>{problem.nprob}</td>
                           <td>
-                            <ModalLearnMore />
+                            <ModalLearnMore atualProblemId={problem.id} />
                           </td>
                         </tr>
                       );
