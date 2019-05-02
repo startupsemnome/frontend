@@ -4,7 +4,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-import AcceptResourceForm from "./acceptResourceForm";
+
 
 
 
@@ -15,10 +15,10 @@ class ProblemForm extends Component {
     this.state = {
       empresa: "",
       users: [],
-      solicit: "",
+      solicitante: "",
       email: "",
-      telef: "",
-      nprob: "",
+      telefone: "",
+      descricao: "",
       modal: false,
       error: "",
       sweetCreate: false
@@ -58,10 +58,11 @@ class ProblemForm extends Component {
         axios
           .post(env.API + "problem", {
             empresa: this.state.empresa,
-            solicit: this.state.solicit,
+            solicitante: this.state.solicitante,
             email: this.state.email,
-            telef: this.state.telef,
-            nprob: this.state.nprob
+            telefone: this.state.telefone,
+            titulo: this.state.titulo,
+            descricao: this.state.descricao
           })
           .then(function (response) {
             console.log(response);
@@ -75,10 +76,10 @@ class ProblemForm extends Component {
         axios
           .put(env.API + "problem/" + id, {
             empresa: this.state.empresa,
-            solicit: this.state.solicit,
+            solicitante: this.state.solicitante,
             email: this.state.email,
-            telef: this.state.telef,
-            nprob: this.state.nprob
+            telefone: this.state.telefone,
+            descricao: this.state.descricao
           })
           .then(function (response) {
             console.log(response);
@@ -101,7 +102,7 @@ class ProblemForm extends Component {
         .then((response) => {
           console.log(response);
           const data = response.data;
-          this.setState({ empresa: data.empresa, solicit: data.solicit, email: data.email, telef: data.telef, nprob: data.nprob });
+          this.setState({ empresa: data.empresa, solicitante: data.solicitante, email: data.email, telefone: data.telefone, descricao: data.descricao });
         })
         .catch(function (error) {
           console.log(error);
@@ -122,16 +123,19 @@ class ProblemForm extends Component {
     if (this.state.empresa === "") {
       this.setState({ error: "preencha o campo empresa" });
       return true;
-    } else if (this.state.solicit === "") {
+    } else if (this.state.solicitante === "") {
       this.setState({ error: "preencha o campo solicitante" });
       return true;
     } else if (this.state.email === "") {
       this.setState({ error: "preencha o campo email" });
       return true;
-    } else if (this.state.telef === "") {
+    } else if (this.state.telefone === "") {
       this.setState({ error: "preencha o campo telefone" });
       return true;
-    } else if (this.state.nprob === "") {
+    } else if (this.state.titulo === "") {
+      this.setState({ error: "preencha o campo titulo" });
+      return true;
+    } else if (this.state.descricao === "") {
       this.setState({ error: "preencha o campo problema" });
       return true;
     }
@@ -169,8 +173,8 @@ class ProblemForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite o nome do solicitante"
-              value={this.state.solicit}
-              onChange={e => this.setState({ solicit: e.target.value })}
+              value={this.state.solicitante}
+              onChange={e => this.setState({ solicitante: e.target.value })}
               required
             />
           </div>
@@ -201,24 +205,44 @@ class ProblemForm extends Component {
               className="inputFields col-md-12"
               type="number"
               placeholder="Digite o telefone do solicitante"
-              value={this.state.telef}
-              onChange={e => this.setState({ telef: e.target.value })}
+              value={this.state.telefone}
+              onChange={e => this.setState({ telefone: e.target.value })}
               required
             />
           </div>
+
+
           <div className="col-md-12">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
-              Novo Problema:
+              Titulo do Problema:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite em poucas palavras o titulo do seu problema"
+              value={this.state.titulo}
+              onChange={e => this.setState({ titulo: e.target.value })}
+              required
+            />
+          </div>
+
+
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Descrição do Problema:
             </label>
             <input
               className="inputFields col-md-12"
               type="text"
               placeholder="Descreva o problema"
-              value={this.state.nprob}
-              onChange={e => this.setState({ nprob: e.target.value })}
+              value={this.state.descricao}
+              onChange={e => this.setState({ descricao: e.target.value })}
               required
             />
           </div>
@@ -237,7 +261,7 @@ class ProblemForm extends Component {
               style={{ width: "25%", margin: "0px" }}
             >
               {!this.props.id ? "Criar" : "Editar"} Problema
-              </button>:
+              </button>
             <div />
             <button
               type="button"
@@ -247,9 +271,6 @@ class ProblemForm extends Component {
             >
               Possiveis Soluções
               </button>
-                       
-            <AcceptResourceForm />
-
           </Col>
         </form>
         <SweetAlert
@@ -269,20 +290,15 @@ class ProblemForm extends Component {
                   <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
               </FormGroup>
               <FormGroup className="ml-2">
-                <Label for="exampleSelect">Formação <br />
+                <Label for="exampleSelect">Formacao <br />
                   <Input type="select" name="select" id="exampleSelect">
                     <option>SISTEMAS DA INFORMACAO</option>
-                    <option>CIÊNCIA DA COMPUTAÇÃO</option>
                   </Input></Label>
               </FormGroup>
               <FormGroup className="ml-2">
-                <Label for="exampleSelect">Experiência</Label>
+                <Label for="exampleSelect">Experiencia</Label>
                 <Input type="select" name="select" id="exampleSelect">
-                  <option>1 ANO</option>
-                  <option>2 ANOS</option>
-                  <option>3 ANOS</option>
-                  <option>4 ANOS</option>
-
+                  <option>1 ANOS</option>
                 </Input>
               </FormGroup>
             </Form>
@@ -293,8 +309,8 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
-                  <th>Formação</th>
-                  <th>Area de Interesse</th>
+                  <th>Formacao</th>
+                  <th>Area de Interece</th>
                   <th>Cidade</th>
                 </tr>
               </thead>

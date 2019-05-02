@@ -112,8 +112,9 @@ class ProblemList extends Component {
                       <th scope="col" style={{ display: "none" }}>ID</th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Solicitante</th>
-                      <th scope="col">Contatos</th>
+                      <th scope="col">Contato</th>
                       <th scope="col">Problema</th>
+                      <th scope="col">Descrição</th>
                       <th scope="col">Ultima Atualização</th>
                       <th scope="col">Data Criação</th>
                       <th scope="col">Opções</th>
@@ -125,11 +126,12 @@ class ProblemList extends Component {
                         <tr key={`buscaTable${problem.id}`}>
                           <td style={{ display: "none" }}>{problem.id}</td>
                           <td>{problem.company.empresa}</td>
-                          <td>{problem.solicit}</td>
+                          <td>{problem.solicitante}</td>
                           <td>
                             {problem.email} <br />
-                            {problem.telef}</td>
-                          <td>{problem.nprob}</td>
+                            {problem.telefone}</td>
+                          <td>{problem.titulo}</td>
+                          <td>{problem.descricao}</td>
                           <td>{problem.updated_at}</td>
                           <td>{problem.created_at}</td>
                           <td>
