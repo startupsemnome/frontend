@@ -64,15 +64,13 @@ class ModalLearnMore extends React.Component {
                     <div>
                       <tr key={`buscaTable${problem.id}`}>
                         <td style={{ display: "none" }}>{problem.id}</td>
-                        <td>{problem.nprob}</td>
+                        <td>{problem.descricao}</td>
                       </tr>
                     </div> : null}
                 </div>
               );
             })}
-
-            Resumo do BÓ!
-              <br></br>
+            <br></br>
             <br></br>
             Breve descrição! :)
           </ModalBody>

@@ -113,7 +113,7 @@ class Projects extends Component {
                       <th scope="col">Empresa</th>
                       <th scope="col">Solicitante</th>
                       {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
-                      <th scope="col">Problema</th>
+                      <th scope="col">Tituto</th>
                       <th scope="col">Opções</th>
                     </tr>
                   </thead>
@@ -123,8 +123,8 @@ class Projects extends Component {
                         <tr key={`buscaTable${problem.id}`}>
                           <td style={{ display: "none" }}>{problem.id}</td>
                           <td>{problem.company.empresa}</td>
-                          <td>{problem.solicit}</td>
-                          <td>{problem.nprob}</td>
+                          <td>{problem.solicitante}</td>
+                          <td>{problem.titulo}</td>
                           <td>
                             <ModalLearnMore atualProblemId={problem.id} />
                           </td>
