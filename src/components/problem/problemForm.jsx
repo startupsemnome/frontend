@@ -1,12 +1,22 @@
 import React, { Component } from "react";
-import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
+import {
+  Row,
+  Col,
+  ModalHeader,
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  ModalBody,
+  ModalFooter,
+  Modal,
+  Button,
+  Table
+} from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-
-
-
 
 class ProblemForm extends Component {
   constructor(props) {
@@ -15,6 +25,7 @@ class ProblemForm extends Component {
     this.state = {
       empresa: "",
       users: [],
+      resourcesCall: [],
       solicitante: "",
       email: "",
       telefone: "",
@@ -51,9 +62,7 @@ class ProblemForm extends Component {
   }
 
   createProblem(method, id) {
-
     if (!this.hasErros()) {
-
       if (method == "create") {
         axios
           .post(env.API + "problem", {
@@ -64,15 +73,14 @@ class ProblemForm extends Component {
             titulo: this.state.titulo,
             descricao: this.state.descricao
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             window.location = "/consultar-problema";
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
-      } else if (method = "update") {
-
+      } else if ((method = "update")) {
         axios
           .put(env.API + "problem/" + id, {
             empresa: this.state.empresa,
@@ -81,14 +89,13 @@ class ProblemForm extends Component {
             telefone: this.state.telefone,
             descricao: this.state.descricao
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             window.location = "/consultar-problema";
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
-
       }
     }
   }
@@ -99,24 +106,50 @@ class ProblemForm extends Component {
       const id = this.props.id;
       axios
         .get(env.API + "problem/" + id)
-        .then((response) => {
+        .then(response => {
           console.log(response);
           const data = response.data;
-          this.setState({ empresa: data.empresa, solicitante: data.solicitante, email: data.email, telefone: data.telefone, descricao: data.descricao });
+          this.setState({
+            empresa: data.empresa,
+            solicitante: data.solicitante,
+            email: data.email,
+            telefone: data.telefone,
+            descricao: data.descricao
+          });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
   }
 
+  handleCallResourcerSetList(id) {
+    const arrayAux = this.state.resourcesCall;
+    if (arrayAux.indexOf(id) > -1) {
+      const index = arrayAux.indexOf(id);
+      arrayAux.splice(index, 1);
+    } else {
+      arrayAux.push(id);
+    }
+    this.setState({ resourcesCall: arrayAux });
+  }
+
   callResource() {
-    this.setState({ modal: !this.state.modal })
-    alert("Será comunicado os recursos");
+    this.setState({ modal: !this.state.modal });
+    axios
+      .post(env.API + "communicate-resource", {
+        id_resource: this.state.resourcesCall
+      })
+      .then(response => {
+        alert("email enviado para recursos");
+      })
+      .catch(error => {
+        console.log(error + "Erro na API");
+      });
   }
 
   findResources() {
-    this.setState({ modal: !this.state.modal })
+    this.setState({ modal: !this.state.modal });
   }
 
   hasErros() {
@@ -211,7 +244,6 @@ class ProblemForm extends Component {
             />
           </div>
 
-
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -228,7 +260,6 @@ class ProblemForm extends Component {
               required
             />
           </div>
-
 
           <div className="col-md-12">
             <label
@@ -255,22 +286,24 @@ class ProblemForm extends Component {
               onClick={() => {
                 !this.props.id
                   ? this.createProblem("create")
-                  : this.createProblem("update", this.props.id)
+                  : this.createProblem("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >
               {!this.props.id ? "Criar" : "Editar"} Problema
-              </button>
+            </button>
             <div />
             <button
               type="button"
-              onClick={() => { this.findResources() }}
+              onClick={() => {
+                this.findResources();
+              }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >
               Possiveis Soluções
-              </button>
+            </button>
           </Col>
         </form>
         <SweetAlert
@@ -281,19 +314,35 @@ class ProblemForm extends Component {
         >
           {`Cadastrado ${this.state.problem} com sucesso!`}
         </SweetAlert>
-        <Modal size="lg" isOpen={this.state.modal} toggle={this.findResources} style={{ width: "100%" }}>
-          <ModalHeader toggle={this.findResources}>Selecione os Recursos Para Esse Problema</ModalHeader>
+        <Modal
+          size="lg"
+          isOpen={this.state.modal}
+          toggle={this.findResources}
+          style={{ width: "100%" }}
+        >
+          <ModalHeader toggle={this.findResources}>
+            Selecione os Recursos Para Esse Problema
+          </ModalHeader>
           <ModalBody>
             <Form inline={true}>
               <FormGroup>
-                <Label for="exampleEmail">Nome <br />
-                  <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
+                <Label for="exampleEmail">
+                  Nome <br />
+                  <Input
+                    type="email"
+                    name="email"
+                    id="exampleEmail"
+                    placeholder=""
+                  />
+                </Label>
               </FormGroup>
               <FormGroup className="ml-2">
-                <Label for="exampleSelect">Formacao <br />
+                <Label for="exampleSelect">
+                  Formacao <br />
                   <Input type="select" name="select" id="exampleSelect">
                     <option>SISTEMAS DA INFORMACAO</option>
-                  </Input></Label>
+                  </Input>
+                </Label>
               </FormGroup>
               <FormGroup className="ml-2">
                 <Label for="exampleSelect">Experiencia</Label>
@@ -318,12 +367,18 @@ class ProblemForm extends Component {
                 {this.state.users.map(resource => {
                   return (
                     <tr>
-                      <td><FormGroup check>
-                        <Label check>
-                          <Input type="checkbox" />{' '}
-                          marcar
-                        </Label>
-                      </FormGroup>
+                      <td>
+                        <FormGroup check>
+                          <Label check>
+                            <Input
+                              type="checkbox"
+                              onChange={() =>
+                                this.handleCallResourcerSetList(resource.id)
+                              }
+                            />{" "}
+                            marcar
+                          </Label>
+                        </FormGroup>
                       </td>
                       <td>{resource.fname}</td>
                       <td>{resource.formacao}</td>
@@ -334,11 +389,14 @@ class ProblemForm extends Component {
                 })}
               </tbody>
             </Table>
-
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.callResource}>Comunicar Recursos</Button>{' '}
-            <Button color="secondary" onClick={this.findResources}>Voltar</Button>
+            <Button color="primary" onClick={this.callResource}>
+              Comunicar Recursos
+            </Button>{" "}
+            <Button color="secondary" onClick={this.findResources}>
+              Voltar
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
