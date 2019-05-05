@@ -11,11 +11,29 @@ class ModalLearnMore extends React.Component {
       users: [],
       modal: false
     };
-
+    this.sendEvent = this.sendEvent.bind(this);
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  sendEvent(status) {
+    axios
+      .put(env.API + "resource-problem", {
+        id: this.props.atualProblemId,
+        status: status
+      })
+      .then(response => {
+        // handle success
+        this.props.history.push("/lista-projetos");
+      })
+      .catch(error => {
+        console.log(error + "Erro na API");
+      });
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -87,10 +105,13 @@ class ModalLearnMore extends React.Component {
             <br />
           </ModalBody>
           <ModalFooter>
-            <Button color="info" onClick={this.toggle}>
+            <Button
+              color="info"
+              onClick={() => this.sendEvent("AGUARDANDO-CONTATO")}
+            >
               Entrem em contato comigo
             </Button>
-            <Button color="info" onClick={this.toggle}>
+            <Button color="info" onClick={() => this.sendEvent("RECUSADO")}>
               Recursar
             </Button>
           </ModalFooter>

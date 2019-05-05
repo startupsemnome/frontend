@@ -70,9 +70,11 @@ class Projects extends Component {
         console.log(error + "Erro na API");
       });
   }
+  componentWillReceiveProps(props) {
+    this.loadProblems();
+  }
   componentDidMount() {
     this.props.setNavbarOpen(false);
-    this.loadProblems();
     document.body.style.backgroundImage =
       "url('https://images.pexels.com/photos/754082/pexels-photo-754082.jpeg?cs=srgb&dl=blur-blurred-background-colors-754082.jpg&fm=jpg')";
   }
@@ -160,6 +162,7 @@ class Projects extends Component {
                               <ModalLearnMore
                                 atualProblemId={proj.problem.id}
                                 titulo={proj.problem.titulo}
+                                history={this.props.history}
                               />
                             </td>
                           </tr>
