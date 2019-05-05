@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import { Button, Modal, Jumbotron, Alert } from "reactstrap";
 
 import axios from "axios";
 import env from "./../../consts";
 import ProblemForm from "./../../components/problem/problemForm";
 import ModalLearnMore from "./modalLearnMore";
+import Header from "./../../components/institutional/Header.jsx";
+import HeaderLinks from "./../../components/institutional/HeaderLinks.jsx";
+
+import { setNavbarOpen } from "./../../redux/actions/navbarAction";
 
 class Projects extends Component {
   constructor(props) {
@@ -64,95 +71,124 @@ class Projects extends Component {
       });
   }
   componentDidMount() {
+    this.props.setNavbarOpen(false);
     this.loadProblems();
+    document.body.style.backgroundImage =
+      "url('https://images.pexels.com/photos/754082/pexels-photo-754082.jpeg?cs=srgb&dl=blur-blurred-background-colors-754082.jpg&fm=jpg')";
   }
   render() {
+    const { ...rest } = this.props;
     return (
-      <div className="container col-md-8">
-        {!this.state.problemListEdit[1] ? (
-          <div>
-            <div className="row">
-              <div className="col-md-12">
-                <h1 className="h1-main">Possíveis Projetos Selecionados</h1>
-                <h3 align="center" className="display-3">
-                  Olá, Candidato!
-                </h3>
-                {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
-                <hr className="my-2" />
+      <div>
+        <Header
+          brand="Resource Manager"
+          rightLinks={<HeaderLinks />}
+          fixed
+          color="transparent"
+          changeColorOnScroll={{
+            height: 400
+          }}
+          {...rest}
+        />
+        <div className="container col-md-8 mt-5">
+          {!this.state.problemListEdit[1] ? (
+            <div>
+              <div className="row">
+                <div className="col-md-12">
+                  <h1 className="h1-main">Possíveis Projetos Selecionados</h1>
+                  <h3 align="center" className="display-3">
+                    Olá, Candidato!
+                  </h3>
+                  {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
+                  <hr className="my-2" />
 
-                <Alert
-                  align="center"
-                  color="info"
+                  <Alert
+                    align="center"
+                    color="info"
+                    style={{
+                      width: "100%",
+                      marginBottom: "5px",
+                      marginTop: "5px"
+                    }}
+                  >
+                    A relação abaixo, contem alguns possíveis projetos que você{" "}
+                    <a className="alert-link">possa participar</a>.
+                  </Alert>
+
+                  <p className="lead" />
+                </div>
+              </div>
+              <div className="row mt-2 mb-2">
+                <div
+                  className="col-md-12"
                   style={{
-                    width: "100%",
-                    marginBottom: "5px",
-                    marginTop: "5px"
+                    backgroundColor: "#1a8687",
+                    justifyContent: "center",
+                    backgroundColor: "rgb(26, 134, 135)",
+                    display: "flex"
                   }}
-                >
-                  A relação abaixo, contem alguns possíveis projetos que você{" "}
-                  <a className="alert-link">possa participar</a>.
-                </Alert>
-
-                <p className="lead" />
+                />
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <table class="table table-main">
+                    <thead>
+                      <tr>
+                        <th scope="col" style={{ display: "none" }}>
+                          ID
+                        </th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Solicitante</th>
+                        <th scope="col">Status</th>
+                        {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
+                        <th scope="col">Tituto</th>
+                        <th scope="col">Opções</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.project.map(proj => {
+                        return (
+                          <tr key={`buscaTable${proj.id}`}>
+                            <td style={{ display: "none" }}>
+                              {proj.problem.id}
+                            </td>
+                            <td>{proj.problem.company.empresa}</td>
+                            <td>{proj.problem.solicitante}</td>
+                            <td>{proj.status}</td>
+                            <td>{proj.problem.titulo}</td>
+                            <td>
+                              <ModalLearnMore
+                                atualProblemId={proj.problem.id}
+                                titulo={proj.problem.titulo}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div className="row mt-2 mb-2">
-              <div
-                className="col-md-12"
-                style={{
-                  backgroundColor: "#1a8687",
-                  justifyContent: "center",
-                  backgroundColor: "rgb(26, 134, 135)",
-                  display: "flex"
-                }}
-              />
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <table class="table table-main">
-                  <thead>
-                    <tr>
-                      <th scope="col" style={{ display: "none" }}>
-                        ID
-                      </th>
-                      <th scope="col">Empresa</th>
-                      <th scope="col">Solicitante</th>
-                      <th scope="col">Status</th>
-                      {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
-                      <th scope="col">Tituto</th>
-                      <th scope="col">Opções</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.state.project.map(proj => {
-                      return (
-                        <tr key={`buscaTable${proj.id}`}>
-                          <td style={{ display: "none" }}>{proj.problem.id}</td>
-                          <td>{proj.problem.company.empresa}</td>
-                          <td>{proj.problem.solicitante}</td>
-                          <td>{proj.status}</td>
-                          <td>{proj.problem.titulo}</td>
-                          <td>
-                            <ModalLearnMore atualProblemId={proj.problem.id} />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <ProblemForm
-            history={this.props.history}
-            edit={this.state.problemListEdit[1]}
-            id={this.state.problemListEdit[0]}
-          />
-        )}
+          ) : (
+            <ProblemForm
+              history={this.props.history}
+              edit={this.state.problemListEdit[1]}
+              id={this.state.problemListEdit[0]}
+            />
+          )}
+        </div>
       </div>
     );
   }
 }
 
-export default Projects;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setNavbarOpen }, dispatch);
+
+const mapStateToProps = state => ({ navbar: state.navbar });
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Projects);

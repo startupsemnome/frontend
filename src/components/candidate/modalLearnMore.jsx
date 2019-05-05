@@ -1,9 +1,8 @@
-import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import axios from "axios";
 import env from "./../../consts";
 import Projects from "./projects";
-
 
 class ModalLearnMore extends React.Component {
   constructor(props) {
@@ -41,42 +40,59 @@ class ModalLearnMore extends React.Component {
   }
 
   render() {
-    const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
+    const closeBtn = (
+      <button className="close" onClick={this.toggle}>
+        &times;
+      </button>
+    );
 
     return (
       <div>
-        <Button className="join-btn-no-transform mr-1"
+        <Button
+          className="join-btn-no-transform mr-1"
           style={{
             width: "100%",
             marginBottom: "5px",
             marginTop: "5px"
           }}
-          onClick={this.toggle}>{this.props.buttonLabel}Saiba mais!</Button>
+          onClick={this.toggle}
+        >
+          {this.props.buttonLabel}Saiba mais!
+        </Button>
 
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} close={closeBtn}>Titulo do Problema!</ModalHeader>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+          style={{ marginTop: "140px" }}
+        >
+          <ModalHeader toggle={this.toggle} close={closeBtn}>
+            {this.props.titulo}
+          </ModalHeader>
           <ModalBody>
-
             {this.state.users.map(problem => {
               return (
                 <div>
-                  {this.props.atualProblemId == problem.id ?
+                  {this.props.atualProblemId == problem.id ? (
                     <div>
                       <tr key={`buscaTable${problem.id}`}>
                         <td style={{ display: "none" }}>{problem.id}</td>
                         <td>{problem.descricao}</td>
                       </tr>
-                    </div> : null}
+                    </div>
+                  ) : null}
                 </div>
               );
             })}
-            <br></br>
-            <br></br>
-            Breve descrição! :)
+            <br />
           </ModalBody>
           <ModalFooter>
-            <Button color="info" onClick={this.toggle}>Aceitar</Button>
-            <Button color="info" onClick={this.toggle}>Recursar</Button>
+            <Button color="info" onClick={this.toggle}>
+              Entrem em contato comigo
+            </Button>
+            <Button color="info" onClick={this.toggle}>
+              Recursar
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
