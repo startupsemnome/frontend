@@ -324,34 +324,6 @@ class ProblemForm extends Component {
             Selecione os Recursos Para Esse Problema
           </ModalHeader>
           <ModalBody>
-            <Form inline={true}>
-              <FormGroup>
-                <Label for="exampleEmail">
-                  Nome <br />
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder=""
-                  />
-                </Label>
-              </FormGroup>
-              <FormGroup className="ml-2">
-                <Label for="exampleSelect">
-                  Formacao <br />
-                  <Input type="select" name="select" id="exampleSelect">
-                    <option>SISTEMAS DA INFORMACAO</option>
-                  </Input>
-                </Label>
-              </FormGroup>
-              <FormGroup className="ml-2">
-                <Label for="exampleSelect">Experiencia</Label>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>1 ANOS</option>
-                </Input>
-              </FormGroup>
-            </Form>
-            <br />
             <br />
             <Table dark>
               <thead>
@@ -380,10 +352,10 @@ class ProblemForm extends Component {
                           </Label>
                         </FormGroup>
                       </td>
-                      <td>{resource.fname}</td>
+                      <td>{resource.nome}</td>
                       <td>{resource.formacao}</td>
-                      <td>{resource.areai}</td>
-                      <td>{resource.cid}</td>
+                      <td>{resource.area_interesse}</td>
+                      <td>{resource.cidade}</td>
                     </tr>
                   );
                 })}
