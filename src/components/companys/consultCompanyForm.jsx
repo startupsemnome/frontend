@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col, Card, CardTitle, CardText, CardBody, CardFooter, Button } from "reactstrap";
+import { Row, Col,Link,ModalHeader, Label, Input, ModalBody, ModalFooter, Modal, Table, Card, CardTitle, CardText, CardBody, CardFooter } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import env from "./../../consts";
 import CompanyForm from "./companyForm";
@@ -12,6 +13,8 @@ class ConsultCompanyForm extends Component {
     this.state = {
       users: [],
       userTable: "",
+      companyList: [null, false],
+      modal: false,
       companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
@@ -32,6 +35,10 @@ class ConsultCompanyForm extends Component {
   }
   editCompany(id) {
     this.setState({ companyEdit: [id, true] });
+  }
+
+  visualizarCompany(id) {
+    this.setState({ companyList: [id, true] })
   }
 
   findCompany() {
@@ -66,6 +73,9 @@ class ConsultCompanyForm extends Component {
   componentDidMount() {
     console.log("teste");
     this.loadCompanys();
+  }
+  visualizar() {
+    this.setState({ modal: !this.state.modal })
   }
   render() {
     return (
@@ -112,138 +122,188 @@ class ConsultCompanyForm extends Component {
                 </div>
               </div>
             </div> */}
-            <Row style={{
-              width: "120%",
-              color: "rgb(52, 58, 64)",
-              fontSize: "20px"
-            }}>
-              <Col md={4}>
-                <Card
-                  body outline style={{
-                    minHeight: "290px",
-                    marginRight: "20px",
-                    marginLeft: "-90px",
-                    border: "18px solid #343a40"
-                  }}
-                >
-                  <CardBody>
-                    <CardTitle>
-                      <h1>Empresa<br /> Company</h1>
-                    </CardTitle>
-                    <CardText>
-
-                    </CardText>
-                    <CardFooter>
-                      <Button className="join-btn-no-transform mr-1" style={{ width: "100%" }}>Button</Button>
-                    </CardFooter>
-                  </CardBody>
-                </Card>
-              </Col>
-              {/* <Col md={4}>
-                <Card
-                  body outline style={{
-                    minHeight: "285px",
-                    marginLeft: "-80px",
-                    border: "18px solid #343a40"
-                  }}
-                >
-                  <CardTitle>
-                    <h1>Empresa<br /> Company</h1>
-                  </CardTitle>
-                  <CardText>
-
-                  </CardText>
-                </Card>
-              </Col>
-              <Col md={4}>
-                <Card
-                  body outline style={{
-                    minHeight: "285px",
-                    marginLeft: "-80px",
-                    border: "18px solid #343a40"
-                  }}
-                >
-                  <CardTitle>
-                    <h1>Empresa<br /> Company</h1>
-                  </CardTitle>
-                  <CardText>
-
-                  </CardText>
-                </Card>
-              </Col> */}
-            </Row>
             <div className="row">
-              <div className="col-md-12">
-                <table className="table table-main">
+              {/* <div className="col-md-12"> */}
+              {/* <table className="table table-main">
                   <thead>
                     <tr>
                       <th scope="col" style={{ display: "none" }}>
                         ID
                       </th>
-                      <th scope="col">Empresa</th>
-                      <th scope="col">Cnpj</th>
-                      <th scope="col">Contato</th>
-                      <th scope="col">Ultima Atualização</th>
-                      <th scope="col">Data Criação</th>
-                      <th scope="col">Opções</th>
+                      <th scope="col">Razão Social</th>
+                      <th scope="col">Nome Fantasia</th>
+                      <th scope="col">CNPJ</th>
+                      <th scope="col">CEP</th>
+                      <th scope="col">rua</th>
+                      <th scope="col">numero</th>
+                      <th scope="col">bairro</th>
+                      <th scope="col">cidade</th>
+                      <th scope="col">uf</th>
+                      <th scope="col">pais</th>
+                      <th scope="col">nomeRepresentante</th>
+                      <th scope="col">telefoneRepresentante</th>
+                      <th scope="col">celularRepresentante</th>
+                      <th scope="col">emailRepresentante</th>
+                      <th scope="col">departamento</th>
+                      <th scope="col">segmentoEmpresa</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {this.state.users.map(company => {
-                      return (
-                        <tr key={`userTable${company.id}`}>
-                          <td style={{ display: "none" }}>{company.id}</td>
-                          <td>{company.empresa}</td>
-                          <td>{company.cnpj}</td>
-                          <td>
-                            {company.email} <br />
-                            {company.tele}
-                          </td>
-                          {/* <td>{company.est}-{company.cid}</td> */}
-                          <td>{company.updated_at}</td>
-                          <td>{company.created_at}</td>
-                          <td>
-                            <button
-                              onClick={e => this.editCompany(company.id)}
-                              className="join-btn-no-transform mr-1"
-                              style={{ width: "100%" }}
-                            >
-                              Detalhes
-                            </button>
-                            <button
-                              onClick={e => this.editCompany(company.id)}
-                              className="join-btn-no-transform mr-1"
-                              style={{
-                                width: "100%",
-                                marginBottom: "5px",
-                                marginTop: "5px"
-                              }}
-                            >
-                              Editar
-                            </button>
-                            <button
-                              onClick={e => this.excluirCompany(company.id)}
-                              className="join-btn-no-transform mr-1"
-                              style={{ width: "100%" }}
-                            >
-                              Excluir
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                  <tbody> */}
+              {/* <div className="row" > */}
+              {this.state.users.map(company => {
+                return (
+                  <div className="col-md-3 box" style={{ color: "rgb(52, 58, 64)", fontSize: "20px", maxWidth: "298px", minHeight: "255px" }} inline={true}>
+                    <div className="card" body outline style={{ backgroundColor: "#faffbd", minHeight: "250px", CmaxWidth: "297px", marginRight: "20px", marginLeft: "-90px", border: "15px solid #343a40" }}>
+                      {/* // <tr >
+                          //   <td style={{ display: "none" }}>{company.id}</td>
+                          //   <td>{company.razaoSocial}</td>
+                          //   <td>{company.nomeFantasia}</td>
+                          //   <td>{company.cnpj}</td>
+                          //   <td>{company.cep}</td>
+                          //   <td>{company.rua}</td>
+                          //   <td>{company.numero}</td>
+                          //   <td>{company.bairro}</td>
+                          //   <td>{company.cidade}</td>
+                          //   <td>{company.uf}</td>
+                          //   <td>{company.pais}</td>
+                          //   <td>{company.nomeRepresentante}</td>
+                          //   <td>{company.telefoneRepresentante}</td>
+                          //   <td>{company.celularRepresentante}</td>
+                          //   <td>{company.emailRepresentante}</td>
+                          //   {/* <td>{company.nomeRepresentante}</td> */}
+                      {/*  <td>{company.departamento}</td>
+                          //   <td>{company.segmentoEmpresa}</td> */}
+
+                      {/* <td>{company.updated_at}</td>
+                          //   <td>{company.created_at}</td> x
+                          //   <td>
+                          //     <button
+                          //       onClick={e => this.editCompany(company.id)}
+                          //       className="join-btn-no-transform mr-1"
+                          //       style={{ width: "100%" }}
+                          //     >
+                          //       Detalhes
+                          //     </button>
+                          //     <button
+                          //       onClick={e => this.editCompany(company.id)}
+                          //       className="join-btn-no-transform mr-1"
+                          //       style={{
+                          //         width: "100%",
+                          //         marginBottom: "5px",
+                          //         marginTop: "5px"
+                          //       }}
+                          //     >
+                          //       Editar
+                          //     </button>
+                          //     <button
+                          //       onClick={e => this.excluirCompany(company.id)}
+                          //       className="join-btn-no-transform mr-1"
+                          //       style={{ width: "100%" }}
+                          //     >
+                          //       Excluir
+                          //     </button>
+                          //   </td>
+                          // </tr>
+
+
+                          //   {/* </tbody>
+                          // </table> */}
+
+                      <div className="card-body" key={`userTable${company.id}`}>
+                        <div className="card-title">
+                          <h3 style={{ color: "#707070" }}>Razão Social:&nbsp;{company.razaoSocial}<br />
+                            Nome Fantasia:&nbsp;{company.nomeFantasia}
+                          </h3>
+                        </div>
+                        <div className="card-text" style={{ margin: "auto" /*padding:"0.75rem 1.25rem"*/ }}>
+                          <h5>
+                            CNPJ:&nbsp; {company.cnpj}
+                          </h5>
+                        </div>
+                        <div className="card-footer" style={{ padding: "0.25rem 3.25rem" /*padding:"0.75rem 1.25rem"*/ }}>
+                          {/* <button className="join-btn-no-transform mr-1" onClick={() => this.visualizar(company.id)} style={{ width: "100%" }}>Visualizar</button> */}
+                          <small className="text-muted">
+                            <Link onClick={e => this.visualizarCompany(company.id)}>Lista De Empresas</Link>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            );
+          })}
+              {/* </div> */}
             </div>
+            {/* </div> */}
           </div>
         ) : (
+
             <CompanyForm
               history={this.props.history}
               edit={this.state.companyEdit[1]}
               id={this.state.companyEdit[0]}
             />
           )}
+        <Modal clasName="loginUser col-md-12" size="lg" isOpen={this.state.modal} toggle={this.visualizar} style={{ width: "100%", color: "rgb(52, 58, 64)" }}>
+          <ModalHeader toggle={this.visualizar} style={{ textAlign: "center" }} >Visualizar</ModalHeader>
+          <ModalBody className="signupForm form-inline">
+            <br />
+            <br />
+            {this.state.users.map(company => {
+              return (
+                <div className="col-md-8">
+                  <label
+                    className="labelFields"
+                    style={{ display: "flex", justifyContent: "end" }}
+                  >
+                    Razão Social: {" "}
+                  </label>
+                  <input
+                    className="inputFields col-md-12"
+                    type="text"
+                    id="empresa"
+                    name="firstname"
+                    disabled="disabled"
+                  // value={this.state.razaosocial}
+                  // onChange={e => this.setState({ razaosocial: e.target.value })
+                  >{company.razaoSocial}</input>
+                  <div className="col-md-8">
+                    <label
+                      className="labelFields"
+                      style={{ display: "flex", justifyContent: "end" }}
+                    >
+                      Nome Fantasia: {" "}
+                    </label>
+                    <input
+                      className="inputFields col-md-12"
+                      type="text"
+                      id="empresa"
+                      name="firstname"
+                      disabled="disabled"
+                      value={this.state.nomeFantasia}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <label
+                      className="labelFields"
+                      style={{ display: "flex", justifyContent: "end" }}
+                    >
+                      CNPJ: {" "}
+                    </label>
+                    <input
+                      className="inputFields col-md-12"
+                      type="number"
+                      id="cnpj"
+                      name="lastname"
+                      disabled="disabled"
+                    />{company.cnpj}
+                  </div>
+                  <button color="primary" onClick={(e) => this.editCompany(company.id)} /*className="join-btn-no-transform mr-1" style={{ width: "100%" }}*/>Editar</button>
+                  <button color="danger" onClick={(e) => this.excluirCompany(company.id)} /*className="join-btn-no-transform mr-1"style={{ width: "100%" }}*/>Excluir</button>
+                </div>
+              );
+            })}
+          </ModalBody>
+        </Modal>
       </div>
     );
   }
