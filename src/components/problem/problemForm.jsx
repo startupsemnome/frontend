@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
+import {
+  Row,
+  Col,
+  ModalHeader,
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  ModalBody,
+  ModalFooter,
+  Modal,
+  Button,
+  Table
+} from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-
-import { MDBInput, MDBFormInline } from 'mdbreact';
-import ReactResponsiveSelect from 'react-responsive-select';
-import ReactDOM from 'react-dom';
 
 class ProblemForm extends Component {
   constructor(props) {
@@ -16,22 +25,19 @@ class ProblemForm extends Component {
     this.state = {
       empresa: "",
       users: [],
-      userTable: "",
+      resourcesCall: [],
       solicitante: "",
       email: "",
       telefone: "",
       descricao: "",
       modal: false,
       error: "",
-      sweetCreate: false,
-      // alteração
-      NamesCompany: 0
+      sweetCreate: false
     };
     this.hasErros = this.hasErros.bind(this);
     this.createProblem = this.createProblem.bind(this);
     this.callResource = this.callResource.bind(this);
     this.findResources = this.findResources.bind(this);
-
   }
   handleFormSubmit(event) {
     event.preventDefault();
@@ -56,9 +62,7 @@ class ProblemForm extends Component {
   }
 
   createProblem(method, id) {
-
     if (!this.hasErros()) {
-
       if (method == "create") {
         axios
           .post(env.API + "problem", {
@@ -76,8 +80,7 @@ class ProblemForm extends Component {
           .catch(function (error) {
             console.log(error);
           });
-      } else if (method = "update") {
-
+      } else if ((method = "update")) {
         axios
           .put(env.API + "problem/" + id, {
             empresa: this.state.empresa,
@@ -93,37 +96,26 @@ class ProblemForm extends Component {
           .catch(function (error) {
             console.log(error);
           });
-
       }
     }
   }
 
-  loadNamesCompany() {
-    // Carregando os nomes das empresas
-    axios
-      .get(env.API + "company")
-      .then(response => {
-        // handle success
-        const data = response.data;
-        this.setState({ users: data });
-      })
-      .catch(error => {
-        // handle error
-        console.log(error + "Erro na API");
-      });
-  }
-
   componentDidMount() {
     this.loadResources();
-    this.loadNamesCompany();
     if (this.props.id) {
       const id = this.props.id;
       axios
         .get(env.API + "problem/" + id)
-        .then((response) => {
+        .then(response => {
           console.log(response);
           const data = response.data;
-          this.setState({ empresa: data.empresa, solicitante: data.solicitante, email: data.email, telefone: data.telefone, descricao: data.descricao });
+          this.setState({
+            empresa: data.empresa,
+            solicitante: data.solicitante,
+            email: data.email,
+            telefone: data.telefone,
+            descricao: data.descricao
+          });
         })
         .catch(function (error) {
           console.log(error);
@@ -131,13 +123,33 @@ class ProblemForm extends Component {
     }
   }
 
+  handleCallResourcerSetList(id) {
+    const arrayAux = this.state.resourcesCall;
+    if (arrayAux.indexOf(id) > -1) {
+      const index = arrayAux.indexOf(id);
+      arrayAux.splice(index, 1);
+    } else {
+      arrayAux.push(id);
+    }
+    this.setState({ resourcesCall: arrayAux });
+  }
+
   callResource() {
-    this.setState({ modal: !this.state.modal })
-    alert("Será comunicado os recursos");
+    this.setState({ modal: !this.state.modal });
+    axios
+      .post(env.API + "communicate-resource", {
+        id_resource: this.state.resourcesCall
+      })
+      .then(response => {
+        alert("email enviado para recursos");
+      })
+      .catch(error => {
+        console.log(error + "Erro na API");
+      });
   }
 
   findResources() {
-    this.setState({ modal: !this.state.modal })
+    this.setState({ modal: !this.state.modal });
   }
 
   hasErros() {
@@ -163,9 +175,6 @@ class ProblemForm extends Component {
     return false;
   }
 
-
-
-
   render() {
     return (
       <div className="loginUser col-md-12">
@@ -177,20 +186,64 @@ class ProblemForm extends Component {
             >
               Empresa:
             </label>
-            <Form inline={true}>
-              <FormGroup className="">
-                <Label className="">
-                  <Input className="inputFields col-md-12" type="select" name="select" id="exampleSelect">
-                    {this.state.users.map(company => {
-                      return (
-                        <option>{company.empresa}</option>
-                      );
-                    })}
-                  </Input>
-                </Label>
-              </FormGroup>
-            </Form>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o nome da empresa do solicitante"
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
+              required
+            />
           </div>
+          <div className="col-md-5">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Solicitante:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o nome do solicitante"
+              value={this.state.solicitante}
+              onChange={e => this.setState({ solicitante: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-8">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Email:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Digite o email do solicitante"
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+              required
+            />
+          </div>
+          <div className="col-md-4">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Telefone:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="number"
+              placeholder="Digite o telefone do solicitante"
+              value={this.state.telefone}
+              onChange={e => this.setState({ telefone: e.target.value })}
+              required
+            />
+          </div>
+
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -207,87 +260,7 @@ class ProblemForm extends Component {
               required
             />
           </div>
-          <div className="col-md-7">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Categoria:
-            </label>
-            <Form inline={true}>
-              <FormGroup className="" >
-                <Label className="">
-                  <Input
-                    select className="inputFields col-md-12"
-                    type="select"
-                    select="multiple"
-                    name="category"
-                    id="optioncategory"
-                  >
-                    <option value="1">Administração</option>
-                    <option valeu="2">Comércio Exterior</option>
-                    <option value="3">Tecnologia</option>
-                    <option value="4">Arquitetura</option>
-                    <option value="5">Medicina</option>
-                    <option value="6">Contábeis</option>
-                    <option value="7">Economia</option>
-                    <option value="8">Cinema e Audiovisual</option>
-                    <option value="9">Radio e TV</option>
-                    <option value="10">Design</option>
-                    <option value="11">Direito</option>
-                    <option value="12">Educação Física</option>
-                    <option value="13">Enfermagem</option>
-                    <option value="14">Engenharia Civil</option>
-                    <option value="15">Engenharia de Automação e Controle</option>
-                    <option value="16">Engenharia de Produção</option>
-                    <option value="17">Engenharia Elétrica</option>
-                    <option value="18">Engenharia Eletrônica</option>
-                    <option value="19">Engenharia Mecânica</option>
-                    <option value="20">Engenharia Química</option>
-                    <option value="21">Psicologia</option>
-                    <option value="22">Farmácia</option>
-                    <option value="23">Fisioterapia</option>
-                    <option value="24">Comercial</option>
-                    <option value="25">Qualidade</option>
-                    <option value="26">Logística</option>
-                    <option value="27">Marketing</option>
-                    <option value="28">Medicina Veterinária</option>
-                    <option value="29">Nutrição</option>
-                    <option value="30">Odontologia</option>
-                    <option value="31">Psicologia</option>
-                    <option value="32">Relações Públicas</option>
-                    <option value="33">Publicidade e Propaganda</option>
-                    <option value="34">Turismo</option>
-                    <option value="35">Outros</option>
-                  </Input></Label>
-              </FormGroup>
-            </Form>
-          </div>
-          <div className="col-md-12">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Descrição do Problema:
-            </label>
-            <textarea
-              className="inputFields col-md-12"
-              type="text"
-              placeholder="Descreva o problema"
-              value={this.state.descricao}
-              onChange={e => this.setState({ descricao: e.target.value })}
-              required
-            />
-          </div>
-          <div className="col-md-12">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Informe a atuação do Problema:
-            </label>
-            <br></br>
-          </div>
+
           <div className="col-md-12">
             <div className="">
               <table className="table table">
@@ -477,22 +450,24 @@ class ProblemForm extends Component {
               onClick={() => {
                 !this.props.id
                   ? this.createProblem("create")
-                  : this.createProblem("update", this.props.id)
+                  : this.createProblem("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >
               {!this.props.id ? "Criar" : "Editar"} Problema
-              </button>
+            </button>
             <div />
             <button
               type="button"
-              onClick={() => { this.findResources() }}
+              onClick={() => {
+                this.findResources();
+              }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >
               Possiveis Soluções
-              </button>
+            </button>
           </Col>
         </form>
         <SweetAlert
@@ -503,28 +478,16 @@ class ProblemForm extends Component {
         >
           {`Cadastrado ${this.state.problem} com sucesso!`}
         </SweetAlert>
-        <Modal size="lg" isOpen={this.state.modal} toggle={this.findResources} style={{ width: "100%" }}>
-          <ModalHeader toggle={this.findResources}>Selecione os Recursos Para Esse Problema</ModalHeader>
+        <Modal
+          size="lg"
+          isOpen={this.state.modal}
+          toggle={this.findResources}
+          style={{ width: "100%" }}
+        >
+          <ModalHeader toggle={this.findResources}>
+            Selecione os Recursos Para Esse Problema
+          </ModalHeader>
           <ModalBody>
-            <Form inline={true}>
-              <FormGroup>
-                <Label for="exampleEmail">Nome <br />
-                  <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
-              </FormGroup>
-              <FormGroup className="ml-2">
-                <Label for="exampleSelect">Formacao <br />
-                  <Input type="select" name="select" id="exampleSelect">
-                    <option>SISTEMAS DA INFORMACAO</option>
-                  </Input></Label>
-              </FormGroup>
-              <FormGroup className="ml-2">
-                <Label for="exampleSelect">Experiencia</Label>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>1 ANOS</option>
-                </Input>
-              </FormGroup>
-            </Form>
-            <br />
             <br />
             <Table dark>
               <thead>
@@ -540,27 +503,36 @@ class ProblemForm extends Component {
                 {this.state.users.map(resource => {
                   return (
                     <tr>
-                      <td><FormGroup check>
-                        <Label check>
-                          <Input type="checkbox" />{' '}
-                          marcar
-                        </Label>
-                      </FormGroup>
+                      <td>
+                        <FormGroup check>
+                          <Label check>
+                            <Input
+                              type="checkbox"
+                              onChange={() =>
+                                this.handleCallResourcerSetList(resource.id)
+                              }
+                            />{" "}
+                            marcar
+                          </Label>
+                        </FormGroup>
                       </td>
-                      <td>{resource.fname}</td>
+                      <td>{resource.nome}</td>
                       <td>{resource.formacao}</td>
-                      <td>{resource.areai}</td>
-                      <td>{resource.cid}</td>
+                      <td>{resource.area_interesse}</td>
+                      <td>{resource.cidade}</td>
                     </tr>
                   );
                 })}
               </tbody>
             </Table>
-
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.callResource}>Comunicar Recursos</Button>{' '}
-            <Button color="secondary" onClick={this.findResources}>Voltar</Button>
+            <Button color="primary" onClick={this.callResource}>
+              Comunicar Recursos
+            </Button>{" "}
+            <Button color="secondary" onClick={this.findResources}>
+              Voltar
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
