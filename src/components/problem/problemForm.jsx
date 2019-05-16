@@ -27,12 +27,15 @@ class ProblemForm extends Component {
       users: [],
       resourcesCall: [],
       solicitante: "",
+      userTable: "",
       email: "",
       telefone: "",
       descricao: "",
       modal: false,
       error: "",
-      sweetCreate: false
+      // alteração
+      sweetCreate: false,
+      NamesCompany: 0
     };
     this.hasErros = this.hasErros.bind(this);
     this.createProblem = this.createProblem.bind(this);
@@ -45,6 +48,20 @@ class ProblemForm extends Component {
   }
   listSolutions() {
     console.log(this.props);
+  }
+  loadNamesCompany() {
+    // Carregando os nomes das empresas
+    axios
+      .get(env.API + "company")
+      .then(response => {
+        // handle success
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
   }
   loadResources() {
     // Make a request for a user with a given ID
@@ -101,6 +118,7 @@ class ProblemForm extends Component {
   }
 
   componentDidMount() {
+    this.loadNamesCompany();
     this.loadResources();
     if (this.props.id) {
       const id = this.props.id;
@@ -109,6 +127,13 @@ class ProblemForm extends Component {
         .then(response => {
           console.log(response);
           const data = response.data;
+          this.setState({
+            empresa: data.empresa,
+            solicitante: data.solicitante,
+            email: data.email,
+            telefone: data.telefone,
+            descricao: data.descricao
+          });
           this.setState({
             empresa: data.empresa,
             solicitante: data.solicitante,
@@ -186,16 +211,32 @@ class ProblemForm extends Component {
             >
               Empresa:
             </label>
-            <input
+            {/* <input
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite o nome da empresa do solicitante"
               value={this.state.empresa}
               onChange={e => this.setState({ empresa: e.target.value })}
               required
-            />
+            /> */}
+            <Form inline={true}>
+              <FormGroup className="">
+                <Label className="">
+                  <Input
+                    className="inputFields col-md-12"
+                    type="select"
+                    name="select"
+                    id="exampleSelect"
+                  >
+                    {this.state.users.map(company => {
+                      return <option>{company.empresa}</option>;
+                    })}
+                  </Input>
+                </Label>
+              </FormGroup>
+            </Form>
           </div>
-          <div className="col-md-5">
+          {/* <div className="col-md-5">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -210,40 +251,7 @@ class ProblemForm extends Component {
               onChange={e => this.setState({ solicitante: e.target.value })}
               required
             />
-          </div>
-          <div className="col-md-8">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Email:
-            </label>
-            <input
-              className="inputFields col-md-12"
-              type="text"
-              placeholder="Digite o email do solicitante"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-              required
-            />
-          </div>
-          <div className="col-md-4">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Telefone:
-            </label>
-            <input
-              className="inputFields col-md-12"
-              type="number"
-              placeholder="Digite o telefone do solicitante"
-              value={this.state.telefone}
-              onChange={e => this.setState({ telefone: e.target.value })}
-              required
-            />
-          </div>
-
+          </div> */}
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -257,8 +265,77 @@ class ProblemForm extends Component {
               placeholder="Digite em poucas palavras o titulo do seu problema"
               value={this.state.titulo}
               onChange={e => this.setState({ titulo: e.target.value })}
+              onChange={e => this.setState({ email: e.target.value })}
               required
             />
+          </div>
+          <div className="col-md-7">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Categoria:
+            </label>
+            {/* <input
+              className="inputFields col-md-12"
+              type="number"
+              placeholder="Digite o telefone do solicitante"
+              value={this.state.telefone}
+              onChange={e => this.setState({ telefone: e.target.value })}
+              required
+            /> */}
+            <Form inline={true}>
+              <FormGroup className="">
+                <Label className="">
+                  <Input
+                    select
+                    className="inputFields col-md-12"
+                    type="select"
+                    select="multiple"
+                    name="category"
+                    id="optioncategory"
+                  >
+                    <option value="1">Administração</option>
+                    <option valeu="2">Comércio Exterior</option>
+                    <option value="3">Tecnologia</option>
+                    <option value="4">Arquitetura</option>
+                    <option value="5">Medicina</option>
+                    <option value="6">Contábeis</option>
+                    <option value="7">Economia</option>
+                    <option value="8">Cinema e Audiovisual</option>
+                    <option value="9">Radio e TV</option>
+                    <option value="10">Design</option>
+                    <option value="11">Direito</option>
+                    <option value="12">Educação Física</option>
+                    <option value="13">Enfermagem</option>
+                    <option value="14">Engenharia Civil</option>
+                    <option value="15">
+                      Engenharia de Automação e Controle
+                    </option>
+                    <option value="16">Engenharia de Produção</option>
+                    <option value="17">Engenharia Elétrica</option>
+                    <option value="18">Engenharia Eletrônica</option>
+                    <option value="19">Engenharia Mecânica</option>
+                    <option value="20">Engenharia Química</option>
+                    <option value="21">Psicologia</option>
+                    <option value="22">Farmácia</option>
+                    <option value="23">Fisioterapia</option>
+                    <option value="24">Comercial</option>
+                    <option value="25">Qualidade</option>
+                    <option value="26">Logística</option>
+                    <option value="27">Marketing</option>
+                    <option value="28">Medicina Veterinária</option>
+                    <option value="29">Nutrição</option>
+                    <option value="30">Odontologia</option>
+                    <option value="31">Psicologia</option>
+                    <option value="32">Relações Públicas</option>
+                    <option value="33">Publicidade e Propaganda</option>
+                    <option value="34">Turismo</option>
+                    <option value="35">Outros</option>
+                  </Input>
+                </Label>
+              </FormGroup>
+            </Form>
           </div>
 
           <div className="col-md-12">
@@ -268,7 +345,7 @@ class ProblemForm extends Component {
             >
               Descrição do Problema:
             </label>
-            <input
+            <textarea
               className="inputFields col-md-12"
               type="text"
               placeholder="Descreva o problema"
@@ -276,6 +353,101 @@ class ProblemForm extends Component {
               onChange={e => this.setState({ descricao: e.target.value })}
               required
             />
+          </div>
+
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Informe a atuação do Problema:
+            </label>
+            {/* <input
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Descreva o problema"
+              value={this.state.descricao}
+              onChange={e => this.setState({ descricao: e.target.value })}
+              required
+            /> */}
+            <br />
+          </div>
+          <div className="col-md-12">
+            <div className="">
+              <table className="table table">
+                <thead>
+                  <tr>
+                    <th scope="col" style={{ display: "none" }}>
+                      ID
+                    </th>
+                    <th scope="col">Período</th>
+                    <th scope="col">Segunda-feira</th>
+                    <th scope="col">Terça-feira</th>
+                    <th scope="col">Quarta-feira</th>
+                    <th scope="col">Quinta-feira</th>
+                    <th scope="col">Sexta-feira</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Manhã</td>
+                    <td>
+                      <input name="segunda" type="checkbox" id="m-segunda" />
+                    </td>
+                    <td>
+                      <input name="terça" type="checkbox" id="m-terca" />
+                    </td>
+                    <td>
+                      <input name="quarta" type="checkbox" id="m-quarta" />
+                    </td>
+                    <td>
+                      <input name="quinta" type="checkbox" id="m-quinta" />
+                    </td>
+                    <td>
+                      <input name="sexta" type="checkbox" id="m-sexta" />
+                    </td>
+                  </tr>
+                  {/* LINHA - TARDE */}
+                  <tr>
+                    <td>Tarde</td>
+                    <td>
+                      <input name="segunda" type="checkbox" id="t-segunda" />
+                    </td>
+                    <td>
+                      <input name="terca" type="checkbox" id="t-terca" />
+                    </td>
+                    <td>
+                      <input name="quarta" type="checkbox" id="t-quarta" />
+                    </td>
+                    <td>
+                      <input name="quinta" type="checkbox" id="t-quinta" />
+                    </td>
+                    <td>
+                      <input name="sexta" type="checkbox" id="t-sexta" />
+                    </td>
+                    {/* LINHA - NOITE */}
+                  </tr>
+                  <tr>
+                    <td>Noite</td>
+                    <td>
+                      <input name="segunda" type="checkbox" id="n-segunda" />
+                    </td>
+                    <td>
+                      <input name="terca" type="checkbox" id="n-terca" />
+                    </td>
+                    <td>
+                      <input name="quarta" type="checkbox" id="n-quarta" />
+                    </td>
+                    <td>
+                      <input name="quinta" type="checkbox" id="n-quinta" />
+                    </td>
+                    <td>
+                      <input name="sexta" type="checkbox" id="n-sexta" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
