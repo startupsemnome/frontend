@@ -129,11 +129,11 @@ class ConsultResourceForm extends Component {
                       return (
                         <tr key={`buscaTable${resource.id}`}>
                           <td style={{ display: "none" }}>{resource.id}</td>
-                          <td>{resource.fname}</td>
+                          <td>{resource.nome}</td>
                           <td>{resource.email}</td>
-                          <td>{resource.tel}</td>
-                          <td>{resource.cid}</td>
-                          <td>{resource.areai}</td>
+                          <td>{resource.telefone}</td>
+                          <td>{resource.cidade}</td>
+                          <td>{resource.area_interesse}</td>
                           <td>
                             <button
                               onClick={(e) => this.editResource(resource.id)}

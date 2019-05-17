@@ -9,17 +9,17 @@ class RegisterResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
+      nome: "",
+      sobrenome: "",
       email: "",
       formacao: "",
-      end: "",
-      tel: "",
-      cel: "",
-      cid: "",
-      est: "",
-      hab: "",
-      areai: "",
+      endereco: "",
+      telefone: "",
+      celular: "",
+      cidade: "",
+      estado: "",
+      habilidades: "",
+      area_interesse: "",
       message1: "",
 
       sweetCreate: false
