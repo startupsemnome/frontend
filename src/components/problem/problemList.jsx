@@ -11,7 +11,7 @@ class ProblemList extends Component {
     this.state = {
       users: [],
       buscaTable: "",
-      problemListEdit: [null, false],
+      problemListEdit: [null, false]
     };
     console.log(this.props);
     this.deleteProblem = this.deleteProblem.bind(this);
@@ -23,7 +23,7 @@ class ProblemList extends Component {
       .then(response => {
         alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
-        this.setState({ users: response.data })
+        this.setState({ users: response.data });
       })
       .catch(error => {
         // handle error
@@ -45,7 +45,7 @@ class ProblemList extends Component {
       });
   }
   editProblem(id) {
-    this.setState({ problemListEdit: [id, true] })
+    this.setState({ problemListEdit: [id, true] });
   }
   loadProblems() {
     // Make a request for a user with a given ID
@@ -109,7 +109,9 @@ class ProblemList extends Component {
                 <table class="table table-main">
                   <thead>
                     <tr>
-                      <th scope="col" style={{ display: "none" }}>ID</th>
+                      <th scope="col" style={{ display: "none" }}>
+                        ID
+                      </th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Solicitante</th>
                       <th scope="col">Contato</th>
@@ -129,21 +131,22 @@ class ProblemList extends Component {
                           <td>{problem.solicitante}</td>
                           <td>
                             {problem.email} <br />
-                            {problem.telefone}</td>
+                            {problem.telefone}
+                          </td>
                           <td>{problem.titulo}</td>
                           <td>{problem.descricao}</td>
                           <td>{problem.updated_at}</td>
                           <td>{problem.created_at}</td>
                           <td>
                             <button
-                              onClick={(e) => this.editProblem(problem.id)}
+                              onClick={e => this.editProblem(-1)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
                               Detalhes
                             </button>
                             <button
-                              onClick={(e) => this.editProblem(problem.id)}
+                              onClick={e => this.editProblem(problem.id)}
                               className="join-btn-no-transform mr-1"
                               style={{
                                 width: "100%",
@@ -154,7 +157,7 @@ class ProblemList extends Component {
                               Editar
                             </button>
                             <button
-                              onClick={(e) => this.deleteProblem(problem.id)}
+                              onClick={e => this.deleteProblem(problem.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
@@ -170,12 +173,12 @@ class ProblemList extends Component {
             </div>
           </div>
         ) : (
-            <ProblemForm
-              history={this.props.history}
-              edit={this.state.problemListEdit[1]}
-              id={this.state.problemListEdit[0]}
-            />
-          )}
+          <ProblemForm
+            history={this.props.history}
+            edit={this.state.problemListEdit[1]}
+            id={this.state.problemListEdit[0]}
+          />
+        )}
       </div>
     );
   }

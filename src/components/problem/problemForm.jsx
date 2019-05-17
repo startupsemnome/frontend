@@ -30,6 +30,7 @@ class ProblemForm extends Component {
       userTable: "",
       email: "",
       telefone: "",
+      titulo: "",
       descricao: "",
       modal: false,
       error: "",
@@ -132,14 +133,8 @@ class ProblemForm extends Component {
             solicitante: data.solicitante,
             email: data.email,
             telefone: data.telefone,
-            descricao: data.descricao
-          });
-          this.setState({
-            empresa: data.empresa,
-            solicitante: data.solicitante,
-            email: data.email,
-            telefone: data.telefone,
-            descricao: data.descricao
+            descricao: data.descricao,
+            titulo: data.titulo
           });
         })
         .catch(function(error) {
@@ -204,7 +199,7 @@ class ProblemForm extends Component {
     return (
       <div className="loginUser col-md-12">
         <form className="signupForm form-inline">
-          <div className="col-md-7">
+          <div className="col-md-12">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -219,39 +214,19 @@ class ProblemForm extends Component {
               onChange={e => this.setState({ empresa: e.target.value })}
               required
             /> */}
-            <Form inline={true}>
-              <FormGroup className="">
-                <Label className="">
-                  <Input
-                    className="inputFields col-md-12"
-                    type="select"
-                    name="select"
-                    id="exampleSelect"
-                  >
-                    {this.state.users.map(company => {
-                      return <option>{company.empresa}</option>;
-                    })}
-                  </Input>
-                </Label>
-              </FormGroup>
-            </Form>
-          </div>
-          {/* <div className="col-md-5">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Solicitante:
-            </label>
-            <input
+
+            <Input
               className="inputFields col-md-12"
-              type="text"
-              placeholder="Digite o nome do solicitante"
-              value={this.state.solicitante}
-              onChange={e => this.setState({ solicitante: e.target.value })}
-              required
-            />
-          </div> */}
+              type="select"
+              name="select"
+              id="exampleSelect"
+              style={{ width: "100%" }}
+            >
+              {this.state.users.map(company => {
+                return <option>{company.empresa}</option>;
+              })}
+            </Input>
+          </div>
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -269,7 +244,7 @@ class ProblemForm extends Component {
               required
             />
           </div>
-          <div className="col-md-7">
+          <div className="col-md-12">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -284,58 +259,52 @@ class ProblemForm extends Component {
               onChange={e => this.setState({ telefone: e.target.value })}
               required
             /> */}
-            <Form inline={true}>
-              <FormGroup className="">
-                <Label className="">
-                  <Input
-                    select
-                    className="inputFields col-md-12"
-                    type="select"
-                    select="multiple"
-                    name="category"
-                    id="optioncategory"
-                  >
-                    <option value="1">Administração</option>
-                    <option valeu="2">Comércio Exterior</option>
-                    <option value="3">Tecnologia</option>
-                    <option value="4">Arquitetura</option>
-                    <option value="5">Medicina</option>
-                    <option value="6">Contábeis</option>
-                    <option value="7">Economia</option>
-                    <option value="8">Cinema e Audiovisual</option>
-                    <option value="9">Radio e TV</option>
-                    <option value="10">Design</option>
-                    <option value="11">Direito</option>
-                    <option value="12">Educação Física</option>
-                    <option value="13">Enfermagem</option>
-                    <option value="14">Engenharia Civil</option>
-                    <option value="15">
-                      Engenharia de Automação e Controle
-                    </option>
-                    <option value="16">Engenharia de Produção</option>
-                    <option value="17">Engenharia Elétrica</option>
-                    <option value="18">Engenharia Eletrônica</option>
-                    <option value="19">Engenharia Mecânica</option>
-                    <option value="20">Engenharia Química</option>
-                    <option value="21">Psicologia</option>
-                    <option value="22">Farmácia</option>
-                    <option value="23">Fisioterapia</option>
-                    <option value="24">Comercial</option>
-                    <option value="25">Qualidade</option>
-                    <option value="26">Logística</option>
-                    <option value="27">Marketing</option>
-                    <option value="28">Medicina Veterinária</option>
-                    <option value="29">Nutrição</option>
-                    <option value="30">Odontologia</option>
-                    <option value="31">Psicologia</option>
-                    <option value="32">Relações Públicas</option>
-                    <option value="33">Publicidade e Propaganda</option>
-                    <option value="34">Turismo</option>
-                    <option value="35">Outros</option>
-                  </Input>
-                </Label>
-              </FormGroup>
-            </Form>
+
+            <Input
+              select
+              className="inputFields col-md-12"
+              type="select"
+              select="multiple"
+              name="category"
+              id="optioncategory"
+              style={{ width: "100%" }}
+            >
+              <option value="1">Administração</option>
+              <option valeu="2">Comércio Exterior</option>
+              <option value="3">Tecnologia</option>
+              <option value="4">Arquitetura</option>
+              <option value="5">Medicina</option>
+              <option value="6">Contábeis</option>
+              <option value="7">Economia</option>
+              <option value="8">Cinema e Audiovisual</option>
+              <option value="9">Radio e TV</option>
+              <option value="10">Design</option>
+              <option value="11">Direito</option>
+              <option value="12">Educação Física</option>
+              <option value="13">Enfermagem</option>
+              <option value="14">Engenharia Civil</option>
+              <option value="15">Engenharia de Automação e Controle</option>
+              <option value="16">Engenharia de Produção</option>
+              <option value="17">Engenharia Elétrica</option>
+              <option value="18">Engenharia Eletrônica</option>
+              <option value="19">Engenharia Mecânica</option>
+              <option value="20">Engenharia Química</option>
+              <option value="21">Psicologia</option>
+              <option value="22">Farmácia</option>
+              <option value="23">Fisioterapia</option>
+              <option value="24">Comercial</option>
+              <option value="25">Qualidade</option>
+              <option value="26">Logística</option>
+              <option value="27">Marketing</option>
+              <option value="28">Medicina Veterinária</option>
+              <option value="29">Nutrição</option>
+              <option value="30">Odontologia</option>
+              <option value="31">Psicologia</option>
+              <option value="32">Relações Públicas</option>
+              <option value="33">Publicidade e Propaganda</option>
+              <option value="34">Turismo</option>
+              <option value="35">Outros</option>
+            </Input>
           </div>
 
           <div className="col-md-12">
@@ -463,7 +432,12 @@ class ProblemForm extends Component {
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >
-              {!this.props.id ? "Criar" : "Editar"} Problema
+              {!this.props.id
+                ? "Criar"
+                : this.props.id == -1
+                ? "Voltar"
+                : "Editar"}{" "}
+              Problema
             </button>
             <div />
             <button
@@ -520,7 +494,6 @@ class ProblemForm extends Component {
                                 this.handleCallResourcerSetList(resource.id)
                               }
                             />{" "}
-                            marcar
                           </Label>
                         </FormGroup>
                       </td>
