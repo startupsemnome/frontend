@@ -44,6 +44,9 @@ class ProblemList extends Component {
         console.log(error + "Erro na exclusao do item");
       });
   }
+  detailProblem(id) {
+    this.setState({ problemListEdit: [-1, true, id] });
+  }
   editProblem(id) {
     this.setState({ problemListEdit: [id, true] });
   }
@@ -139,7 +142,7 @@ class ProblemList extends Component {
                           <td>{problem.created_at}</td>
                           <td>
                             <button
-                              onClick={e => this.editProblem(-1)}
+                              onClick={e => this.detailProblem(problem.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
@@ -177,6 +180,7 @@ class ProblemList extends Component {
             history={this.props.history}
             edit={this.state.problemListEdit[1]}
             id={this.state.problemListEdit[0]}
+            idDetail={this.state.problemListEdit[2]}
           />
         )}
       </div>
