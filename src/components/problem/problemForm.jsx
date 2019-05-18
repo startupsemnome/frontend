@@ -355,6 +355,8 @@ class ProblemForm extends Component {
                     <th scope="col">Quarta-feira</th>
                     <th scope="col">Quinta-feira</th>
                     <th scope="col">Sexta-feira</th>
+                    <th scope="col">Sábado</th>
+                    <th scope="col">Domingo</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -375,6 +377,12 @@ class ProblemForm extends Component {
                     <td>
                       <input name="sexta" type="checkbox" id="m-sexta" />
                     </td>
+                    <td>
+                      <input name="sabado" type="checkbox" id="m-sabado" />
+                    </td>
+                    <td>
+                      <input name="domingo" type="checkbox" id="m-domingo" />
+                    </td>
                   </tr>
                   {/* LINHA - TARDE */}
                   <tr>
@@ -394,6 +402,12 @@ class ProblemForm extends Component {
                     <td>
                       <input name="sexta" type="checkbox" id="t-sexta" />
                     </td>
+                    <td>
+                      <input name="sabado" type="checkbox" id="t-sabado" />
+                    </td>
+                    <td>
+                      <input name="domingo" type="checkbox" id="t-domingo" />
+                    </td>
                     {/* LINHA - NOITE */}
                   </tr>
                   <tr>
@@ -412,6 +426,12 @@ class ProblemForm extends Component {
                     </td>
                     <td>
                       <input name="sexta" type="checkbox" id="n-sexta" />
+                    </td>
+                    <td>
+                      <input name="sabado" type="checkbox" id="n-sabado" />
+                    </td>
+                    <td>
+                      <input name="domingo" type="checkbox" id="n-domingo" />
                     </td>
                   </tr>
                 </tbody>
@@ -435,8 +455,8 @@ class ProblemForm extends Component {
               {!this.props.id
                 ? "Criar"
                 : this.props.id == -1
-                ? "Voltar"
-                : "Editar"}{" "}
+                  ? "Voltar"
+                  : "Editar"}{" "}
               Problema
             </button>
             <div />
