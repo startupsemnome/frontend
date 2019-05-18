@@ -18,6 +18,8 @@ import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
 
+import AcceptResourceForm from "../problem/acceptResourceForm";
+
 class ProblemForm extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +38,8 @@ class ProblemForm extends Component {
       error: "",
       // alteração
       sweetCreate: false,
-      NamesCompany: 0
+      NamesCompany: 0,
+      acceptOpen: false
     };
     this.hasErros = this.hasErros.bind(this);
     this.createProblem = this.createProblem.bind(this);
@@ -79,6 +82,9 @@ class ProblemForm extends Component {
       });
   }
 
+  showAceeptForm() {
+    this.setState({ acceptOpen: !this.state.acceptOpen });
+  }
   createProblem(method, id) {
     if (!this.hasErros()) {
       if (method == "create") {
@@ -166,6 +172,10 @@ class ProblemForm extends Component {
       .catch(error => {
         console.log(error + "Erro na API");
       });
+  }
+
+  goToPageListProblem() {
+    window.location = "/consultar-problema";
   }
 
   findResources() {
@@ -427,6 +437,8 @@ class ProblemForm extends Component {
               onClick={() => {
                 !this.props.id
                   ? this.createProblem("create")
+                  : this.props.id == -1
+                  ? this.goToPageListProblem()
                   : this.createProblem("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
@@ -439,6 +451,13 @@ class ProblemForm extends Component {
                 : "Editar"}{" "}
               Problema
             </button>
+            {this.props.idDetail ? (
+              <AcceptResourceForm
+                modal={this.state.acceptOpen}
+                problem_id={this.props.idDetail}
+                onChange={() => this.showAceeptForm()}
+              />
+            ) : null}
             <div />
             <button
               type="button"

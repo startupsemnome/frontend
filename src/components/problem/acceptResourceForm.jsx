@@ -1,5 +1,18 @@
 import React, { Component } from "react";
-import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table } from "reactstrap";
+import {
+  Row,
+  Col,
+  ModalHeader,
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  ModalBody,
+  ModalFooter,
+  Modal,
+  Button,
+  Table
+} from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
@@ -9,10 +22,10 @@ class AcceptResourceForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
-      users:[],
-      name:"Leonardo",
-      error:""
+      modal: this.props.acceptOpen,
+      users: [],
+      name: "Leonardo",
+      error: ""
     };
     // this.hasErros = this.hasErros.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -21,66 +34,69 @@ class AcceptResourceForm extends React.Component {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
+
+    if (!this.state.modal) {
+      this.loadResourcesOk();
+    }
   }
-  
+
+  componentDidUpdate(props) {}
+
+  loadResourcesOk() {
+    // Make a request for a user with a given ID
+    axios
+      .get(env.API + "resource-aceept/" + this.props.problem_id)
+      .then(response => {
+        // handle success
+        const data = response.data;
+        this.setState({ users: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
+
   render() {
-    return (        
-         <div>
-        <Button             
-            className="join-btn-no-transform mr-1 login" 
-            style={{ minwidth: "55%", margin: "0px", maxwidth:"55%" }} 
-            onClick={this.toggle}>
-              Recursos Aceitos  
+    return (
+      <div>
+        <Button
+          className="join-btn-no-transform mr-1 login"
+          style={{ minwidth: "55%", margin: "0px", maxwidth: "55%" }}
+          onClick={this.toggle}
+        >
+          Recursos Aceitos
         </Button>
-            
-        
-        <Modal size ="lg" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+
+        <Modal
+          size="lg"
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+        >
           <ModalHeader toggle={this.toggle}>Recursos Aceitos</ModalHeader>
           <ModalBody>
-          <Form inline={true}>
-              {/* <FormGroup>
-                <Label for="exampleEmail">Nome <br />
-                  <Input type="email" name="email" id="exampleEmail" placeholder="" /></Label>
-              </FormGroup> */}
-              {/* <FormGroup className="ml-2">
-                <Label for="exampleSelect">Formação <br />
-                  <Input type="select" name="select" id="exampleSelect">
-                    <option>SISTEMAS DA INFORMACAO</option>
-                    <option>CIÊNCIA DA COMPUTAÇÃO</option>
-                  </Input></Label> */}
-              {/* </FormGroup> */}
-              {<FormGroup className="ml-2">
-                <Label for="exampleSelect">Habilidades</Label>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>Desenvolvimento de Sistemas WEB</option>
-                  <option>Gerenciamento de Projetos</option>
-                  <option>Infraestrutura e Redes</option>
-                  <option>Ramo Hospitalar</option>
-                </Input>
-              </FormGroup> }
-            </Form>
-            <br />
-            <br />
             <Table dark>
               <thead>
-                <tr>                  
+                <tr>
                   <th>Nome</th>
                   <th>Formação</th>
                   <th>Habilidades</th>
-                  <th>Experiência</th>
+                  <th>Area de Interesse</th>
+                  <th>Email</th>
                   <th>Contato</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map(resource => {
+                {this.state.users.map(user => {
                   return (
-                    <tr>                      
-                      <td>Wandell</td>
-                      <td>{resource.formacao}</td>
-                      <td>{resource.hab}</td>
-                      <td>{resource.cid}</td>
-                      <td>{resource.email}<br />
-                      {resource.cel}</td>
+                    <tr>
+                      <td>{user.resource.nome}</td>
+                      <td>{user.resource.formacao}</td>
+                      <td>{user.resource.habilidades}</td>
+                      <td>{user.resource.area_interesse}</td>
+                      <td>{user.resource.email}</td>
+                      <td>{user.resource.celular}</td>
                     </tr>
                   );
                 })}
@@ -88,10 +104,11 @@ class AcceptResourceForm extends React.Component {
             </Table>
           </ModalBody>
           <ModalFooter>
-            <Button className="join-btn-no-transform mr-1 login" onClick={this.toggle}>Enviar Proposta</Button>{' '}
-            <Button className="join-btn-no-transform mr-1 login" onClick={this.toggle}>Voltar</Button>
+            <h1 style={{ color: "black" }}>
+              Estes recursos aceitaram o projeto!
+            </h1>
           </ModalFooter>
-        </Modal>      
+        </Modal>
       </div>
     );
   }
