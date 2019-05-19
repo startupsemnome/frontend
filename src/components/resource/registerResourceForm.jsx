@@ -22,7 +22,7 @@ class RegisterResourceForm extends Component {
       segmento: "",
       dt_tempo: "",
       cargo: "",
-      atividade: "",
+      atividades: "",
       //formação
       curso: "",
       instituicao: "",
@@ -72,7 +72,7 @@ class RegisterResourceForm extends Component {
             segmento: this.state.segmento,
             dt_tempo: this.state.dt_tempo,
             cargo: this.state.cargo,
-            atividade: this.state.atividade,
+            atividades: this.state.atividades,
             curso: this.state.curso,
             instituicao: this.state.instituicao,
             nivel_curso: this.state.nivel_curso,
@@ -118,7 +118,7 @@ class RegisterResourceForm extends Component {
             segmento: this.state.segmento,
             dt_tempo: this.state.dt_tempo,
             cargo: this.state.cargo,
-            atividade: this.state.atividade,
+            atividades: this.state.atividades,
             curso: this.state.curso,
             instituicao: this.state.instituicao,
             nivel_curso: this.state.nivel_curso,
@@ -172,7 +172,7 @@ class RegisterResourceForm extends Component {
             segmento: data.segmento,
             dt_tempo: data.dt_tempo,
             cargo: data.cargo,
-            atividade: data.atividade,
+            atividades: data.atividades,
             curso: data.curso,
             instituicao: data.instituicao,
             nivel_curso: data.nivel_curso,
@@ -203,17 +203,23 @@ class RegisterResourceForm extends Component {
 
 
   hasErros() {
-    if (this.state.fotoperfil === "") {
-      this.setState({ error: "preencha o campo nascimento" });
-      return true;
-    } else if (this.state.dt_nascimento === "") {
+    // if (this.state.fotoperfil === "") {
+    //   this.setState({ error: "preencha o campo fotoperfil" });
+    //   return true;
+    // } 
+    // if (this.state.dt_nascimento === "") {
+    //   this.setState({ error: "preencha o campo nascimento" });
+    //   return true;
+    // } 
+
+    if (this.state.genero === "") {
       this.setState({ error: "preencha o campo genero" });
       return true;
     } else if (this.state.estado_civil === "") {
       this.setState({ error: "preencha o campo estado civil" });
       return true;
-    } else if (this.state.nascionalidade === "") {
-      this.setState({ error: "preencha o campo nascionalidade" });
+    } else if (this.state.nacionalidade === "") {
+      this.setState({ error: "preencha o campo nacionalidade" });
       return true;
     } else if (this.state.uf === "") {
       this.setState({ error: "preencha o campo uf" });
@@ -221,10 +227,14 @@ class RegisterResourceForm extends Component {
     } else if (this.state.cidade === "") {
       this.setState({ error: "preencha o campo cidade" });
       return true;
-    } else if (this.state.disponibilidade === "") {
-      this.setState({ error: "preencha o campo disponibilidade" });
-      return true;
-    } else if (this.state.resumo_profissional === "") {
+    }
+
+    // else if (this.state.disponibilidade === "") {
+    //   this.setState({ error: "preencha o campo disponibilidade" });
+    //   return true;
+    // } 
+
+    else if (this.state.resumo_profissional === "") {
       this.setState({ error: "preencha o campo do resumo profissional" });
       return true;
     } else if (this.state.empresa === "") {
@@ -233,14 +243,18 @@ class RegisterResourceForm extends Component {
     } else if (this.state.segmento === "") {
       this.setState({ error: "preencha o campo segmento" });
       return true;
-    } else if (this.state.dt_tempo === "") {
-      this.setState({ error: "preencha o campo data inicial e final" });
-      return true;
-    } else if (this.state.cargo === "") {
+    }
+
+    // else if (this.state.dt_tempo === "") {
+    //   this.setState({ error: "preencha o campo data inicial e final" });
+    //   return true;
+    // } 
+
+    else if (this.state.cargo === "") {
       this.setState({ error: "preencha o campo cargo" });
       return true;
-    } else if (this.state.atividade === "") {
-      this.setState({ error: "preencha o campo atividade" });
+    } else if (this.state.atividades === "") {
+      this.setState({ error: "preencha o campo atividades" });
       return true;
     } else if (this.state.curso === "") {
       this.setState({ error: "preencha o campo curso" });
@@ -328,6 +342,10 @@ class RegisterResourceForm extends Component {
               name="civilstatus"
               id="optioncivilstatus"
               style={{ width: "100%" }}
+
+              value={this.state.genero}
+              onChange={e => this.setState({ genero: e.target.value })}
+              required
             >
               <option value="">Selecione</option>
               <option value="1">Masculino</option>
@@ -351,6 +369,10 @@ class RegisterResourceForm extends Component {
               name="civilstatus"
               id="optioncivilstatus"
               style={{ width: "100%" }}
+
+              value={this.state.estado_civil}
+              onChange={e => this.setState({ estado_civil: e.target.value })}
+              required
             >
               <option value="">Selecione</option>
               <option value="1">Solteiro(a)</option>
@@ -375,6 +397,10 @@ class RegisterResourceForm extends Component {
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
+
+              value={this.state.nacionalidade}
+              onChange={e => this.setState({ nacionalidade: e.target.value })}
+              required
             >
               <option value="">Selecione</option>
               <option value="1">Brasileiro(a)</option>
@@ -401,6 +427,11 @@ class RegisterResourceForm extends Component {
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
+
+              value={this.state.uf}
+              onChange={e => this.setState({ uf: e.target.value })}
+              required
+
             >
               <option value="">Selecione</option>
               <option value="1">AC</option>
@@ -449,6 +480,10 @@ class RegisterResourceForm extends Component {
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
+
+              value={this.state.cidade}
+              onChange={e => this.setState({ cidade: e.target.value })}
+              required
             >
               {/* AC - ACRE */}
               <option value="0">Selecione</option>
@@ -577,11 +612,6 @@ class RegisterResourceForm extends Component {
               <option value="al-98">Teotônio Vilela (AL)</option>
               <option value="al-99">Traipu (AL)</option>
               <option value="al-100">União dos Palmares (AL)</option>
-
-
-
-
-
             </Input>
           </div>
 
@@ -703,6 +733,7 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Descreva sua trajetória profissional"
+
               value={this.state.resumo_profissional}
               onChange={e => this.setState({ resumo_profissional: e.target.value })}
               required
@@ -727,6 +758,7 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Informe o nome da empresa em que trabalhou"
+
               value={this.state.empresa}
               onChange={e => this.setState({ empresa: e.target.value })}
               required
@@ -742,6 +774,7 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Informe o segmento da empresa em que trabalhou"
+
               value={this.state.segmento}
               onChange={e => this.setState({ segmento: e.target.value })}
               required
@@ -776,6 +809,7 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Informe o seu ultimo cargo na empresa em que trabalhou"
+
               value={this.state.cargo}
               onChange={e => this.setState({ cargo: e.target.value })}
               required
@@ -791,6 +825,7 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Descreve um pouco sobre as atividades exercidas na empresa em que trabalhou"
+
               value={this.state.atividades}
               onChange={e => this.setState({ atividades: e.target.value })}
               required
@@ -851,6 +886,10 @@ class RegisterResourceForm extends Component {
               name="curso"
               id="nivelcurso"
               style={{ width: "100%" }}
+
+              value={this.state.nivel_curso}
+              onChange={e => this.setState({ nivel_curso: e.target.value })}
+              required
             >
               <option value="0">Selecione</option>
               <option value="1">Graduação</option>
@@ -895,12 +934,12 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite algumas informações adicionais"
+
               value={this.state.info_complementares}
               onChange={e => this.setState({ info_complementares: e.target.value })}
               required
             />
           </div>
-
 
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
