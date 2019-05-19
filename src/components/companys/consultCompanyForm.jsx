@@ -117,7 +117,7 @@ class ConsultCompanyForm extends Component {
               color: "rgb(52, 58, 64)",
               fontSize: "20px"
             }}>
-              <Col md={4}>
+              {/* <Col md={4}>
                 <Card
                   body outline style={{
                     minHeight: "290px",
@@ -138,7 +138,7 @@ class ConsultCompanyForm extends Component {
                     </CardFooter>
                   </CardBody>
                 </Card>
-              </Col>
+              </Col> */}
               {/* <Col md={4}>
                 <Card
                   body outline style={{

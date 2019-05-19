@@ -9,17 +9,17 @@ class RegisterResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
+      nome: "",
+      sobrenome: "",
       email: "",
       formacao: "",
-      end: "",
-      tel: "",
-      cel: "",
-      cid: "",
-      est: "",
-      hab: "",
-      areai: "",
+      endereco: "",
+      telefone: "",
+      celular: "",
+      cidade: "",
+      estado: "",
+      habilidades: "",
+      area_interesse: "",
       message1: "",
 
       sweetCreate: false
@@ -39,17 +39,17 @@ class RegisterResourceForm extends Component {
       if (method == "create") {
         axios
           .post(env.API + "resource", {
-            fname: this.state.fname,
-            lname: this.state.lname,
+            nome: this.state.nome,
+            sobrenome: this.state.sobrenome,
             email: this.state.email,
-            end: this.state.end,
-            tel: this.state.tel,
-            cel: this.state.cel,
+            endereco: this.state.endereco,
+            telefone: this.state.telefone,
+            celular: this.state.celular,
             formacao: this.state.formacao,
-            cid: this.state.cid,
-            est: this.state.est,
-            hab: this.state.hab,
-            areai: this.state.areai,
+            cidade: this.state.cidade,
+            estado: this.state.estado,
+            habilidades: this.state.habilidades,
+            area_interesse: this.state.area_interesse,
             message1: this.state.message1
 
           })
@@ -65,17 +65,17 @@ class RegisterResourceForm extends Component {
       } else if (method = "update") {
         axios
           .put(env.API + "resource/" + id, {
-            fname: this.state.fname,
-            lname: this.state.lname,
+            nome: this.state.nome,
+            sobrenome: this.state.sobrenome,
             email: this.state.email,
-            end: this.state.end,
-            tel: this.state.tel,
-            cel: this.state.cel,
+            endereco: this.state.endereco,
+            telefone: this.state.telefone,
+            celular: this.state.celular,
             formacao: this.state.formacao,
-            cid: this.state.cid,
-            est: this.state.est,
-            hab: this.state.hab,
-            areai: this.state.areai,
+            cidade: this.state.cidade,
+            estado: this.state.estado,
+            habilidades: this.state.habilidades,
+            area_interesse: this.state.area_interesse,
             message1: this.state.message1
 
           })
@@ -99,7 +99,7 @@ class RegisterResourceForm extends Component {
         .then((response) => {
           console.log(response);
           const data = response.data;
-          this.setState({ fname: data.fname, formacao: data.formacao, lname: data.lname, email: data.email, end: data.end, tel: data.tel, cel: data.cel, cid: data.cid, est: data.est, hab: data.hab, areai: data.areai, message1: data.message1 });
+          this.setState({ nome: data.nome, formacao: data.formacao, sobrenome: data.sobrenome, email: data.email, endereco: data.endereco, telefone: data.telefone, celular: data.celular, cidade: data.cidade, estado: data.estado, habilidades: data.habilidades, area_interesse: data.area_interesse, message1: data.message1 });
         })
         .catch(function (error) {
           console.log(error);
@@ -112,10 +112,10 @@ class RegisterResourceForm extends Component {
   }
 
   hasErros() {
-    if (this.state.fname === "") {
+    if (this.state.nome === "") {
       this.setState({ error: "preencha o campo nome" });
       return true;
-    } else if (this.state.lname === "") {
+    } else if (this.state.sobrenome === "") {
       this.setState({ error: "preencha o campo sobrenome" });
       return true;
     } else if (this.state.email === "") {
@@ -124,25 +124,25 @@ class RegisterResourceForm extends Component {
     } else if (this.state.formacao === "") {
       this.setState({ error: "preencha o campo formacao" });
       return true;
-    } else if (this.state.end === "") {
+    } else if (this.state.endereco === "") {
       this.setState({ error: "preencha o campo endereço" });
       return true;
-    } else if (this.state.tel === "") {
+    } else if (this.state.telefone === "") {
       this.setState({ error: "preencha o campo telefone" });
       return true;
-    } else if (this.state.cel === "") {
+    } else if (this.state.celular === "") {
       this.setState({ error: "preencha o campo celular" });
       return true;
-    } else if (this.state.cid === "") {
+    } else if (this.state.cidade === "") {
       this.setState({ error: "preencha o campo cidade" });
       return true;
-    } else if (this.state.est === "") {
+    } else if (this.state.estado === "") {
       this.setState({ error: "preencha o campo estado" });
       return true;
-    } else if (this.state.hab === "") {
+    } else if (this.state.habilidades === "") {
       this.setState({ error: "preencha o campo habilidades e qualificações" });
       return true;
-    } else if (this.state.areai === "") {
+    } else if (this.state.area_interesse === "") {
       this.setState({ error: "preencha o campo area de interesse" });
       return true;
     }
@@ -164,8 +164,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite o seu nome"
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
+              value={this.state.nome}
+              onChange={e => this.setState({ nome: e.target.value })}
               required
             />
           </div>
@@ -180,8 +180,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite o sobrenome"
-              value={this.state.lname}
-              onChange={e => this.setState({ lname: e.target.value })}
+              value={this.state.sobrenome}
+              onChange={e => this.setState({ sobrenome: e.target.value })}
               required
             />
           </div>
@@ -212,8 +212,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="number"
               placeholder="Digite o telefone"
-              value={this.state.tel}
-              onChange={e => this.setState({ tel: e.target.value })}
+              value={this.state.telefone}
+              onChange={e => this.setState({ telefone: e.target.value })}
               required
             />
           </div>
@@ -228,8 +228,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="tel"
               placeholder="Digite o celular"
-              value={this.state.cel}
-              onChange={e => this.setState({ cel: e.target.value })}
+              value={this.state.celular}
+              onChange={e => this.setState({ celular: e.target.value })}
               required
             />
           </div>
@@ -244,8 +244,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite o endereço"
-              value={this.state.end}
-              onChange={e => this.setState({ end: e.target.value })}
+              value={this.state.endereco}
+              onChange={e => this.setState({ endereco: e.target.value })}
               required
             />
           </div>
@@ -260,8 +260,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite a cidade do responsável"
-              value={this.state.cid}
-              onChange={e => this.setState({ cid: e.target.value })}
+              value={this.state.cidade}
+              onChange={e => this.setState({ cidade: e.target.value })}
               required
             />
           </div>
@@ -276,8 +276,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite o estado"
-              value={this.state.est}
-              onChange={e => this.setState({ est: e.target.value })}
+              value={this.state.estado}
+              onChange={e => this.setState({ estado: e.target.value })}
               required
             />
           </div>
@@ -308,8 +308,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite as suas habilidades e qualificações"
-              value={this.state.hab}
-              onChange={e => this.setState({ hab: e.target.value })}
+              value={this.state.habilidades}
+              onChange={e => this.setState({ habilidades: e.target.value })}
               required
             />
           </div>
@@ -324,8 +324,8 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite as suas áreas de interesse"
-              value={this.state.areai}
-              onChange={e => this.setState({ areai: e.target.value })}
+              value={this.state.area_interesse}
+              onChange={e => this.setState({ area_interesse: e.target.value })}
               required
             />
           </div>
@@ -361,7 +361,7 @@ class RegisterResourceForm extends Component {
           title="Atenção"
           onConfirm={() => this.setState({ sweetCreate: false })}
         >
-          {`Cadastrado ${this.state.fname} com sucesso!`}
+          {`Cadastrado ${this.state.nome} com sucesso!`}
         </SweetAlert>
       </div>
     );
