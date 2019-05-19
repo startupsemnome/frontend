@@ -83,8 +83,6 @@ class SectionBasics extends Component {
                   className="inputFields"
                   type="text"
                   placeholder="Confirme a sua senha"
-                  value={this.state.confirmacaosenha}
-                  onChange={e => this.setState({ confirmacaosenha: e.target.value })}
                 />
                 <br />
 
