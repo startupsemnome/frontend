@@ -321,6 +321,10 @@ class RegisterResourceForm extends Component {
                 name="date"
                 id="exampleDate"
                 placeholder="date placeholder"
+
+                value={this.state.dt_nascimento}
+                onChange={e => this.setState({ dt_nascimento: e.target.value })}
+                required
               />
               <br></br>
             </FormGroup>
@@ -794,6 +798,10 @@ class RegisterResourceForm extends Component {
                 name="date"
                 id="exampleDate"
                 placeholder="date placeholder"
+
+                value={this.state.dt_inicio_saida}
+                onChange={e => this.setState({ dt_inicio_saida: e.target.value })}
+                required
               />
               <br></br>
             </FormGroup>
@@ -917,6 +925,10 @@ class RegisterResourceForm extends Component {
                 name="date"
                 id="exampleDate"
                 placeholder="date placeholder"
+
+                value={this.state.dt_inicio_fim}
+                onChange={e => this.setState({ dt_inicio_fim: e.target.value })}
+                required
               />
               <br></br>
             </FormGroup>
@@ -972,6 +984,7 @@ class RegisterResourceForm extends Component {
           title="Atenção"
           onConfirm={() => this.setState({ sweetCreate: false })}
         >
+          {/* ALTERAR */}
           {`Cadastrado ${this.state.fname} com sucesso!`}
         </SweetAlert>
       </div>

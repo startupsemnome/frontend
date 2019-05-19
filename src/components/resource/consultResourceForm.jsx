@@ -118,9 +118,11 @@ class ConsultResourceForm extends Component {
                       <th scope="col" style={{ display: "none" }}>ID</th>
                       <th scope="col">Nome</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Telefone</th>
+                      <th scope="col">Estado</th>
                       <th scope="col">Cidade</th>
-                      <th scope="col">Area de Interesse</th>
+                      {/* Formação -> Categoria */}
+                      <th scope="col">Formação</th>
+                      <th scope="col">Graduação</th>
                       <th scope="col">Opções</th>
                     </tr>
                   </thead>
@@ -131,9 +133,10 @@ class ConsultResourceForm extends Component {
                           <td style={{ display: "none" }}>{resource.id}</td>
                           <td>{resource.nome}</td>
                           <td>{resource.email}</td>
-                          <td>{resource.telefone}</td>
+                          <td>{resource.uf}</td>
                           <td>{resource.cidade}</td>
-                          <td>{resource.area_interesse}</td>
+                          <td>{resource.formacao}</td>
+                          <td>{resource.curso}</td>
                           <td>
                             <button
                               onClick={(e) => this.editResource(resource.id)}
