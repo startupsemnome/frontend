@@ -94,7 +94,7 @@ class ConsultResourceForm extends Component {
                   type="text"
                   className="inputFields col-md-9"
                   style={{ width: "100%", marginleft: "10px" }}
-                  onChange={e => this.setState({ buscaTable: e.target.value })} 
+                  onChange={e => this.setState({ buscaTable: e.target.value })}
                 />
                 <button
                   type="button"
@@ -129,11 +129,11 @@ class ConsultResourceForm extends Component {
                       return (
                         <tr key={`buscaTable${resource.id}`}>
                           <td style={{ display: "none" }}>{resource.id}</td>
-                          <td>{resource.fname}</td>
+                          <td>{resource.nome}</td>
                           <td>{resource.email}</td>
-                          <td>{resource.tel}</td>
-                          <td>{resource.cid}</td>
-                          <td>{resource.areai}</td>
+                          <td>{resource.telefone}</td>
+                          <td>{resource.cidade}</td>
+                          <td>{resource.area_interesse}</td>
                           <td>
                             <button
                               onClick={(e) => this.editResource(resource.id)}
