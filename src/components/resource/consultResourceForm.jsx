@@ -123,6 +123,7 @@ class ConsultResourceForm extends Component {
                       {/* Formação -> Categoria */}
                       <th scope="col">Formação</th>
                       <th scope="col">Graduação</th>
+                      <th scope="col">Disponibilidade</th>
                       <th scope="col">Opções</th>
                     </tr>
                   </thead>
@@ -137,6 +138,7 @@ class ConsultResourceForm extends Component {
                           <td>{resource.cidade}</td>
                           <td>{resource.formacao}</td>
                           <td>{resource.curso}</td>
+                          <td>{resource.disponibilidade}</td>
                           <td>
                             <button
                               onClick={(e) => this.editResource(resource.id)}
