@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Row, Col,Link,ModalHeader, Label, Input, ModalBody, ModalFooter, Modal, Table, Card, CardTitle, CardText, CardBody, CardFooter } from "reactstrap";
+import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import env from "./../../consts";
 import CompanyForm from "./companyForm";
-import { cardTitle } from "../../assets/jss/material-kit-react";
 
 class ConsultCompanyForm extends Component {
   constructor(props) {
@@ -13,8 +11,6 @@ class ConsultCompanyForm extends Component {
     this.state = {
       users: [],
       userTable: "",
-      companyList: [null, false],
-      modal: false,
       companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
@@ -35,10 +31,6 @@ class ConsultCompanyForm extends Component {
   }
   editCompany(id) {
     this.setState({ companyEdit: [id, true] });
-  }
-
-  visualizarCompany(id) {
-    this.setState({ companyList: [id, true] })
   }
 
   findCompany() {
@@ -143,7 +135,7 @@ class ConsultCompanyForm extends Component {
                       <th scope="col">nomeRepresentante</th>
                       <th scope="col">telefoneRepresentante</th>
                       <th scope="col">celularRepresentante</th>
-                      <th scope="col">emailRepresentante</th>
+                      <th scope="col">emailRepresentante</th>color: "rgb(52, 58, 64)"
                       <th scope="col">departamento</th>
                       <th scope="col">segmentoEmpresa</th>
                     </tr>
@@ -152,8 +144,8 @@ class ConsultCompanyForm extends Component {
               {/* <div className="row" > */}
               {this.state.users.map(company => {
                 return (
-                  <div className="col-md-3 box" style={{ color: "rgb(52, 58, 64)", fontSize: "20px", maxWidth: "298px", minHeight: "255px" }} inline={true}>
-                    <div className="card" body outline style={{ backgroundColor: "#faffbd", minHeight: "250px", CmaxWidth: "297px", marginRight: "20px", marginLeft: "-90px", border: "15px solid #343a40" }}>
+                  <div className="col-md-3 box" style={{ fontSize: "18px", maxWidth: "298px", minHeight: "255px" }} inline={true}>
+                    <div className="card" body outline style={{ backgroundColor: "rgb(254, 254, 254)", minHeight: "240px", maxWidth: "298px", maxWidth: "295px", marginRight: "0px", marginLeft: "0px", borderRadius: "10px" }}>
                       {/* // <tr >
                           //   <td style={{ display: "none" }}>{company.id}</td>
                           //   <td>{company.razaoSocial}</td>
@@ -211,26 +203,23 @@ class ConsultCompanyForm extends Component {
 
                       <div className="card-body" key={`userTable${company.id}`}>
                         <div className="card-title">
-                          <h3 style={{ color: "#707070" }}>Razão Social:&nbsp;{company.razaoSocial}<br />
+                          <h3 style={{ color: "#707070", margin: "auto" }}>Razão Social:&nbsp;{company.razaoSocial}<br />
                             Nome Fantasia:&nbsp;{company.nomeFantasia}
                           </h3>
                         </div>
-                        <div className="card-text" style={{ margin: "auto" /*padding:"0.75rem 1.25rem"*/ }}>
+                        <div className="card-text" style={{ margin: "auto", padding: "15px" }}>
                           <h5>
-                            CNPJ:&nbsp; {company.cnpj}
                           </h5>
                         </div>
-                        <div className="card-footer" style={{ padding: "0.25rem 3.25rem" /*padding:"0.75rem 1.25rem"*/ }}>
-                          {/* <button className="join-btn-no-transform mr-1" onClick={() => this.visualizar(company.id)} style={{ width: "100%" }}>Visualizar</button> */}
-                          <small className="text-muted">
-                            <Link onClick={e => this.visualizarCompany(company.id)}>Lista De Empresas</Link>
-                          </small>
+                        <div className="card-footer" style={{ padding: "0.25rem 3.25rem" }}>
+                          <button className="btn btn-primary" to={"visualizar-empresa"} style={{ width: "100%" }}>Visualizar</button>
+                          {/* <Link onClick={e => this.visualizarCompany(company.id)}>Lista De Empresas</Link> */}
                         </div>
                       </div>
                     </div>
                   </div>
-            );
-          })}
+                );
+              })}
               {/* </div> */}
             </div>
             {/* </div> */}
@@ -243,67 +232,6 @@ class ConsultCompanyForm extends Component {
               id={this.state.companyEdit[0]}
             />
           )}
-        <Modal clasName="loginUser col-md-12" size="lg" isOpen={this.state.modal} toggle={this.visualizar} style={{ width: "100%", color: "rgb(52, 58, 64)" }}>
-          <ModalHeader toggle={this.visualizar} style={{ textAlign: "center" }} >Visualizar</ModalHeader>
-          <ModalBody className="signupForm form-inline">
-            <br />
-            <br />
-            {this.state.users.map(company => {
-              return (
-                <div className="col-md-8">
-                  <label
-                    className="labelFields"
-                    style={{ display: "flex", justifyContent: "end" }}
-                  >
-                    Razão Social: {" "}
-                  </label>
-                  <input
-                    className="inputFields col-md-12"
-                    type="text"
-                    id="empresa"
-                    name="firstname"
-                    disabled="disabled"
-                  // value={this.state.razaosocial}
-                  // onChange={e => this.setState({ razaosocial: e.target.value })
-                  >{company.razaoSocial}</input>
-                  <div className="col-md-8">
-                    <label
-                      className="labelFields"
-                      style={{ display: "flex", justifyContent: "end" }}
-                    >
-                      Nome Fantasia: {" "}
-                    </label>
-                    <input
-                      className="inputFields col-md-12"
-                      type="text"
-                      id="empresa"
-                      name="firstname"
-                      disabled="disabled"
-                      value={this.state.nomeFantasia}
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <label
-                      className="labelFields"
-                      style={{ display: "flex", justifyContent: "end" }}
-                    >
-                      CNPJ: {" "}
-                    </label>
-                    <input
-                      className="inputFields col-md-12"
-                      type="number"
-                      id="cnpj"
-                      name="lastname"
-                      disabled="disabled"
-                    />{company.cnpj}
-                  </div>
-                  <button color="primary" onClick={(e) => this.editCompany(company.id)} /*className="join-btn-no-transform mr-1" style={{ width: "100%" }}*/>Editar</button>
-                  <button color="danger" onClick={(e) => this.excluirCompany(company.id)} /*className="join-btn-no-transform mr-1"style={{ width: "100%" }}*/>Excluir</button>
-                </div>
-              );
-            })}
-          </ModalBody>
-        </Modal>
       </div>
     );
   }

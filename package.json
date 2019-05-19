@@ -72,7 +72,6 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "react-slick": "^0.23.2",
     "react-slidez": "0.0.31",
-    "react-via-cep": "^2.0.2",
     "reactstrap": "^7.1.0",
     "recharts": "^1.5.0",
     "redux": "^4.0.0",
