@@ -66,8 +66,11 @@ class ConsultCompanyForm extends Component {
     console.log("teste");
     this.loadCompanys();
   }
-  visualizar() {
-    this.setState({ modal: !this.state.modal })
+  visualizar(id) {
+    this.props.history.push({
+      pathname: "/visualizar-empresa",
+      state: { id }
+    });
   }
   render() {
     return (
@@ -87,7 +90,8 @@ class ConsultCompanyForm extends Component {
                   justifyContent: "center",
                   backgroundColor: "rgb(26, 134, 135)",
                   display: "flex"
-                }}>
+                }}
+              >
                 <input
                   type="text"
                   className="inputFields col-md-9"
@@ -102,7 +106,8 @@ class ConsultCompanyForm extends Component {
                     borderRadius: "20px",
                     marginLeft: "10px"
                   }}
-                  onClick={() => this.findCompany()}>
+                  onClick={() => this.findCompany()}
+                >
                   Buscar
                 </button>
               </div>
@@ -144,8 +149,29 @@ class ConsultCompanyForm extends Component {
               {/* <div className="row" > */}
               {this.state.users.map(company => {
                 return (
-                  <div className="col-md-3 box" style={{ fontSize: "18px", maxWidth: "298px", minHeight: "255px" }} inline={true}>
-                    <div className="card" body outline style={{ backgroundColor: "rgb(254, 254, 254)", minHeight: "240px", maxWidth: "298px", maxWidth: "295px", marginRight: "0px", marginLeft: "0px", borderRadius: "10px" }}>
+                  <div
+                    className="col-md-3 box"
+                    style={{
+                      fontSize: "18px",
+                      maxWidth: "298px",
+                      minHeight: "255px"
+                    }}
+                    inline={true}
+                  >
+                    <div
+                      className="card"
+                      body
+                      outline
+                      style={{
+                        backgroundColor: "rgb(254, 254, 254)",
+                        minHeight: "240px",
+                        maxWidth: "298px",
+                        maxWidth: "295px",
+                        marginRight: "0px",
+                        marginLeft: "0px",
+                        borderRadius: "10px"
+                      }}
+                    >
                       {/* // <tr >
                           //   <td style={{ display: "none" }}>{company.id}</td>
                           //   <td>{company.razaoSocial}</td>
@@ -203,16 +229,30 @@ class ConsultCompanyForm extends Component {
 
                       <div className="card-body" key={`userTable${company.id}`}>
                         <div className="card-title">
-                          <h3 style={{ color: "#707070", margin: "auto" }}>Razão Social:&nbsp;{company.razaoSocial}<br />
+                          <h3 style={{ color: "#707070", margin: "auto" }}>
+                            Razão Social:&nbsp;{company.razaoSocial}
+                            <br />
                             Nome Fantasia:&nbsp;{company.nomeFantasia}
                           </h3>
                         </div>
-                        <div className="card-text" style={{ margin: "auto", padding: "15px" }}>
-                          <h5>
-                          </h5>
+                        <div
+                          className="card-text"
+                          style={{ margin: "auto", padding: "15px" }}
+                        >
+                          <h5 />
                         </div>
-                        <div className="card-footer" style={{ padding: "0.25rem 3.25rem" }}>
-                          <button className="btn btn-primary" to={"visualizar-empresa"} style={{ width: "100%" }}>Visualizar</button>
+                        <div
+                          className="card-footer"
+                          style={{ padding: "0.25rem 3.25rem" }}
+                        >
+                          <button
+                            className="btn btn-primary"
+                            to={"visualizar-empresa"}
+                            style={{ width: "100%" }}
+                            onClick={() => this.visualizar(company.id)}
+                          >
+                            Visualizar
+                          </button>
                           {/* <Link onClick={e => this.visualizarCompany(company.id)}>Lista De Empresas</Link> */}
                         </div>
                       </div>
@@ -225,13 +265,12 @@ class ConsultCompanyForm extends Component {
             {/* </div> */}
           </div>
         ) : (
-
-            <CompanyForm
-              history={this.props.history}
-              edit={this.state.companyEdit[1]}
-              id={this.state.companyEdit[0]}
-            />
-          )}
+          <CompanyForm
+            history={this.props.history}
+            edit={this.state.companyEdit[1]}
+            id={this.state.companyEdit[0]}
+          />
+        )}
       </div>
     );
   }
