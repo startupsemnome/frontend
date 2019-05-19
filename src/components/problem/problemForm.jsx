@@ -65,7 +65,7 @@ class ProblemForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-problema";
+            this.props.history.push("/consultar-problema");
           })
           .catch(function (error) {
             console.log(error);
@@ -82,7 +82,7 @@ class ProblemForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-problema";
+            this.props.history.push("/consultar-problema");
           })
           .catch(function (error) {
             console.log(error);
