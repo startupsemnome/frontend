@@ -15,7 +15,8 @@ import { Apps, CloudDownload } from "@material-ui/icons";
 
 // core components
 import Button from "./Button.jsx";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 import headerLinksStyle from "./../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
@@ -29,39 +30,44 @@ class HeaderLinks extends Component {
     return (
       <List className={classes.list}>
         <ListItem className={classes.listItem}>
-          <Button
-            href="#header1"
+          <Link
+            style={{ textDecoration: "none" }}
+            to="institutional#header1"
             color="transparent"
             className={classes.navLink}
           >
             Sobre nós
-          </Button>
-          <Button
-            href="#header2"
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            to="institutional#header2"
             color="transparent"
             className={classes.navLink}
           >
             Clientes
-          </Button>
-          <Button
-            href="#header3"
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            to="institutional#header3"
             color="transparent"
             className={classes.navLink}
           >
             Cadastro
-          </Button>
+          </Link>
           <Link
             to="/lista-projetos"
+            style={{ textDecoration: "none" }}
             color="transparent"
             className={classes.navLink}
           >
-            Notificações <br />
+            Projetos <br />
             <span class="badge badge-light" />
           </Link>
         </ListItem>
 
         <ListItem className={classes.listItem}>
           <Link
+            style={{ textDecoration: "none" }}
             to="/login"
             to={this.props.auth.login ? "/dashboard" : "/login"}
             color="transparent"

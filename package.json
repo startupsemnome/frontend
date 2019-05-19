@@ -69,6 +69,7 @@
     "react-responsive-widget": "^2.0.0",
     "react-router": "^3.2.0",
     "react-router-dom": "^4.3.1",
+    "react-router-hash-link": "^1.2.1",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-slick": "^0.23.2",
     "react-slidez": "0.0.31",
