@@ -1,7 +1,8 @@
-import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import axios from "axios";
 import env from "./../../consts";
+import Projects from "./projects";
 
 class ModalLearnMore extends React.Component {
   constructor(props) {
@@ -10,11 +11,29 @@ class ModalLearnMore extends React.Component {
       users: [],
       modal: false
     };
-
+    this.sendEvent = this.sendEvent.bind(this);
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  sendEvent(status) {
+    axios
+      .put(env.API + "resource-problem", {
+        id: this.props.atualProblemId,
+        status: status
+      })
+      .then(response => {
+        // handle success
+        this.props.history.push("/lista-projetos");
+      })
+      .catch(error => {
+        console.log(error + "Erro na API");
+      });
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -39,41 +58,62 @@ class ModalLearnMore extends React.Component {
   }
 
   render() {
-    const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
+    const closeBtn = (
+      <button className="close" onClick={this.toggle}>
+        &times;
+      </button>
+    );
 
     return (
       <div>
-        <Button className="join-btn-no-transform mr-1"
+        <Button
+          className="join-btn-no-transform mr-1"
           style={{
             width: "100%",
             marginBottom: "5px",
             marginTop: "5px"
           }}
-          onClick={this.toggle}>{this.props.buttonLabel}Saiba mais!</Button>
+          onClick={this.toggle}
+        >
+          {this.props.buttonLabel}Saiba mais!
+        </Button>
 
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} close={closeBtn}>Titulo!</ModalHeader>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+          style={{ marginTop: "140px" }}
+        >
+          <ModalHeader toggle={this.toggle} close={closeBtn}>
+            {this.props.titulo}
+          </ModalHeader>
           <ModalBody>
-
             {this.state.users.map(problem => {
               return (
-                <tr key={`buscaTable${problem.id}`}>
-                  <td style={{ display: "none" }}>{problem.id}</td>
-                  <td>{problem.company.empresa}</td>
-                  <td>{problem.solicit}</td>
-                  <td>{problem.nprob}</td>
-                </tr>
+                <div>
+                  {this.props.atualProblemId == problem.id ? (
+                    <div>
+                      <tr key={`buscaTable${problem.id}`}>
+                        <td style={{ display: "none" }}>{problem.id}</td>
+                        <td>{problem.descricao}</td>
+                      </tr>
+                    </div>
+                  ) : null}
+                </div>
               );
             })}
-
-            Resumo do BÓ!
-              <br></br>
-            <br></br>
-            Breve descrição! :)
+            <br />
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={this.toggle}>Aceitar</Button>
-            <Button color="danger" onClick={this.toggle}>Recursar</Button>
+            <Button
+              color="info"
+              onClick={() => this.sendEvent("AGUARDANDO-CONTATO")}
+            >
+              Entrem em contato comigo
+            </Button>
+            <Button color="info" onClick={() => this.sendEvent("RECUSADO")}>
+              Recursar
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
