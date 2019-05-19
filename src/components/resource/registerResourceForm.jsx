@@ -756,7 +756,7 @@ class RegisterResourceForm extends Component {
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
-              Data de Ínicio e Conclusão:
+              Data de Ínicio e Saída:
             </label>
             <br></br>
             <FormGroup>
