@@ -383,11 +383,6 @@ class RegisterResourceForm extends Component {
               <option value="4">Italiano(a)</option>
               <option valeu="5">Norte Americano(a)</option>
               <option value="6">Español(a)</option>
-              <option value="7">Chileno(a)</option>
-              <option valeu="8">Boliviano(a)</option>
-              <option valeu="9">Paraguayo(a)</option>
-              <option value="10">Uruguayo(a)</option>
-              <option valeu="11">Colombiano(a)</option>
             </Input>
           </div>
 
