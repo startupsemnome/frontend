@@ -45,7 +45,7 @@ class CompanyForm extends Component {
           })
           .then(response => {
             console.log(response);
-            window.location = "/consultar-empresa";
+            this.props.history.push("/consultar-empresa");
           })
           .catch(error => {
             console.log(error);
@@ -66,7 +66,7 @@ class CompanyForm extends Component {
           })
           .then(response => {
             console.log(response);
-            window.location = "/consultar-empresa";
+            this.props.history.push("/consultar-empresa");
           })
           .catch(error => {
             console.log(error);

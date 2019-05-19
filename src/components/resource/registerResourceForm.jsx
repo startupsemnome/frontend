@@ -53,10 +53,10 @@ class RegisterResourceForm extends Component {
             message1: this.state.message1
 
           })
-          .then(function (response) {
+          .then(response => {
 
             console.log(response);
-            window.location = "/consultar-recurso";
+            this.props.history("/consultar-recurso");
             this.props.handleEdit();
           })
           .catch(function (error) {
@@ -81,7 +81,7 @@ class RegisterResourceForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-recurso";
+            this.props.history.push("/consultar-recurso");
             this.props.handleEdit();
           })
           .catch(function (error) {
