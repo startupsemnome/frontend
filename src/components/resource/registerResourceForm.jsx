@@ -99,7 +99,7 @@ class RegisterResourceForm extends Component {
         .then((response) => {
           console.log(response);
           const data = response.data;
-          this.setState({ nome: data.nome, formacao: data.formacao, sobrenome: data.sobrenome, email: data.email, endereco: data.endereco, telefone: data.telefone, celular: data.celular, cidade: data.cidade, estado: data.estado, habilidades: data.habilidades, area_interesse: data.area_interesse, message1: data.message1 });
+          this.setState({ nome: data.nome, sobrenome: data.sobrenome, email: data.email, endereco: data.endereco, telefone: data.telefone, celular: data.celular, formacao: data.formacao, cidade: data.cidade, estado: data.estado, habilidades: data.habilidades, area_interesse: data.area_interesse, message1: data.message1 });
         })
         .catch(function (error) {
           console.log(error);
