@@ -53,10 +53,10 @@ class RegisterResourceForm extends Component {
             message1: this.state.message1
 
           })
-          .then(function (response) {
+          .then(response => {
 
             console.log(response);
-            this.props.history.push("/cadastro-recurso");
+            this.props.history("/consultar-recurso");
             this.props.handleEdit();
           })
           .catch(function (error) {
