@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
+import {FaEye, FaCogs, FaTrashAlt } from 'react-icons/fa';
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
@@ -154,25 +155,22 @@ class ConsultCompanyForm extends Component {
                         </div>
                         <div
                           className="card-footer"
-                          style={{ padding: "0.25rem 3.25rem" }}
+                          style={{ padding: "1.25rem 3.25rem" }}
                         >
-                          <i
-                            className="fas fa-eye"
+                          <FaEye
                             to={"visualizar-empresa"}
                             style={{ width: "90%" }}
                             onClick={() => this.visualizar(company.id)}
                           />
-                          <i
+                          <FaCogs
                             onClick={e => this.editCompany(company.id)}
-                            className="fas fa-pencil-alt"
                             style={{
                               width: "90%",
                               marginBottom: "5px",
                               marginTop: "5px"
                             }}
                           />
-                          <i
-                            className="fas fa-transh-all"
+                          <FaTrashAlt
                             onClick={e => this.excluirCompany(company.id)}
                             style={{ width: "90%" }}
                           />
@@ -185,12 +183,12 @@ class ConsultCompanyForm extends Component {
             </div>
           </div>
         ) : (
-          <CompanyForm
-            history={this.props.history}
-            edit={this.state.companyEdit[1]}
-            id={this.state.companyEdit[0]}
-          />
-        )}
+            <CompanyForm
+              history={this.props.history}
+              edit={this.state.companyEdit[1]}
+              id={this.state.companyEdit[0]}
+            />
+          )}
       </div>
     );
   }
