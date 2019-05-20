@@ -13,7 +13,7 @@ import Dashboard from "../pages/home";
 import NotFound from "../pages/notFound";
 // Pages Company
 import RegisterCompany from "../pages/registerCompany";
-import DetailsCompany from "../pages/detailsCompany";
+import ViewCompany from "../pages/viewCompany";
 import EditCompany from "../pages/editCompany";
 import ConsultCompany from "../pages/consultCompany";
 
@@ -29,7 +29,7 @@ import ConsultProblem from "../pages/consultProblem";
 import EditProblemForm from "../components/problem/editProblemForm";
 import institutionalForm from "../components/institutional/institutionalForm";
 import ProblemList from "../components/problem/problemList";
-import DetailsCompanyForm from "../components/companys/detailsCompanyForm";
+import ViewCompanyForm from "../components/companys/viewCompanyForm";
 import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 
@@ -64,7 +64,7 @@ export default class Routes extends Component {
 
           <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />
           <PrivateRoute exact={true} path="/consultar-empresa" component={ConsultCompany} />
-          <Route exact={true} path="/visualizar-empresa" component={DetailsCompany} />
+          <Route        exact={true} path="/visualizar-empresa" component={ViewCompany} />
           <PrivateRoute exact={true} path="/cadastro-recurso" component={RegisterResource} />
           <PrivateRoute exact={true} path="/consultar-recurso" component={ConsultResource} />
 
