@@ -9,25 +9,35 @@ class RegisterResourceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      nome: "",
+      sobrenome: "",
+      email: "",
+      senha: "",
+
       fotoperfil: "",
       dt_nascimento: "",
       genero: "",
       estado_civil: "",
-      nascionalidade: "",
+      nacionalidade: "",
       uf: "",
       cidade: "",
       disponibilidade: "",
       resumo_profissional: "",
+      categoria: "",
+
       nome_empresa: "",
       segmento: "",
-      dt_tempo: "",
+      dt_inicio_saida: "",
       cargo: "",
       atividades: "",
       //formação
       curso: "",
       instituicao: "",
       nivel_curso: "",
+      dt_inicio_fim: "",
       info_complementares: "",
+
+
       //ANTERIOR
       // nome: "",
       // sobrenome: "",
@@ -62,20 +72,22 @@ class RegisterResourceForm extends Component {
             dt_nascimento: this.state.dt_nascimento,
             genero: this.state.genero,
             estado_civil: this.state.estado_civil,
-            nascionalidade: this.state.nascionalidade,
+            nacionalidade: this.state.nacionalidade,
             uf: this.state.uf,
             cidade: this.state.cidade,
             disponibilidade: this.state.disponibilidade,
+            categoria: this.state.cargo,
 
             resumo_profissional: this.state.resumo_profissional,
             empresa: this.state.empresa,
             segmento: this.state.segmento,
-            dt_tempo: this.state.dt_tempo,
+            dt_inicio_saida: this.state.dt_inicio_saida,
             cargo: this.state.cargo,
             atividades: this.state.atividades,
             curso: this.state.curso,
             instituicao: this.state.instituicao,
             nivel_curso: this.state.nivel_curso,
+            dt_inicio_fim: this.state.dt_inicio_fim,
             info_complementares: this.state.info_complementares,
             //ANTERIOR
             // nome: this.state.nome,
@@ -108,20 +120,22 @@ class RegisterResourceForm extends Component {
             dt_nascimento: this.state.dt_nascimento,
             genero: this.state.genero,
             estado_civil: this.state.estado_civil,
-            nascionalidade: this.state.nascionalidade,
+            nacionalidade: this.state.nacionalidade,
             uf: this.state.uf,
             cidade: this.state.cidade,
             disponibilidade: this.state.disponibilidade,
+            categoria: this.state.categoria,
 
             resumo_profissional: this.state.resumo_profissional,
             empresa: this.state.empresa,
             segmento: this.state.segmento,
-            dt_tempo: this.state.dt_tempo,
+            dt_inicio_saida: this.state.dt_inicio_saida,
             cargo: this.state.cargo,
             atividades: this.state.atividades,
             curso: this.state.curso,
             instituicao: this.state.instituicao,
             nivel_curso: this.state.nivel_curso,
+            dt_inicio_fim: this.state.dt_inicio_fim,
             info_complementares: this.state.info_complementares,
             // nome: this.state.nome,
             // sobrenome: this.state.sobrenome,
@@ -162,10 +176,11 @@ class RegisterResourceForm extends Component {
             dt_nascimento: data.dt_nascimento,
             genero: data.genero,
             estado_civil: data.estado_civil,
-            nascionalidade: data.nascionalidade,
+            nacionalidade: data.nacionalidade,
             uf: data.uf,
             cidade: data.cidade,
             disponibilidade: data.disponibilidade,
+            categoria: data.categoria,
 
             resumo_profissional: data.resumo_profissional,
             empresa: data.empresa,
@@ -176,6 +191,7 @@ class RegisterResourceForm extends Component {
             curso: data.curso,
             instituicao: data.instituicao,
             nivel_curso: data.nivel_curso,
+            dt_inicio_fim: data.dt_inicio_fim,
             info_complementares: data.info_complementares,
             // nome: data.nome,
             // formacao: data.formacao,
@@ -227,6 +243,9 @@ class RegisterResourceForm extends Component {
     } else if (this.state.cidade === "") {
       this.setState({ error: "preencha o campo cidade" });
       return true;
+    } else if (this.state.categoria === "") {
+      this.setState({ error: "preencha o campo categoria" });
+      return true;
     }
 
     // else if (this.state.disponibilidade === "") {
@@ -264,6 +283,9 @@ class RegisterResourceForm extends Component {
       return true;
     } else if (this.state.nivel_curso === "") {
       this.setState({ error: "preencha o campo nivel curso" });
+      return true;
+    } else if (this.state.dt_inicio_fim === "") {
+      this.setState({ error: "preencha o campo informações dt_inicio_fim" });
       return true;
     } else if (this.state.info_complementares === "") {
       this.setState({ error: "preencha o campo informações complementares" });
@@ -352,9 +374,9 @@ class RegisterResourceForm extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="1">Masculino</option>
-              <option value="2">Feminino</option>
-              <option value="3">Outro</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Outro">Outro</option>
             </Input>
           </div>
 
@@ -379,10 +401,10 @@ class RegisterResourceForm extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="1">Solteiro(a)</option>
-              <option valeu="2">Casado(a)</option>
-              <option valeu="3">Viúvo(a)</option>
-              <option valeu="4">Divorciado(a)</option>
+              <option value="Solteiro(a)">Solteiro(a)</option>
+              <option valeu="Casado(a)">Casado(a)</option>
+              <option valeu="Viúvo(a)">Viúvo(a)</option>
+              <option valeu="Divorciado(a">Divorciado(a)</option>
             </Input>
           </div>
 
@@ -407,12 +429,12 @@ class RegisterResourceForm extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="1">Brasileiro(a)</option>
-              <option valeu="2">Mexicano(a)</option>
-              <option value="3">Argentino(a)</option>
-              <option value="4">Italiano(a)</option>
-              <option valeu="5">Norte Americano(a)</option>
-              <option value="6">Español(a)</option>
+              <option value="Brasileiro(a)">Brasileiro(a)</option>
+              <option valeu="Mexicano(a)">Mexicano(a)</option>
+              <option value="Argentino(a">Argentino(a)</option>
+              <option value="Italiano(a)">Italiano(a)</option>
+              <option valeu="Norte Americano(a)">Norte Americano(a)</option>
+              <option value="Español(a)">Español(a)</option>
             </Input>
           </div>
 
@@ -438,33 +460,32 @@ class RegisterResourceForm extends Component {
 
             >
               <option value="">Selecione</option>
-              <option value="1">AC</option>
-              <option valeu="2">AL</option>
-              <option value="3">AP</option>
-              <option value="4">AM</option>
-              <option value="5">BA</option>
-              <option value="6">CE</option>
-              <option value="7">DF</option>
-              <option value="8">ES</option>
-              <option value="9">GO</option>
-              <option value="10">MA</option>
-              <option value="11">MT</option>
-              <option value="12">MS</option>
-              <option value="13">MG</option>
-              <option value="14">PA</option>
-              <option value="15">PB</option>
-              <option value="16">PR</option>
-              <option value="17">PE</option>
-              <option value="18">PI</option>
-              <option value="19">RJ</option>
-              <option value="19">RN</option>
-              <option value="20">RS</option>
-              <option value="21">RO</option>
-              <option value="22">RR</option>
-              <option value="23">SC</option>
-              <option value="24">SP</option>
-              <option value="25">SE</option>
-              <option value="26">TO</option>
+              <option value="AC">AC</option>
+              <option valeu="AL">AL</option>
+              <option value="AP">AP</option>
+              <option value="AM">AM</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="MT">MT</option>
+              <option value="MS">MS</option>
+              <option value="MG">MG</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PR">PR</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RS">RS</option>
+              <option value="RO">RO</option>
+              <option value="SC">SC</option>
+              <option value="SP">SP</option>
+              <option value="SE">SE</option>
+              <option value="TO">TO</option>
             </Input>
           </div>
 
@@ -616,6 +637,65 @@ class RegisterResourceForm extends Component {
               <option value="al-98">Teotônio Vilela (AL)</option>
               <option value="al-99">Traipu (AL)</option>
               <option value="al-100">União dos Palmares (AL)</option>
+            </Input>
+          </div>
+
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Categoria:
+            </label>
+            <Input
+              select
+              className="inputFields col-md-12"
+              type="select"
+              select="multiple"
+              name="category"
+              id="optioncategory"
+              style={{ width: "100%" }}
+
+              value={this.state.categoria}
+              onChange={e => this.setState({ categoria: e.target.value })}
+              required
+            >
+              <option value="">Selecione</option>
+              <option value="Administração">Administração</option>
+              <option valeu="Comércio Exterior">Comércio Exterior</option>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="Arquitetura">Arquitetura</option>
+              <option value="Medicina">Medicina</option>
+              <option value="Contábeis">Contábeis</option>
+              <option value="Economia">Economia</option>
+              <option value="Cinema e Audiovisual">Cinema e Audiovisual</option>
+              <option value="Radio e TV">Radio e TV</option>
+              <option value="Design">Design</option>
+              <option value="Direito">Direito</option>
+              <option value="Educação Física">Educação Física</option>
+              <option value="Enfermagem">Enfermagem</option>
+              <option value="Engenharia Civil">Engenharia Civil</option>
+              <option value="Engenharia de Automação e Controle">Engenharia de Automação e Controle</option>
+              <option value="Engenharia de Produção">Engenharia de Produção</option>
+              <option value="Engenharia Elétrica">Engenharia Elétrica</option>
+              <option value="Engenharia Eletrônica">Engenharia Eletrônica</option>
+              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
+              <option value="ngenharia Química">Engenharia Química</option>
+              <option value="Psicologia">Psicologia</option>
+              <option value="Farmácia">Farmácia</option>
+              <option value="Fisioterapia">Fisioterapia</option>
+              <option value="Comercial">Comercial</option>
+              <option value="Qualidade">Qualidade</option>
+              <option value="Logística">Logística</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Medicina Veterinária">Medicina Veterinária</option>
+              <option value="Nutrição">Nutrição</option>
+              <option value="Odontologia">Odontologia</option>
+              <option value="Psicologia">Psicologia</option>
+              <option value="Relações Públicas">Relações Públicas</option>
+              <option value="Publicidade e Propagand">Publicidade e Propaganda</option>
+              <option value="Turismo">Turismo</option>
+              <option value="Outros">Outros</option>
             </Input>
           </div>
 
@@ -900,13 +980,13 @@ class RegisterResourceForm extends Component {
               required
             >
               <option value="0">Selecione</option>
-              <option value="1">Graduação</option>
-              <option valeu="2">Pós Graduação</option>
-              <option value="3">Especialização</option>
-              <option value="4">Mestrado</option>
-              <option value="5">Doutorado</option>
-              <option value="6">PhD</option>
-              <option value="7">Complementares</option>
+              <option value="Graduação">Graduação</option>
+              <option valeu="Pós Graduação">Pós Graduação</option>
+              <option value="Especialização">Especialização</option>
+              <option value="Mestrado">Mestrado</option>
+              <option value="Doutorado">Doutorado</option>
+              <option value="PhD">PhD</option>
+              <option value="Complementares">Complementares</option>
             </Input>
           </div>
 

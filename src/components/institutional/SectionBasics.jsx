@@ -41,7 +41,7 @@ class SectionBasics extends Component {
               className="inputFields"
               type="text"
               placeholder="Digite o seu nome"
-              value={this.state.fname}
+              value={this.state.nome}
               onChange={e => this.setState({ nome: e.target.value })}
             />
             <div>
