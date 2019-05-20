@@ -37,7 +37,7 @@ class UserForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-usuario";
+            this.props.history("/consultar-usuario");
           })
           .catch(function (error) {
             console.log(error);
@@ -52,7 +52,7 @@ class UserForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-usuario";
+            this.props.history.push("/consultar-usuario");
           })
           .catch(function (error) {
             console.log(error);
