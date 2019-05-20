@@ -27,14 +27,17 @@ class RegisterResourceForm extends Component {
 
       nome_empresa: "",
       segmento: "",
-      dt_inicio_saida: "",
+      dt_empresa_inicio: "",
+      dt_empresa_saida: "",
       cargo: "",
       atividades: "",
+
       //formação
       curso: "",
       instituicao: "",
       nivel_curso: "",
-      dt_inicio_fim: "",
+      dt_curso_inicio: "",
+      dt_curso_conclusao: "",
       info_complementares: "",
 
 
@@ -76,18 +79,21 @@ class RegisterResourceForm extends Component {
             uf: this.state.uf,
             cidade: this.state.cidade,
             disponibilidade: this.state.disponibilidade,
-            categoria: this.state.cargo,
+            categoria: this.state.categoria,
 
             resumo_profissional: this.state.resumo_profissional,
             empresa: this.state.empresa,
             segmento: this.state.segmento,
-            dt_inicio_saida: this.state.dt_inicio_saida,
+            dt_empresa_inicio: this.state.dt_empresa_inicio,
+            dt_empresa_saida: this.state.dt_empresa_saida,
             cargo: this.state.cargo,
             atividades: this.state.atividades,
+
             curso: this.state.curso,
             instituicao: this.state.instituicao,
             nivel_curso: this.state.nivel_curso,
-            dt_inicio_fim: this.state.dt_inicio_fim,
+            dt_curso_inicio: this.state.dt_curso_inicio,
+            dt_curso_conclusao: this.state.dt_curso_conclusao,
             info_complementares: this.state.info_complementares,
             //ANTERIOR
             // nome: this.state.nome,
@@ -129,13 +135,16 @@ class RegisterResourceForm extends Component {
             resumo_profissional: this.state.resumo_profissional,
             empresa: this.state.empresa,
             segmento: this.state.segmento,
-            dt_inicio_saida: this.state.dt_inicio_saida,
+            dt_empresa_inicio: this.state.dt_empresa_inicio,
+            dt_empresa_saida: this.state.dt_empresa_saida,
+
             cargo: this.state.cargo,
             atividades: this.state.atividades,
             curso: this.state.curso,
             instituicao: this.state.instituicao,
             nivel_curso: this.state.nivel_curso,
-            dt_inicio_fim: this.state.dt_inicio_fim,
+            dt_curso_inicio: this.state.dt_curso_inicio,
+            dt_curso_conclusao: this.state.dt_curso_conclusao,
             info_complementares: this.state.info_complementares,
             // nome: this.state.nome,
             // sobrenome: this.state.sobrenome,
@@ -185,13 +194,17 @@ class RegisterResourceForm extends Component {
             resumo_profissional: data.resumo_profissional,
             empresa: data.empresa,
             segmento: data.segmento,
-            dt_tempo: data.dt_tempo,
+            dt_empresa_inicio: data.dt_empresa_inicio,
+            dt_empresa_saida: data.dt_empresa_saida,
             cargo: data.cargo,
             atividades: data.atividades,
+
+
             curso: data.curso,
             instituicao: data.instituicao,
             nivel_curso: data.nivel_curso,
-            dt_inicio_fim: data.dt_inicio_fim,
+            dt_curso_inicio: data.dt_curso_inicio,
+            dt_curso_conclusao: data.dt_curso_conclusao,
             info_complementares: data.info_complementares,
             // nome: data.nome,
             // formacao: data.formacao,
@@ -262,14 +275,13 @@ class RegisterResourceForm extends Component {
     } else if (this.state.segmento === "") {
       this.setState({ error: "preencha o campo segmento" });
       return true;
-    }
-
-    // else if (this.state.dt_tempo === "") {
-    //   this.setState({ error: "preencha o campo data inicial e final" });
-    //   return true;
-    // } 
-
-    else if (this.state.cargo === "") {
+    } else if (this.state.dt_empresa_inicio === "") {
+      this.setState({ error: "preencha o campo data inicial" });
+      return true;
+    } else if (this.state.dt_empresa_saida === "") {
+      this.setState({ error: "preencha o campo data saida" });
+      return true;
+    } else if (this.state.cargo === "") {
       this.setState({ error: "preencha o campo cargo" });
       return true;
     } else if (this.state.atividades === "") {
@@ -284,8 +296,11 @@ class RegisterResourceForm extends Component {
     } else if (this.state.nivel_curso === "") {
       this.setState({ error: "preencha o campo nivel curso" });
       return true;
-    } else if (this.state.dt_inicio_fim === "") {
-      this.setState({ error: "preencha o campo informações dt_inicio_fim" });
+    } else if (this.state.dt_curso_inicio === "") {
+      this.setState({ error: "preencha o campo data inicial" });
+      return true;
+    } else if (this.state.dt_curso_conclusao === "") {
+      this.setState({ error: "preencha o campo data conclusão" });
       return true;
     } else if (this.state.info_complementares === "") {
       this.setState({ error: "preencha o campo informações complementares" });
@@ -401,10 +416,10 @@ class RegisterResourceForm extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="Solteiro(a)">Solteiro(a)</option>
-              <option valeu="Casado(a)">Casado(a)</option>
-              <option valeu="Viúvo(a)">Viúvo(a)</option>
-              <option valeu="Divorciado(a">Divorciado(a)</option>
+              <option value="Solteiro">Solteiro(a)</option>
+              <option valeu="Casado">Casado(a)</option>
+              <option valeu="Viúvo">Viúvo(a)</option>
+              <option valeu="Divorciado">Divorciado(a)</option>
             </Input>
           </div>
 
@@ -512,8 +527,8 @@ class RegisterResourceForm extends Component {
             >
               {/* AC - ACRE */}
               <option value="0">Selecione</option>
-              <option value="ac-1">Acrelândia (AC)</option>
-              <option value="ac-2">Assis Brasil (AC)</option>
+              <option value="Acrelândia (AC)">Acrelândia (AC)</option>
+              <option value="Assis Brasil (AC)">Assis Brasil (AC)</option>
               <option value="ac-3">Brasiléia (AC)</option>
               <option value="ac-4">Bujari (AC)</option>
               <option value="ac-5">Capixaba (AC)</option>
@@ -847,7 +862,9 @@ class RegisterResourceForm extends Component {
               onChange={e => this.setState({ empresa: e.target.value })}
               required
             />
+          </div>
 
+          <div className="col-md-12">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -863,30 +880,61 @@ class RegisterResourceForm extends Component {
               onChange={e => this.setState({ segmento: e.target.value })}
               required
             />
+          </div>
 
+          <div className="col-md-3">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
-              Data de Ínicio e Saída:
+              Data de Ínicio:
             </label>
             <br></br>
             <FormGroup>
               <Label for="labelFields"></Label>
               <Input
                 type="date"
-                name="date"
-                id="exampleDate"
+                name="date1"
+                id="dt_inicio"
                 placeholder="date placeholder"
 
-                value={this.state.dt_inicio_saida}
-                onChange={e => this.setState({ dt_inicio_saida: e.target.value })}
+                value={this.state.dt_empresa_inicio}
+                onChange={e => this.setState({ dt_empresa_inicio: e.target.value })}
                 required
               />
               <br></br>
             </FormGroup>
             <br></br>
+          </div>
 
+
+          <div className="col-md-3">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Data de Saída:
+            </label>
+            <br></br>
+            <FormGroup>
+              <Label for="labelFields"></Label>
+              <Input
+                type="date"
+                name="date2"
+                id="dt_saida"
+                placeholder="date placeholder"
+
+                value={this.state.dt_empresa_saida}
+                onChange={e => this.setState({ dt_empresa_saida: e.target.value })}
+                required
+              />
+              <br></br>
+            </FormGroup>
+            <br></br>
+          </div>
+          <br></br>
+
+          <div className="col-md-12">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -902,7 +950,9 @@ class RegisterResourceForm extends Component {
               onChange={e => this.setState({ cargo: e.target.value })}
               required
             />
+          </div>
 
+          <div className="col-md-12">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -990,24 +1040,49 @@ class RegisterResourceForm extends Component {
             </Input>
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-3">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
-              Data de Ínicio e Conclusão:
+              Data de Ínicio:
             </label>
             <br></br>
             <FormGroup>
               <Label for="labelFields"></Label>
               <Input
                 type="date"
-                name="date"
-                id="exampleDate"
+                name="date1"
+                id="dt_inicio"
                 placeholder="date placeholder"
 
-                value={this.state.dt_inicio_fim}
-                onChange={e => this.setState({ dt_inicio_fim: e.target.value })}
+                value={this.state.dt_curso_inicio}
+                onChange={e => this.setState({ dt_curso_inicio: e.target.value })}
+                required
+              />
+              <br></br>
+            </FormGroup>
+            <br></br>
+          </div>
+
+          <div className="col-md-3">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Data de Conclusão:
+            </label>
+            <br></br>
+            <FormGroup>
+              <Label for="labelFields"></Label>
+              <Input
+                type="date"
+                name="date2"
+                id="dt_conclusao"
+                placeholder="date placeholder"
+
+                value={this.state.dt_curso_conclusao}
+                onChange={e => this.setState({ dt_curso_conclusao: e.target.value })}
                 required
               />
               <br></br>
