@@ -66,7 +66,7 @@ class CompanyForm extends Component {
           })
           .then(response => {
             console.log(response);
-            this.props.history.push("/consultar-empresa", state);
+            this.props.history.push("/consultar-empresa");
           })
           .catch(error => {
             console.log(error);
