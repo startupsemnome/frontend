@@ -9,10 +9,14 @@ class SectionBasics extends Component {
     super(props);
     this.state = {
       nome: "",
-      empresa: "",
-      cnpj: "",
-      categoria: "",
-      problema: "",
+      sobrenome: "",
+      email: "",
+      senha: "",
+      // nome: "",
+      // empresa: "",
+      // cnpj: "",
+      // categoria: "",
+      // problema: "",
       sweetCreate: false
     };
   }
@@ -37,52 +41,51 @@ class SectionBasics extends Component {
               className="inputFields"
               type="text"
               placeholder="Digite o seu nome"
-              value={this.state.fname}
+              value={this.state.nome}
               onChange={e => this.setState({ nome: e.target.value })}
             />
             <div>
               <ul>
-                <br />
-                <label className="labelField">Empresa:</label>
-                <br />
+                <label className="labelField">Sobrenome:</label>
                 <input
                   className="inputFields"
                   type="text"
-                  placeholder="Digite a empresa"
-                  value={this.state.empresa}
-                  onChange={e => this.setState({ empresa: e.target.value })}
+                  placeholder="Digite o seu sobrenome"
+                  value={this.state.sobrenome}
+                  onChange={e => this.setState({ sobrenome: e.target.value })}
                 />{" "}
                 <br />
-                <label className="labelField">CNPJ:</label>
+
+                <label className="labelField">E-mail:</label>
                 <br />
                 <input
                   className="inputFields"
                   type="text"
-                  placeholder="Digite o CNPJ"
-                  value={this.state.cnpj}
-                  onChange={e => this.setState({ cnpj: e.target.value })}
+                  placeholder="Digite o seu e-mail"
+                  value={this.state.email}
+                  onChange={e => this.setState({ email: e.target.value })}
                 />{" "}
                 <br />
-                <label className="labelField">Categoria:</label>
+
+                <label className="labelField">Cadastrar Senha:</label>
                 <br />
                 <input
                   className="inputFields"
                   type="text"
-                  placeholder="Digite a categoria"
-                  value={this.state.end}
-                  onChange={e => this.setState({ categoria: e.target.value })}
+                  placeholder="Digite a sua senha"
+                  value={this.state.senha}
+                  onChange={e => this.setState({ senha: e.target.value })}
                 />
                 <br />
-                <label className="labelField">Problema:</label>
+                <label className="labelField">Confirmação de Senha:</label>
                 <br />
                 <input
                   className="inputFields"
                   type="text"
-                  placeholder="Digite o problema"
-                  value={this.state.tel}
-                  onChange={e => this.setState({ problema: e.target.value })}
+                  placeholder="Confirme a sua senha"
                 />
                 <br />
+
               </ul>
             </div>
             <br />

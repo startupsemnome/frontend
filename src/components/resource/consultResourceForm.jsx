@@ -11,7 +11,7 @@ class ConsultResourceForm extends Component {
     this.state = {
       users: [],
       buscaTable: "",
-      resourceListEdit: [null, false],
+      resourceListEdit: [null, false]
     };
     console.log(this.props);
     this.excluirResource = this.excluirResource.bind(this);
@@ -24,7 +24,7 @@ class ConsultResourceForm extends Component {
       .then(response => {
         alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
-        this.setState({ users: response.data })
+        this.setState({ users: response.data });
       })
       .catch(error => {
         // handle error
@@ -46,7 +46,7 @@ class ConsultResourceForm extends Component {
       });
   }
   editResource(id) {
-    this.setState({ resourceListEdit: [id, true] })
+    this.setState({ resourceListEdit: [id, true] });
   }
   loadResources() {
     // Make a request for a user with a given ID
@@ -94,7 +94,7 @@ class ConsultResourceForm extends Component {
                   type="text"
                   className="inputFields col-md-9"
                   style={{ width: "100%", marginleft: "10px" }}
-                  onChange={e => this.setState({ buscaTable: e.target.value })} 
+                  onChange={e => this.setState({ buscaTable: e.target.value })}
                 />
                 <button
                   type="button"
@@ -112,15 +112,19 @@ class ConsultResourceForm extends Component {
             </div>
             <div className="row">
               <div className="col-md-12">
-                <table class="table table-main">
+                <table className="table table-main">
                   <thead>
                     <tr>
-                      <th scope="col" style={{ display: "none" }}>ID</th>
+                      <th scope="col" style={{ display: "none" }}>
+                        ID
+                      </th>
                       <th scope="col">Nome</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Telefone</th>
+                      <th scope="col">Estado</th>
                       <th scope="col">Cidade</th>
-                      <th scope="col">Area de Interesse</th>
+                      <th scope="col">Formação</th>
+                      <th scope="col">Graduação</th>
+                      <th scope="col">Categoria</th>
                       <th scope="col">Opções</th>
                     </tr>
                   </thead>
@@ -129,21 +133,23 @@ class ConsultResourceForm extends Component {
                       return (
                         <tr key={`buscaTable${resource.id}`}>
                           <td style={{ display: "none" }}>{resource.id}</td>
-                          <td>{resource.fname}</td>
+                          <td>{resource.nome}</td>
                           <td>{resource.email}</td>
-                          <td>{resource.tel}</td>
-                          <td>{resource.cid}</td>
-                          <td>{resource.areai}</td>
+                          <td>{resource.uf}</td>
+                          <td>{resource.cidade}</td>
+                          <td>{resource.formacao}</td>
+                          <td>{resource.curso}</td>
+                          <td>{resource.categoria}</td>
                           <td>
                             <button
-                              onClick={(e) => this.editResource(resource.id)}
+                              onClick={e => this.editResource(resource.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
                               Detalhes
                             </button>
                             <button
-                              onClick={(e) => this.editResource(resource.id)}
+                              onClick={e => this.editResource(resource.id)}
                               className="join-btn-no-transform mr-1"
                               style={{
                                 width: "100%",
@@ -154,7 +160,7 @@ class ConsultResourceForm extends Component {
                               Editar
                             </button>
                             <button
-                              onClick={(e) => this.excluirResource(resource.id)}
+                              onClick={e => this.excluirResource(resource.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
@@ -170,13 +176,13 @@ class ConsultResourceForm extends Component {
             </div>
           </div>
         ) : (
-            <RegisterResourceForm
-              edit={this.state.resourceListEdit[1]}
-              history={this.props.history}
-              handleEdit={() => this.handleEdit()}
-              id={this.state.resourceListEdit[0]}
-            />
-          )}
+          <RegisterResourceForm
+            edit={this.state.resourceListEdit[1]}
+            history={this.props.history}
+            handleEdit={() => this.handleEdit()}
+            id={this.state.resourceListEdit[0]}
+          />
+        )}
       </div>
     );
   }

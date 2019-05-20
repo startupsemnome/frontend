@@ -161,23 +161,21 @@ class ConsultCompanyForm extends Component {
                             to={"visualizar-empresa"}
                             style={{ width: "90%" }}
                             onClick={() => this.visualizar(company.id)}
-                          >
-                          </i>
+                          />
                           <i
-                            onClick={(e) => this.editCompany(company.id)}
+                            onClick={e => this.editCompany(company.id)}
                             className="fas fa-pencil-alt"
                             style={{
                               width: "90%",
                               marginBottom: "5px",
                               marginTop: "5px"
                             }}
-                          >
-                          </i>
-                          <i className="fas fa-transh-all"
-                            onClick={(e) => this.excluirCompany(company.id)}
+                          />
+                          <i
+                            className="fas fa-transh-all"
+                            onClick={e => this.excluirCompany(company.id)}
                             style={{ width: "90%" }}
-                          >
-                          </i>
+                          />
                         </div>
                       </div>
                     </div>
@@ -187,12 +185,12 @@ class ConsultCompanyForm extends Component {
             </div>
           </div>
         ) : (
-            <CompanyForm
-              history={this.props.history}
-              edit={this.state.companyEdit[1]}
-              id={this.state.companyEdit[0]}
-            />
-          )}
+          <CompanyForm
+            history={this.props.history}
+            edit={this.state.companyEdit[1]}
+            id={this.state.companyEdit[0]}
+          />
+        )}
       </div>
     );
   }
