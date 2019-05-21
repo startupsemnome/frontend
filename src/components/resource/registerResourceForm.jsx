@@ -35,7 +35,7 @@ class RegisterResourceForm extends Component {
       //formação
       curso: "",
       instituicao: "",
-      nivel_curso: "",
+      formacao: "",
       dt_curso_inicio: "",
       dt_curso_conclusao: "",
       info_complementares: "",
@@ -91,7 +91,7 @@ class RegisterResourceForm extends Component {
 
             curso: this.state.curso,
             instituicao: this.state.instituicao,
-            nivel_curso: this.state.nivel_curso,
+            formacao: this.state.formacao,
             dt_curso_inicio: this.state.dt_curso_inicio,
             dt_curso_conclusao: this.state.dt_curso_conclusao,
             info_complementares: this.state.info_complementares,
@@ -142,7 +142,7 @@ class RegisterResourceForm extends Component {
             atividades: this.state.atividades,
             curso: this.state.curso,
             instituicao: this.state.instituicao,
-            nivel_curso: this.state.nivel_curso,
+            formacao: this.state.formacao,
             dt_curso_inicio: this.state.dt_curso_inicio,
             dt_curso_conclusao: this.state.dt_curso_conclusao,
             info_complementares: this.state.info_complementares,
@@ -202,7 +202,7 @@ class RegisterResourceForm extends Component {
 
             curso: data.curso,
             instituicao: data.instituicao,
-            nivel_curso: data.nivel_curso,
+            formacao: data.formacao,
             dt_curso_inicio: data.dt_curso_inicio,
             dt_curso_conclusao: data.dt_curso_conclusao,
             info_complementares: data.info_complementares,
@@ -293,7 +293,7 @@ class RegisterResourceForm extends Component {
     } else if (this.state.instituicao === "") {
       this.setState({ error: "preencha o campo instituicao" });
       return true;
-    } else if (this.state.nivel_curso === "") {
+    } else if (this.state.formacao === "") {
       this.setState({ error: "preencha o campo nivel curso" });
       return true;
     } else if (this.state.dt_curso_inicio === "") {
@@ -1025,12 +1025,15 @@ class RegisterResourceForm extends Component {
               id="nivelcurso"
               style={{ width: "100%" }}
 
-              value={this.state.nivel_curso}
-              onChange={e => this.setState({ nivel_curso: e.target.value })}
+              value={this.state.formacao}
+              onChange={e => this.setState({ formacao: e.target.value })}
               required
             >
               <option value="0">Selecione</option>
-              <option value="Graduação">Graduação</option>
+              <option value="Ensino Fundamental">Ensino Fundamental</option>
+              <option value="Ensino Médio">Ensino Médio</option>
+              <option value="Ensino Técnico">Ensino Técnico</option>
+              <option value="Ensino Superior">Ensino Superior</option>
               <option valeu="Pós Graduação">Pós Graduação</option>
               <option value="Especialização">Especialização</option>
               <option value="Mestrado">Mestrado</option>
