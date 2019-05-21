@@ -1,9 +1,23 @@
 import React, { Component } from "react";
-import { Row, Col, ModalHeader, FormGroup, Form, Label, Input, ModalBody, ModalFooter, Modal, Button, Table, FormText, CustomInput } from "reactstrap";
+import {
+  Row,
+  Col,
+  ModalHeader,
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  ModalBody,
+  ModalFooter,
+  Modal,
+  Button,
+  Table,
+  FormText,
+  CustomInput
+} from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
-
 
 class RegisterResourceForm extends Component {
   constructor(props) {
@@ -40,7 +54,6 @@ class RegisterResourceForm extends Component {
       dt_curso_conclusao: "",
       info_complementares: "",
 
-
       //ANTERIOR
       // nome: "",
       // sobrenome: "",
@@ -65,9 +78,7 @@ class RegisterResourceForm extends Component {
     this.setState({ sweetCreate: true });
   }
   createResource(method, id) {
-
     if (!this.hasErros()) {
-
       if (method == "create") {
         axios
           .post(env.API + "resource", {
@@ -108,18 +119,16 @@ class RegisterResourceForm extends Component {
             // habilidade: this.state.habilidade,
             // area_interesse: this.state.area_interesse,
             message1: this.state.message1
-
           })
-          .then(function (response) {
-
+          .then(response => {
             console.log(response);
-            this.props.history.push("/cadastro-recurso");
+            this.props.history("/consultar-recurso");
             this.props.handleEdit();
           })
           .catch(function (error) {
             console.log(error);
           });
-      } else if (method = "update") {
+      } else if ((method = "update")) {
         axios
           .put(env.API + "resource/" + id, {
             fotoperfil: this.state.fotoperfil,
@@ -158,7 +167,6 @@ class RegisterResourceForm extends Component {
             // habilidade: this.state.habilidade,
             // area_interesse: this.state.area_interesse,
             message1: this.state.message1
-
           })
           .then(function (response) {
             console.log(response);
@@ -168,7 +176,6 @@ class RegisterResourceForm extends Component {
           .catch(function (error) {
             console.log(error);
           });
-
       }
     }
   }
@@ -177,7 +184,7 @@ class RegisterResourceForm extends Component {
       const id = this.props.id;
       axios
         .get(env.API + "resource/" + id)
-        .then((response) => {
+        .then(response => {
           console.log(response);
           const data = response.data;
           this.setState({
@@ -198,7 +205,6 @@ class RegisterResourceForm extends Component {
             dt_empresa_saida: data.dt_empresa_saida,
             cargo: data.cargo,
             atividades: data.atividades,
-
 
             curso: data.curso,
             instituicao: data.instituicao,
@@ -230,16 +236,15 @@ class RegisterResourceForm extends Component {
     this.props.handleEdit();
   }
 
-
   hasErros() {
     // if (this.state.fotoperfil === "") {
     //   this.setState({ error: "preencha o campo fotoperfil" });
     //   return true;
-    // } 
+    // }
     // if (this.state.dt_nascimento === "") {
     //   this.setState({ error: "preencha o campo nascimento" });
     //   return true;
-    // } 
+    // }
 
     if (this.state.genero === "") {
       this.setState({ error: "preencha o campo genero" });
@@ -264,8 +269,7 @@ class RegisterResourceForm extends Component {
     // else if (this.state.disponibilidade === "") {
     //   this.setState({ error: "preencha o campo disponibilidade" });
     //   return true;
-    // } 
-
+    // }
     else if (this.state.resumo_profissional === "") {
       this.setState({ error: "preencha o campo do resumo profissional" });
       return true;
@@ -320,7 +324,7 @@ class RegisterResourceForm extends Component {
             >
               Dados Pessoais:{" "}
             </label>
-            <br></br>
+            <br />
           </div>
 
           <div className="col-md-12">
@@ -330,17 +334,17 @@ class RegisterResourceForm extends Component {
             >
               Foto de Perfil:{" "}
             </label>
-            <br></br>
+            <br />
             <FormGroup row>
-              <Label for="exampleFile"></Label>
+              <Label for="exampleFile" />
               <Col sm={10}>
                 <Input type="file" name="file" id="exampleFile" />
                 <FormText color="muted">
                   A foto escolhida será depositada em nosso banco de dados.
-              </FormText>
+                </FormText>
               </Col>
             </FormGroup>
-            <br></br>
+            <br />
           </div>
 
           <div className="col-md-12">
@@ -350,22 +354,21 @@ class RegisterResourceForm extends Component {
             >
               Data de Nascimento:
             </label>
-            <br></br>
+            <br />
             <FormGroup>
-              <Label for="labelFields"></Label>
+              <Label for="labelFields" />
               <Input
                 type="date"
                 name="date"
                 id="exampleDate"
                 placeholder="date placeholder"
-
                 value={this.state.dt_nascimento}
                 onChange={e => this.setState({ dt_nascimento: e.target.value })}
                 required
               />
-              <br></br>
+              <br />
             </FormGroup>
-            <br></br>
+            <br />
           </div>
 
           <div className="col-md-12">
@@ -383,7 +386,6 @@ class RegisterResourceForm extends Component {
               name="civilstatus"
               id="optioncivilstatus"
               style={{ width: "100%" }}
-
               value={this.state.genero}
               onChange={e => this.setState({ genero: e.target.value })}
               required
@@ -410,7 +412,6 @@ class RegisterResourceForm extends Component {
               name="civilstatus"
               id="optioncivilstatus"
               style={{ width: "100%" }}
-
               value={this.state.estado_civil}
               onChange={e => this.setState({ estado_civil: e.target.value })}
               required
@@ -438,7 +439,6 @@ class RegisterResourceForm extends Component {
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
-
               value={this.state.nacionalidade}
               onChange={e => this.setState({ nacionalidade: e.target.value })}
               required
@@ -468,11 +468,9 @@ class RegisterResourceForm extends Component {
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
-
               value={this.state.uf}
               onChange={e => this.setState({ uf: e.target.value })}
               required
-
             >
               <option value="">Selecione</option>
               <option value="AC">AC</option>
@@ -520,7 +518,6 @@ class RegisterResourceForm extends Component {
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
-
               value={this.state.cidade}
               onChange={e => this.setState({ cidade: e.target.value })}
               required
@@ -670,7 +667,6 @@ class RegisterResourceForm extends Component {
               name="category"
               id="optioncategory"
               style={{ width: "100%" }}
-
               value={this.state.categoria}
               onChange={e => this.setState({ categoria: e.target.value })}
               required
@@ -690,10 +686,16 @@ class RegisterResourceForm extends Component {
               <option value="Educação Física">Educação Física</option>
               <option value="Enfermagem">Enfermagem</option>
               <option value="Engenharia Civil">Engenharia Civil</option>
-              <option value="Engenharia de Automação e Controle">Engenharia de Automação e Controle</option>
-              <option value="Engenharia de Produção">Engenharia de Produção</option>
+              <option value="Engenharia de Automação e Controle">
+                Engenharia de Automação e Controle
+              </option>
+              <option value="Engenharia de Produção">
+                Engenharia de Produção
+              </option>
               <option value="Engenharia Elétrica">Engenharia Elétrica</option>
-              <option value="Engenharia Eletrônica">Engenharia Eletrônica</option>
+              <option value="Engenharia Eletrônica">
+                Engenharia Eletrônica
+              </option>
               <option value="Engenharia Mecânica">Engenharia Mecânica</option>
               <option value="ngenharia Química">Engenharia Química</option>
               <option value="Psicologia">Psicologia</option>
@@ -708,7 +710,9 @@ class RegisterResourceForm extends Component {
               <option value="Odontologia">Odontologia</option>
               <option value="Psicologia">Psicologia</option>
               <option value="Relações Públicas">Relações Públicas</option>
-              <option value="Publicidade e Propagand">Publicidade e Propaganda</option>
+              <option value="Publicidade e Propagand">
+                Publicidade e Propaganda
+              </option>
               <option value="Turismo">Turismo</option>
               <option value="Outros">Outros</option>
             </Input>
@@ -832,9 +836,10 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Descreva sua trajetória profissional"
-
               value={this.state.resumo_profissional}
-              onChange={e => this.setState({ resumo_profissional: e.target.value })}
+              onChange={e =>
+                this.setState({ resumo_profissional: e.target.value })
+              }
               required
             />
           </div>
@@ -846,7 +851,7 @@ class RegisterResourceForm extends Component {
             >
               Experiência Profissional
             </label>
-            <br></br>
+            <br />
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -857,7 +862,6 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Informe o nome da empresa em que trabalhou"
-
               value={this.state.empresa}
               onChange={e => this.setState({ empresa: e.target.value })}
               required
@@ -875,7 +879,6 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Informe o segmento da empresa em que trabalhou"
-
               value={this.state.segmento}
               onChange={e => this.setState({ segmento: e.target.value })}
               required
@@ -889,24 +892,24 @@ class RegisterResourceForm extends Component {
             >
               Data de Ínicio:
             </label>
-            <br></br>
+            <br />
             <FormGroup>
-              <Label for="labelFields"></Label>
+              <Label for="labelFields" />
               <Input
                 type="date"
                 name="date1"
                 id="dt_inicio"
                 placeholder="date placeholder"
-
                 value={this.state.dt_empresa_inicio}
-                onChange={e => this.setState({ dt_empresa_inicio: e.target.value })}
+                onChange={e =>
+                  this.setState({ dt_empresa_inicio: e.target.value })
+                }
                 required
               />
-              <br></br>
+              <br />
             </FormGroup>
-            <br></br>
+            <br />
           </div>
-
 
           <div className="col-md-3">
             <label
@@ -915,24 +918,25 @@ class RegisterResourceForm extends Component {
             >
               Data de Saída:
             </label>
-            <br></br>
+            <br />
             <FormGroup>
-              <Label for="labelFields"></Label>
+              <Label for="labelFields" />
               <Input
                 type="date"
                 name="date2"
                 id="dt_saida"
                 placeholder="date placeholder"
-
                 value={this.state.dt_empresa_saida}
-                onChange={e => this.setState({ dt_empresa_saida: e.target.value })}
+                onChange={e =>
+                  this.setState({ dt_empresa_saida: e.target.value })
+                }
                 required
               />
-              <br></br>
+              <br />
             </FormGroup>
-            <br></br>
+            <br />
           </div>
-          <br></br>
+          <br />
 
           <div className="col-md-12">
             <label
@@ -945,7 +949,6 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Informe o seu ultimo cargo na empresa em que trabalhou"
-
               value={this.state.cargo}
               onChange={e => this.setState({ cargo: e.target.value })}
               required
@@ -963,7 +966,6 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Descreve um pouco sobre as atividades exercidas na empresa em que trabalhou"
-
               value={this.state.atividades}
               onChange={e => this.setState({ atividades: e.target.value })}
               required
@@ -977,7 +979,7 @@ class RegisterResourceForm extends Component {
             >
               Formação
             </label>
-            <br></br>
+            <br />
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -1050,22 +1052,23 @@ class RegisterResourceForm extends Component {
             >
               Data de Ínicio:
             </label>
-            <br></br>
+            <br />
             <FormGroup>
-              <Label for="labelFields"></Label>
+              <Label for="labelFields" />
               <Input
                 type="date"
                 name="date1"
                 id="dt_inicio"
                 placeholder="date placeholder"
-
                 value={this.state.dt_curso_inicio}
-                onChange={e => this.setState({ dt_curso_inicio: e.target.value })}
+                onChange={e =>
+                  this.setState({ dt_curso_inicio: e.target.value })
+                }
                 required
               />
-              <br></br>
+              <br />
             </FormGroup>
-            <br></br>
+            <br />
           </div>
 
           <div className="col-md-3">
@@ -1075,22 +1078,23 @@ class RegisterResourceForm extends Component {
             >
               Data de Conclusão:
             </label>
-            <br></br>
+            <br />
             <FormGroup>
-              <Label for="labelFields"></Label>
+              <Label for="labelFields" />
               <Input
                 type="date"
                 name="date2"
                 id="dt_conclusao"
                 placeholder="date placeholder"
-
                 value={this.state.dt_curso_conclusao}
-                onChange={e => this.setState({ dt_curso_conclusao: e.target.value })}
+                onChange={e =>
+                  this.setState({ dt_curso_conclusao: e.target.value })
+                }
                 required
               />
-              <br></br>
+              <br />
             </FormGroup>
-            <br></br>
+            <br />
           </div>
 
           <div className="col-md-12">
@@ -1104,9 +1108,10 @@ class RegisterResourceForm extends Component {
               className="inputFields col-md-12"
               type="text"
               placeholder="Digite algumas informações adicionais"
-
               value={this.state.info_complementares}
-              onChange={e => this.setState({ info_complementares: e.target.value })}
+              onChange={e =>
+                this.setState({ info_complementares: e.target.value })
+              }
               required
             />
           </div>
@@ -1128,7 +1133,11 @@ class RegisterResourceForm extends Component {
             <div />
             <button
               type="button"
-              onClick={() => { !this.props.id ? this.createResource("create") : this.createResource("update", this.props.id) }}
+              onClick={() => {
+                !this.props.id
+                  ? this.createResource("create")
+                  : this.createResource("update", this.props.id);
+              }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >

@@ -29,6 +29,7 @@ import ConsultProblem from "../pages/consultProblem";
 import EditProblemForm from "../components/problem/editProblemForm";
 import institutionalForm from "../components/institutional/institutionalForm";
 import ProblemList from "../components/problem/problemList";
+import DetailsCompanyForm from "../components/companys/detailsCompanyForm";
 import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 
@@ -63,7 +64,7 @@ export default class Routes extends Component {
 
           <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />
           <PrivateRoute exact={true} path="/consultar-empresa" component={ConsultCompany} />
-
+          <Route exact={true} path="/visualizar-empresa" component={DetailsCompany} />
           <PrivateRoute exact={true} path="/cadastro-recurso" component={RegisterResource} />
           <PrivateRoute exact={true} path="/consultar-recurso" component={ConsultResource} />
 
