@@ -1152,7 +1152,7 @@ class RegisterResourceForm extends Component {
           onConfirm={() => this.setState({ sweetCreate: false })}
         >
           {/* ALTERAR */}
-          {`Cadastrado ${this.state.fname} com sucesso!`}
+          {`Cadastrado ${this.state.nome} com sucesso!`}
         </SweetAlert>
       </div>
     );
