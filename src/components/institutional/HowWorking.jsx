@@ -21,9 +21,9 @@ class HowWorking extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="row">
+      <div className="row" id="header1">
         <div>
-          <h1 id="header1" className="footer-H1-Question">
+          <h1 className="footer-H1-Question">
             Como funciona nossa plataforma?
           </h1>
         </div>
