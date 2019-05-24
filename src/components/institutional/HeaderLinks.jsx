@@ -56,15 +56,17 @@ class HeaderLinks extends Component {
           >
             Cadastro
           </Link>
-          <Link
-            to="/lista-projetos"
-            style={{ textDecoration: "none" }}
-            color="transparent"
-            className={classes.navLink}
-          >
-            Projetos <br />
-            <span class="badge badge-light" />
-          </Link>
+          {this.props.auth.login ? (
+            <Link
+              to="/lista-projetos"
+              style={{ textDecoration: "none" }}
+              color="transparent"
+              className={classes.navLink}
+            >
+              Projetos <br />
+              <span class="badge badge-light" />
+            </Link>
+          ) : null}
         </ListItem>
 
         <ListItem className={classes.listItem}>

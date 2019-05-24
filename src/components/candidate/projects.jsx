@@ -75,8 +75,7 @@ class Projects extends Component {
   }
   componentDidMount() {
     this.props.setNavbarOpen(false);
-    document.body.style.backgroundImage =
-      "url('https://images.pexels.com/photos/754082/pexels-photo-754082.jpeg?cs=srgb&dl=blur-blurred-background-colors-754082.jpg&fm=jpg')";
+    //document.body.style.backgroundImage = "";
   }
   render() {
     const { ...rest } = this.props;
@@ -92,7 +91,10 @@ class Projects extends Component {
           }}
           {...rest}
         />
-        <div className="container col-md-8 mt-5">
+        <div
+          className="container col-md-8 mt-5"
+          style={{ marginTop: "130px !important" }}
+        >
           {!this.state.problemListEdit[1] ? (
             <div>
               <div className="row">

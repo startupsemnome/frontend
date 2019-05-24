@@ -102,6 +102,26 @@ class CadastroUsuarioCompleto extends Component {
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
+              Nome:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              select="multiple"
+              name="civilstatus"
+              id="optioncivilstatus"
+              style={{ width: "100%" }}
+              value={this.state.nome}
+              onChange={e => this.setState({ nome: e.target.value })}
+              required
+            />
+          </div>
+
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
               Foto de Perfil:{" "}
             </label>
             <br />
@@ -317,109 +337,6 @@ class CadastroUsuarioCompleto extends Component {
               <option value="ac-20">Senador Guiomard (AC)</option>
               <option value="ac-21">Tarauacá (AC)</option>
               <option value="ac-22">Xapuri (AC)</option>
-
-              {/* AL - ALAGOAS */}
-              <option value="al-1">Água Branca (AL)</option>
-              <option value="al-2">Anadia (AL)</option>
-              <option value="al-3">Arapiraca (AL)</option>
-              <option value="al-4">Atalaia (AL)</option>
-              <option value="al-5">Barra de Santo Antônio (AL)</option>
-              <option value="al-6">Barra de São Miguel (AL)</option>
-              <option value="al-7">Batalha (AL)</option>
-              <option value="al-8">Belém (AL)</option>
-              <option value="al-9">Belo Monte (AL)</option>
-              <option value="al-10">Boca da Mata (AL)</option>
-              <option value="al-11">Branquinha (AL)</option>
-              <option value="al-12">Cacimbinhas (AL)</option>
-              <option value="al-13">Viçosa (AL)</option>
-              <option value="al-14">Cajueiro (AL)</option>
-              <option value="al-15">Campestre (AL)</option>
-              <option value="al-16">Campo Alegre (AL)</option>
-              <option value="al-17">Canapi (AL)</option>
-              <option value="al-18">Capela (AL)</option>
-              <option value="al-19">Carneiros (AL)</option>
-              <option value="al-20">Chã Preta (AL)</option>
-              <option value="al-21">Coité do Nóia (AL)</option>
-              <option value="al-22">Colônia Leopoldina (AL)</option>
-              <option value="al-23">Coqueiro Seco (AL)</option>
-              <option value="al-24">Coruripe (AL)</option>
-              <option value="al-25-">Craíbas (AL)</option>
-              <option value="al-26">Delmiro Gouveia (AL)</option>
-              <option value="al-27">Dois Riachos (AL)</option>
-              <option value="al-28">Estrela de Alagoas (AL)</option>
-              <option value="al-29">Feira Grande</option>
-              <option value="al-30">Feliz Deserto (AL)</option>
-              <option value="al-31">Flexeiras (AL)</option>
-              <option value="al-32">Girau do Ponciano (AL)</option>
-              <option value="al-33">Ibateguara (AL)</option>
-              <option value="al-34">Igaci (AL)</option>
-              <option value="al-35">Igreja Nova (AL)</option>
-              <option value="al-36">Inhapi (AL)</option>
-              <option value="al-37">Jacaré dos Homens (AL)</option>
-              <option value="al-38">Jacuípe (AL)</option>
-              <option value="al-39">Japaratinga (AL)</option>
-              <option value="al-40">Jaramataia (AL)</option>
-              <option value="al-41">Jequiá da Praia (AL)</option>
-              <option value="al-42">Joaquim Gomes (AL)</option>
-              <option value="al-43">Jundiá (AL)</option>
-              <option value="al-44">Junqueiro (AL)</option>
-              <option value="al-45">Lagoa da Canoa (AL)</option>
-              <option value="al-46">Limoeiro de Anadia (AL)</option>
-              <option value="al-47">Maceió (AL)</option>
-              <option value="al-48">Major Isidoro (AL)</option>
-              <option value="al-49">Mar Vermelho (AL)</option>
-              <option value="al-50">Maragogi (AL)</option>
-              <option value="al-51">Maravilha (AL)</option>
-              <option value="al-52">Marechal Deodoro (AL)</option>
-              <option value="al-53">Maribondo (AL)</option>
-              <option value="al-54">Mata Grande (AL)</option>
-              <option value="al-55">Matriz de Camaragibe (AL)</option>
-              <option value="al-56">Messias (AL)</option>
-              <option value="al-57">Minador do Negrão (AL)</option>
-              <option value="al-58">Monteirópolis (AL)</option>
-              <option value="al-59">Murici (AL)</option>
-              <option value="al-60">Novo Lino (AL)</option>
-              <option value="al-61">Olho d'Água das Flores (AL)</option>
-              <option value="al-62">Olho d'Água do Casado (AL)</option>
-              <option value="al-63">Olho d'Água Grande (AL)</option>
-              <option value="al-64">Olivença (AL)</option>
-              <option value="al-65">Ouro Branco (AL)</option>
-              <option value="al-66">Palestina (AL)</option>
-              <option value="al-67">Palmeira dos Índios (AL)</option>
-              <option value="al-68">Pão de Açúcar (AL)</option>
-              <option value="al-68">Pariconha (AL)</option>
-              <option value="al-69">Paripueira (AL)</option>
-              <option value="al-70">Passo de Camaragibe (AL)</option>
-              <option value="al-71">Paulo Jacinto (AL)</option>
-              <option value="al-72">Penedo (AL)</option>
-              <option value="al-73">Piaçabuçu (AL)</option>
-              <option value="al-74">ilar (AL)</option>
-              <option value="al-75">Pindoba (AL)</option>
-              <option value="al-76">Piranhas (AL)</option>
-              <option value="al-77">Poço das Trincheiras (AL)</option>
-              <option value="al-78">Porto Calvo (AL)</option>
-              <option value="al-79">Porto de Pedras (AL)</option>
-              <option value="al-80">Porto Real do Colégio (AL)</option>
-              <option value="al-81">Quebrangulo (AL)</option>
-              <option value="al-82">Rio Largo (AL)</option>
-              <option value="al-83">Roteiro (AL)</option>
-              <option value="al-84">Santa Luzia do Norte (AL)</option>
-              <option value="al-85">Santana do Ipanema (AL)</option>
-              <option value="al-86">Santana do Mundaú (AL)</option>
-              <option value="al-87">São Brás (AL)</option>
-              <option value="al-88">São José da Laje (AL)</option>
-              <option value="al-89">São José da Tapera (AL)</option>
-              <option value="al-90">São Luís do Quitunde (AL)</option>
-              <option value="al-91">São Miguel dos Campos (AL)</option>
-              <option value="al-92">São Miguel dos Milagres (AL)</option>
-              <option value="al-93">São Sebastião (AL)</option>
-              <option value="al-94">Satuba (AL)</option>
-              <option value="al-95">Senador Rui Palmeira (AL)</option>
-              <option value="al-96">Tanque d'Arca (AL)</option>
-              <option value="al-97">Taquarana (AL)</option>
-              <option value="al-98">Teotônio Vilela (AL)</option>
-              <option value="al-99">Traipu (AL)</option>
-              <option value="al-100">União dos Palmares (AL)</option>
             </Input>
           </div>
 
@@ -894,17 +811,6 @@ class CadastroUsuarioCompleto extends Component {
             {this.state.error}
           </label>
           <Col className="col-md-12 d-flex justify-content-center">
-            {this.props.id ? (
-              <button
-                type="button"
-                onClick={() => this.goToConsulta("/consultar-recurso")}
-                className="join-btn-no-transform mr-1 login"
-                style={{ width: "25%", margin: "0px" }}
-              >
-                Consultar Recurso
-              </button>
-            ) : null}
-            <div />
             <button
               type="button"
               onClick={() => this.atualizarMeuCadastro()}
@@ -930,12 +836,15 @@ class CadastroUsuarioCompleto extends Component {
 
   loadUserInfor() {
     // Carregando a quantidade de usuários
+    let userID = JSON.parse(localStorage.getItem("userId"));
+
     axios
-      .get(env.API + "user/1")
+      .get(env.API + "resource/" + userID)
       .then(response => {
         // handle success
         const data = response.data;
-        this.setState({ user: data });
+        console.log(data);
+        this.setState({ nome: data.nome, dt_nascimento: data.dt_nascimento });
       })
       .catch(error => {
         // handle error
