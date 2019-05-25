@@ -5,6 +5,7 @@ import axios from "axios";
 import env from "./../../consts";
 import ProblemForm from "./problemForm";
 
+
 class ProblemList extends Component {
   constructor(props) {
     super(props);
@@ -116,10 +117,10 @@ class ProblemList extends Component {
                         ID
                       </th>
                       <th scope="col">Empresa</th>
-                      <th scope="col">Solicitante</th>
-                      <th scope="col">Contato</th>
-                      <th scope="col">Problema</th>
+                      <th scope="col">Titulo</th>
+                      <th scope="col">Categoria</th>
                       <th scope="col">Descrição</th>
+                      {/* <th scope="col">Disponibilidade</th> */}
                       <th scope="col">Ultima Atualização</th>
                       <th scope="col">Data Criação</th>
                       <th scope="col">Opções</th>
@@ -130,14 +131,11 @@ class ProblemList extends Component {
                       return (
                         <tr key={`buscaTable${problem.id}`}>
                           <td style={{ display: "none" }}>{problem.id}</td>
-                          <td>{problem.company.empresa}</td>
-                          <td>{problem.solicitante}</td>
-                          <td>
-                            {problem.email} <br />
-                            {problem.telefone}
-                          </td>
+                          <td>{problem.empresa}</td>
                           <td>{problem.titulo}</td>
+                          <td>{problem.categoria}</td>
                           <td>{problem.descricao}</td>
+                          {/* <td>{problem.disponibilidade}</td> */}
                           <td>{problem.updated_at}</td>
                           <td>{problem.created_at}</td>
                           <td>
@@ -176,13 +174,13 @@ class ProblemList extends Component {
             </div>
           </div>
         ) : (
-          <ProblemForm
-            history={this.props.history}
-            edit={this.state.problemListEdit[1]}
-            id={this.state.problemListEdit[0]}
-            idDetail={this.state.problemListEdit[2]}
-          />
-        )}
+            <ProblemForm
+              history={this.props.history}
+              edit={this.state.problemListEdit[1]}
+              id={this.state.problemListEdit[0]}
+              idDetail={this.state.problemListEdit[2]}
+            />
+          )}
       </div>
     );
   }
