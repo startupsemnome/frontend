@@ -99,7 +99,7 @@ class ProblemForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-problema";
+            this.props.history.push("/consultar-problema");
           })
           .catch(function (error) {
             console.log(error);
@@ -115,7 +115,7 @@ class ProblemForm extends Component {
           })
           .then(function (response) {
             console.log(response);
-            window.location = "/consultar-problema";
+            this.props.history.push("/consultar-problema");
           })
           .catch(function (error) {
             console.log(error);
@@ -276,9 +276,9 @@ class ProblemForm extends Component {
               type="select"
               select="multiple"
               name="category"
-              id="optioncategory"
+              id="optioncategory"              
               style={{ width: "100%" }}
-            >
+            >               
               <option value="1">Administração</option>
               <option valeu="2">Comércio Exterior</option>
               <option value="3">Tecnologia</option>
@@ -352,7 +352,7 @@ class ProblemForm extends Component {
             <br />
           </div>
           <div className="col-md-12">
-            <div className="">
+            <div className="col-md-12">
               <table className="table table">
                 <thead>
                   <tr>
@@ -506,7 +506,7 @@ class ProblemForm extends Component {
           style={{ width: "100%" }}
         >
           <ModalHeader toggle={this.findResources}>
-            Selecione os Recursos Para Esse Problema
+            Selecione os recursos para este problema
           </ModalHeader>
           <ModalBody>
             <br />
@@ -515,8 +515,8 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
-                  <th>Formacao</th>
-                  <th>Area de Interece</th>
+                  <th>Formação</th>
+                  <th>Area de Interesse</th>
                   <th>Cidade</th>
                 </tr>
               </thead>

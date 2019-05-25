@@ -14,6 +14,7 @@ import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "./../assets/jss/material-kit-react/views/components.jsx";
 
+import CadastroUsuarioCompleto from "./../components/cadastroUsuarioCompleto.jsx";
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
 import HowWorking from "../components/institutional/HowWorking.jsx";
@@ -34,8 +35,14 @@ class Institutional extends Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <meta name="description" content="página institucional responsável por apresentar nosso produto/negócio e possibilitará o acesso do usuário." />
-          <meta name="keywords" content="site, tela inicial, resource manager, institucional" />
+          <meta
+            name="description"
+            content="página institucional responsável por apresentar nosso produto/negócio e possibilitará o acesso do usuário."
+          />
+          <meta
+            name="keywords"
+            content="site, tela inicial, resource manager, institucional"
+          />
           <meta name="author" content="Equipe Resource Manager" />
           <title>Resource Manager</title>
         </Helmet>
@@ -69,8 +76,8 @@ class Institutional extends Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <HowWorking />
-          <SectionCarousel />
-          <SectionBasics />
+          {!this.props.login ? <SectionCarousel /> : null}
+          {!this.props.login ? <SectionBasics /> : <CadastroUsuarioCompleto />}
           {/* <Notificacao /> */}
         </div>
         <br />
@@ -81,12 +88,15 @@ class Institutional extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ login: state.auth.login });
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen }, dispatch);
 
 export default withStyles(componentsStyle)(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(Institutional)
 );

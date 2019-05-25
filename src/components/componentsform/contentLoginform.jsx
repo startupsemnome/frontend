@@ -47,6 +47,7 @@ class ContentLoginform extends Component {
         .then(response => {
           localStorage.setItem("userName", response.data.name);
           localStorage.setItem("userId", response.data.id);
+          localStorage.setItem("type", response.data.type);
           this.props.setNavbarOpen(true);
           this.props.setLogin(true);
           this.props.history.push("/dashboard");

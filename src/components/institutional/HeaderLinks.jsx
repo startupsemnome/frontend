@@ -36,16 +36,18 @@ class HeaderLinks extends Component {
             color="transparent"
             className={classes.navLink}
           >
-            Sobre nós
+            Como funciona a plataforma
           </Link>
-          <Link
-            style={{ textDecoration: "none" }}
-            to="institutional#header2"
-            color="transparent"
-            className={classes.navLink}
-          >
-            Clientes
-          </Link>
+          {!this.props.auth.login ? (
+            <Link
+              style={{ textDecoration: "none" }}
+              to="institutional#header2"
+              color="transparent"
+              className={classes.navLink}
+            >
+              Clientes
+            </Link>
+          ) : null}
           <Link
             style={{ textDecoration: "none" }}
             to="institutional#header3"
@@ -54,15 +56,17 @@ class HeaderLinks extends Component {
           >
             Cadastro
           </Link>
-          <Link
-            to="/lista-projetos"
-            style={{ textDecoration: "none" }}
-            color="transparent"
-            className={classes.navLink}
-          >
-            Projetos <br />
-            <span class="badge badge-light" />
-          </Link>
+          {this.props.auth.login ? (
+            <Link
+              to="/lista-projetos"
+              style={{ textDecoration: "none" }}
+              color="transparent"
+              className={classes.navLink}
+            >
+              Projetos <br />
+              <span class="badge badge-light" />
+            </Link>
+          ) : null}
         </ListItem>
 
         <ListItem className={classes.listItem}>

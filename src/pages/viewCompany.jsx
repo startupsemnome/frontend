@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import DetailsCompanyForm from "../components/companys/detailsCompanyForm";
+import ViewCompanyForm from "../components/companys/viewCompanyForm";
 import { Helmet } from "react-helmet";
 
-export default class DetailsCompany extends Component {
+export default class ViewCompany extends Component {
   constructor(props) {
     super(props);
   }
@@ -15,11 +15,11 @@ export default class DetailsCompany extends Component {
           <meta name="description" content="página responsável por realizar uma lista que contém os detalhes da empresa cadastrada." />
           <meta name="keywords" content="site, detalhes da empresa, listar empresa" />
           <meta name="author" content="Equipe Resource Manager" />
-          <title>Detalhes da Empresa</title>
+          <title>Visualizar da Empresa</title>
         </Helmet>
-        <h1 className="h1-main">Detalhes da Empresa</h1>
+        <h1 className="h1-main">Descrição da Empresa</h1>
 
-        <DetailsCompanyForm />
+        <ViewCompanyForm />
 
       </div>
     );
