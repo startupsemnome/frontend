@@ -164,7 +164,8 @@ class ProblemForm extends Component {
     this.setState({ modal: !this.state.modal });
     axios
       .post(env.API + "communicate-resource", {
-        id_resource: this.state.resourcesCall
+        id_resource: this.state.resourcesCall,
+        id_problem: this.props.idDetail
       })
       .then(response => {
         alert("email enviado para recursos");
@@ -276,9 +277,9 @@ class ProblemForm extends Component {
               type="select"
               select="multiple"
               name="category"
-              id="optioncategory"              
+              id="optioncategory"
               style={{ width: "100%" }}
-            >               
+            >
               <option value="1">Administração</option>
               <option valeu="2">Comércio Exterior</option>
               <option value="3">Tecnologia</option>

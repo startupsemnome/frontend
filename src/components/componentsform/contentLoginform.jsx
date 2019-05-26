@@ -50,7 +50,7 @@ class ContentLoginform extends Component {
           localStorage.setItem("type", response.data.type);
           this.props.setNavbarOpen(true);
           this.props.setLogin(true);
-          this.props.history.push("/dashboard");
+          this.props.history.push("/institutional");
         })
         .catch(error => {
           if (error.response.status === 401) {

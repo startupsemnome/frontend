@@ -71,19 +71,13 @@ class NavBar extends Component {
             <ul className="navbar-nav w-100">
               <li className="nav-item active" style={{ margin: "15px" }}>
                 <Link to="/institutional" className="nav-link">
-                  INSTITUCIONAL
+                  HOME
                 </Link>
               </li>
 
               <li className="nav-item active" style={{ margin: "15px" }}>
                 <Link to="/dashboard" className="nav-link">
                   DASHBOARD
-                </Link>
-              </li>
-
-              <li className="nav-item active" style={{ margin: "15px" }}>
-                <Link to="/consultar-empresa" className="nav-link">
-                  EMPRESA
                 </Link>
               </li>
 
@@ -196,7 +190,7 @@ class NavBar extends Component {
                   style={{ textDecoration: "none", marginTop: "3px" }}
                   caret
                 >
-                  USUARIO
+                  USUARIO ADMINISTRADOR
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
