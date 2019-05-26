@@ -11,8 +11,8 @@ class ViewCompanyForm extends Component {
       users: [],
       companyEdit: [null, false]
     };
-    console.log(this.props);
     this.excluirCompany = this.excluirCompany.bind(this);
+    this.loadCompanys = this.loadCompanys.bind(this);
   }
   excluirCompany(id) {
     //chama a api do banco com o metodo de delete
@@ -34,10 +34,10 @@ class ViewCompanyForm extends Component {
   loadCompanys() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "user")
+      .get(env.API + "company/" + 1)
       .then(response => {
         // handle success
-        const data = response.data;
+        const data = response.data[0];
         this.setState({ users: data });
       })
       .catch(error => {
@@ -52,13 +52,12 @@ class ViewCompanyForm extends Component {
   render() {
     return (
       <div className="loginUser col-md-12">
-        {!this.state.companyEdit[1] ? (
+        {console.log(this.state.users)}
+        {!this.state.users == undefined ? (
           <div>
             <form className="signupForm form-inline">
-              {this.state.users.map(company => {
-                return (
                   <div>
-                    <p style={{ display: "none" }}>{company.id}</p>
+                    <p style={{ display: "none" }}>{this.state.users.id}</p>
                     <div className="col-md-8">
                       <label
                         className="labelFields"
@@ -68,7 +67,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.razaoSocial}
+                        value={this.state.users.razaoSocial}
                         disabled="disabled"
                       />
                     </div>
@@ -81,7 +80,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.cnpj}
+                        value={this.state.users.cnpj}
                         disabled="disabled"
                       />
                     </div>
@@ -94,7 +93,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.nomeFantasia}
+                        value={this.state.users.nomeFantasia}
                         disabled="disabled"
                       />
                     </div>
@@ -107,7 +106,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.cep}
+                        value={this.state.users.cep}
                         disabled="disabled"
                       />
                     </div>
@@ -120,7 +119,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.rua}
+                        value={this.state.users.rua}
                         disabled="disabled"
                       />
                     </div>
@@ -133,7 +132,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.numero}
+                        value={this.state.users.numero}
                         disabled="disabled"
                       />
                     </div>
@@ -146,7 +145,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className=" inputFields col-md-12"
-                        value={company.bairro}
+                        value={this.state.users.bairro}
                         disabled="disabled"
                       />
                     </div>
@@ -159,7 +158,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.cidade}
+                        value={this.state.users.cidade}
                         disabled="disabled"
                       />
                     </div>
@@ -172,7 +171,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.uf}
+                        value={this.state.users.uf}
                         disabled="disabled"
                       />
                     </div>
@@ -185,7 +184,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.pais}
+                        value={this.state.users.pais}
                         disabled="disabled"
                       />
                     </div>
@@ -198,7 +197,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.nomeRepresentante}
+                        value={this.state.users.nomeRepresentante}
                         disabled="disabled"
                       />
                     </div>
@@ -211,7 +210,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.telefoneRepresentante}
+                        value={this.state.users.telefoneRepresentante}
                         disabled="disabled"
                       />
                     </div>
@@ -224,7 +223,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.celularRepresentante}
+                        value={this.state.users.celularRepresentante}
                         disabled="disabled"
                       />
                     </div>
@@ -237,7 +236,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.emailRepresentante}
+                        value={this.state.users.emailRepresentante}
                         disabled="disabled"
 
                       />
@@ -251,7 +250,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.departamento}
+                        value={this.state.users.departamento}
                         disabled="disabled"
                       />
                     </div>
@@ -264,11 +263,11 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={company.segmentoEmpresa}
+                        value={this.state.users.segmentoEmpresa}
                       />
                     </div>
                     <button
-                      onClick={(e) => this.editCompany(company.id)}
+                      onClick={(e) => this.editCompany(this.state.users.id)}
                       className="join-btn-no-transform mr-1"
                       style={{
                         width: "100%",
@@ -279,23 +278,18 @@ class ViewCompanyForm extends Component {
                       Editar
                   </button>
                     <button
-                      onClick={(e) => this.excluirCompany(company.id)}
+                      onClick={(e) => this.excluirCompany(this.state.users.company.id)}
                       className="join-btn-no-transform mr-1"
                       style={{ width: "100%" }}
                     >
                       Excluir
                   </button>
                   </div>
-                );
-              })}
+            
             </form>
           </div>
         ) : (
-            <ConsultCompanyForm
-              history={this.props.history}
-              edit={this.state.companyEdit[1]}
-              id={this.state.companyEdit[0]}
-            />
+            null
           )}
       </div>
     );
