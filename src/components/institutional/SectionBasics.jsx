@@ -8,24 +8,63 @@ class SectionBasics extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: "",
       nome: "",
       sobrenome: "",
       email: "",
       senha: "",
-      // nome: "",
-      // empresa: "",
-      // cnpj: "",
-      // categoria: "",
-      // problema: "",
       sweetCreate: false
     };
+    this.hasErros = this.hasErros.bind(this);
+    this.cadastrarResource = this.cadastrarResource.bind(this);
+  }
+
+  hasErros() {
+    if (this.state.nome === "") {
+      this.setState({ error: "preencha o campo nome" });
+      return true;
+    } else if (this.state.sobrenome === "") {
+      this.setState({ error: "preencha o campo sobrenome" });
+      return true;
+    } else if (this.state.nome != this.state.sobrenome) {
+      this.setState({ error: "Campo de senha e confirmação não são iguais" });
+      return true;
+    } else if (this.state.email === "") {
+      this.setState({ error: "preencha o campo email" });
+      return true;
+    } else if (this.state.senha === "") {
+      this.setState({ error: "preencha o campo senha" });
+      return true;
+    }
+    return false;
+  }
+
+  cadastrarResource() {
+    if (!this.hasErros()) {
+      axios
+        .post(env.API + "resource", {
+          nome: this.state.nome,
+          sobrenome: this.state.sobrenome,
+          email: this.state.email,
+          senha: this.state.senha
+        })
+        .then(response => {
+          console.log(response);
+          this.props.history("/login");
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   }
 
   render() {
     return (
       <div style={{ marginTop: "50px" }}>
         <div>
-          <h1 id="header3" className="footer-H1-Question">Deseja cadastrar o seu perfil?</h1>
+          <h1 id="header3" className="footer-H1-Question">
+            Deseja cadastrar o seu perfil?
+          </h1>
         </div>
         <div
           style={{
@@ -55,7 +94,6 @@ class SectionBasics extends Component {
                   onChange={e => this.setState({ sobrenome: e.target.value })}
                 />{" "}
                 <br />
-
                 <label className="labelField">E-mail:</label>
                 <br />
                 <input
@@ -66,7 +104,6 @@ class SectionBasics extends Component {
                   onChange={e => this.setState({ email: e.target.value })}
                 />{" "}
                 <br />
-
                 <label className="labelField">Cadastrar Senha:</label>
                 <br />
                 <input
@@ -85,11 +122,13 @@ class SectionBasics extends Component {
                   placeholder="Confirme a sua senha"
                 />
                 <br />
-
               </ul>
             </div>
             <br />
             <br />
+            <label className="labelFields col-md-12" style={{ color: "red" }}>
+              {this.state.error}
+            </label>
             <Row>
               <Col
                 style={{
@@ -101,6 +140,7 @@ class SectionBasics extends Component {
                   type="button"
                   className="join-btn-no-transform mr-1 login"
                   style={{ width: "100%" }}
+                  onClick={() => this.cadastrarResource()}
                 >
                   Cadastrar
                 </button>

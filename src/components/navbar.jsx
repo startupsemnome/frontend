@@ -81,6 +81,12 @@ class NavBar extends Component {
                 </Link>
               </li>
 
+              <li className="nav-item active" style={{ margin: "15px" }}>
+                <Link to="/consultar-empresa" className="nav-link">
+                  EMPRESA
+                </Link>
+              </li>
+
               <Dropdown
                 isOpen={this.state.NavLinkEmpresa}
                 toggle={this.toggleEmpresa}
