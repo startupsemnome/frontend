@@ -116,6 +116,25 @@ class CadastroUsuarioCompleto extends Component {
               required
             />
           </div>
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Sobrenome:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              select="multiple"
+              name="civilstatus"
+              id="optioncivilstatus"
+              style={{ width: "100%" }}
+              value={this.state.sobrenome}
+              onChange={e => this.setState({ sobrenome: e.target.value })}
+              required
+            />
+          </div>
 
           <div className="col-md-12">
             <label
@@ -128,10 +147,12 @@ class CadastroUsuarioCompleto extends Component {
             <FormGroup row>
               <Label for="exampleFile" />
               <Col sm={10}>
-                <Input type="file" name="file" id="exampleFile" />
-                <FormText color="muted">
-                  A foto escolhida será depositada em nosso banco de dados.
-                </FormText>
+                <Input
+                  type="file"
+                  name="file"
+                  id="exampleFile"
+                  className="join-btn-no-transform mr-1 col-md-12"
+                />
               </Col>
             </FormGroup>
             <br />
@@ -150,7 +171,7 @@ class CadastroUsuarioCompleto extends Component {
               <Input
                 type="date"
                 name="date"
-                className="col-md-12"
+                className="inputFields col-md-12"
                 id="exampleDate"
                 placeholder="date placeholder"
                 value={this.state.dt_nascimento}

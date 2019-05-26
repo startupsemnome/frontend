@@ -27,6 +27,9 @@ export default class poxaNaoFoiDessaVez extends Component {
                 </Link>
               </h1>
             </div>
+            <br />
+            <br />
+            <br />
           </div>
         </div>
       </div>
