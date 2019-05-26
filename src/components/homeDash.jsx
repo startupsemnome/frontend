@@ -57,7 +57,7 @@ class HomeDash extends Component {
         <div className="row">
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <div class="card">
+              <div className="card">
                 <div className="card-body">
                   <span className="percentage-number">
                     {this.state.qtdCompany}

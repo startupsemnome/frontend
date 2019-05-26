@@ -4,6 +4,8 @@ export function setNavbarOpen(navbarOpen) {
 
 export function Logout() {
   localStorage.removeItem("userName");
+  localStorage.removeItem("type");
+  localStorage.removeItem("userId");
   return { type: "LOGIN_OK", payload: false };
 }
 

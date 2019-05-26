@@ -101,7 +101,7 @@ class ContentLoginform extends Component {
           </label>
           <div className="labelFields">
             <Row style={{ display: "flex", justifyContent: "center" }}>
-              <div class="institucional">
+              <div className="institucional">
                 <button
                   type="button"
                   onClick={() => this.goToInstitutional()}

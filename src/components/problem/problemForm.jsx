@@ -70,7 +70,7 @@ class ProblemForm extends Component {
   loadResources() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "resource")
+      .get(env.API + "match-resource-problem/" + this.props.idDetail)
       .then(response => {
         // handle success
         const data = response.data;
@@ -517,8 +517,8 @@ class ProblemForm extends Component {
                           </Label>
                         </FormGroup>
                       </td>
-                      <td>{resource.nome}</td>
-                      <td>{resource.formacao}</td>
+                      <td>{resource.name}</td>
+                      <td>{resource.email}</td>
                       <td>{resource.area_interesse}</td>
                       <td>{resource.cidade}</td>
                     </tr>

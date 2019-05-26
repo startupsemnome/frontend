@@ -49,14 +49,16 @@ class HeaderLinks extends Component {
               Clientes
             </Link>
           ) : null}
-          <Link
-            style={{ textDecoration: "none" }}
-            to="institutional#header3"
-            color="transparent"
-            className={classes.navLink}
-          >
-            Cadastro
-          </Link>
+          {localStorage.getItem("type") !== "ADMIN" ? (
+            <Link
+              style={{ textDecoration: "none" }}
+              to="institutional#header3"
+              color="transparent"
+              className={classes.navLink}
+            >
+              Cadastro
+            </Link>
+          ) : null}
           {this.props.auth.login == true &&
           localStorage.getItem("type") !== "ADMIN" ? (
             <Link
@@ -66,7 +68,7 @@ class HeaderLinks extends Component {
               className={classes.navLink}
             >
               Projetos <br />
-              <span class="badge badge-light" />
+              <span className="badge badge-light" />
             </Link>
           ) : null}
         </ListItem>
