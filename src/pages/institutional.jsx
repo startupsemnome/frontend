@@ -77,7 +77,11 @@ class Institutional extends Component {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <HowWorking />
           {!this.props.login ? <SectionCarousel /> : null}
-          {!this.props.login ? <SectionBasics /> : <CadastroUsuarioCompleto />}
+          {!this.props.login ? (
+            <SectionBasics history={this.props.history} />
+          ) : (
+            <CadastroUsuarioCompleto />
+          )}
           {/* <Notificacao /> */}
         </div>
         <br />

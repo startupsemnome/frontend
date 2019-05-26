@@ -12,6 +12,7 @@ class SectionBasics extends Component {
       nome: "",
       sobrenome: "",
       email: "",
+      confirmSenha: "",
       senha: "",
       sweetCreate: false
     };
@@ -26,7 +27,7 @@ class SectionBasics extends Component {
     } else if (this.state.sobrenome === "") {
       this.setState({ error: "preencha o campo sobrenome" });
       return true;
-    } else if (this.state.nome != this.state.sobrenome) {
+    } else if (this.state.senha !== this.state.confirmSenha) {
       this.setState({ error: "Campo de senha e confirmação não são iguais" });
       return true;
     } else if (this.state.email === "") {
@@ -50,7 +51,10 @@ class SectionBasics extends Component {
         })
         .then(response => {
           console.log(response);
-          this.props.history("/login");
+          localStorage.setItem("userId", JSON.stringify(response.data.id));
+          localStorage.setItem("userName", JSON.stringify(response.data.nome));
+          localStorage.setItem("type", "RESOURCE");
+          window.location.reload();
         })
         .catch(function(error) {
           console.log(error);
@@ -120,6 +124,9 @@ class SectionBasics extends Component {
                   className="inputFields"
                   type="text"
                   placeholder="Confirme a sua senha"
+                  onChange={e =>
+                    this.setState({ confirmSenha: e.target.value })
+                  }
                 />
                 <br />
               </ul>
