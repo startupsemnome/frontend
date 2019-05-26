@@ -5,7 +5,7 @@ import {FaEye, FaCogs, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 import env from "./../../consts";
 import CompanyForm from "./companyForm";
-
+// to={"visualizar-empresa"}
 class ConsultCompanyForm extends Component {
   constructor(props) {
     super(props);
@@ -67,12 +67,23 @@ class ConsultCompanyForm extends Component {
     console.log("teste");
     this.loadCompanys();
   }
-  visualizar(id) {
-    this.props.history.push({
-      pathname: "/visualizar-empresa",
-      state: { id }
-    });
-  }
+  // visualizar(id) {
+    // this.props.history.push({
+    //   pathname: "/visualizar-empresa",
+    //   state: { id }
+  //   });
+  // }
+  viewCard(id){
+    axios
+    .get(env.API + "view-company/" + id)
+    .then(function(response) {
+      console.log(response);   
+      this.props.history.push("\visualizar-empresa");
+  })
+  .catch(function(error) {
+   console.log(error);
+  });
+}
   render() {
     return (
       <div className="container col-md-8">
@@ -164,10 +175,9 @@ class ConsultCompanyForm extends Component {
                         }}
                         >
                           <FaEye
-                            to={"visualizar-empresa"}
                             style={{ width: "90%" }}
-                            
-                            onClick={() => this.visualizar(company.id)}
+                            onClick={() =>{ this.viewCard(company.id);
+                            }}//() => this.visualizar(company.id)}
                           />
                           <FaCogs
                             onClick={e => this.editCompany(company.id)}

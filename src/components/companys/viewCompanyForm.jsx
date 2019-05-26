@@ -8,11 +8,12 @@ class ViewCompanyForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      razaoSocial:"",
+      cnpj:"",
+      users:[],
       companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
-    this.loadCompanys = this.loadCompanys.bind(this);
   }
   excluirCompany(id) {
     //chama a api do banco com o metodo de delete
@@ -34,7 +35,7 @@ class ViewCompanyForm extends Component {
   loadCompanys() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "company/" + 1)
+      .get(env.API + "company")
       .then(response => {
         // handle success
         const data = response.data[0];
@@ -45,19 +46,21 @@ class ViewCompanyForm extends Component {
         console.log(error + "Erro na API");
       });
   }
-  componentDidMount() {
+  componentDidMount(id) {
+    console.log("OK");
     this.loadCompanys();
   }
-  // {!this.state.companyEdit[1] ? (
-  render() {
+  
+  render(){
     return (
       <div className="loginUser col-md-12">
-        {console.log(this.state.users)}
-        {!this.state.users == undefined ? (
-          <div>
             <form className="signupForm form-inline">
-                  <div>
-                    <p style={{ display: "none" }}>{this.state.users.id}</p>
+                {!this.state.users == undefined ? (
+                <b>{this.state.users.cnpj}</b>
+                ) : (
+                  null
+                )}
+                <div>
                     <div className="col-md-8">
                       <label
                         className="labelFields"
@@ -67,9 +70,11 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.razaoSocial}
+                        value={this.state.razaoSocial}
+                        onChange={e => this.setState({razaoSocial: e.target.value })}
                         disabled="disabled"
                       />
+                      
                     </div>
                     <div className="col-md-4">
                       <label
@@ -80,7 +85,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.cnpj}
+                        value={this.state.cnpj}
                         disabled="disabled"
                       />
                     </div>
@@ -93,7 +98,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.nomeFantasia}
+                        value={this.state.nomeFantasia}
                         disabled="disabled"
                       />
                     </div>
@@ -106,7 +111,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.cep}
+                        value={this.state.cep}
                         disabled="disabled"
                       />
                     </div>
@@ -119,7 +124,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.rua}
+                        value={this.state.rua}
                         disabled="disabled"
                       />
                     </div>
@@ -132,7 +137,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.numero}
+                        value={this.state.numero}
                         disabled="disabled"
                       />
                     </div>
@@ -145,7 +150,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className=" inputFields col-md-12"
-                        value={this.state.users.bairro}
+                        value={this.state.bairro}
                         disabled="disabled"
                       />
                     </div>
@@ -158,7 +163,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.cidade}
+                        value={this.state.cidade}
                         disabled="disabled"
                       />
                     </div>
@@ -171,7 +176,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.uf}
+                        value={this.state.uf}
                         disabled="disabled"
                       />
                     </div>
@@ -184,7 +189,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.pais}
+                        value={this.state.pais}
                         disabled="disabled"
                       />
                     </div>
@@ -197,7 +202,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.nomeRepresentante}
+                        value={this.state.nomeRepresentante}
                         disabled="disabled"
                       />
                     </div>
@@ -210,7 +215,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.telefoneRepresentante}
+                        value={this.state.telefoneRepresentante}
                         disabled="disabled"
                       />
                     </div>
@@ -223,7 +228,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.celularRepresentante}
+                        value={this.state.celularRepresentante}
                         disabled="disabled"
                       />
                     </div>
@@ -236,7 +241,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.emailRepresentante}
+                        value={this.state.emailRepresentante}
                         disabled="disabled"
 
                       />
@@ -250,7 +255,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.departamento}
+                        value={this.state.departamento}
                         disabled="disabled"
                       />
                     </div>
@@ -263,7 +268,7 @@ class ViewCompanyForm extends Component {
                       </label>
                       <input
                         className="inputFields col-md-12"
-                        value={this.state.users.segmentoEmpresa}
+                        value={this.state.segmentoEmpresa}
                       />
                     </div>
                     <button
@@ -284,13 +289,11 @@ class ViewCompanyForm extends Component {
                     >
                       Excluir
                   </button>
-                  </div>
-            
+                  </div>    
             </form>
-          </div>
-        ) : (
-            null
-          )}
+            <ConsultCompanyForm
+               history={this.props.history}
+              />
       </div>
     );
   }
