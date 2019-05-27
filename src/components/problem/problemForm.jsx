@@ -496,9 +496,9 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
+                  <th>Email</th>
                   <th>Formação</th>
-                  <th>Area de Interesse</th>
-                  <th>Cidade</th>
+                  <th>Cargo Atual</th>
                 </tr>
               </thead>
               <tbody>
@@ -508,7 +508,7 @@ class ProblemForm extends Component {
                       <td>
                         <FormGroup check>
                           <Label check>
-                            <Input
+                            <input
                               type="checkbox"
                               onChange={() =>
                                 this.handleCallResourcerSetList(resource.id)
@@ -517,10 +517,10 @@ class ProblemForm extends Component {
                           </Label>
                         </FormGroup>
                       </td>
-                      <td>{resource.name}</td>
+                      <td>{resource.nome}</td>
                       <td>{resource.email}</td>
-                      <td>{resource.area_interesse}</td>
-                      <td>{resource.cidade}</td>
+                      <td>{resource.formacao}</td>
+                      <td>{resource.cargo}</td>
                     </tr>
                   );
                 })}
