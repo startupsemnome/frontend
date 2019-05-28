@@ -65,9 +65,9 @@ class Institutional extends Component {
             <GridContainer>
               <GridItem>
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Connecting Minds</h1>
+                  <h1 className={classes.title}>Conectando Talentos</h1>
                   <h3 className={classes.subtitle}>
-                    The Perfect Solutions For Your Business.
+                    A perfeita solução para juntar problemas e recursos
                   </h3>
                 </div>
               </GridItem>
@@ -76,8 +76,14 @@ class Institutional extends Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <HowWorking />
-          {!this.props.login ? <SectionCarousel /> : null}
-          {!this.props.login ? <SectionBasics /> : <CadastroUsuarioCompleto />}
+          {!this.props.login || localStorage.getItem("type") === "ADMIN" ? (
+            <SectionCarousel />
+          ) : null}
+          {!this.props.login ? (
+            <SectionBasics history={this.props.history} />
+          ) : localStorage.getItem("type") !== "ADMIN" ? (
+            <CadastroUsuarioCompleto />
+          ) : null}
           {/* <Notificacao /> */}
         </div>
         <br />

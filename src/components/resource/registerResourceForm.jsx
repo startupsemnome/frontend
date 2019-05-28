@@ -125,7 +125,7 @@ class RegisterResourceForm extends Component {
             this.props.history("/consultar-recurso");
             this.props.handleEdit();
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       } else if ((method = "update")) {
@@ -168,12 +168,12 @@ class RegisterResourceForm extends Component {
             // area_interesse: this.state.area_interesse,
             message1: this.state.message1
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history.push("/consultar-recurso");
             this.props.handleEdit();
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       }
@@ -226,7 +226,7 @@ class RegisterResourceForm extends Component {
             message1: data.message1
           });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
@@ -335,15 +335,13 @@ class RegisterResourceForm extends Component {
               Foto de Perfil:{" "}
             </label>
             <br />
-            <FormGroup row>
-              <Label for="exampleFile" />
-              <Col sm={10}>
-                <Input type="file" name="file" id="exampleFile" />
-                <FormText color="muted">
-                  A foto escolhida será depositada em nosso banco de dados.
-                </FormText>
-              </Col>
-            </FormGroup>
+
+            <Input
+              type="file"
+              name="file"
+              id="exampleFile"
+              className="join-btn-no-transform mr-1 col-md-12"
+            />
             <br />
           </div>
 
@@ -1026,7 +1024,6 @@ class RegisterResourceForm extends Component {
               name="curso"
               id="nivelcurso"
               style={{ width: "100%" }}
-
               value={this.state.formacao}
               onChange={e => this.setState({ formacao: e.target.value })}
               required

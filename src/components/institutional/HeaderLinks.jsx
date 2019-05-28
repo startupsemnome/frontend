@@ -9,6 +9,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
+import { Logout } from "./../../redux/actions/authAction";
 
 // @material-ui/icons
 import { Apps, CloudDownload } from "@material-ui/icons";
@@ -48,15 +49,18 @@ class HeaderLinks extends Component {
               Clientes
             </Link>
           ) : null}
-          <Link
-            style={{ textDecoration: "none" }}
-            to="institutional#header3"
-            color="transparent"
-            className={classes.navLink}
-          >
-            Cadastro
-          </Link>
-          {this.props.auth.login ? (
+          {localStorage.getItem("type") !== "ADMIN" ? (
+            <Link
+              style={{ textDecoration: "none" }}
+              to="institutional#header3"
+              color="transparent"
+              className={classes.navLink}
+            >
+              Cadastro
+            </Link>
+          ) : null}
+          {this.props.auth.login == true &&
+          localStorage.getItem("type") !== "ADMIN" ? (
             <Link
               to="/lista-projetos"
               style={{ textDecoration: "none" }}
@@ -64,32 +68,58 @@ class HeaderLinks extends Component {
               className={classes.navLink}
             >
               Projetos <br />
-              <span class="badge badge-light" />
+              <span className="badge badge-light" />
             </Link>
           ) : null}
         </ListItem>
 
-        <ListItem className={classes.listItem}>
+        {this.props.auth.login === true &&
+        localStorage.getItem("type") === "ADMIN" ? (
+          <ListItem className={classes.listItem}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/login"
+              to={this.props.auth.login ? "/dashboard" : "/login"}
+              color="transparent"
+              className={classes.navLink}
+            >
+              {this.props.auth.login ? "Dashboard" : "Login"}
+            </Link>
+          </ListItem>
+        ) : null}
+
+        {this.props.auth.login ? (
           <Link
             style={{ textDecoration: "none" }}
             to="/login"
-            to={this.props.auth.login ? "/dashboard" : "/login"}
+            color="transparent"
+            onClick={() => this.props.Logout()}
+            className={classes.navLink}
+          >
+            Sair
+          </Link>
+        ) : (
+          <Link
+            style={{ textDecoration: "none" }}
+            to="/login"
             color="transparent"
             className={classes.navLink}
           >
-            {this.props.auth.login ? "Dashboard" : "Login"}
+            Login
           </Link>
-        </ListItem>
+        )}
       </List>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators({ Logout }, dispatch);
 
 const mapStateToProps = state => ({ auth: state.auth });
 
 export default withStyles(headerLinksStyle)(
   connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
   )(HeaderLinks)
 );

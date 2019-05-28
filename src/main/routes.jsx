@@ -64,7 +64,7 @@ export default class Routes extends Component {
 
           <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />
           <PrivateRoute exact={true} path="/consultar-empresa" component={ConsultCompany} />
-          <Route        exact={true} path="/visualizar-empresa" component={ViewCompany} />
+          <PrivateRoute exact={true} path="/visualizar-empresa" component={ViewCompany} />
           <PrivateRoute exact={true} path="/cadastro-recurso" component={RegisterResource} />
           <PrivateRoute exact={true} path="/consultar-recurso" component={ConsultResource} />
 

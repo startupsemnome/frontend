@@ -28,7 +28,7 @@ class HowWorking extends React.Component {
           </h1>
         </div>
         <div className="col-md-12">
-          <div class="page-about divAbout">
+          <div className="page-about divAbout">
             <div className="left-side divAbout">
               <h1 style={{ color: "black" }}>
                 Você cadastra seu perfil, e o resto é com a gente!

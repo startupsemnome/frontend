@@ -72,7 +72,7 @@ class ProblemForm extends Component {
   loadResources() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "resource")
+      .get(env.API + "match-resource-problem/" + this.props.idDetail)
       .then(response => {
         // handle success
         const data = response.data;
@@ -99,11 +99,11 @@ class ProblemForm extends Component {
             descricao: this.state.descricao,
             disponibilidade: this.state.disponibilidade
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history.push("/consultar-problema");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       } else if ((method = "update")) {
@@ -115,11 +115,11 @@ class ProblemForm extends Component {
             descricao: this.state.descricao,
             disponibilidade: this.state.disponibilidade
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history.push("/consultar-problema");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       }
@@ -144,7 +144,7 @@ class ProblemForm extends Component {
             disponibilidade: data.disponibilidade
           });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
@@ -165,7 +165,8 @@ class ProblemForm extends Component {
     this.setState({ modal: !this.state.modal });
     axios
       .post(env.API + "communicate-resource", {
-        id_resource: this.state.resourcesCall
+        id_resource: this.state.resourcesCall,
+        id_problem: this.props.idDetail
       })
       .then(response => {
         alert("email enviado para recursos");
@@ -229,7 +230,6 @@ class ProblemForm extends Component {
               value={this.state.empresa}
               onChange={e => this.setState({ empresa: e.target.value })}
               required
-
             >
               {this.state.users.map(company => {
                 return <option>{company.razaoSocial}</option>;
@@ -276,47 +276,45 @@ class ProblemForm extends Component {
               name="category"
               id="optioncategory"
               style={{ width: "100%" }}
-
               value={this.state.categoria}
               onChange={e => this.setState({ categoria: e.target.value })}
               required
             >
-              <option value="Selecione">Selecione</option>
-              <option value="Administração">Administração</option>
-              <option valeu="Comércio Exterior">Comércio Exterior</option>
-              <option value="Tecnologia">Tecnologia</option>
-              <option value="Arquitetura">Arquitetura</option>
-              <option value="Medicina">Medicina</option>
-              <option value="Contábeis">Contábeis</option>
-              <option value="Economia">Economia</option>
-              <option value="Cinema e Audiovisual">Cinema e Audiovisual</option>
-              <option value="Radio e TV">Radio e TV</option>
-              <option value="Design">Design</option>
-              <option value="Direito">Direito</option>
-              <option value="Educação Física<">Educação Física</option>
-              <option value="Enfermagem">Enfermagem</option>
-              <option value="Engenharia Civil">Engenharia Civil</option>
-              <option value="Engenharia de Automação e Controle">Engenharia de Automação e Controle</option>
-              <option value="Engenharia de Produção">Engenharia de Produção</option>
-              <option value="Engenharia Elétrica">Engenharia Elétrica</option>
-              <option value="Engenharia Eletrônica">Engenharia Eletrônica</option>
-              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
-              <option value="Engenharia Química">Engenharia Química</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Farmácia">Farmácia</option>
-              <option value="Fisioterapia">Fisioterapia</option>
-              <option value="Comercial">Comercial</option>
-              <option value="Qualidade">Qualidade</option>
-              <option value="Logística">Logística</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Medicina Veterinária">Medicina Veterinária</option>
-              <option value="Nutrição">Nutrição</option>
-              <option value="Odontologia">Odontologia</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Relações Públicas">Relações Públicas</option>
-              <option value="Publicidade e Propaganda">Publicidade e Propaganda</option>
-              <option value="Turismo">Turismo</option>
-              <option value="Outros">Outros</option>
+              ><option value="1">Administração</option>
+              <option valeu="2">Comércio Exterior</option>
+              <option value="3">Tecnologia</option>
+              <option value="4">Arquitetura</option>
+              <option value="5">Medicina</option>
+              <option value="6">Contábeis</option>
+              <option value="7">Economia</option>
+              <option value="8">Cinema e Audiovisual</option>
+              <option value="9">Radio e TV</option>
+              <option value="10">Design</option>
+              <option value="11">Direito</option>
+              <option value="12">Educação Física</option>
+              <option value="13">Enfermagem</option>
+              <option value="14">Engenharia Civil</option>
+              <option value="15">Engenharia de Automação e Controle</option>
+              <option value="16">Engenharia de Produção</option>
+              <option value="17">Engenharia Elétrica</option>
+              <option value="18">Engenharia Eletrônica</option>
+              <option value="19">Engenharia Mecânica</option>
+              <option value="20">Engenharia Química</option>
+              <option value="21">Psicologia</option>
+              <option value="22">Farmácia</option>
+              <option value="23">Fisioterapia</option>
+              <option value="24">Comercial</option>
+              <option value="25">Qualidade</option>
+              <option value="26">Logística</option>
+              <option value="27">Marketing</option>
+              <option value="28">Medicina Veterinária</option>
+              <option value="29">Nutrição</option>
+              <option value="30">Odontologia</option>
+              <option value="31">Psicologia</option>
+              <option value="32">Relações Públicas</option>
+              <option value="33">Publicidade e Propaganda</option>
+              <option value="34">Turismo</option>
+              <option value="35">Outros</option>
             </Input>
           </div>
 
@@ -441,8 +439,8 @@ class ProblemForm extends Component {
                 !this.props.id
                   ? this.createProblem("create")
                   : this.props.id == -1
-                    ? this.goToPageListProblem()
-                    : this.createProblem("update", this.props.id);
+                  ? this.goToPageListProblem()
+                  : this.createProblem("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
@@ -450,8 +448,8 @@ class ProblemForm extends Component {
               {!this.props.id
                 ? "Criar"
                 : this.props.id == -1
-                  ? "Voltar"
-                  : "Editar"}{" "}
+                ? "Voltar"
+                : "Editar"}{" "}
               Problema
             </button>
             {this.props.idDetail ? (
@@ -498,8 +496,9 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
+                  <th>Email</th>
                   <th>Formação</th>
-                  <th>Area de Interesse</th>
+                  <th>Area de interesse</th>
                   <th>Cidade</th>
                 </tr>
               </thead>
@@ -510,7 +509,7 @@ class ProblemForm extends Component {
                       <td>
                         <FormGroup check>
                           <Label check>
-                            <Input
+                            <input
                               type="checkbox"
                               onChange={() =>
                                 this.handleCallResourcerSetList(resource.id)
@@ -520,6 +519,7 @@ class ProblemForm extends Component {
                         </FormGroup>
                       </td>
                       <td>{resource.nome}</td>
+                      <td>{resource.email}</td>
                       <td>{resource.formacao}</td>
                       <td>{resource.categoria}</td>
                       <td>{resource.cidade}</td>
