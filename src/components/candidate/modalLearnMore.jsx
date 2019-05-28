@@ -24,7 +24,7 @@ class ModalLearnMore extends React.Component {
   sendEvent(status) {
     axios
       .put(env.API + "resource-problem", {
-        id: this.props.atualProblemId,
+        id: this.props.atualProblemResourceId,
         status: status
       })
       .then(response => {

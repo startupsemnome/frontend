@@ -63,6 +63,7 @@ class Projects extends Component {
       .then(response => {
         // handle success
         const data = response.data;
+        console.log(response.data);
         this.setState({ project: data });
       })
       .catch(error => {
@@ -122,7 +123,7 @@ class Projects extends Component {
                 />
               </div>
 
-              {!this.state.project ? (
+              {this.state.project ? (
                 <div className="row">
                   <div className="col-md-12">
                     <table className="table table-main">
@@ -132,7 +133,7 @@ class Projects extends Component {
                             ID
                           </th>
                           <th scope="col">Empresa</th>
-                          <th scope="col">Solicitante</th>
+                          <th scope="col">Categoria</th>
                           <th scope="col">Status</th>
                           {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
                           <th scope="col">Tituto</th>
@@ -146,13 +147,14 @@ class Projects extends Component {
                               <td style={{ display: "none" }}>
                                 {proj.problem.id}
                               </td>
-                              <td>{proj.problem.company.empresa}</td>
-                              <td>{proj.problem.solicitante}</td>
+                              <td>{proj.problem.empresa}</td>
+                              <td>{proj.problem.categoria}</td>
                               <td>{proj.status}</td>
                               <td>{proj.problem.titulo}</td>
                               <td>
                                 <ModalLearnMore
                                   atualProblemId={proj.problem.id}
+                                  atualProblemResourceId={proj.id}
                                   titulo={proj.problem.titulo}
                                   history={this.props.history}
                                 />
