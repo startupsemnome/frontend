@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
-import {FaEye, FaCogs, FaTrashAlt } from 'react-icons/fa';
+import { FaEye, FaCogs, FaTrashAlt } from "react-icons/fa";
 // import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
@@ -15,6 +15,11 @@ class ConsultCompanyForm extends Component {
       companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
+    this.handleChangeEdit = this.handleChangeEdit.bind(this);
+  }
+  handleChangeEdit() {
+    this.loadCompanys();
+    this.setState({ companyEdit: [null, false] });
   }
   excluirCompany(id) {
     //chama a api do banco com o metodo de delete
@@ -68,22 +73,22 @@ class ConsultCompanyForm extends Component {
     this.loadCompanys();
   }
   // visualizar(id) {
-    // this.props.history.push({
-    //   pathname: "/visualizar-empresa",
-    //   state: { id }
+  // this.props.history.push({
+  //   pathname: "/visualizar-empresa",
+  //   state: { id }
   //   });
   // }
-  viewCard(id){
+  viewCard(id) {
     axios
-    .get(env.API + "view-company/" + id)
-    .then(function(response) {
-      console.log(response);   
-      this.props.history.push("\visualizar-empresa");
-  })
-  .catch(function(error) {
-   console.log(error);
-  });
-}
+      .get(env.API + "view-company/" + id)
+      .then(function(response) {
+        console.log(response);
+        this.props.history.push("\visualizar-empresa");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   render() {
     return (
       <div className="container col-md-8">
@@ -133,8 +138,8 @@ class ConsultCompanyForm extends Component {
                       fontSize: "18px",
                       maxWidth: "275px",
                       minHeight: "255px",
-                      paddingLeft:"30px",
-                      paddingRight:"5px"
+                      paddingLeft: "30px",
+                      paddingRight: "5px"
                     }}
                     inline={true}
                   >
@@ -164,20 +169,20 @@ class ConsultCompanyForm extends Component {
                           className="card-text"
                           style={{ margin: "auto", paddingBottom: "4px" }}
                         >
-                          <h5>
-                          CNPJ:&nbsp;{company.cnpj} 
-                          </h5>
+                          <h5>CNPJ:&nbsp;{company.cnpj}</h5>
                         </div>
                         <div
                           className="card-footer"
-                          style={{ padding: "1.25rem 0.725rem 0.85rem",
-                          display: "flex"
-                        }}
+                          style={{
+                            padding: "1.25rem 0.725rem 0.85rem",
+                            display: "flex"
+                          }}
                         >
                           <FaEye
                             style={{ width: "90%" }}
-                            onClick={() =>{ this.viewCard(company.id);
-                            }}//() => this.visualizar(company.id)}
+                            onClick={() => {
+                              this.viewCard(company.id);
+                            }} //() => this.visualizar(company.id)}
                           />
                           <FaCogs
                             onClick={e => this.editCompany(company.id)}
@@ -200,12 +205,13 @@ class ConsultCompanyForm extends Component {
             </div>
           </div>
         ) : (
-            <CompanyForm
-              history={this.props.history}
-              edit={this.state.companyEdit[1]}
-              id={this.state.companyEdit[0]}
-            />
-          )}
+          <CompanyForm
+            history={this.props.history}
+            edit={this.state.companyEdit[1]}
+            handleChangeEdit={this.handleChangeEdit}
+            id={this.state.companyEdit[0]}
+          />
+        )}
       </div>
     );
   }
