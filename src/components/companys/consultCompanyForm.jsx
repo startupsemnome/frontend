@@ -72,12 +72,7 @@ class ConsultCompanyForm extends Component {
     console.log("teste");
     this.loadCompanys();
   }
-  // visualizar(id) {
-  // this.props.history.push({
-  //   pathname: "/visualizar-empresa",
-  //   state: { id }
-  //   });
-  // }
+
   viewCard(id) {
     axios
       .get(env.API + "view-company/" + id)
