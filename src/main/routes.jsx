@@ -29,7 +29,7 @@ import ConsultProblem from "../pages/consultProblem";
 import EditProblemForm from "../components/problem/editProblemForm";
 import institutionalForm from "../components/institutional/institutionalForm";
 import ProblemList from "../components/problem/problemList";
-import ViewCompanyForm from "../components/companys/viewCompanyForm";
+
 import ResourceDetails from "../pages/resourceDetails";
 import EditResource from "../pages/editResource";
 

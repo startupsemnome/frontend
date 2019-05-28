@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from "axios";
 import env from "./../../consts";
-import ConsultCompanyForm from "./consultCompanyForm";
+import CompanyForm from "./companyForm";
 
 class ViewCompanyForm extends Component {
   constructor(props) {
@@ -291,9 +291,11 @@ class ViewCompanyForm extends Component {
                   </button>
                   </div>    
             </form>
-            <ConsultCompanyForm
+             <CompanyForm
                history={this.props.history}
-              />
+               edit={this.state.companyEdit[1]}
+               id={this.state.companyEdit[0]}
+              /> 
       </div>
     );
   }
