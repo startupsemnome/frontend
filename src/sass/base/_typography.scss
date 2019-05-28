@@ -78,6 +78,9 @@ p {
   color: $textColor;
 }
 
+input[type="checkbox"] {
+  zoom: 1.5;
+}
 .spanError h6 {
   color: red !important;
   opacity: 1;

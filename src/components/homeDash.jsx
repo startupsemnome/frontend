@@ -2,6 +2,13 @@ import React, { Component, PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import {
+  FaBuilding,
+  FaUser,
+  FaWrench,
+  FaExclamationTriangle
+} from "react-icons/fa";
+
 import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
@@ -31,7 +38,7 @@ class HomeDash extends Component {
       ButtoLogin: false,
       qtdUsers: 0,
       qtdProblem: 0,
-      show: "USER, COMPANY, PROBLEM, RESOURCE",
+      show: "USER",
       qtdResource: 0,
       qtdCompany: 0
     };
@@ -50,17 +57,28 @@ class HomeDash extends Component {
         <div className="row">
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
-              <div class="card">
+              <div className="card">
                 <div className="card-body">
                   <span className="percentage-number">
                     {this.state.qtdCompany}
+                    <FaBuilding style={{ marginLeft: "10px" }} />
                   </span>
-                  <h5 className="card-title">Empresas</h5>
+
+                  <h5
+                    className="card-title"
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "20px",
+                      fontWeight: "600"
+                    }}
+                  >
+                    Empresas
+                  </h5>
                   <br />
                   <a
                     href="#"
                     onClick={() => this.showGrafico("COMPANY")}
-                    className="btn btn-primary"
+                    className="join-btn-no-transform mr-1 login"
                   >
                     Ver Gráfico
                   </a>
@@ -81,13 +99,23 @@ class HomeDash extends Component {
                 <div className="card-body">
                   <span className="percentage-number">
                     {this.state.qtdResource}
+                    <FaWrench style={{ marginLeft: "10px" }} />
                   </span>
-                  <h5 className="card-title">Recursos</h5>
+                  <h5
+                    className="card-title"
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "20px",
+                      fontWeight: "600"
+                    }}
+                  >
+                    Recursos
+                  </h5>
                   <br />
                   <a
                     href="#"
                     onClick={() => this.showGrafico("RESOURCE")}
-                    className="btn btn-primary"
+                    className="join-btn-no-transform mr-1 login"
                   >
                     Ver Gráfico
                   </a>
@@ -109,13 +137,23 @@ class HomeDash extends Component {
                 <div className="card-body">
                   <span className="percentage-number">
                     {this.state.qtdProblem}
+                    <FaExclamationTriangle style={{ marginLeft: "10px" }} />
                   </span>
-                  <h5 className="card-title">Problemas</h5>
+                  <h5
+                    className="card-title"
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "20px",
+                      fontWeight: "600"
+                    }}
+                  >
+                    Problemas
+                  </h5>
                   <br />
                   <a
                     href="#"
                     onClick={() => this.showGrafico("PROBLEM")}
-                    className="btn btn-primary"
+                    className="join-btn-no-transform mr-1 login"
                   >
                     Ver Gráfico
                   </a>
@@ -130,20 +168,29 @@ class HomeDash extends Component {
             </div>
           </div>
 
-
           <div className="col-sm-12 col-md-3 box">
             <div className="df-c">
               <div className="card">
                 <div className="card-body">
                   <span className="percentage-number">
                     {this.state.qtdUsers}
+                    <FaUser style={{ marginLeft: "10px" }} />
                   </span>
-                  <h5 className="card-title">Usuários</h5>
+                  <h5
+                    className="card-title"
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "20px",
+                      fontWeight: "600"
+                    }}
+                  >
+                    Usuários
+                  </h5>
                   <br />
                   <a
                     href="#"
                     onClick={() => this.showGrafico("USER")}
-                    className="btn btn-primary"
+                    className="join-btn-no-transform mr-1 login"
                   >
                     Ver Gráfico
                   </a>

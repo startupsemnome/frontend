@@ -70,7 +70,7 @@ class ProblemForm extends Component {
   loadResources() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "resource")
+      .get(env.API + "match-resource-problem/" + this.props.idDetail)
       .then(response => {
         // handle success
         const data = response.data;
@@ -164,7 +164,8 @@ class ProblemForm extends Component {
     this.setState({ modal: !this.state.modal });
     axios
       .post(env.API + "communicate-resource", {
-        id_resource: this.state.resourcesCall
+        id_resource: this.state.resourcesCall,
+        id_problem: this.props.idDetail
       })
       .then(response => {
         alert("email enviado para recursos");
@@ -276,9 +277,9 @@ class ProblemForm extends Component {
               type="select"
               select="multiple"
               name="category"
-              id="optioncategory"              
+              id="optioncategory"
               style={{ width: "100%" }}
-            >               
+            >
               <option value="1">Administração</option>
               <option valeu="2">Comércio Exterior</option>
               <option value="3">Tecnologia</option>
@@ -495,9 +496,9 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
+                  <th>Email</th>
                   <th>Formação</th>
-                  <th>Area de Interesse</th>
-                  <th>Cidade</th>
+                  <th>Cargo Atual</th>
                 </tr>
               </thead>
               <tbody>
@@ -507,7 +508,7 @@ class ProblemForm extends Component {
                       <td>
                         <FormGroup check>
                           <Label check>
-                            <Input
+                            <input
                               type="checkbox"
                               onChange={() =>
                                 this.handleCallResourcerSetList(resource.id)
@@ -517,9 +518,9 @@ class ProblemForm extends Component {
                         </FormGroup>
                       </td>
                       <td>{resource.nome}</td>
+                      <td>{resource.email}</td>
                       <td>{resource.formacao}</td>
-                      <td>{resource.area_interesse}</td>
-                      <td>{resource.cidade}</td>
+                      <td>{resource.cargo}</td>
                     </tr>
                   );
                 })}

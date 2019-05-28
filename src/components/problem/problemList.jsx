@@ -109,7 +109,7 @@ class ProblemList extends Component {
             </div>
             <div className="row">
               <div className="col-md-12">
-                <table class="table table-main">
+                <table className="table table-main">
                   <thead>
                     <tr>
                       <th scope="col" style={{ display: "none" }}>
