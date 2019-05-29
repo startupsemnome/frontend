@@ -10,7 +10,7 @@ import ProblemForm from "./../../components/problem/problemForm";
 import ModalLearnMore from "./modalLearnMore";
 import Header from "./../../components/institutional/Header.jsx";
 import HeaderLinks from "./../../components/institutional/HeaderLinks.jsx";
-
+import PoxaNaoFoiDessaVez from "./../../components/poxaNaoFoiDessaVez.jsx";
 import { setNavbarOpen } from "./../../redux/actions/navbarAction";
 
 class Projects extends Component {
@@ -63,6 +63,7 @@ class Projects extends Component {
       .then(response => {
         // handle success
         const data = response.data;
+        console.log(response.data);
         this.setState({ project: data });
       })
       .catch(error => {
@@ -75,8 +76,7 @@ class Projects extends Component {
   }
   componentDidMount() {
     this.props.setNavbarOpen(false);
-    document.body.style.backgroundImage =
-      "url('https://images.pexels.com/photos/754082/pexels-photo-754082.jpeg?cs=srgb&dl=blur-blurred-background-colors-754082.jpg&fm=jpg')";
+    //document.body.style.backgroundImage = "";
   }
   render() {
     const { ...rest } = this.props;
@@ -92,31 +92,22 @@ class Projects extends Component {
           }}
           {...rest}
         />
-        <div className="container col-md-8 mt-5">
+        <div
+          className="container col-md-8 mt-5"
+          style={{ marginTop: "130px !important" }}
+        >
           {!this.state.problemListEdit[1] ? (
             <div>
-              <div className="row">
+              <div className="row" style={{ marginTop: 60 }}>
                 <div className="col-md-12">
-                  <h1 className="h1-main">Possíveis Projetos Selecionados</h1>
                   <h3 align="center" className="display-3">
                     Olá, Candidato!
                   </h3>
+                  <h1 className="h1-main">
+                    Você foi selecionado para os seguintes projetos:
+                  </h1>
                   {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
                   <hr className="my-2" />
-
-                  <Alert
-                    align="center"
-                    color="info"
-                    style={{
-                      width: "100%",
-                      marginBottom: "5px",
-                      marginTop: "5px"
-                    }}
-                  >
-                    A relação abaixo, contem alguns possíveis projetos que você{" "}
-                    <a className="alert-link">possa participar</a>.
-                  </Alert>
-
                   <p className="lead" />
                 </div>
               </div>
@@ -131,47 +122,53 @@ class Projects extends Component {
                   }}
                 />
               </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <table class="table table-main">
-                    <thead>
-                      <tr>
-                        <th scope="col" style={{ display: "none" }}>
-                          ID
-                        </th>
-                        <th scope="col">Empresa</th>
-                        <th scope="col">Solicitante</th>
-                        <th scope="col">Status</th>
-                        {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
-                        <th scope="col">Tituto</th>
-                        <th scope="col">Opções</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.project.map(proj => {
-                        return (
-                          <tr key={`buscaTable${proj.id}`}>
-                            <td style={{ display: "none" }}>
-                              {proj.problem.id}
-                            </td>
-                            <td>{proj.problem.company.empresa}</td>
-                            <td>{proj.problem.solicitante}</td>
-                            <td>{proj.status}</td>
-                            <td>{proj.problem.titulo}</td>
-                            <td>
-                              <ModalLearnMore
-                                atualProblemId={proj.problem.id}
-                                titulo={proj.problem.titulo}
-                                history={this.props.history}
-                              />
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+
+              {this.state.project ? (
+                <div className="row">
+                  <div className="col-md-12">
+                    <table className="table table-main">
+                      <thead>
+                        <tr>
+                          <th scope="col" style={{ display: "none" }}>
+                            ID
+                          </th>
+                          <th scope="col">Empresa</th>
+                          <th scope="col">Categoria</th>
+                          <th scope="col">Status</th>
+                          {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
+                          <th scope="col">Tituto</th>
+                          <th scope="col">Opções</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.state.project.map(proj => {
+                          return (
+                            <tr key={`buscaTable${proj.id}`}>
+                              <td style={{ display: "none" }}>
+                                {proj.problem.id}
+                              </td>
+                              <td>{proj.problem.empresa}</td>
+                              <td>{proj.problem.categoria}</td>
+                              <td>{proj.status}</td>
+                              <td>{proj.problem.titulo}</td>
+                              <td>
+                                <ModalLearnMore
+                                  atualProblemId={proj.problem.id}
+                                  atualProblemResourceId={proj.id}
+                                  titulo={proj.problem.titulo}
+                                  history={this.props.history}
+                                />
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <PoxaNaoFoiDessaVez history={this.props.history} />
+              )}
             </div>
           ) : (
             <ProblemForm

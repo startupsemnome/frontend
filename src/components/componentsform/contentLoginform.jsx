@@ -47,9 +47,10 @@ class ContentLoginform extends Component {
         .then(response => {
           localStorage.setItem("userName", response.data.name);
           localStorage.setItem("userId", response.data.id);
+          localStorage.setItem("type", response.data.type);
           this.props.setNavbarOpen(true);
           this.props.setLogin(true);
-          this.props.history.push("/dashboard");
+          this.props.history.push("/institutional");
         })
         .catch(error => {
           if (error.response.status === 401) {
@@ -100,7 +101,7 @@ class ContentLoginform extends Component {
           </label>
           <div className="labelFields">
             <Row style={{ display: "flex", justifyContent: "center" }}>
-              <div class="institucional">
+              <div className="institucional">
                 <button
                   type="button"
                   onClick={() => this.goToInstitutional()}

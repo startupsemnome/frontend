@@ -21,14 +21,14 @@ class HowWorking extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="row">
+      <div className="row" id="header1">
         <div>
-          <h1 id="header1" className="footer-H1-Question">
+          <h1 className="footer-H1-Question">
             Como funciona nossa plataforma?
           </h1>
         </div>
         <div className="col-md-12">
-          <div class="page-about divAbout">
+          <div className="page-about divAbout">
             <div className="left-side divAbout">
               <h1 style={{ color: "black" }}>
                 Você cadastra seu perfil, e o resto é com a gente!
