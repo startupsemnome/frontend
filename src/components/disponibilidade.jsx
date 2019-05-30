@@ -8,9 +8,27 @@ class Disponibilidade extends Component {
     super(props);
     this.state = {
       disponibilidade: null,
-      segManha: false,
-      segTarde: false,
-      segNoite: false
+      segManha: "",
+      segTarde: "",
+      segNoite: "",
+      terManha: "",
+      terTarde: "",
+      terNoite: "",
+      quaManha: "",
+      quaTarde: "",
+      quaNoite: "",
+      quiManha: "",
+      quiTarde: "",
+      quiNoite: "",
+      sexManha: "",
+      sexTarde: "",
+      sexNoite: "",
+      sabManha: "",
+      sabTarde: "",
+      sabNoite: "",
+      domManha: "",
+      domTarde: "",
+      domNoite: ""
     };
   }
   componentDidMount() {
@@ -18,12 +36,60 @@ class Disponibilidade extends Component {
       .get(env.API + "resource/" + 1)
       .then(response => {
         // handle success
-        const disp = response.data.disponibilidade;
-        const segManha = disp.segunda.substring(0, 1);
-        const segTarde = disp.segunda.substring(1, 1);
-        const segNoite = disp.segunda.substring(2, 1);
+        const disponibilidade = response.data.disponibilidade;
 
-        // this.setState({ disponibilidade: disp, segManha: disp.  });
+        const segManha = disponibilidade.segunda.substring(0, 1);
+        const segTarde = disponibilidade.segunda.substring(1, 1);
+        const segNoite = disponibilidade.segunda.substring(2, 1);
+
+        const terManha = disponibilidade.terca.substring(0, 1);
+        const terTarde = disponibilidade.terca.substring(1, 1);
+        const terNoite = disponibilidade.terca.substring(2, 1);
+
+        const quaManha = disponibilidade.quarta.substring(0, 1);
+        const quaTarde = disponibilidade.quarta.substring(1, 1);
+        const quaNoite = disponibilidade.quarta.substring(2, 1);
+
+        const quiManha = disponibilidade.quinta.substring(0, 1);
+        const quiTarde = disponibilidade.quinta.substring(1, 1);
+        const quiNoite = disponibilidade.quinta.substring(2, 1);
+
+        const sexManha = disponibilidade.sexta.substring(0, 1);
+        const sexTarde = disponibilidade.sexta.substring(1, 1);
+        const sexNoite = disponibilidade.sexta.substring(2, 1);
+
+        const sabManha = disponibilidade.sabado.substring(0, 1);
+        const sabTarde = disponibilidade.sabado.substring(1, 1);
+        const sabNoite = disponibilidade.sabado.substring(2, 1);
+
+        const domManha = disponibilidade.domingo.substring(0, 1);
+        const domTarde = disponibilidade.domingo.substring(1, 1);
+        const domNoite = disponibilidade.domingo.substring(2, 1);
+
+        this.setState({
+          disponibilidade,
+          segManha,
+          segTarde,
+          segNoite,
+          terManha,
+          terTarde,
+          terNoite,
+          quaManha,
+          quaTarde,
+          quaNoite,
+          quiManha,
+          quiTarde,
+          quiNoite,
+          sexManha,
+          sexTarde,
+          sexNoite,
+          sabManha,
+          sabTarde,
+          sabNoite,
+          domManha,
+          domTarde,
+          domNoite
+        });
       })
       .catch(error => {
         // handle error
@@ -41,7 +107,30 @@ class Disponibilidade extends Component {
   };
 
   render() {
-    const { segManha, segTarde, segNoite } = this.state;
+    const {
+      disponibilidade,
+      segManha,
+      segTarde,
+      segNoite,
+      terManha,
+      terTarde,
+      terNoite,
+      quaManha,
+      quaTarde,
+      quaNoite,
+      quiManha,
+      quiTarde,
+      quiNoite,
+      sexManha,
+      sexTarde,
+      sexNoite,
+      sabManha,
+      sabTarde,
+      sabNoite,
+      domManha,
+      domTarde,
+      domNoite
+    } = this.state;
     if (disponibilidade) {
       return (
         <div className="col-md-12">
