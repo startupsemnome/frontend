@@ -7,7 +7,10 @@ class Disponibilidade extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      disponibilidade: null
+      disponibilidade: null,
+      segManha: false,
+      segTarde: false,
+      segNoite: false
     };
   }
   componentDidMount() {
@@ -15,8 +18,12 @@ class Disponibilidade extends Component {
       .get(env.API + "resource/" + 1)
       .then(response => {
         // handle success
-        const data = response.data;
-        this.setState({ disponibilidade: data.disponibilidade });
+        const disp = response.data.disponibilidade;
+        const segManha = disp.segunda.substring(0, 1);
+        const segTarde = disp.segunda.substring(1, 1);
+        const segNoite = disp.segunda.substring(2, 1);
+
+        // this.setState({ disponibilidade: disp, segManha: disp.  });
       })
       .catch(error => {
         // handle error
@@ -34,8 +41,8 @@ class Disponibilidade extends Component {
   };
 
   render() {
-    const { disp } = this.state.disponibilidade;
-    if (disp) {
+    const { segManha, segTarde, segNoite } = this.state;
+    if (disponibilidade) {
       return (
         <div className="col-md-12">
           <div className="">
@@ -63,76 +70,176 @@ class Disponibilidade extends Component {
                       name="segunda"
                       type="checkbox"
                       id="m-segunda"
-                      checked={() => this.checkedOrNo(disp.segunda, "MANHÃ")}
+                      checked={segManha === "1" ? true : false}
                     />
                   </td>
                   <td>
-                    <input name="terça" type="checkbox" id="m-terca" />
+                    <input
+                      name="terça"
+                      type="checkbox"
+                      id="m-terca"
+                      checked={terManha === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="quarta" type="checkbox" id="m-quarta" />
+                    <input
+                      name="quarta"
+                      type="checkbox"
+                      id="m-quarta"
+                      checked={quaManha === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="quinta" type="checkbox" id="m-quinta" />
+                    <input
+                      name="quinta"
+                      type="checkbox"
+                      id="m-quinta"
+                      checked={quiManha === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="sexta" type="checkbox" id="m-sexta" />
+                    <input
+                      name="sexta"
+                      type="checkbox"
+                      id="m-sexta"
+                      checked={sexManha === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="sabado" type="checkbox" id="m-sabado" />
+                    <input
+                      name="sabado"
+                      type="checkbox"
+                      id="m-sabado"
+                      checked={sabManha === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="domingo" type="checkbox" id="m-domingo" />
+                    <input
+                      name="domingo"
+                      type="checkbox"
+                      id="m-domingo"
+                      checked={domManha === "1" ? true : false}
+                    />
                   </td>
                 </tr>
                 {/* LINHA - TARDE */}
                 <tr>
                   <td>Tarde</td>
                   <td>
-                    <input name="segunda" type="checkbox" id="t-segunda" />
+                    <input
+                      name="segunda"
+                      type="checkbox"
+                      id="t-segunda"
+                      checked={segTarde === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="terca" type="checkbox" id="t-terca" />
+                    <input
+                      name="terca"
+                      type="checkbox"
+                      id="t-terca"
+                      checked={terTarde === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="quarta" type="checkbox" id="t-quarta" />
+                    <input
+                      name="quarta"
+                      type="checkbox"
+                      id="t-quarta"
+                      checked={quaTarde === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="quinta" type="checkbox" id="t-quinta" />
+                    <input
+                      name="quinta"
+                      type="checkbox"
+                      id="t-quinta"
+                      checked={quiTarde === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="sexta" type="checkbox" id="t-sexta" />
+                    <input
+                      name="sexta"
+                      type="checkbox"
+                      id="t-sexta"
+                      checked={sexTarde === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="sabado" type="checkbox" id="t-sabado" />
+                    <input
+                      name="sabado"
+                      type="checkbox"
+                      id="t-sabado"
+                      checked={sabTarde === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="domingo" type="checkbox" id="t-domingo" />
+                    <input
+                      name="domingo"
+                      type="checkbox"
+                      id="t-domingo"
+                      checked={domTarde === "1" ? true : false}
+                    />
                   </td>
                   {/* LINHA - NOITE */}
                 </tr>
                 <tr>
                   <td>Noite</td>
                   <td>
-                    <input name="segunda" type="checkbox" id="n-segunda" />
+                    <input
+                      name="segunda"
+                      type="checkbox"
+                      id="n-segunda"
+                      checked={segNoite === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="terca" type="checkbox" id="n-terca" />
+                    <input
+                      name="terca"
+                      type="checkbox"
+                      id="n-terca"
+                      checked={terNoite === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="quarta" type="checkbox" id="n-quarta" />
+                    <input
+                      name="quarta"
+                      type="checkbox"
+                      id="n-quarta"
+                      checked={quaNoite === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="quinta" type="checkbox" id="n-quinta" />
+                    <input
+                      name="quinta"
+                      type="checkbox"
+                      id="n-quinta"
+                      checked={quiNoite === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="sexta" type="checkbox" id="n-sexta" />
+                    <input
+                      name="sexta"
+                      type="checkbox"
+                      id="n-sexta"
+                      checked={sexNoite === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="sabado" type="checkbox" id="n-sabado" />
+                    <input
+                      name="sabado"
+                      type="checkbox"
+                      id="n-sabado"
+                      checked={sabNoite === "1" ? true : false}
+                    />
                   </td>
                   <td>
-                    <input name="domingo" type="checkbox" id="n-domingo" />
+                    <input
+                      name="domingo"
+                      type="checkbox"
+                      id="n-domingo"
+                      checked={domNoite === "1" ? true : false}
+                    />
                   </td>
                 </tr>
               </tbody>
