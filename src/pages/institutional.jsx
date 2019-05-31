@@ -20,6 +20,7 @@ import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
 import HowWorking from "../components/institutional/HowWorking.jsx";
 import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
+import Disponibilidade from "../components/disponibilidade";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
@@ -88,6 +89,7 @@ class Institutional extends Component {
         </div>
         <br />
         <br />
+        <Disponibilidade />
         <br />
         <br />
       </div>
