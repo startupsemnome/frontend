@@ -97,13 +97,15 @@ class Disponibilidade extends Component {
       });
   }
 
-  checkedOrNo = (str, periodo) => {
-    if (periodo === "MANHÃ") {
-      if (str.sub(0, 0) == 1) {
-        return true;
-      }
-    }
-    return true;
+  handleChange = e => {
+    // If you are using babel, you can use ES 6 dictionary syntax
+    // let change = { [e.target.name] = e.target.value }
+    let change = {};
+    const valueNew = e.target.value == "TRUE" ? "FALSE" : "TRUE";
+    change[e.target.name] = valueNew;
+    console.log(change);
+
+    this.setState(change);
   };
 
   render() {
@@ -159,6 +161,8 @@ class Disponibilidade extends Component {
                       name="segunda"
                       type="checkbox"
                       id="m-segunda"
+                      name="segManha"
+                      onChange={this.handleChange}
                       checked={segManha === "1" ? true : false}
                     />
                   </td>
