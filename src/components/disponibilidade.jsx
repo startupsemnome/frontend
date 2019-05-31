@@ -8,26 +8,26 @@ class Disponibilidade extends Component {
     super(props);
     this.state = {
       disponibilidade: null,
-      segManha: "",
-      segTarde: "",
-      segNoite: "",
-      terManha: "",
-      terTarde: "",
-      terNoite: "",
-      quaManha: "",
-      quaTarde: "",
-      quaNoite: "",
-      quiManha: "",
-      quiTarde: "",
-      quiNoite: "",
-      sexManha: "",
-      sexTarde: "",
-      sexNoite: "",
-      sabManha: "",
-      sabTarde: "",
-      sabNoite: "",
-      domManha: "",
-      domTarde: "",
+      segManha: "0",
+      segTarde: "0",
+      segNoite: "0",
+      terManha: "0",
+      terTarde: "0",
+      terNoite: "0",
+      quaManha: "0",
+      quaTarde: "0",
+      quaNoite: "0",
+      quiManha: "0",
+      quiTarde: "0",
+      quiNoite: "0",
+      sexManha: "0",
+      sexTarde: "0",
+      sexNoite: "0",
+      sabManha: "0",
+      sabTarde: "0",
+      sabNoite: "0",
+      domManha: "0",
+      domTarde: "0",
       domNoite: ""
     };
   }
@@ -101,7 +101,7 @@ class Disponibilidade extends Component {
     // If you are using babel, you can use ES 6 dictionary syntax
     // let change = { [e.target.name] = e.target.value }
     let change = {};
-    const valueNew = e.target.value === "TRUE" ? "FALSE" : "TRUE";
+    const valueNew = e.target.value === "1" ? "0" : "1";
     change[e.target.name] = valueNew;
     console.log(change);
 
@@ -163,7 +163,7 @@ class Disponibilidade extends Component {
                       id="m-segunda"
                       name="segManha"
                       onChange={this.handleChange}
-                      checked={segManha === "TRUE" ? true : false}
+                      checked={segManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -171,7 +171,7 @@ class Disponibilidade extends Component {
                       name="terça"
                       type="checkbox"
                       id="m-terca"
-                      checked={terManha === "TRUE" ? true : false}
+                      checked={terManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -179,7 +179,7 @@ class Disponibilidade extends Component {
                       name="quarta"
                       type="checkbox"
                       id="m-quarta"
-                      checked={quaManha === "TRUE" ? true : false}
+                      checked={quaManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -187,7 +187,7 @@ class Disponibilidade extends Component {
                       name="quinta"
                       type="checkbox"
                       id="m-quinta"
-                      checked={quiManha === "TRUE" ? true : false}
+                      checked={quiManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -195,7 +195,7 @@ class Disponibilidade extends Component {
                       name="sexta"
                       type="checkbox"
                       id="m-sexta"
-                      checked={sexManha === "TRUE" ? true : false}
+                      checked={sexManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -203,7 +203,7 @@ class Disponibilidade extends Component {
                       name="sabado"
                       type="checkbox"
                       id="m-sabado"
-                      checked={sabManha === "TRUE" ? true : false}
+                      checked={sabManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -211,7 +211,7 @@ class Disponibilidade extends Component {
                       name="domingo"
                       type="checkbox"
                       id="m-domingo"
-                      checked={domManha === "TRUE" ? true : false}
+                      checked={domManha === "1" ? true : false}
                     />
                   </td>
                 </tr>
@@ -223,7 +223,7 @@ class Disponibilidade extends Component {
                       name="segunda"
                       type="checkbox"
                       id="t-segunda"
-                      checked={segTarde === "TRUE" ? true : false}
+                      checked={segTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -231,7 +231,7 @@ class Disponibilidade extends Component {
                       name="terca"
                       type="checkbox"
                       id="t-terca"
-                      checked={terTarde === "TRUE" ? true : false}
+                      checked={terTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -239,7 +239,7 @@ class Disponibilidade extends Component {
                       name="quarta"
                       type="checkbox"
                       id="t-quarta"
-                      checked={quaTarde === "TRUE" ? true : false}
+                      checked={quaTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -247,7 +247,7 @@ class Disponibilidade extends Component {
                       name="quinta"
                       type="checkbox"
                       id="t-quinta"
-                      checked={quiTarde === "TRUE" ? true : false}
+                      checked={quiTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -255,7 +255,7 @@ class Disponibilidade extends Component {
                       name="sexta"
                       type="checkbox"
                       id="t-sexta"
-                      checked={sexTarde === "TRUE" ? true : false}
+                      checked={sexTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -263,7 +263,7 @@ class Disponibilidade extends Component {
                       name="sabado"
                       type="checkbox"
                       id="t-sabado"
-                      checked={sabTarde === "TRUE" ? true : false}
+                      checked={sabTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -271,7 +271,7 @@ class Disponibilidade extends Component {
                       name="domingo"
                       type="checkbox"
                       id="t-domingo"
-                      checked={domTarde === "TRUE" ? true : false}
+                      checked={domTarde === "1" ? true : false}
                     />
                   </td>
                   {/* LINHA - NOITE */}
@@ -283,7 +283,7 @@ class Disponibilidade extends Component {
                       name="segunda"
                       type="checkbox"
                       id="n-segunda"
-                      checked={segNoite === "TRUE" ? true : false}
+                      checked={segNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -291,7 +291,7 @@ class Disponibilidade extends Component {
                       name="terca"
                       type="checkbox"
                       id="n-terca"
-                      checked={terNoite === "TRUE" ? true : false}
+                      checked={terNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -299,7 +299,7 @@ class Disponibilidade extends Component {
                       name="quarta"
                       type="checkbox"
                       id="n-quarta"
-                      checked={quaNoite === "TRUE" ? true : false}
+                      checked={quaNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -307,7 +307,7 @@ class Disponibilidade extends Component {
                       name="quinta"
                       type="checkbox"
                       id="n-quinta"
-                      checked={quiNoite === "TRUE" ? true : false}
+                      checked={quiNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -315,7 +315,7 @@ class Disponibilidade extends Component {
                       name="sexta"
                       type="checkbox"
                       id="n-sexta"
-                      checked={sexNoite === "TRUE" ? true : false}
+                      checked={sexNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -323,7 +323,7 @@ class Disponibilidade extends Component {
                       name="sabado"
                       type="checkbox"
                       id="n-sabado"
-                      checked={sabNoite === "TRUE" ? true : false}
+                      checked={sabNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -331,7 +331,7 @@ class Disponibilidade extends Component {
                       name="domingo"
                       type="checkbox"
                       id="n-domingo"
-                      checked={domNoite === "TRUE" ? true : false}
+                      checked={domNoite === "1" ? true : false}
                     />
                   </td>
                 </tr>
