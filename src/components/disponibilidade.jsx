@@ -38,37 +38,33 @@ class Disponibilidade extends Component {
         // handle success
         const disponibilidade = response.data.disponibilidade;
 
-        const segManha = !Boolean(disponibilidade.segunda.substring(0, 1));
-        const segTarde = !Boolean(disponibilidade.segunda.substring(1, 1));
-        const segNoite = !Boolean(disponibilidade.segunda.substring(2, 1));
+        const segManha = !Boolean(disponibilidade.segunda.substring(1, 0));
+        const segTarde = !Boolean(disponibilidade.segunda.substring(2, 1));
+        const segNoite = !Boolean(disponibilidade.segunda.substring(3, 2));
 
-        const terManha = !Boolean(disponibilidade.terca.substring(0, 1));
-        const terTarde = !Boolean(disponibilidade.terca.substring(1, 1));
-        const terNoite = !Boolean(disponibilidade.terca.substring(2, 1));
+        const terManha = !Boolean(disponibilidade.terca.substring(1, 0));
+        const terTarde = !Boolean(disponibilidade.terca.substring(2, 1));
+        const terNoite = !Boolean(disponibilidade.terca.substring(3, 2));
 
-        const quaManha = !Boolean(disponibilidade.quarta.substring(0, 1));
-        const quaTarde = !Boolean(disponibilidade.quarta.substring(1, 1));
-        const quaNoite = !Boolean(disponibilidade.quarta.substring(2, 1));
+        const quaManha = !Boolean(disponibilidade.quarta.substring(1, 0));
+        const quaTarde = !Boolean(disponibilidade.quarta.substring(2, 1));
+        const quaNoite = !Boolean(disponibilidade.quarta.substring(3, 2));
 
-        const quiManha = !Boolean(disponibilidade.quinta.substring(0, 1));
-        const quiTarde = !Boolean(disponibilidade.quinta.substring(1, 1));
-        const quiNoite = !Boolean(disponibilidade.quinta.substring(2, 1));
+        const quiManha = !Boolean(disponibilidade.quinta.substring(1, 0));
+        const quiTarde = !Boolean(disponibilidade.quinta.substring(2, 1));
+        const quiNoite = !Boolean(disponibilidade.quinta.substring(3, 2));
 
-        const sexManha = !Boolean(disponibilidade.sexta.substring(0, 1));
-        const sexTarde = !Boolean(disponibilidade.sexta.substring(1, 1));
-        const sexNoite = !Boolean(disponibilidade.sexta.substring(2, 1));
+        const sexManha = !Boolean(disponibilidade.sexta.substring(1, 0));
+        const sexTarde = !Boolean(disponibilidade.sexta.substring(2, 1));
+        const sexNoite = !Boolean(disponibilidade.sexta.substring(3, 2));
 
-        console.log(disponibilidade.sabado);
-        const sabManha = !Boolean(disponibilidade.sabado.substring(0, 1));
-        const sabTarde = !Boolean(disponibilidade.sabado.substring(1, 1));
-        const sabNoite = !Boolean(disponibilidade.sabado.substring(2, 1));
-        console.log(sabManha);
-        console.log(sabTarde);
-        console.log(sabNoite);
+        const sabManha = !Boolean(disponibilidade.sabado.substring(1, 0));
+        const sabTarde = !Boolean(disponibilidade.sabado.substring(2, 1));
+        const sabNoite = !Boolean(disponibilidade.sabado.substring(3, 2));
 
         const domManha = !Boolean(disponibilidade.domingo.substring(0, 1));
-        const domTarde = !Boolean(disponibilidade.domingo.substring(1, 1));
-        const domNoite = !Boolean(disponibilidade.domingo.substring(2, 1));
+        const domTarde = !Boolean(disponibilidade.domingo.substring(2, 1));
+        const domNoite = !Boolean(disponibilidade.domingo.substring(3, 2));
 
         this.setState({
           disponibilidade,
