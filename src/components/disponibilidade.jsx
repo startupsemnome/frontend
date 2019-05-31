@@ -102,7 +102,6 @@ class Disponibilidade extends Component {
     // let change = { [e.target.name] = e.target.value }
     let change = {};
     const valueNew = this.state[e.target.name] === "1" ? "0" : "1";
-    console.log(this.state[e.target.name]);
 
     change[e.target.name] = valueNew;
     this.setState(change);
