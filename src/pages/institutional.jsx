@@ -89,7 +89,6 @@ class Institutional extends Component {
         </div>
         <br />
         <br />
-        <Disponibilidade />
         <br />
         <br />
       </div>
