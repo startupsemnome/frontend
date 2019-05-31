@@ -8,27 +8,27 @@ class Disponibilidade extends Component {
     super(props);
     this.state = {
       disponibilidade: null,
-      segManha: "0",
-      segTarde: "0",
-      segNoite: "0",
-      terManha: "0",
-      terTarde: "0",
-      terNoite: "0",
-      quaManha: "0",
-      quaTarde: "0",
-      quaNoite: "0",
-      quiManha: "0",
-      quiTarde: "0",
-      quiNoite: "0",
-      sexManha: "0",
-      sexTarde: "0",
-      sexNoite: "0",
-      sabManha: "0",
-      sabTarde: "0",
-      sabNoite: "0",
-      domManha: "0",
-      domTarde: "0",
-      domNoite: ""
+      segManha: false,
+      segTarde: false,
+      segNoite: false,
+      terManha: false,
+      terTarde: false,
+      terNoite: false,
+      quaManha: false,
+      quaTarde: false,
+      quaNoite: false,
+      quiManha: false,
+      quiTarde: false,
+      quiNoite: false,
+      sexManha: false,
+      sexTarde: false,
+      sexNoite: false,
+      sabManha: false,
+      sabTarde: false,
+      sabNoite: false,
+      domManha: false,
+      domTarde: false,
+      domNoite: false
     };
   }
   componentDidMount() {
@@ -38,33 +38,37 @@ class Disponibilidade extends Component {
         // handle success
         const disponibilidade = response.data.disponibilidade;
 
-        const segManha = disponibilidade.segunda.substring(0, 1);
-        const segTarde = disponibilidade.segunda.substring(1, 1);
-        const segNoite = disponibilidade.segunda.substring(2, 1);
+        const segManha = !Boolean(disponibilidade.segunda.substring(0, 1));
+        const segTarde = !Boolean(disponibilidade.segunda.substring(1, 1));
+        const segNoite = !Boolean(disponibilidade.segunda.substring(2, 1));
 
-        const terManha = disponibilidade.terca.substring(0, 1);
-        const terTarde = disponibilidade.terca.substring(1, 1);
-        const terNoite = disponibilidade.terca.substring(2, 1);
+        const terManha = !Boolean(disponibilidade.terca.substring(0, 1));
+        const terTarde = !Boolean(disponibilidade.terca.substring(1, 1));
+        const terNoite = !Boolean(disponibilidade.terca.substring(2, 1));
 
-        const quaManha = disponibilidade.quarta.substring(0, 1);
-        const quaTarde = disponibilidade.quarta.substring(1, 1);
-        const quaNoite = disponibilidade.quarta.substring(2, 1);
+        const quaManha = !Boolean(disponibilidade.quarta.substring(0, 1));
+        const quaTarde = !Boolean(disponibilidade.quarta.substring(1, 1));
+        const quaNoite = !Boolean(disponibilidade.quarta.substring(2, 1));
 
-        const quiManha = disponibilidade.quinta.substring(0, 1);
-        const quiTarde = disponibilidade.quinta.substring(1, 1);
-        const quiNoite = disponibilidade.quinta.substring(2, 1);
+        const quiManha = !Boolean(disponibilidade.quinta.substring(0, 1));
+        const quiTarde = !Boolean(disponibilidade.quinta.substring(1, 1));
+        const quiNoite = !Boolean(disponibilidade.quinta.substring(2, 1));
 
-        const sexManha = disponibilidade.sexta.substring(0, 1);
-        const sexTarde = disponibilidade.sexta.substring(1, 1);
-        const sexNoite = disponibilidade.sexta.substring(2, 1);
+        const sexManha = !Boolean(disponibilidade.sexta.substring(0, 1));
+        const sexTarde = !Boolean(disponibilidade.sexta.substring(1, 1));
+        const sexNoite = !Boolean(disponibilidade.sexta.substring(2, 1));
 
-        const sabManha = disponibilidade.sabado.substring(0, 1);
-        const sabTarde = disponibilidade.sabado.substring(1, 1);
-        const sabNoite = disponibilidade.sabado.substring(2, 1);
+        console.log(disponibilidade.sabado);
+        const sabManha = !Boolean(disponibilidade.sabado.substring(0, 1));
+        const sabTarde = !Boolean(disponibilidade.sabado.substring(1, 1));
+        const sabNoite = !Boolean(disponibilidade.sabado.substring(2, 1));
+        console.log(sabManha);
+        console.log(sabTarde);
+        console.log(sabNoite);
 
-        const domManha = disponibilidade.domingo.substring(0, 1);
-        const domTarde = disponibilidade.domingo.substring(1, 1);
-        const domNoite = disponibilidade.domingo.substring(2, 1);
+        const domManha = !Boolean(disponibilidade.domingo.substring(0, 1));
+        const domTarde = !Boolean(disponibilidade.domingo.substring(1, 1));
+        const domNoite = !Boolean(disponibilidade.domingo.substring(2, 1));
 
         this.setState({
           disponibilidade,
@@ -101,10 +105,10 @@ class Disponibilidade extends Component {
     // If you are using babel, you can use ES 6 dictionary syntax
     // let change = { [e.target.name] = e.target.value }
     let change = {};
-    const valueNew = e.target.value === "1" ? "0" : "1";
-    change[e.target.name] = valueNew;
-    console.log(change);
-
+    // const valueNew = e.target.value === "on" ? false : "1";
+    change[e.target.name] = !this.state[e.target.name];
+    console.log(!this.state[e.target.name]);
+    console.log(change[e.target.name]);
     this.setState(change);
   };
 
@@ -158,60 +162,65 @@ class Disponibilidade extends Component {
                   <td>Manhã</td>
                   <td>
                     <input
-                      name="segunda"
                       type="checkbox"
                       id="m-segunda"
                       name="segManha"
                       onChange={this.handleChange}
-                      checked={segManha === "1" ? true : false}
+                      checked={segManha}
                     />
                   </td>
                   <td>
                     <input
-                      name="terça"
+                      name="terManha"
                       type="checkbox"
                       id="m-terca"
-                      checked={terManha === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={terManha}
                     />
                   </td>
                   <td>
                     <input
-                      name="quarta"
+                      name="quaManha"
                       type="checkbox"
                       id="m-quarta"
-                      checked={quaManha === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={quaManha}
                     />
                   </td>
                   <td>
                     <input
-                      name="quinta"
+                      name="quiManha"
                       type="checkbox"
                       id="m-quinta"
-                      checked={quiManha === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={quiManha}
                     />
                   </td>
                   <td>
                     <input
-                      name="sexta"
+                      name="sexManha"
                       type="checkbox"
                       id="m-sexta"
-                      checked={sexManha === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={sexManha}
                     />
                   </td>
                   <td>
                     <input
-                      name="sabado"
+                      name="sabManha"
                       type="checkbox"
                       id="m-sabado"
-                      checked={sabManha === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={sabManha}
                     />
                   </td>
                   <td>
                     <input
-                      name="domingo"
+                      name="domManha"
                       type="checkbox"
                       id="m-domingo"
-                      checked={domManha === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={domManha}
                     />
                   </td>
                 </tr>
@@ -220,58 +229,65 @@ class Disponibilidade extends Component {
                   <td>Tarde</td>
                   <td>
                     <input
-                      name="segunda"
+                      name="segTarde"
                       type="checkbox"
                       id="t-segunda"
-                      checked={segTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={segTarde}
                     />
                   </td>
                   <td>
                     <input
-                      name="terca"
+                      name="terTarde"
                       type="checkbox"
                       id="t-terca"
-                      checked={terTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={terTarde}
                     />
                   </td>
                   <td>
                     <input
-                      name="quarta"
+                      name="quaTarde"
                       type="checkbox"
                       id="t-quarta"
-                      checked={quaTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={quaTarde}
                     />
                   </td>
                   <td>
                     <input
-                      name="quinta"
+                      name="quiTarde"
                       type="checkbox"
                       id="t-quinta"
-                      checked={quiTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={quiTarde}
                     />
                   </td>
                   <td>
                     <input
-                      name="sexta"
+                      name="sexTarde"
                       type="checkbox"
                       id="t-sexta"
-                      checked={sexTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={sexTarde}
                     />
                   </td>
                   <td>
                     <input
-                      name="sabado"
+                      name="sabTarde"
                       type="checkbox"
                       id="t-sabado"
-                      checked={sabTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={sabTarde}
                     />
                   </td>
                   <td>
                     <input
-                      name="domingo"
+                      name="domTarde"
                       type="checkbox"
                       id="t-domingo"
-                      checked={domTarde === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={domTarde}
                     />
                   </td>
                   {/* LINHA - NOITE */}
@@ -280,58 +296,65 @@ class Disponibilidade extends Component {
                   <td>Noite</td>
                   <td>
                     <input
-                      name="segunda"
+                      name="segNoite"
                       type="checkbox"
                       id="n-segunda"
-                      checked={segNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={segNoite}
                     />
                   </td>
                   <td>
                     <input
-                      name="terca"
+                      name="terNoite"
                       type="checkbox"
                       id="n-terca"
-                      checked={terNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={terNoite}
                     />
                   </td>
                   <td>
                     <input
-                      name="quarta"
+                      name="quaNoite"
                       type="checkbox"
                       id="n-quarta"
-                      checked={quaNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={quaNoite}
                     />
                   </td>
                   <td>
                     <input
-                      name="quinta"
+                      name="quiNoite"
                       type="checkbox"
                       id="n-quinta"
-                      checked={quiNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={quiNoite}
                     />
                   </td>
                   <td>
                     <input
-                      name="sexta"
+                      name="sexNoite"
                       type="checkbox"
                       id="n-sexta"
-                      checked={sexNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={sexNoite}
                     />
                   </td>
                   <td>
                     <input
-                      name="sabado"
+                      name="sabNoite"
                       type="checkbox"
                       id="n-sabado"
-                      checked={sabNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={sabNoite}
                     />
                   </td>
                   <td>
                     <input
-                      name="domingo"
+                      name="domNoite"
                       type="checkbox"
                       id="n-domingo"
-                      checked={domNoite === "1" ? true : false}
+                      onChange={this.handleChange}
+                      checked={domNoite}
                     />
                   </td>
                 </tr>
