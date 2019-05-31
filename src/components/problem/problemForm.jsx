@@ -17,7 +17,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-
+import Disponibilidade from "./../disponibilidade";
 import AcceptResourceForm from "../problem/acceptResourceForm";
 
 class ProblemForm extends Component {
@@ -342,93 +342,9 @@ class ProblemForm extends Component {
             >
               Informe a atuação do Problema:
             </label>
-            {/* <input
-              className="inputFields col-md-12"
-              type="text"
-              placeholder="Descreva o problema"
-              value={this.state.descricao}
-              onChange={e => this.setState({ descricao: e.target.value })}
-              required
-            /> */}
             <br />
           </div>
-          <div className="col-md-12">
-            <div className="col-md-12">
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ display: "none" }}>
-                      ID
-                    </th>
-                    <th scope="col">Período</th>
-                    <th scope="col">Segunda-feira</th>
-                    <th scope="col">Terça-feira</th>
-                    <th scope="col">Quarta-feira</th>
-                    <th scope="col">Quinta-feira</th>
-                    <th scope="col">Sexta-feira</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Manhã</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="m-segunda" />
-                    </td>
-                    <td>
-                      <input name="terça" type="checkbox" id="m-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="m-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="m-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="m-sexta" />
-                    </td>
-                  </tr>
-                  {/* LINHA - TARDE */}
-                  <tr>
-                    <td>Tarde</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="t-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="t-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="t-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="t-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="t-sexta" />
-                    </td>
-                    {/* LINHA - NOITE */}
-                  </tr>
-                  <tr>
-                    <td>Noite</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="n-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="n-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="n-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="n-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="n-sexta" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <Disponibilidade />
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
