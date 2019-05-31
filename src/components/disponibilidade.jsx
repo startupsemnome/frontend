@@ -38,33 +38,33 @@ class Disponibilidade extends Component {
         // handle success
         const disponibilidade = response.data.disponibilidade;
 
-        const segManha = !Boolean(disponibilidade.segunda.substring(1, 0));
-        const segTarde = !Boolean(disponibilidade.segunda.substring(2, 1));
-        const segNoite = !Boolean(disponibilidade.segunda.substring(3, 2));
+        const segManha = disponibilidade.segunda.substring(1, 0);
+        const segTarde = disponibilidade.segunda.substring(2, 1);
+        const segNoite = disponibilidade.segunda.substring(3, 2);
 
-        const terManha = !Boolean(disponibilidade.terca.substring(1, 0));
-        const terTarde = !Boolean(disponibilidade.terca.substring(2, 1));
-        const terNoite = !Boolean(disponibilidade.terca.substring(3, 2));
+        const terManha = disponibilidade.terca.substring(1, 0);
+        const terTarde = disponibilidade.terca.substring(2, 1);
+        const terNoite = disponibilidade.terca.substring(3, 2);
 
-        const quaManha = !Boolean(disponibilidade.quarta.substring(1, 0));
-        const quaTarde = !Boolean(disponibilidade.quarta.substring(2, 1));
-        const quaNoite = !Boolean(disponibilidade.quarta.substring(3, 2));
+        const quaManha = disponibilidade.quarta.substring(1, 0);
+        const quaTarde = disponibilidade.quarta.substring(2, 1);
+        const quaNoite = disponibilidade.quarta.substring(3, 2);
 
-        const quiManha = !Boolean(disponibilidade.quinta.substring(1, 0));
-        const quiTarde = !Boolean(disponibilidade.quinta.substring(2, 1));
-        const quiNoite = !Boolean(disponibilidade.quinta.substring(3, 2));
+        const quiManha = disponibilidade.quinta.substring(1, 0);
+        const quiTarde = disponibilidade.quinta.substring(2, 1);
+        const quiNoite = disponibilidade.quinta.substring(3, 2);
 
-        const sexManha = !Boolean(disponibilidade.sexta.substring(1, 0));
-        const sexTarde = !Boolean(disponibilidade.sexta.substring(2, 1));
-        const sexNoite = !Boolean(disponibilidade.sexta.substring(3, 2));
+        const sexManha = disponibilidade.sexta.substring(1, 0);
+        const sexTarde = disponibilidade.sexta.substring(2, 1);
+        const sexNoite = disponibilidade.sexta.substring(3, 2);
 
-        const sabManha = !Boolean(disponibilidade.sabado.substring(1, 0));
-        const sabTarde = !Boolean(disponibilidade.sabado.substring(2, 1));
-        const sabNoite = !Boolean(disponibilidade.sabado.substring(3, 2));
+        const sabManha = disponibilidade.sabado.substring(1, 0);
+        const sabTarde = disponibilidade.sabado.substring(2, 1);
+        const sabNoite = disponibilidade.sabado.substring(3, 2);
 
-        const domManha = !Boolean(disponibilidade.domingo.substring(0, 1));
-        const domTarde = !Boolean(disponibilidade.domingo.substring(2, 1));
-        const domNoite = !Boolean(disponibilidade.domingo.substring(3, 2));
+        const domManha = disponibilidade.domingo.substring(0, 1);
+        const domTarde = disponibilidade.domingo.substring(2, 1);
+        const domNoite = disponibilidade.domingo.substring(3, 2);
 
         this.setState({
           disponibilidade,
@@ -101,10 +101,10 @@ class Disponibilidade extends Component {
     // If you are using babel, you can use ES 6 dictionary syntax
     // let change = { [e.target.name] = e.target.value }
     let change = {};
-    // const valueNew = e.target.value === "on" ? false : "1";
-    change[e.target.name] = !this.state[e.target.name];
-    console.log(!this.state[e.target.name]);
-    console.log(change[e.target.name]);
+    const valueNew = this.state[e.target.name] === "1" ? "0" : "1";
+    console.log(this.state[e.target.name]);
+
+    change[e.target.name] = valueNew;
     this.setState(change);
   };
 
@@ -162,7 +162,7 @@ class Disponibilidade extends Component {
                       id="m-segunda"
                       name="segManha"
                       onChange={this.handleChange}
-                      checked={segManha}
+                      checked={segManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -171,7 +171,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="m-terca"
                       onChange={this.handleChange}
-                      checked={terManha}
+                      checked={terManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -180,7 +180,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="m-quarta"
                       onChange={this.handleChange}
-                      checked={quaManha}
+                      checked={quaManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -189,7 +189,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="m-quinta"
                       onChange={this.handleChange}
-                      checked={quiManha}
+                      checked={quiManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -198,7 +198,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="m-sexta"
                       onChange={this.handleChange}
-                      checked={sexManha}
+                      checked={sexManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -207,7 +207,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="m-sabado"
                       onChange={this.handleChange}
-                      checked={sabManha}
+                      checked={sabManha === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -216,7 +216,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="m-domingo"
                       onChange={this.handleChange}
-                      checked={domManha}
+                      checked={domManha === "1" ? true : false}
                     />
                   </td>
                 </tr>
@@ -229,7 +229,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-segunda"
                       onChange={this.handleChange}
-                      checked={segTarde}
+                      checked={segTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -238,7 +238,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-terca"
                       onChange={this.handleChange}
-                      checked={terTarde}
+                      checked={terTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -247,7 +247,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-quarta"
                       onChange={this.handleChange}
-                      checked={quaTarde}
+                      checked={quaTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -256,7 +256,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-quinta"
                       onChange={this.handleChange}
-                      checked={quiTarde}
+                      checked={quiTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -265,7 +265,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-sexta"
                       onChange={this.handleChange}
-                      checked={sexTarde}
+                      checked={sexTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -274,7 +274,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-sabado"
                       onChange={this.handleChange}
-                      checked={sabTarde}
+                      checked={sabTarde === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -283,7 +283,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="t-domingo"
                       onChange={this.handleChange}
-                      checked={domTarde}
+                      checked={domTarde === "1" ? true : false}
                     />
                   </td>
                   {/* LINHA - NOITE */}
@@ -296,7 +296,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-segunda"
                       onChange={this.handleChange}
-                      checked={segNoite}
+                      checked={segNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -305,7 +305,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-terca"
                       onChange={this.handleChange}
-                      checked={terNoite}
+                      checked={terNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -314,7 +314,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-quarta"
                       onChange={this.handleChange}
-                      checked={quaNoite}
+                      checked={quaNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -323,7 +323,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-quinta"
                       onChange={this.handleChange}
-                      checked={quiNoite}
+                      checked={quiNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -332,7 +332,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-sexta"
                       onChange={this.handleChange}
-                      checked={sexNoite}
+                      checked={sexNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -341,7 +341,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-sabado"
                       onChange={this.handleChange}
-                      checked={sabNoite}
+                      checked={sabNoite === "1" ? true : false}
                     />
                   </td>
                   <td>
@@ -350,7 +350,7 @@ class Disponibilidade extends Component {
                       type="checkbox"
                       id="n-domingo"
                       onChange={this.handleChange}
-                      checked={domNoite}
+                      checked={domNoite === "1" ? true : false}
                     />
                   </td>
                 </tr>
