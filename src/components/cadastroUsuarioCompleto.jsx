@@ -38,6 +38,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../consts";
 
+import Disponibilidade from "./disponibilidade";
 import ComposedResponsive from "./graphics/composedResponsive.jsx";
 
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
@@ -116,6 +117,25 @@ class CadastroUsuarioCompleto extends Component {
               required
             />
           </div>
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Sobrenome:
+            </label>
+            <input
+              className="inputFields col-md-12"
+              type="text"
+              select="multiple"
+              name="civilstatus"
+              id="optioncivilstatus"
+              style={{ width: "100%" }}
+              value={this.state.sobrenome}
+              onChange={e => this.setState({ sobrenome: e.target.value })}
+              required
+            />
+          </div>
 
           <div className="col-md-12">
             <label
@@ -128,10 +148,12 @@ class CadastroUsuarioCompleto extends Component {
             <FormGroup row>
               <Label for="exampleFile" />
               <Col sm={10}>
-                <Input type="file" name="file" id="exampleFile" />
-                <FormText color="muted">
-                  A foto escolhida será depositada em nosso banco de dados.
-                </FormText>
+                <Input
+                  type="file"
+                  name="file"
+                  id="exampleFile"
+                  className="join-btn-no-transform mr-1 col-md-12"
+                />
               </Col>
             </FormGroup>
             <br />
@@ -150,7 +172,7 @@ class CadastroUsuarioCompleto extends Component {
               <Input
                 type="date"
                 name="date"
-                className="col-md-12"
+                className="inputFields col-md-12"
                 id="exampleDate"
                 placeholder="date placeholder"
                 value={this.state.dt_nascimento}
@@ -415,104 +437,7 @@ class CadastroUsuarioCompleto extends Component {
             </label>
             <br />
           </div>
-          <div className="col-md-12">
-            <div className="">
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ display: "none" }}>
-                      ID
-                    </th>
-                    <th scope="col">Período</th>
-                    <th scope="col">Segunda-feira</th>
-                    <th scope="col">Terça-feira</th>
-                    <th scope="col">Quarta-feira</th>
-                    <th scope="col">Quinta-feira</th>
-                    <th scope="col">Sexta-feira</th>
-                    <th scope="col">Sábado</th>
-                    <th scope="col">Domingo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Manhã</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="m-segunda" />
-                    </td>
-                    <td>
-                      <input name="terça" type="checkbox" id="m-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="m-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="m-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="m-sexta" />
-                    </td>
-                    <td>
-                      <input name="sabado" type="checkbox" id="m-sabado" />
-                    </td>
-                    <td>
-                      <input name="domingo" type="checkbox" id="m-domingo" />
-                    </td>
-                  </tr>
-                  {/* LINHA - TARDE */}
-                  <tr>
-                    <td>Tarde</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="t-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="t-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="t-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="t-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="t-sexta" />
-                    </td>
-                    <td>
-                      <input name="sabado" type="checkbox" id="t-sabado" />
-                    </td>
-                    <td>
-                      <input name="domingo" type="checkbox" id="t-domingo" />
-                    </td>
-                    {/* LINHA - NOITE */}
-                  </tr>
-                  <tr>
-                    <td>Noite</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="n-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="n-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="n-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="n-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="n-sexta" />
-                    </td>
-                    <td>
-                      <input name="sabado" type="checkbox" id="n-sabado" />
-                    </td>
-                    <td>
-                      <input name="domingo" type="checkbox" id="n-domingo" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
+          <Disponibilidade />
           <div className="col-md-12">
             <label
               className="labelFields"

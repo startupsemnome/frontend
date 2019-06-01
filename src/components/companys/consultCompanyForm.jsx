@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
-import {FaEye, FaCogs, FaTrashAlt } from 'react-icons/fa';
-import SweetAlert from "react-bootstrap-sweetalert";
+// import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
+import { FaEye, FaCogs, FaTrashAlt } from "react-icons/fa";
+// import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import CompanyForm from "./companyForm";
-
+// to={"visualizar-empresa"}
 class ConsultCompanyForm extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +15,11 @@ class ConsultCompanyForm extends Component {
       companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
+    this.handleChangeEdit = this.handleChangeEdit.bind(this);
+  }
+  handleChangeEdit() {
+    this.loadCompanys();
+    this.setState({ companyEdit: [null, false] });
   }
   excluirCompany(id) {
     //chama a api do banco com o metodo de delete
@@ -67,11 +72,17 @@ class ConsultCompanyForm extends Component {
     console.log("teste");
     this.loadCompanys();
   }
-  visualizar(id) {
-    this.props.history.push({
-      pathname: "/visualizar-empresa",
-      state: { id }
-    });
+
+  viewCard(id) {
+    axios
+      .get(env.API + "view-company/" + id)
+      .then(function(response) {
+        console.log(response);
+        this.props.history.push("\visualizar-empresa");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   render() {
     return (
@@ -120,8 +131,10 @@ class ConsultCompanyForm extends Component {
                     className="col-md-3 box"
                     style={{
                       fontSize: "18px",
-                      maxWidth: "298px",
-                      minHeight: "255px"
+                      maxWidth: "275px",
+                      minHeight: "255px",
+                      paddingLeft: "30px",
+                      paddingRight: "5px"
                     }}
                     inline={true}
                   >
@@ -132,8 +145,8 @@ class ConsultCompanyForm extends Component {
                       style={{
                         backgroundColor: "rgb(254, 254, 254)",
                         minHeight: "240px",
-                        maxWidth: "298px",
-                        maxWidth: "295px",
+                        maxWidth: "274px",
+                        minWidth: "261px",
                         marginRight: "0px",
                         marginLeft: "0px",
                         borderRadius: "10px"
@@ -149,18 +162,22 @@ class ConsultCompanyForm extends Component {
                         </div>
                         <div
                           className="card-text"
-                          style={{ margin: "auto", padding: "15px" }}
+                          style={{ margin: "auto", paddingBottom: "4px" }}
                         >
-                          <h5 />
+                          <h5>CNPJ:&nbsp;{company.cnpj}</h5>
                         </div>
                         <div
                           className="card-footer"
-                          style={{ padding: "1.25rem 3.25rem" }}
+                          style={{
+                            padding: "1.25rem 0.725rem 0.85rem",
+                            display: "flex"
+                          }}
                         >
                           <FaEye
-                            to={"visualizar-empresa"}
                             style={{ width: "90%" }}
-                            onClick={() => this.visualizar(company.id)}
+                            onClick={() => {
+                              this.viewCard(company.id);
+                            }} //() => this.visualizar(company.id)}
                           />
                           <FaCogs
                             onClick={e => this.editCompany(company.id)}
@@ -183,12 +200,13 @@ class ConsultCompanyForm extends Component {
             </div>
           </div>
         ) : (
-            <CompanyForm
-              history={this.props.history}
-              edit={this.state.companyEdit[1]}
-              id={this.state.companyEdit[0]}
-            />
-          )}
+          <CompanyForm
+            history={this.props.history}
+            edit={this.state.companyEdit[1]}
+            handleChangeEdit={this.handleChangeEdit}
+            id={this.state.companyEdit[0]}
+          />
+        )}
       </div>
     );
   }

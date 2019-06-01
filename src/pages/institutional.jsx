@@ -20,6 +20,7 @@ import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
 import HowWorking from "../components/institutional/HowWorking.jsx";
 import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
+import Disponibilidade from "../components/disponibilidade";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
@@ -65,9 +66,9 @@ class Institutional extends Component {
             <GridContainer>
               <GridItem>
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Connecting Minds</h1>
+                  <h1 className={classes.title}>Conectando Talentos</h1>
                   <h3 className={classes.subtitle}>
-                    The Perfect Solutions For Your Business.
+                    A perfeita solução para juntar problemas e recursos
                   </h3>
                 </div>
               </GridItem>
@@ -76,12 +77,19 @@ class Institutional extends Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <HowWorking />
-          {!this.props.login ? <SectionCarousel /> : null}
-          {!this.props.login ? <SectionBasics /> : <CadastroUsuarioCompleto />}
+          {!this.props.login || localStorage.getItem("type") === "ADMIN" ? (
+            <SectionCarousel />
+          ) : null}
+          {!this.props.login ? (
+            <SectionBasics history={this.props.history} />
+          ) : localStorage.getItem("type") !== "ADMIN" ? (
+            <CadastroUsuarioCompleto />
+          ) : null}
           {/* <Notificacao /> */}
         </div>
         <br />
         <br />
+        <Disponibilidade />
         <br />
         <br />
       </div>

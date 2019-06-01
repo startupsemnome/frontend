@@ -17,7 +17,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-
+import Disponibilidade from "./../disponibilidade";
 import AcceptResourceForm from "../problem/acceptResourceForm";
 
 class ProblemForm extends Component {
@@ -72,7 +72,7 @@ class ProblemForm extends Component {
   loadResources() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "resource")
+      .get(env.API + "match-resource-problem/" + this.props.idDetail)
       .then(response => {
         // handle success
         const data = response.data;
@@ -165,7 +165,8 @@ class ProblemForm extends Component {
     this.setState({ modal: !this.state.modal });
     axios
       .post(env.API + "communicate-resource", {
-        id_resource: this.state.resourcesCall
+        id_resource: this.state.resourcesCall,
+        id_problem: this.props.idDetail
       })
       .then(response => {
         alert("email enviado para recursos");
@@ -276,47 +277,42 @@ class ProblemForm extends Component {
               name="category"
               id="optioncategory"
               style={{ width: "100%" }}
-
-              value={this.state.categoria}
-              onChange={e => this.setState({ categoria: e.target.value })}
-              required
             >
-              <option value="Selecione">Selecione</option>
-              <option value="Administração">Administração</option>
-              <option valeu="Comércio Exterior">Comércio Exterior</option>
-              <option value="Tecnologia">Tecnologia</option>
-              <option value="Arquitetura">Arquitetura</option>
-              <option value="Medicina">Medicina</option>
-              <option value="Contábeis">Contábeis</option>
-              <option value="Economia">Economia</option>
-              <option value="Cinema e Audiovisual">Cinema e Audiovisual</option>
-              <option value="Radio e TV">Radio e TV</option>
-              <option value="Design">Design</option>
-              <option value="Direito">Direito</option>
-              <option value="Educação Física<">Educação Física</option>
-              <option value="Enfermagem">Enfermagem</option>
-              <option value="Engenharia Civil">Engenharia Civil</option>
-              <option value="Engenharia de Automação e Controle">Engenharia de Automação e Controle</option>
-              <option value="Engenharia de Produção">Engenharia de Produção</option>
-              <option value="Engenharia Elétrica">Engenharia Elétrica</option>
-              <option value="Engenharia Eletrônica">Engenharia Eletrônica</option>
-              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
-              <option value="Engenharia Química">Engenharia Química</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Farmácia">Farmácia</option>
-              <option value="Fisioterapia">Fisioterapia</option>
-              <option value="Comercial">Comercial</option>
-              <option value="Qualidade">Qualidade</option>
-              <option value="Logística">Logística</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Medicina Veterinária">Medicina Veterinária</option>
-              <option value="Nutrição">Nutrição</option>
-              <option value="Odontologia">Odontologia</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Relações Públicas">Relações Públicas</option>
-              <option value="Publicidade e Propaganda">Publicidade e Propaganda</option>
-              <option value="Turismo">Turismo</option>
-              <option value="Outros">Outros</option>
+              <option value="1">Administração</option>
+              <option valeu="2">Comércio Exterior</option>
+              <option value="3">Tecnologia</option>
+              <option value="4">Arquitetura</option>
+              <option value="5">Medicina</option>
+              <option value="6">Contábeis</option>
+              <option value="7">Economia</option>
+              <option value="8">Cinema e Audiovisual</option>
+              <option value="9">Radio e TV</option>
+              <option value="10">Design</option>
+              <option value="11">Direito</option>
+              <option value="12">Educação Física</option>
+              <option value="13">Enfermagem</option>
+              <option value="14">Engenharia Civil</option>
+              <option value="15">Engenharia de Automação e Controle</option>
+              <option value="16">Engenharia de Produção</option>
+              <option value="17">Engenharia Elétrica</option>
+              <option value="18">Engenharia Eletrônica</option>
+              <option value="19">Engenharia Mecânica</option>
+              <option value="20">Engenharia Química</option>
+              <option value="21">Psicologia</option>
+              <option value="22">Farmácia</option>
+              <option value="23">Fisioterapia</option>
+              <option value="24">Comercial</option>
+              <option value="25">Qualidade</option>
+              <option value="26">Logística</option>
+              <option value="27">Marketing</option>
+              <option value="28">Medicina Veterinária</option>
+              <option value="29">Nutrição</option>
+              <option value="30">Odontologia</option>
+              <option value="31">Psicologia</option>
+              <option value="32">Relações Públicas</option>
+              <option value="33">Publicidade e Propaganda</option>
+              <option value="34">Turismo</option>
+              <option value="35">Outros</option>
             </Input>
           </div>
 
@@ -344,93 +340,9 @@ class ProblemForm extends Component {
             >
               Informe a atuação do Problema:
             </label>
-            {/* <input
-              className="inputFields col-md-12"
-              type="text"
-              placeholder="Descreva o problema"
-              value={this.state.descricao}
-              onChange={e => this.setState({ descricao: e.target.value })}
-              required
-            /> */}
             <br />
           </div>
-          <div className="col-md-12">
-            <div className="col-md-12">
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ display: "none" }}>
-                      ID
-                    </th>
-                    <th scope="col">Período</th>
-                    <th scope="col">Segunda-feira</th>
-                    <th scope="col">Terça-feira</th>
-                    <th scope="col">Quarta-feira</th>
-                    <th scope="col">Quinta-feira</th>
-                    <th scope="col">Sexta-feira</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Manhã</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="m-segunda" />
-                    </td>
-                    <td>
-                      <input name="terça" type="checkbox" id="m-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="m-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="m-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="m-sexta" />
-                    </td>
-                  </tr>
-                  {/* LINHA - TARDE */}
-                  <tr>
-                    <td>Tarde</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="t-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="t-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="t-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="t-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="t-sexta" />
-                    </td>
-                    {/* LINHA - NOITE */}
-                  </tr>
-                  <tr>
-                    <td>Noite</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="n-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="n-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="n-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="n-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="n-sexta" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <Disponibilidade />
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
@@ -498,9 +410,9 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
+                  <th>Email</th>
                   <th>Formação</th>
-                  <th>Area de Interesse</th>
-                  <th>Cidade</th>
+                  <th>Cargo Atual</th>
                 </tr>
               </thead>
               <tbody>
@@ -510,7 +422,7 @@ class ProblemForm extends Component {
                       <td>
                         <FormGroup check>
                           <Label check>
-                            <Input
+                            <input
                               type="checkbox"
                               onChange={() =>
                                 this.handleCallResourcerSetList(resource.id)
@@ -520,6 +432,7 @@ class ProblemForm extends Component {
                         </FormGroup>
                       </td>
                       <td>{resource.nome}</td>
+                      <td>{resource.email}</td>
                       <td>{resource.formacao}</td>
                       <td>{resource.categoria}</td>
                       <td>{resource.cidade}</td>

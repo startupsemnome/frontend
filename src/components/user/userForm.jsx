@@ -25,9 +25,7 @@ class UserForm extends Component {
   }
 
   createUser(method, id) {
-
     if (!this.hasErros()) {
-
       if (method == "create") {
         axios
           .post(env.API + "user", {
@@ -35,29 +33,27 @@ class UserForm extends Component {
             email: this.state.email,
             password: this.state.password
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history("/consultar-usuario");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
-      } else if (method = "update") {
-
+      } else if ((method = "update")) {
         axios
           .put(env.API + "user/" + id, {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history.push("/consultar-usuario");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
-
       }
     }
   }
@@ -67,19 +63,22 @@ class UserForm extends Component {
       const id = this.props.id;
       axios
         .get(env.API + "user/" + id)
-        .then((response) => {
+        .then(response => {
           console.log(response);
           const data = response.data;
-          this.setState({ name: data.name, password: data.password, email: data.email });
+          this.setState({
+            name: data.name,
+            password: data.password,
+            email: data.email
+          });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
   }
-  goToConsulta() {
-    console.log(this.props);
-    window.location = "consultar-usuario";
+  goToConsulta(url) {
+    this.props.history.push(url);
   }
   hasErros() {
     if (this.state.name === "") {
@@ -116,7 +115,8 @@ class UserForm extends Component {
             />
           </div>
           <div className="col-md-7">
-            <label className="labelFields"
+            <label
+              className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Email:
@@ -131,7 +131,8 @@ class UserForm extends Component {
             />
           </div>
           <div className="col-md-5">
-            <label className="labelFields"
+            <label
+              className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Senha:
@@ -152,17 +153,21 @@ class UserForm extends Component {
             {this.props.id ? (
               <button
                 type="button"
-                onClick={() => this.goToConsulta("/consultar-usuarios")}
+                onClick={() => this.goToConsulta("/consultar-usuario")}
                 className="join-btn-no-transform mr-1 login"
                 style={{ width: "25%", margin: "0px" }}
               >
                 Consultar Usuarios
-                </button>
+              </button>
             ) : null}
             <div />
             <button
               type="button"
-              onClick={() => { !this.props.id ? this.createUser("create") : this.createUser("update", this.props.id) }}
+              onClick={() => {
+                !this.props.id
+                  ? this.createUser("create")
+                  : this.createUser("update", this.props.id);
+              }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
             >
