@@ -230,7 +230,6 @@ class ProblemForm extends Component {
               value={this.state.empresa}
               onChange={e => this.setState({ empresa: e.target.value })}
               required
-
             >
               {this.state.users.map(company => {
                 return <option>{company.razaoSocial}</option>;
@@ -277,8 +276,11 @@ class ProblemForm extends Component {
               name="category"
               id="optioncategory"
               style={{ width: "100%" }}
+              value={this.state.categoria}
+              onChange={e => this.setState({ categoria: e.target.value })}
+              required
             >
-              <option value="1">Administração</option>
+              ><option value="1">Administração</option>
               <option valeu="2">Comércio Exterior</option>
               <option value="3">Tecnologia</option>
               <option value="4">Arquitetura</option>
@@ -332,6 +334,7 @@ class ProblemForm extends Component {
               required
             />
           </div>
+
 
           <div className="col-md-12">
             <label
@@ -412,7 +415,8 @@ class ProblemForm extends Component {
                   <th>Nome</th>
                   <th>Email</th>
                   <th>Formação</th>
-                  <th>Cargo Atual</th>
+                  <th>Area de interesse</th>
+                  <th>Cidade</th>
                 </tr>
               </thead>
               <tbody>
