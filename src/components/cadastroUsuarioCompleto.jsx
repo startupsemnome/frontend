@@ -53,7 +53,6 @@ class CadastroUsuarioCompleto extends Component {
       email: "",
       senha: "",
       disponibilidade: null,
-
       fotoperfil: "",
       dt_nascimento: "",
       genero: "",
@@ -63,15 +62,12 @@ class CadastroUsuarioCompleto extends Component {
       cidade: "",
       resumo_profissional: "",
       categoria: "",
-
       nome_empresa: "",
       segmento: "",
       dt_empresa_inicio: "",
       dt_empresa_saida: "",
       cargo: "",
       atividades: "",
-
-      //formação
       curso: "",
       instituicao: "",
       formacao: "",
@@ -84,7 +80,79 @@ class CadastroUsuarioCompleto extends Component {
   }
 
   atualizarMeuCadastro() {
+    console.log({
+      nome: this.state.nome,
+      sobrenome: this.state.sobrenome,
+      email: this.state.email,
+      senha: this.state.senha,
+      fotoperfil: this.state.fotoperfil,
+      dt_nascimento: this.state.dt_nascimento,
+      genero: this.state.genero,
+      estado_civil: this.state.estado_civil,
+      nacionalidade: this.state.nacionalidade,
+      uf: this.state.uf,
+      cidade: this.state.cidade,
+      resumo_profissional: this.state.resumo_profissional,
+      categoria: this.state.categoria,
+      nome_empresa: this.state.empresa,
+      segmento: this.state.segmento,
+      dt_empresa_inicio: this.state.dt_empresa_inicio,
+      dt_empresa_saida: this.state.dt_empresa_saida,
+      cargo: this.state.cargo,
+      atividades: this.state.atividades,
+      curso: this.state.curso,
+      instituicao: this.state.instituicao,
+      formacao: this.state.formacao,
+      dt_curso_inicio: this.state.dt_curso_inicio,
+      dt_curso_conclusao: this.state.dt_curso_conclusao,
+      info_complementares: this.state.info_complementares,
+      message1: this.state.message1,
+      disponibilidade: this.state.disponibilidade
+    });
+    return;
+
     //TODO
+    let userID = JSON.parse(localStorage.getItem("userId"));
+    axios
+      .put(env.API + "resource/" + userID, {
+        nome: this.state.nome,
+        sobrenome: this.state.sobrenome,
+        email: this.state.email,
+        senha: this.state.senha,
+        fotoperfil: this.state.fotoperfil,
+        dt_nascimento: this.state.dt_nascimento,
+        genero: this.state.genero,
+        estado_civil: this.state.estado_civil,
+        nacionalidade: this.state.nacionalidade,
+        uf: this.state.uf,
+        cidade: this.state.cidade,
+        resumo_profissional: this.state.resumo_profissional,
+        category_id: this.state.categoria,
+        nome_empresa: this.state.nome_empresa,
+        segmento: this.state.segmento,
+        dt_empresa_inicio: this.state.dt_empresa_inicio,
+        dt_empresa_saida: this.state.dt_empresa_saida,
+        cargo: this.state.cargo,
+        atividades: this.state.atividades,
+        curso: this.state.curso,
+        instituicao: this.state.instituicao,
+        formacao: this.state.formacao,
+        dt_curso_inicio: this.state.dt_curso_inicio,
+        dt_curso_conclusao: this.state.dt_curso_conclusao,
+        info_complementares: this.state.info_complementares,
+        message1: this.state.message1,
+        disponibilidade: this.state.disponibilidade
+      })
+      .then(response => {
+        // handle success
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error + "Erro na API");
+      });
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   handleChangeDisp = disponibilidade => {
@@ -182,7 +250,12 @@ class CadastroUsuarioCompleto extends Component {
                 id="exampleDate"
                 placeholder="date placeholder"
                 value={this.state.dt_nascimento}
-                onChange={e => this.setState({ dt_nascimento: e.target.value })}
+                onChange={e =>
+                  this.setState(
+                    { dt_nascimento: e.target.value },
+                    console.log(this.state.dt_nascimento)
+                  )
+                }
                 required
               />
               <br />
@@ -238,7 +311,7 @@ class CadastroUsuarioCompleto extends Component {
               <option value="">Selecione</option>
               <option value="Solteiro">Solteiro(a)</option>
               <option valeu="Casado">Casado(a)</option>
-              <option valeu="Viúvo">Viúvo(a)</option>
+              <option valeu="Viuvo">Viúvo(a)</option>
               <option valeu="Divorciado">Divorciado(a)</option>
             </Input>
           </div>
@@ -388,49 +461,7 @@ class CadastroUsuarioCompleto extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="Administração">Administração</option>
-              <option valeu="Comércio Exterior">Comércio Exterior</option>
-              <option value="Tecnologia">Tecnologia</option>
-              <option value="Arquitetura">Arquitetura</option>
-              <option value="Medicina">Medicina</option>
-              <option value="Contábeis">Contábeis</option>
-              <option value="Economia">Economia</option>
-              <option value="Cinema e Audiovisual">Cinema e Audiovisual</option>
-              <option value="Radio e TV">Radio e TV</option>
-              <option value="Design">Design</option>
-              <option value="Direito">Direito</option>
-              <option value="Educação Física">Educação Física</option>
-              <option value="Enfermagem">Enfermagem</option>
-              <option value="Engenharia Civil">Engenharia Civil</option>
-              <option value="Engenharia de Automação e Controle">
-                Engenharia de Automação e Controle
-              </option>
-              <option value="Engenharia de Produção">
-                Engenharia de Produção
-              </option>
-              <option value="Engenharia Elétrica">Engenharia Elétrica</option>
-              <option value="Engenharia Eletrônica">
-                Engenharia Eletrônica
-              </option>
-              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
-              <option value="ngenharia Química">Engenharia Química</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Farmácia">Farmácia</option>
-              <option value="Fisioterapia">Fisioterapia</option>
-              <option value="Comercial">Comercial</option>
-              <option value="Qualidade">Qualidade</option>
-              <option value="Logística">Logística</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Medicina Veterinária">Medicina Veterinária</option>
-              <option value="Nutrição">Nutrição</option>
-              <option value="Odontologia">Odontologia</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Relações Públicas">Relações Públicas</option>
-              <option value="Publicidade e Propagand">
-                Publicidade e Propaganda
-              </option>
-              <option value="Turismo">Turismo</option>
-              <option value="Outros">Outros</option>
+              <option value="1">Tecnologia</option>
             </Input>
           </div>
 
@@ -781,11 +812,9 @@ class CadastroUsuarioCompleto extends Component {
         const data = response.data;
         this.setState({
           nome: data.nome,
-
           sobrenome: data.sobrenome,
           email: data.email,
           senha: data.senha,
-
           fotoperfil: data.fotoperfil,
           dt_nascimento: data.dt_nascimento,
           genero: data.genero,
@@ -794,15 +823,13 @@ class CadastroUsuarioCompleto extends Component {
           uf: data.uf,
           cidade: data.cidade,
           resumo_profissional: data.resumo_profissional,
-          categoria: data.categoria,
-
+          categoria: data.category.id,
           nome_empresa: data.nome_empresa,
           segmento: data.segmento,
           dt_empresa_inicio: data.dt_empresa_inicio,
           dt_empresa_saida: data.dt_empresa_saida,
           cargo: data.cargo,
           atividades: data.atividades,
-
           curso: data.curso,
           instituicao: data.instituicao,
           formacao: data.formacao,
