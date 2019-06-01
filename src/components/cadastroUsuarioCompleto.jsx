@@ -62,7 +62,7 @@ class CadastroUsuarioCompleto extends Component {
       cidade: "",
       resumo_profissional: "",
       categoria: "",
-      nome_empresa: "",
+      empresa: "",
       segmento: "",
       dt_empresa_inicio: "",
       dt_empresa_saida: "",
@@ -80,37 +80,6 @@ class CadastroUsuarioCompleto extends Component {
   }
 
   atualizarMeuCadastro() {
-    console.log({
-      nome: this.state.nome,
-      sobrenome: this.state.sobrenome,
-      email: this.state.email,
-      senha: this.state.senha,
-      fotoperfil: this.state.fotoperfil,
-      dt_nascimento: this.state.dt_nascimento,
-      genero: this.state.genero,
-      estado_civil: this.state.estado_civil,
-      nacionalidade: this.state.nacionalidade,
-      uf: this.state.uf,
-      cidade: this.state.cidade,
-      resumo_profissional: this.state.resumo_profissional,
-      categoria: this.state.categoria,
-      nome_empresa: this.state.empresa,
-      segmento: this.state.segmento,
-      dt_empresa_inicio: this.state.dt_empresa_inicio,
-      dt_empresa_saida: this.state.dt_empresa_saida,
-      cargo: this.state.cargo,
-      atividades: this.state.atividades,
-      curso: this.state.curso,
-      instituicao: this.state.instituicao,
-      formacao: this.state.formacao,
-      dt_curso_inicio: this.state.dt_curso_inicio,
-      dt_curso_conclusao: this.state.dt_curso_conclusao,
-      info_complementares: this.state.info_complementares,
-      message1: this.state.message1,
-      disponibilidade: this.state.disponibilidade
-    });
-    return;
-
     //TODO
     let userID = JSON.parse(localStorage.getItem("userId"));
     axios
@@ -128,7 +97,7 @@ class CadastroUsuarioCompleto extends Component {
         cidade: this.state.cidade,
         resumo_profissional: this.state.resumo_profissional,
         category_id: this.state.categoria,
-        nome_empresa: this.state.nome_empresa,
+        empresa: this.state.nome_empresa,
         segmento: this.state.segmento,
         dt_empresa_inicio: this.state.dt_empresa_inicio,
         dt_empresa_saida: this.state.dt_empresa_saida,
@@ -156,9 +125,7 @@ class CadastroUsuarioCompleto extends Component {
   }
 
   handleChangeDisp = disponibilidade => {
-    this.setState({ disponibilidade }, () =>
-      console.log(this.state.disponibilidade)
-    );
+    this.setState({ disponibilidade });
   };
 
   render() {
@@ -250,12 +217,7 @@ class CadastroUsuarioCompleto extends Component {
                 id="exampleDate"
                 placeholder="date placeholder"
                 value={this.state.dt_nascimento}
-                onChange={e =>
-                  this.setState(
-                    { dt_nascimento: e.target.value },
-                    console.log(this.state.dt_nascimento)
-                  )
-                }
+                onChange={e => this.setState({ dt_nascimento: e.target.value })}
                 required
               />
               <br />
@@ -309,10 +271,10 @@ class CadastroUsuarioCompleto extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="Solteiro">Solteiro(a)</option>
-              <option valeu="Casado">Casado(a)</option>
-              <option valeu="Viuvo">Viúvo(a)</option>
-              <option valeu="Divorciado">Divorciado(a)</option>
+              <option value="Solteiro">Solteiro</option>
+              <option valeu="Casado">Casado</option>
+              <option valeu="Viuvo">Viúvo</option>
+              <option valeu="Divorciado">Divorciado</option>
             </Input>
           </div>
 
@@ -808,37 +770,44 @@ class CadastroUsuarioCompleto extends Component {
     axios
       .get(env.API + "resource/" + userID)
       .then(response => {
+        console.log(response);
         // handle success
         const data = response.data;
-        this.setState({
-          nome: data.nome,
-          sobrenome: data.sobrenome,
-          email: data.email,
-          senha: data.senha,
-          fotoperfil: data.fotoperfil,
-          dt_nascimento: data.dt_nascimento,
-          genero: data.genero,
-          estado_civil: data.estado_civil,
-          nacionalidade: data.nacionalidade,
-          uf: data.uf,
-          cidade: data.cidade,
-          resumo_profissional: data.resumo_profissional,
-          categoria: data.category.id,
-          nome_empresa: data.nome_empresa,
-          segmento: data.segmento,
-          dt_empresa_inicio: data.dt_empresa_inicio,
-          dt_empresa_saida: data.dt_empresa_saida,
-          cargo: data.cargo,
-          atividades: data.atividades,
-          curso: data.curso,
-          instituicao: data.instituicao,
-          formacao: data.formacao,
-          dt_curso_inicio: data.dt_curso_inicio,
-          dt_curso_conclusao: data.dt_curso_conclusao,
-          info_complementares: data.info_complementares,
-          message1: data.message1,
-          disp: data.disponibilidade
-        });
+        console.log(data);
+        console.log(data.dt_nascimento);
+
+        this.setState(
+          {
+            nome: data.nome,
+            sobrenome: data.sobrenome,
+            email: data.email,
+            senha: data.senha,
+            fotoperfil: data.fotoperfil,
+            dt_nascimento: data.dt_nascimento,
+            genero: data.genero,
+            estado_civil: data.estado_civil,
+            nacionalidade: data.nacionalidade,
+            uf: data.uf,
+            cidade: data.cidade,
+            resumo_profissional: data.resumo_profissional,
+            categoria: data.category.id,
+            empresa: data.nome_empresa,
+            segmento: data.segmento,
+            dt_empresa_inicio: data.dt_empresa_inicio,
+            dt_empresa_saida: data.dt_empresa_saida,
+            cargo: data.cargo,
+            atividades: data.atividades,
+            curso: data.curso,
+            instituicao: data.instituicao,
+            formacao: data.formacao,
+            dt_curso_inicio: data.dt_curso_inicio,
+            dt_curso_conclusao: data.dt_curso_conclusao,
+            info_complementares: data.info_complementares,
+            message1: data.message1,
+            disp: data.disponibilidade
+          },
+          () => console.log(this.state.dt_nascimento)
+        );
       })
       .catch(error => {
         // handle error
