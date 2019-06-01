@@ -52,6 +52,7 @@ class CadastroUsuarioCompleto extends Component {
       sobrenome: "",
       email: "",
       senha: "",
+      disponibilidade: null,
 
       fotoperfil: "",
       dt_nascimento: "",
@@ -60,7 +61,6 @@ class CadastroUsuarioCompleto extends Component {
       nacionalidade: "",
       uf: "",
       cidade: "",
-      disponibilidade: "",
       resumo_profissional: "",
       categoria: "",
 
@@ -86,6 +86,12 @@ class CadastroUsuarioCompleto extends Component {
   atualizarMeuCadastro() {
     //TODO
   }
+
+  handleChangeDisp = disponibilidade => {
+    this.setState({ disponibilidade }, () =>
+      console.log(this.state.disponibilidade)
+    );
+  };
 
   render() {
     return (
@@ -437,7 +443,12 @@ class CadastroUsuarioCompleto extends Component {
             </label>
             <br />
           </div>
-          <Disponibilidade />
+          {this.state.disp ? (
+            <Disponibilidade
+              disp={this.state.disp}
+              handleChangeDisp={this.handleChangeDisp}
+            />
+          ) : null}
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -768,8 +779,39 @@ class CadastroUsuarioCompleto extends Component {
       .then(response => {
         // handle success
         const data = response.data;
-        console.log(data);
-        this.setState({ nome: data.nome, dt_nascimento: data.dt_nascimento });
+        this.setState({
+          nome: data.nome,
+
+          sobrenome: data.sobrenome,
+          email: data.email,
+          senha: data.senha,
+
+          fotoperfil: data.fotoperfil,
+          dt_nascimento: data.dt_nascimento,
+          genero: data.genero,
+          estado_civil: data.estado_civil,
+          nacionalidade: data.nacionalidade,
+          uf: data.uf,
+          cidade: data.cidade,
+          resumo_profissional: data.resumo_profissional,
+          categoria: data.categoria,
+
+          nome_empresa: data.nome_empresa,
+          segmento: data.segmento,
+          dt_empresa_inicio: data.dt_empresa_inicio,
+          dt_empresa_saida: data.dt_empresa_saida,
+          cargo: data.cargo,
+          atividades: data.atividades,
+
+          curso: data.curso,
+          instituicao: data.instituicao,
+          formacao: data.formacao,
+          dt_curso_inicio: data.dt_curso_inicio,
+          dt_curso_conclusao: data.dt_curso_conclusao,
+          info_complementares: data.info_complementares,
+          message1: data.message1,
+          disp: data.disponibilidade
+        });
       })
       .catch(error => {
         // handle error
