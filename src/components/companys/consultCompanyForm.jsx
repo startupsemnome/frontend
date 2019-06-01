@@ -86,7 +86,7 @@ class ConsultCompanyForm extends Component {
   }
   render() {
     return (
-      <div className="container col-md-8">
+      <div className="container col-md-10">
         {!this.state.companyEdit[1] ? (
           <div>
             <div className="row">
@@ -127,44 +127,50 @@ class ConsultCompanyForm extends Component {
             <div className="row">
               {this.state.users.map(company => {
                 return (
-                  <div
-                    className="col-md-3 box"
-                    style={{
-                      fontSize: "18px",
-                      maxWidth: "275px",
-                      minHeight: "255px",
-                      paddingLeft: "30px",
-                      paddingRight: "5px"
-                    }}
-                    inline={true}
-                  >
+                  <div className="col-md-3 box">
                     <div
                       className="card"
                       body
                       outline
                       style={{
                         backgroundColor: "rgb(254, 254, 254)",
-                        minHeight: "240px",
-                        maxWidth: "274px",
-                        minWidth: "261px",
-                        marginRight: "0px",
-                        marginLeft: "0px",
                         borderRadius: "10px"
                       }}
                     >
                       <div className="card-body" key={`userTable${company.id}`}>
                         <div className="card-title">
-                          <h3 style={{ color: "#707070", margin: "auto" }}>
-                            Razão Social:&nbsp;{company.razaoSocial}
-                            <br />
-                            Nome Fantasia:&nbsp;{company.nomeFantasia}
-                          </h3>
-                        </div>
-                        <div
-                          className="card-text"
-                          style={{ margin: "auto", paddingBottom: "4px" }}
-                        >
-                          <h5>CNPJ:&nbsp;{company.cnpj}</h5>
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Empresa:&nbsp;
+                            </h3>
+                          </span>
+                          {company.nomeFantasia}
+                          <br />
+                          <br />
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Telefone:&nbsp;
+                            </h3>
+                          </span>
+                          {company.telefoneRepresentante}
+                          <br />
+                          <br />
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Seguimento:&nbsp;
+                            </h3>
+                          </span>
+                          {company.segmentoEmpresa}
+                          <br />
+                          <br />
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Quantidade de problemas: &nbsp;&nbsp;{" "}
+                              {company.problem.length}
+                            </h3>
+                          </span>
+                          <br />
+                          <br />
                         </div>
                         <div
                           className="card-footer"
