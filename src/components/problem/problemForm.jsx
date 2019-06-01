@@ -97,11 +97,11 @@ class ProblemForm extends Component {
             titulo: this.state.titulo,
             descricao: this.state.descricao
           })
-          .then(function(response) {
+          .then(function (response) {
             console.log(response);
             this.props.history.push("/consultar-problema");
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.log(error);
           });
       } else if ((method = "update")) {
@@ -113,11 +113,11 @@ class ProblemForm extends Component {
             telefone: this.state.telefone,
             descricao: this.state.descricao
           })
-          .then(function(response) {
+          .then(function (response) {
             console.log(response);
             this.props.history.push("/consultar-problema");
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.log(error);
           });
       }
@@ -143,7 +143,7 @@ class ProblemForm extends Component {
             titulo: data.titulo
           });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     }
@@ -234,7 +234,7 @@ class ProblemForm extends Component {
               style={{ width: "100%" }}
             >
               {this.state.users.map(company => {
-                return <option>{company.empresa}</option>;
+                return <option>{company.razaoSocial}</option>;
               })}
             </Input>
           </div>
@@ -355,8 +355,8 @@ class ProblemForm extends Component {
                 !this.props.id
                   ? this.createProblem("create")
                   : this.props.id == -1
-                  ? this.goToPageListProblem()
-                  : this.createProblem("update", this.props.id);
+                    ? this.goToPageListProblem()
+                    : this.createProblem("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
@@ -364,8 +364,8 @@ class ProblemForm extends Component {
               {!this.props.id
                 ? "Criar"
                 : this.props.id == -1
-                ? "Voltar"
-                : "Editar"}{" "}
+                  ? "Voltar"
+                  : "Editar"}{" "}
               Problema
             </button>
             {this.props.idDetail ? (
