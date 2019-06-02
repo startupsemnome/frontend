@@ -5,7 +5,6 @@ import axios from "axios";
 import env from "./../../consts";
 import ProblemForm from "./problemForm";
 
-
 class ProblemList extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +50,19 @@ class ProblemList extends Component {
   editProblem(id) {
     this.setState({ problemListEdit: [id, true] });
   }
+  formatDate = (data) => {
+
+    let novaData = "";
+    const year = data.substring(0, 4);
+    const month = data.substring(5, 7);
+    const day = data.substring(8, 10);
+    novaData = day + "/" + month + "/" + year;
+
+    return novaData;
+  }
+
+
+
   loadProblems() {
     // Make a request for a user with a given ID
     axios
@@ -117,10 +129,9 @@ class ProblemList extends Component {
                         ID
                       </th>
                       <th scope="col">Empresa</th>
-                      <th scope="col">Titulo</th>
-                      <th scope="col">Categoria</th>
+                      <th scope="col">Contato</th>
+                      <th scope="col">Problema</th>
                       <th scope="col">Descrição</th>
-                      {/* <th scope="col">Disponibilidade</th> */}
                       <th scope="col">Ultima Atualização</th>
                       <th scope="col">Data Criação</th>
                       <th scope="col">Opções</th>
@@ -131,13 +142,16 @@ class ProblemList extends Component {
                       return (
                         <tr key={`buscaTable${problem.id}`}>
                           <td style={{ display: "none" }}>{problem.id}</td>
-                          <td>{problem.empresa}</td>
+                          <td>{problem.company.razaoSocial}</td>
+
+                          <td>
+                            {problem.company.emailRepresentante} <br />
+                            {problem.telefone}
+                          </td>
                           <td>{problem.titulo}</td>
-                          <td>{problem.categoria}</td>
                           <td>{problem.descricao}</td>
-                          {/* <td>{problem.disponibilidade}</td> */}
-                          <td>{problem.updated_at}</td>
-                          <td>{problem.created_at}</td>
+                          <td>{this.formatDate(problem.updated_at)}</td>
+                          <td>{this.formatDate(problem.created_at)}</td>
                           <td>
                             <button
                               onClick={e => this.detailProblem(problem.id)}
