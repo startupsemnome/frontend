@@ -17,6 +17,7 @@ import componentsStyle from "./../assets/jss/material-kit-react/views/components
 import CadastroUsuarioCompleto from "./../components/cadastroUsuarioCompleto.jsx";
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
+import WhoWeAre from "../components/institutional/whoWeAre.jsx";
 import HowWorking from "../components/institutional/HowWorking.jsx";
 import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
@@ -76,6 +77,9 @@ class Institutional extends Component {
           {!this.props.login || localStorage.getItem("type") === "ADMIN" ? (
             <SectionCarousel />
           ) : null}
+           
+          <WhoWeAre />
+          
           {!this.props.login ? (
             <SectionBasics history={this.props.history} />
           ) : localStorage.getItem("type") !== "ADMIN" ? (
