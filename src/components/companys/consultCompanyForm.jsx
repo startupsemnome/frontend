@@ -45,7 +45,7 @@ class ConsultCompanyForm extends Component {
       .post(env.API + "consult-company", { search: this.state.userTable })
       .then(response => {
         // handle success
-        alert("Busca Realizada com sucesso");
+        console.log(response.data);
         const data = response.data;
         this.setState({ users: data });
       })
@@ -73,17 +73,20 @@ class ConsultCompanyForm extends Component {
     this.loadCompanys();
   }
 
-  viewCard(id) {
+  viewCard = id => {
     axios
       .get(env.API + "view-company/" + id)
-      .then(function(response) {
+      .then(response => {
         console.log(response);
-        this.props.history.push("\visualizar-empresa");
+        this.props.history.push({
+          pathname: "/visualizar-empresa",
+          state: { company: response.data }
+        });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
-  }
+  };
   render() {
     return (
       <div className="container col-md-10">

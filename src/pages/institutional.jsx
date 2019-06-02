@@ -57,11 +57,7 @@ class Institutional extends Component {
           }}
           {...rest}
         />
-        <Parallax
-          image={
-            "https://www.awal.com/hubfs/Awal%20-%20February%202018%20Folder/Images/Monday-finding_a_manager_v1.jpg"
-          }
-        >
+        <Parallax image={require("../images/home.jpg")}>
           <div className={classes.container}>
             <GridContainer>
               <GridItem>
