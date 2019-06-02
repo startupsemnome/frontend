@@ -27,7 +27,6 @@ class Projects extends Component {
     axios
       .post(env.API + "consult-problem", { search: this.state.buscaTable })
       .then(response => {
-        alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
         this.setState({ users: response.data });
       })

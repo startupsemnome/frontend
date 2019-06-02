@@ -45,7 +45,7 @@ class ConsultCompanyForm extends Component {
       .post(env.API + "consult-company", { search: this.state.userTable })
       .then(response => {
         // handle success
-        alert("Busca Realizada com sucesso");
+        console.log(response.data);
         const data = response.data;
         this.setState({ users: data });
       })
