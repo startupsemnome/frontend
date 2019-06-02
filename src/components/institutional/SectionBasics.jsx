@@ -64,11 +64,9 @@ class SectionBasics extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "50px" }}>
+      <div id="header3" style={{ marginTop: "50px" }}>
         <div>
-          <h1 id="header3" className="footer-H1-Question">
-            Deseja cadastrar o seu perfil?
-          </h1>
+          <h1 className="footer-H1-Question">Deseja cadastrar o seu perfil?</h1>
         </div>
         <div
           style={{
@@ -77,15 +75,15 @@ class SectionBasics extends Component {
             marginTop: "28px"
           }}
         >
-       
           <form className="signupFor form-inline">
             <div className="col-md-3">
-              <label className="labelField"
+              <label
+                className="labelField"
                 style={{ display: "flex", justifyContent: "end" }}
-                >
+              >
                 Nome
-             </label>
-             <input
+              </label>
+              <input
                 className="inputFields col-md-12"
                 type="text"
                 placeholder="Digite o seu nome"
@@ -95,59 +93,72 @@ class SectionBasics extends Component {
             </div>
 
             <div className="col-md-9">
-              <label className="labelField"
-                 style={{ display: "flex", justifyContent: "end" }}
-                >
-                  Sobrenome:
-                </label>
-                <input
-                  className="inputFields col-md-12"
-                  type="text"
-                  placeholder="Digite o seu sobrenome"
-                  value={this.state.sobrenome}
-                  onChange={e => this.setState({ sobrenome: e.target.value })}
-                />{" "}
+              <label
+                className="labelField"
+                style={{ display: "flex", justifyContent: "end" }}
+              >
+                Sobrenome:
+              </label>
+              <input
+                className="inputFields col-md-12"
+                type="text"
+                placeholder="Digite o seu sobrenome"
+                value={this.state.sobrenome}
+                onChange={e => this.setState({ sobrenome: e.target.value })}
+              />{" "}
             </div>
-          <div className="col-md-6">
-                <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>E-mail:</label>
-                <input
-                  className="inputFields col-md-12"
-                  type="text"
-                  placeholder="Digite o seu e-mail"
-                  value={this.state.email}
-                  onChange={e => this.setState({ email: e.target.value })}
-                />{" "}
-                </div>
+            <div className="col-md-6">
+              <label
+                className="labelField"
+                style={{ display: "flex", justifyContent: "end" }}
+              >
+                E-mail:
+              </label>
+              <input
+                className="inputFields col-md-12"
+                type="text"
+                placeholder="Digite o seu e-mail"
+                value={this.state.email}
+                onChange={e => this.setState({ email: e.target.value })}
+              />{" "}
+            </div>
             <div className="col-md-3">
-                <label className="labelField">Cadastrar Senha:</label>
-                <input
-                  className="inputFields col-md12"
-                  type="password"
-                  placeholder="Digite a sua senha"
-                  value={this.state.senha}
-                  onChange={e => this.setState({ senha: e.target.value })}
-                />
-                </div>
-                  <div className="col-md-3">
-                    <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>Confirmação de Senha:</label>
-                      <input
-                        className="inputFields col-md-12"
-                        type="password"
-                        placeholder="Confirme a sua senha"
-                        onChange={e =>
-                          this.setState({ confirmSenha: e.target.value })
-                        }
-                      />
-                  </div>
-            <label className="labelFields col-md-12" style={{ color: "red" }}>
+              <label className="labelField">Cadastrar Senha:</label>
+              <input
+                className="inputFields col-md12"
+                type="password"
+                placeholder="Digite a sua senha"
+                value={this.state.senha}
+                onChange={e => this.setState({ senha: e.target.value })}
+              />
+            </div>
+            <div className="col-md-3">
+              <label
+                className="labelField"
+                style={{ display: "flex", justifyContent: "end" }}
+              >
+                Confirmação de Senha:
+              </label>
+              <input
+                className="inputFields col-md-12"
+                type="password"
+                placeholder="Confirme a sua senha"
+                onChange={e => this.setState({ confirmSenha: e.target.value })}
+              />
+            </div>
+            <label
+              className="labelFields col-md-12"
+              style={{ marginBottom: "20px", color: "red" }}
+            >
               {this.state.error}
             </label>
-            <Row>
+            <Row style={{ width: "110%" }}>
               <Col
                 style={{
                   display: "flex",
                   justifyContent: "center"
                 }}
+                className="col-md-12"
               >
                 <button
                   type="button"
@@ -155,13 +166,13 @@ class SectionBasics extends Component {
                   style={{ width: "100%" }}
                   onClick={() => this.cadastrarResource()}
                 >
-                  Cadastrar
+                  Cadastre-se na plataforma
                 </button>
               </Col>
             </Row>
           </form>
-          </div>
         </div>
+      </div>
     );
   }
 }
