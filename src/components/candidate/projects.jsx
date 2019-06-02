@@ -18,10 +18,8 @@ class Projects extends Component {
     super(props);
     this.state = {
       project: [],
-      buscaTable: "",
-      problemListEdit: [null, false]
+      buscaTable: ""
     };
-    console.log(this.props);
     this.deleteProblem = this.deleteProblem.bind(this);
   }
   findProblem() {
@@ -29,7 +27,6 @@ class Projects extends Component {
     axios
       .post(env.API + "consult-problem", { search: this.state.buscaTable })
       .then(response => {
-        alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
         this.setState({ users: response.data });
       })
@@ -52,9 +49,7 @@ class Projects extends Component {
         console.log(error + "Erro na exclusao do item");
       });
   }
-  editProblem(id) {
-    this.setState({ problemListEdit: [id, true] });
-  }
+
   loadProblems() {
     // Make a request for a user with a given ID
     const id_user = localStorage.getItem("userId");
@@ -96,87 +91,79 @@ class Projects extends Component {
           className="container col-md-8 mt-5"
           style={{ marginTop: "130px !important" }}
         >
-          {!this.state.problemListEdit[1] ? (
-            <div>
-              <div className="row" style={{ marginTop: 60 }}>
-                <div className="col-md-12">
-                  <h3 align="center" className="display-3">
-                    Olá, Candidato!
-                  </h3>
-                  <h1 className="h1-main">
-                    Você foi selecionado para os seguintes projetos:
-                  </h1>
-                  {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
-                  <hr className="my-2" />
-                  <p className="lead" />
-                </div>
+          <div>
+            <div className="row" style={{ marginTop: 60 }}>
+              <div className="col-md-12">
+                <h3 align="center" className="display-3">
+                  Olá, Candidato!
+                </h3>
+                <h1 className="h1-main">
+                  Você foi selecionado para os seguintes projetos:
+                </h1>
+                {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
+                <hr className="my-2" />
+                <p className="lead" />
               </div>
-              <div className="row mt-2 mb-2">
-                <div
-                  className="col-md-12"
-                  style={{
-                    backgroundColor: "#1a8687",
-                    justifyContent: "center",
-                    backgroundColor: "rgb(26, 134, 135)",
-                    display: "flex"
-                  }}
-                />
-              </div>
-
-              {this.state.project ? (
-                <div className="row">
-                  <div className="col-md-12">
-                    <table className="table table-main">
-                      <thead>
-                        <tr>
-                          <th scope="col" style={{ display: "none" }}>
-                            ID
-                          </th>
-                          <th scope="col">Empresa</th>
-                          <th scope="col">Categoria</th>
-                          <th scope="col">Status</th>
-                          {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
-                          <th scope="col">Tituto</th>
-                          <th scope="col">Opções</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.state.project.map(proj => {
-                          return (
-                            <tr key={`buscaTable${proj.id}`}>
-                              <td style={{ display: "none" }}>
-                                {proj.problem.id}
-                              </td>
-                              <td>{proj.problem.empresa}</td>
-                              <td>{proj.problem.categoria}</td>
-                              <td>{proj.status}</td>
-                              <td>{proj.problem.titulo}</td>
-                              <td>
-                                <ModalLearnMore
-                                  atualProblemId={proj.problem.id}
-                                  atualProblemResourceId={proj.id}
-                                  titulo={proj.problem.titulo}
-                                  history={this.props.history}
-                                />
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              ) : (
-                <PoxaNaoFoiDessaVez history={this.props.history} />
-              )}
             </div>
-          ) : (
-            <ProblemForm
-              history={this.props.history}
-              edit={this.state.problemListEdit[1]}
-              id={this.state.problemListEdit[0]}
-            />
-          )}
+            <div className="row mt-2 mb-2">
+              <div
+                className="col-md-12"
+                style={{
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
+                }}
+              />
+            </div>
+
+            {this.state.project.length > 0 ? (
+              <div className="row">
+                <div className="col-md-12">
+                  <table className="table table-main">
+                    <thead>
+                      <tr>
+                        <th scope="col" style={{ display: "none" }}>
+                          ID
+                        </th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Status</th>
+                        {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
+                        <th scope="col">Tituto</th>
+                        <th scope="col">Opções</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.project.map(proj => {
+                        return (
+                          <tr key={`buscaTable${proj.id}`}>
+                            <td style={{ display: "none" }}>
+                              {proj.problem.id}
+                            </td>
+                            <td>{proj.problem.empresa}</td>
+                            <td>{proj.problem.categoria}</td>
+                            <td>{proj.status}</td>
+                            <td>{proj.problem.titulo}</td>
+                            <td>
+                              <ModalLearnMore
+                                atualProblemId={proj.problem.id}
+                                atualProblemResourceId={proj.id}
+                                titulo={proj.problem.titulo}
+                                history={this.props.history}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : (
+              <PoxaNaoFoiDessaVez history={this.props.history} />
+            )}
+          </div>
         </div>
       </div>
     );

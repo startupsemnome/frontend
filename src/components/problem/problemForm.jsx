@@ -35,7 +35,7 @@ class ProblemForm extends Component {
       titulo: "",
       categoria: "",
       descricao: "",
-      disponibildiade: "",
+      disponibilidade: null,
       modal: false,
       error: "",
       // alteração
@@ -57,6 +57,7 @@ class ProblemForm extends Component {
   }
   loadNamesCompany() {
     // Carregando os nomes das empresas
+    console.log(this.props);
     axios
       .get(env.API + "company")
       .then(response => {
@@ -87,6 +88,9 @@ class ProblemForm extends Component {
   showAceeptForm() {
     this.setState({ acceptOpen: !this.state.acceptOpen });
   }
+  handleChangeDisp = disponibilidade => {
+    this.setState({ disponibilidade });
+  };
   createProblem(method, id) {
     if (!this.hasErros()) {
       if (method == "create") {
@@ -99,11 +103,11 @@ class ProblemForm extends Component {
             descricao: this.state.descricao,
             disponibilidade: this.state.disponibilidade
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history.push("/consultar-problema");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       } else if ((method = "update")) {
@@ -115,11 +119,11 @@ class ProblemForm extends Component {
             descricao: this.state.descricao,
             disponibilidade: this.state.disponibilidade
           })
-          .then(function (response) {
+          .then(function(response) {
             console.log(response);
             this.props.history.push("/consultar-problema");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
       }
@@ -132,7 +136,7 @@ class ProblemForm extends Component {
     if (this.props.id) {
       const id = this.props.id;
       axios
-        .get(env.API + "problem/" + id)
+        .get(env.API + "problem/" + this.props.idDetail)
         .then(response => {
           console.log(response);
           const data = response.data;
@@ -144,7 +148,7 @@ class ProblemForm extends Component {
             disponibilidade: data.disponibilidade
           });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
@@ -177,7 +181,7 @@ class ProblemForm extends Component {
   }
 
   goToPageListProblem() {
-    window.location = "/consultar-problema";
+    this.props.handleChangeProblemList([null, false]);
   }
 
   findResources() {
@@ -335,7 +339,6 @@ class ProblemForm extends Component {
             />
           </div>
 
-
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -345,7 +348,12 @@ class ProblemForm extends Component {
             </label>
             <br />
           </div>
-          <Disponibilidade />
+          {this.state.disponibilidade ? (
+            <Disponibilidade
+              disp={this.state.disponibilidade}
+              handleChangeDisp={this.handleChangeDisp}
+            />
+          ) : null}
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
@@ -356,8 +364,8 @@ class ProblemForm extends Component {
                 !this.props.id
                   ? this.createProblem("create")
                   : this.props.id == -1
-                    ? this.goToPageListProblem()
-                    : this.createProblem("update", this.props.id);
+                  ? this.goToPageListProblem()
+                  : this.createProblem("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
@@ -365,8 +373,8 @@ class ProblemForm extends Component {
               {!this.props.id
                 ? "Criar"
                 : this.props.id == -1
-                  ? "Voltar"
-                  : "Editar"}{" "}
+                ? "Voltar"
+                : "Editar"}{" "}
               Problema
             </button>
             {this.props.idDetail ? (
@@ -447,12 +455,12 @@ class ProblemForm extends Component {
             </Table>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.callResource}>
+            <Button
+              className="join-btn-no-transform mr-1 login"
+              onClick={this.callResource}
+            >
               Comunicar Recursos
             </Button>{" "}
-            <Button color="secondary" onClick={this.findResources}>
-              Voltar
-            </Button>
           </ModalFooter>
         </Modal>
       </div>

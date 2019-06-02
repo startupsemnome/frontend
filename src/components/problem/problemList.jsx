@@ -16,12 +16,14 @@ class ProblemList extends Component {
     console.log(this.props);
     this.deleteProblem = this.deleteProblem.bind(this);
   }
+  handleChangeProblemList = problemListEdit => {
+    this.setState({ problemListEdit });
+  };
   findProblem() {
     // Chama a api do banco com o método buscar
     axios
       .post(env.API + "consult-problem", { search: this.state.buscaTable })
       .then(response => {
-        alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
         this.setState({ users: response.data });
       })
@@ -50,8 +52,7 @@ class ProblemList extends Component {
   editProblem(id) {
     this.setState({ problemListEdit: [id, true] });
   }
-  formatDate = (data) => {
-
+  formatDate = data => {
     let novaData = "";
     const year = data.substring(0, 4);
     const month = data.substring(5, 7);
@@ -59,9 +60,7 @@ class ProblemList extends Component {
     novaData = day + "/" + month + "/" + year;
 
     return novaData;
-  }
-
-
+  };
 
   loadProblems() {
     // Make a request for a user with a given ID
@@ -188,13 +187,14 @@ class ProblemList extends Component {
             </div>
           </div>
         ) : (
-            <ProblemForm
-              history={this.props.history}
-              edit={this.state.problemListEdit[1]}
-              id={this.state.problemListEdit[0]}
-              idDetail={this.state.problemListEdit[2]}
-            />
-          )}
+          <ProblemForm
+            history={this.props.history}
+            edit={this.state.problemListEdit[1]}
+            id={this.state.problemListEdit[0]}
+            idDetail={this.state.problemListEdit[2]}
+            handleChangeProblemList={this.handleChangeProblemList}
+          />
+        )}
       </div>
     );
   }
