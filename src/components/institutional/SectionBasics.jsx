@@ -3,6 +3,7 @@ import { Row, Col } from "reactstrap";
 import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
+import LoaderComponent from "./LoaderComponent.jsx";
 
 class SectionBasics extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class SectionBasics extends Component {
     this.state = {
       error: "",
       nome: "",
+      loading: false,
       sobrenome: "",
       email: "",
       confirmSenha: "",
@@ -40,7 +42,8 @@ class SectionBasics extends Component {
     return false;
   }
 
-  cadastrarResource() {
+  cadastrarResource = () => {
+    this.setState({ loading: true });
     if (!this.hasErros()) {
       axios
         .post(env.API + "resource", {
@@ -50,53 +53,58 @@ class SectionBasics extends Component {
           senha: this.state.senha
         })
         .then(response => {
-          console.log(response);
           localStorage.setItem("userId", JSON.stringify(response.data.id));
           localStorage.setItem("userName", JSON.stringify(response.data.nome));
           localStorage.setItem("type", "RESOURCE");
+          this.setState({ loading: false });
           window.location.reload();
         })
         .catch(function(error) {
+          this.setState({ loading: false });
           console.log(error);
         });
     }
-  }
+  };
 
   render() {
-    return (
-      <div style={{ marginTop: "50px" }}>
-        <div>
-          <h1 id="header3" className="footer-H1-Question">
-            Deseja cadastrar o seu perfil?
-          </h1>
-        </div>
-        <div
-          style={{
-            padding: "32px 80px",
-            backgroundColor: "#33b3e2",
-            marginTop: "28px"
-          }}
-        >
-       
-          <form className="signupFor form-inline">
-            <div className="col-md-3">
-              <label className="labelField"
-                style={{ display: "flex", justifyContent: "end" }}
+    if (this.state.loading) {
+      return <LoaderComponent>Cadastrar</LoaderComponent>;
+    } else {
+      return (
+        <div id="header3" style={{ marginTop: "50px" }}>
+          <div>
+            <h1 className="footer-H1-Question">
+              Deseja cadastrar o seu perfil?
+            </h1>
+          </div>
+          <div
+            style={{
+              padding: "32px 80px",
+              backgroundColor: "#33b3e2",
+              marginTop: "28px"
+            }}
+          >
+            <form className="signupFor form-inline">
+              <div className="col-md-3">
+                <label
+                  className="labelField"
+                  style={{ display: "flex", justifyContent: "end" }}
                 >
-                Nome
-             </label>
-             <input
-                className="inputFields col-md-12"
-                type="text"
-                placeholder="Digite o seu nome"
-                value={this.state.nome}
-                onChange={e => this.setState({ nome: e.target.value })}
-              />
-            </div>
+                  Nome
+                </label>
+                <input
+                  className="inputFields col-md-12"
+                  type="text"
+                  placeholder="Digite o seu nome"
+                  value={this.state.nome}
+                  onChange={e => this.setState({ nome: e.target.value })}
+                />
+              </div>
 
-            <div className="col-md-9">
-              <label className="labelField"
-                 style={{ display: "flex", justifyContent: "end" }}
+              <div className="col-md-9">
+                <label
+                  className="labelField"
+                  style={{ display: "flex", justifyContent: "end" }}
                 >
                   Sobrenome:
                 </label>
@@ -107,9 +115,14 @@ class SectionBasics extends Component {
                   value={this.state.sobrenome}
                   onChange={e => this.setState({ sobrenome: e.target.value })}
                 />{" "}
-            </div>
-          <div className="col-md-6">
-                <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>E-mail:</label>
+              </div>
+              <div className="col-md-6">
+                <label
+                  className="labelField"
+                  style={{ display: "flex", justifyContent: "end" }}
+                >
+                  E-mail:
+                </label>
                 <input
                   className="inputFields col-md-12"
                   type="text"
@@ -117,8 +130,8 @@ class SectionBasics extends Component {
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
                 />{" "}
-                </div>
-            <div className="col-md-3">
+              </div>
+              <div className="col-md-3">
                 <label className="labelField">Cadastrar Senha:</label>
                 <input
                   className="inputFields col-md12"
@@ -127,42 +140,52 @@ class SectionBasics extends Component {
                   value={this.state.senha}
                   onChange={e => this.setState({ senha: e.target.value })}
                 />
-                </div>
-                  <div className="col-md-3">
-                    <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>Confirmação de Senha:</label>
-                      <input
-                        className="inputFields col-md-12"
-                        type="password"
-                        placeholder="Confirme a sua senha"
-                        onChange={e =>
-                          this.setState({ confirmSenha: e.target.value })
-                        }
-                      />
-                  </div>
-            <label className="labelFields col-md-12" style={{ color: "red" }}>
-              {this.state.error}
-            </label>
-            <Row>
-              <Col
-                style={{
-                  display: "flex",
-                  justifyContent: "center"
-                }}
-              >
-                <button
-                  type="button"
-                  className="join-btn-no-transform mr-1 login"
-                  style={{ width: "100%" }}
-                  onClick={() => this.cadastrarResource()}
+              </div>
+              <div className="col-md-3">
+                <label
+                  className="labelField"
+                  style={{ display: "flex", justifyContent: "end" }}
                 >
-                  Cadastrar
-                </button>
-              </Col>
-            </Row>
-          </form>
+                  Confirmação de Senha:
+                </label>
+                <input
+                  className="inputFields col-md-12"
+                  type="password"
+                  placeholder="Confirme a sua senha"
+                  onChange={e =>
+                    this.setState({ confirmSenha: e.target.value })
+                  }
+                />
+              </div>
+              <label
+                className="labelFields col-md-12"
+                style={{ marginBottom: "20px", color: "red" }}
+              >
+                {this.state.error}
+              </label>
+              <Row style={{ width: "110%" }}>
+                <Col
+                  style={{
+                    display: "flex",
+                    justifyContent: "center"
+                  }}
+                  className="col-md-12"
+                >
+                  <button
+                    type="button"
+                    className="join-btn-no-transform mr-1 login"
+                    style={{ width: "100%" }}
+                    onClick={() => this.cadastrarResource()}
+                  >
+                    Cadastre-se na plataforma
+                  </button>
+                </Col>
+              </Row>
+            </form>
           </div>
         </div>
-    );
+      );
+    }
   }
 }
 export default SectionBasics;
