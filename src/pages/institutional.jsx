@@ -80,7 +80,7 @@ class Institutional extends Component {
           {!this.props.login || localStorage.getItem("type") === "ADMIN" ? (
             <SectionCarousel />
           ) : null}
-          {!this.props.login ? (
+          {this.props.login ? (
             <SectionBasics history={this.props.history} />
           ) : localStorage.getItem("type") !== "ADMIN" ? (
             <CadastroUsuarioCompleto />

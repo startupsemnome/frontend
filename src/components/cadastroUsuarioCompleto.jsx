@@ -137,10 +137,10 @@ class CadastroUsuarioCompleto extends Component {
               O Seu Cadastro completo Aumenta suas chances de ser Chamado para
               um projeto
             </h1>
-            <br />
+     
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -159,7 +159,7 @@ class CadastroUsuarioCompleto extends Component {
               required
             />
           </div>
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -186,7 +186,7 @@ class CadastroUsuarioCompleto extends Component {
             >
               Foto de Perfil:{" "}
             </label>
-            <br />
+       
             <FormGroup row>
               <Label for="exampleFile" />
               <Col sm={10}>
@@ -198,17 +198,17 @@ class CadastroUsuarioCompleto extends Component {
                 />
               </Col>
             </FormGroup>
-            <br />
+           
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Data de Nascimento:
             </label>
-            <br />
+         
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -221,12 +221,12 @@ class CadastroUsuarioCompleto extends Component {
                 onChange={e => this.setState({ dt_nascimento: e.target.value })}
                 required
               />
-              <br />
+         
             </FormGroup>
-            <br />
+        
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -252,7 +252,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -279,7 +279,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -308,7 +308,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -358,7 +358,7 @@ class CadastroUsuarioCompleto extends Component {
           </div>
 
           {/* CIDADE - POR ESTADOS*/}
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -404,7 +404,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -435,7 +435,7 @@ class CadastroUsuarioCompleto extends Component {
             >
               Informe a disponibilidade da atuação:
             </label>
-            <br />
+       
           </div>
           {this.state.disp ? (
             <Disponibilidade
@@ -443,7 +443,7 @@ class CadastroUsuarioCompleto extends Component {
               handleChangeDisp={this.handleChangeDisp}
             />
           ) : null}
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -462,20 +462,19 @@ class CadastroUsuarioCompleto extends Component {
             />
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Experiência Profissional
-            </label>
-            <br />
-            <label
+          </label>
+          <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Ultima Empresa:
-            </label>
+          </label>
             <textarea
               className="inputFields col-md-12"
               type="text"
@@ -510,7 +509,7 @@ class CadastroUsuarioCompleto extends Component {
             >
               Data de Ínicio:
             </label>
-            <br />
+        
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -525,9 +524,9 @@ class CadastroUsuarioCompleto extends Component {
                 }
                 required
               />
-              <br />
+            
             </FormGroup>
-            <br />
+         
           </div>
 
           <div className="col-md-6">
@@ -537,7 +536,7 @@ class CadastroUsuarioCompleto extends Component {
             >
               Data de Saída:
             </label>
-            <br />
+           
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -552,13 +551,13 @@ class CadastroUsuarioCompleto extends Component {
                 }
                 required
               />
-              <br />
+           
             </FormGroup>
-            <br />
+        
           </div>
-          <br />
+   
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -575,7 +574,7 @@ class CadastroUsuarioCompleto extends Component {
             />
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -592,14 +591,14 @@ class CadastroUsuarioCompleto extends Component {
             />
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Formação
             </label>
-            <br />
+        
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -630,8 +629,8 @@ class CadastroUsuarioCompleto extends Component {
               required
             />
           </div>
-
-          <div className="col-md-12">
+          
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -664,14 +663,14 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Data de Ínicio:
             </label>
-            <br />
+          
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -686,19 +685,19 @@ class CadastroUsuarioCompleto extends Component {
                 }
                 required
               />
-              <br />
+            
             </FormGroup>
-            <br />
+    
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Data de Conclusão:
             </label>
-            <br />
+           
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -713,9 +712,9 @@ class CadastroUsuarioCompleto extends Component {
                 }
                 required
               />
-              <br />
+           
             </FormGroup>
-            <br />
+          
           </div>
 
           <div className="col-md-12">
