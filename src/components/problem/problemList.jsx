@@ -16,6 +16,9 @@ class ProblemList extends Component {
     console.log(this.props);
     this.deleteProblem = this.deleteProblem.bind(this);
   }
+  handleChangeProblemList = problemListEdit => {
+    this.setState({ problemListEdit });
+  };
   findProblem() {
     // Chama a api do banco com o método buscar
     axios
@@ -50,6 +53,16 @@ class ProblemList extends Component {
   editProblem(id) {
     this.setState({ problemListEdit: [id, true] });
   }
+  formatDate = data => {
+    let novaData = "";
+    const year = data.substring(0, 4);
+    const month = data.substring(5, 7);
+    const day = data.substring(8, 10);
+    novaData = day + "/" + month + "/" + year;
+
+    return novaData;
+  };
+
   loadProblems() {
     // Make a request for a user with a given ID
     axios
@@ -116,7 +129,6 @@ class ProblemList extends Component {
                         ID
                       </th>
                       <th scope="col">Empresa</th>
-                      <th scope="col">Solicitante</th>
                       <th scope="col">Contato</th>
                       <th scope="col">Problema</th>
                       <th scope="col">Descrição</th>
@@ -130,16 +142,16 @@ class ProblemList extends Component {
                       return (
                         <tr key={`buscaTable${problem.id}`}>
                           <td style={{ display: "none" }}>{problem.id}</td>
-                          <td>{problem.company.empresa}</td>
-                          <td>{problem.solicitante}</td>
+                          <td>{problem.company.razaoSocial}</td>
+
                           <td>
-                            {problem.email} <br />
+                            {problem.company.emailRepresentante} <br />
                             {problem.telefone}
                           </td>
                           <td>{problem.titulo}</td>
                           <td>{problem.descricao}</td>
-                          <td>{problem.updated_at}</td>
-                          <td>{problem.created_at}</td>
+                          <td>{this.formatDate(problem.updated_at)}</td>
+                          <td>{this.formatDate(problem.created_at)}</td>
                           <td>
                             <button
                               onClick={e => this.detailProblem(problem.id)}
@@ -181,6 +193,7 @@ class ProblemList extends Component {
             edit={this.state.problemListEdit[1]}
             id={this.state.problemListEdit[0]}
             idDetail={this.state.problemListEdit[2]}
+            handleChangeProblemList={this.handleChangeProblemList}
           />
         )}
       </div>

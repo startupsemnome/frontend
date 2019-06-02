@@ -25,15 +25,17 @@ class ProblemForm extends Component {
     super(props);
 
     this.state = {
-      empresa: "",
       users: [],
       resourcesCall: [],
-      solicitante: "",
       userTable: "",
-      email: "",
-      telefone: "",
+      // email: "",
+      // telefone: "",
+      // solicitante: "",
+      empresa: "",
       titulo: "",
+      categoria: "",
       descricao: "",
+      disponibilidade: null,
       modal: false,
       error: "",
       // alteração
@@ -55,6 +57,7 @@ class ProblemForm extends Component {
   }
   loadNamesCompany() {
     // Carregando os nomes das empresas
+    console.log(this.props);
     axios
       .get(env.API + "company")
       .then(response => {
@@ -85,17 +88,20 @@ class ProblemForm extends Component {
   showAceeptForm() {
     this.setState({ acceptOpen: !this.state.acceptOpen });
   }
+  handleChangeDisp = disponibilidade => {
+    this.setState({ disponibilidade });
+  };
   createProblem(method, id) {
     if (!this.hasErros()) {
       if (method == "create") {
         axios
           .post(env.API + "problem", {
+            empresa_id: 1,
             empresa: this.state.empresa,
-            solicitante: this.state.solicitante,
-            email: this.state.email,
-            telefone: this.state.telefone,
             titulo: this.state.titulo,
-            descricao: this.state.descricao
+            categoria: this.state.categoria,
+            descricao: this.state.descricao,
+            disponibilidade: this.state.disponibilidade
           })
           .then(function(response) {
             console.log(response);
@@ -108,10 +114,10 @@ class ProblemForm extends Component {
         axios
           .put(env.API + "problem/" + id, {
             empresa: this.state.empresa,
-            solicitante: this.state.solicitante,
-            email: this.state.email,
-            telefone: this.state.telefone,
-            descricao: this.state.descricao
+            titulo: this.state.titulo,
+            categoria: this.state.categoria,
+            descricao: this.state.descricao,
+            disponibilidade: this.state.disponibilidade
           })
           .then(function(response) {
             console.log(response);
@@ -130,17 +136,16 @@ class ProblemForm extends Component {
     if (this.props.id) {
       const id = this.props.id;
       axios
-        .get(env.API + "problem/" + id)
+        .get(env.API + "problem/" + this.props.idDetail)
         .then(response => {
           console.log(response);
           const data = response.data;
           this.setState({
             empresa: data.empresa,
-            solicitante: data.solicitante,
-            email: data.email,
-            telefone: data.telefone,
+            titulo: data.titulo,
+            categoria: data.categoria,
             descricao: data.descricao,
-            titulo: data.titulo
+            disponibilidade: data.disponibilidade
           });
         })
         .catch(function(error) {
@@ -176,7 +181,7 @@ class ProblemForm extends Component {
   }
 
   goToPageListProblem() {
-    window.location = "/consultar-problema";
+    this.props.handleChangeProblemList([null, false]);
   }
 
   findResources() {
@@ -184,23 +189,17 @@ class ProblemForm extends Component {
   }
 
   hasErros() {
-    if (this.state.empresa === "") {
+    if (this.state.razaoSocial === "") {
       this.setState({ error: "preencha o campo empresa" });
-      return true;
-    } else if (this.state.solicitante === "") {
-      this.setState({ error: "preencha o campo solicitante" });
-      return true;
-    } else if (this.state.email === "") {
-      this.setState({ error: "preencha o campo email" });
-      return true;
-    } else if (this.state.telefone === "") {
-      this.setState({ error: "preencha o campo telefone" });
       return true;
     } else if (this.state.titulo === "") {
       this.setState({ error: "preencha o campo titulo" });
       return true;
+    } else if (this.state.categoria === "") {
+      this.setState({ error: "preencha o campo categoria" });
+      return true;
     } else if (this.state.descricao === "") {
-      this.setState({ error: "preencha o campo problema" });
+      this.setState({ error: "preencha o campo descricao" });
       return true;
     }
     return false;
@@ -230,11 +229,14 @@ class ProblemForm extends Component {
               className="inputFields col-md-12"
               type="select"
               name="select"
-              id="exampleSelect"
+              id="empresabanco"
               style={{ width: "100%" }}
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
+              required
             >
               {this.state.users.map(company => {
-                return <option>{company.empresa}</option>;
+                return <option>{company.razaoSocial}</option>;
               })}
             </Input>
           </div>
@@ -251,7 +253,6 @@ class ProblemForm extends Component {
               placeholder="Digite em poucas palavras o titulo do seu problema"
               value={this.state.titulo}
               onChange={e => this.setState({ titulo: e.target.value })}
-              onChange={e => this.setState({ email: e.target.value })}
               required
             />
           </div>
@@ -279,8 +280,11 @@ class ProblemForm extends Component {
               name="category"
               id="optioncategory"
               style={{ width: "100%" }}
+              value={this.state.categoria}
+              onChange={e => this.setState({ categoria: e.target.value })}
+              required
             >
-              <option value="1">Administração</option>
+              ><option value="1">Administração</option>
               <option valeu="2">Comércio Exterior</option>
               <option value="3">Tecnologia</option>
               <option value="4">Arquitetura</option>
@@ -344,7 +348,12 @@ class ProblemForm extends Component {
             </label>
             <br />
           </div>
-          <Disponibilidade />
+          {this.state.disponibilidade ? (
+            <Disponibilidade
+              disp={this.state.disponibilidade}
+              handleChangeDisp={this.handleChangeDisp}
+            />
+          ) : null}
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
@@ -414,7 +423,8 @@ class ProblemForm extends Component {
                   <th>Nome</th>
                   <th>Email</th>
                   <th>Formação</th>
-                  <th>Cargo Atual</th>
+                  <th>Area de interesse</th>
+                  <th>Cidade</th>
                 </tr>
               </thead>
               <tbody>
@@ -436,7 +446,8 @@ class ProblemForm extends Component {
                       <td>{resource.nome}</td>
                       <td>{resource.email}</td>
                       <td>{resource.formacao}</td>
-                      <td>{resource.cargo}</td>
+                      <td>{resource.categoria}</td>
+                      <td>{resource.cidade}</td>
                     </tr>
                   );
                 })}
@@ -444,12 +455,12 @@ class ProblemForm extends Component {
             </Table>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.callResource}>
+            <Button
+              className="join-btn-no-transform mr-1 login"
+              onClick={this.callResource}
+            >
               Comunicar Recursos
             </Button>{" "}
-            <Button color="secondary" onClick={this.findResources}>
-              Voltar
-            </Button>
           </ModalFooter>
         </Modal>
       </div>

@@ -78,7 +78,7 @@ class HomeDash extends Component {
                   <a
                     href="#"
                     onClick={() => this.showGrafico("COMPANY")}
-                    className="join-btn-no-transform mr-1 login"
+                    className="join-btn-no-transform mr-1 login  new-hover"
                   >
                     Ver Gráfico
                   </a>
@@ -115,7 +115,7 @@ class HomeDash extends Component {
                   <a
                     href="#"
                     onClick={() => this.showGrafico("RESOURCE")}
-                    className="join-btn-no-transform mr-1 login"
+                    className="join-btn-no-transform mr-1 login  new-hover"
                   >
                     Ver Gráfico
                   </a>
@@ -153,7 +153,7 @@ class HomeDash extends Component {
                   <a
                     href="#"
                     onClick={() => this.showGrafico("PROBLEM")}
-                    className="join-btn-no-transform mr-1 login"
+                    className="join-btn-no-transform mr-1 login  new-hover"
                   >
                     Ver Gráfico
                   </a>
@@ -190,7 +190,7 @@ class HomeDash extends Component {
                   <a
                     href="#"
                     onClick={() => this.showGrafico("USER")}
-                    className="join-btn-no-transform mr-1 login"
+                    className="join-btn-no-transform mr-1 login new-hover"
                   >
                     Ver Gráfico
                   </a>

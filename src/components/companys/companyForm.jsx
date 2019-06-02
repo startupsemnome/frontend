@@ -34,7 +34,7 @@ class CompanyForm extends Component {
       segmentoEmpresa: "",
       sweetCreate: false
     };
-    console.log(this.props);
+
     this.hasErros = this.hasErros.bind(this);
     this.createCompany = this.createCompany.bind(this);
   }
@@ -814,11 +814,11 @@ class CompanyForm extends Component {
             {this.props.id ? (
               <button
                 type="button"
-                onClick={() => this.props.history.push("/consultar-problema")}
+                onClick={this.props.handleChangeEdit}
                 className="join-btn-no-transform mr-1 login"
                 style={{ width: "25%", margin: "0px" }}
               >
-                Consultar Problemas
+                Voltar Empresas
               </button>
             ) : null}
             <div />
