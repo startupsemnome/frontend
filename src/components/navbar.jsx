@@ -39,7 +39,8 @@ class NavBar extends Component {
   }
 
   render() {
-    const { active } = this.state;
+    const { active } = this.state
+    ;
 
     return (
       <div
