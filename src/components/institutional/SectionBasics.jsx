@@ -5,7 +5,6 @@ import axios from "axios";
 import env from "./../../consts";
 import LoaderComponent from "./LoaderComponent.jsx";
 
-
 class SectionBasics extends Component {
   constructor(props) {
     super(props);
@@ -43,8 +42,8 @@ class SectionBasics extends Component {
     return false;
   }
 
-  cadastrarResource() {
-    this.setState({ loading: true })
+  cadastrarResource = () => {
+    this.setState({ loading: true });
     if (!this.hasErros()) {
       axios
         .post(env.API + "resource", {
@@ -54,32 +53,29 @@ class SectionBasics extends Component {
           senha: this.state.senha
         })
         .then(response => {
-          console.log(response);
           localStorage.setItem("userId", JSON.stringify(response.data.id));
           localStorage.setItem("userName", JSON.stringify(response.data.nome));
           localStorage.setItem("type", "RESOURCE");
+          this.setState({ loading: false });
           window.location.reload();
         })
-        .catch(function (error) {
+        .catch(function(error) {
+          this.setState({ loading: false });
           console.log(error);
         });
     }
-    this.setState({ loading: false })
-  }
+  };
 
   render() {
-    const { loading } = this.state;
-    if (loading) {
-      return (
-        <LoaderComponent>Cadastrar</LoaderComponent>
-      );
+    if (this.state.loading) {
+      return <LoaderComponent>Cadastrar</LoaderComponent>;
     } else {
       return (
         <div style={{ marginTop: "50px" }}>
           <div>
             <h1 id="header3" className="footer-H1-Question">
               Deseja cadastrar o seu perfil?
-          </h1>
+            </h1>
           </div>
           <div
             style={{
@@ -88,14 +84,14 @@ class SectionBasics extends Component {
               marginTop: "28px"
             }}
           >
-
             <form className="signupFor form-inline">
               <div className="col-md-3">
-                <label className="labelField"
+                <label
+                  className="labelField"
                   style={{ display: "flex", justifyContent: "end" }}
                 >
                   Nome
-             </label>
+                </label>
                 <input
                   className="inputFields col-md-12"
                   type="text"
@@ -106,7 +102,8 @@ class SectionBasics extends Component {
               </div>
 
               <div className="col-md-9">
-                <label className="labelField"
+                <label
+                  className="labelField"
                   style={{ display: "flex", justifyContent: "end" }}
                 >
                   Sobrenome:
@@ -120,7 +117,12 @@ class SectionBasics extends Component {
                 />{" "}
               </div>
               <div className="col-md-6">
-                <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>E-mail:</label>
+                <label
+                  className="labelField"
+                  style={{ display: "flex", justifyContent: "end" }}
+                >
+                  E-mail:
+                </label>
                 <input
                   className="inputFields col-md-12"
                   type="text"
@@ -140,7 +142,12 @@ class SectionBasics extends Component {
                 />
               </div>
               <div className="col-md-3">
-                <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>Confirmação de Senha:</label>
+                <label
+                  className="labelField"
+                  style={{ display: "flex", justifyContent: "end" }}
+                >
+                  Confirmação de Senha:
+                </label>
                 <input
                   className="inputFields col-md-12"
                   type="password"
@@ -167,7 +174,7 @@ class SectionBasics extends Component {
                     onClick={() => this.cadastrarResource()}
                   >
                     Cadastrar
-                </button>
+                  </button>
                 </Col>
               </Row>
             </form>
