@@ -77,62 +77,68 @@ class SectionBasics extends Component {
             marginTop: "28px"
           }}
         >
-          <form className="signupFor">
-            <label className="labelField">Nome</label>
-            <br />
-            <input
-              className="inputFields"
-              type="text"
-              placeholder="Digite o seu nome"
-              value={this.state.nome}
-              onChange={e => this.setState({ nome: e.target.value })}
-            />
-            <div>
-              <ul>
-                <label className="labelField">Sobrenome:</label>
+       
+          <form className="signupFor form-inline">
+            <div className="col-md-3">
+              <label className="labelField"
+                style={{ display: "flex", justifyContent: "end" }}
+                >
+                Nome
+             </label>
+             <input
+                className="inputFields col-md-12"
+                type="text"
+                placeholder="Digite o seu nome"
+                value={this.state.nome}
+                onChange={e => this.setState({ nome: e.target.value })}
+              />
+            </div>
+
+            <div className="col-md-9">
+              <label className="labelField"
+                 style={{ display: "flex", justifyContent: "end" }}
+                >
+                  Sobrenome:
+                </label>
                 <input
-                  className="inputFields"
+                  className="inputFields col-md-12"
                   type="text"
                   placeholder="Digite o seu sobrenome"
                   value={this.state.sobrenome}
                   onChange={e => this.setState({ sobrenome: e.target.value })}
                 />{" "}
-                <br />
-                <label className="labelField">E-mail:</label>
-                <br />
+            </div>
+          <div className="col-md-6">
+                <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>E-mail:</label>
                 <input
-                  className="inputFields"
+                  className="inputFields col-md-12"
                   type="text"
                   placeholder="Digite o seu e-mail"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
                 />{" "}
-                <br />
+                </div>
+            <div className="col-md-3">
                 <label className="labelField">Cadastrar Senha:</label>
-                <br />
                 <input
-                  className="inputFields"
+                  className="inputFields col-md12"
                   type="password"
                   placeholder="Digite a sua senha"
                   value={this.state.senha}
                   onChange={e => this.setState({ senha: e.target.value })}
                 />
-                <br />
-                <label className="labelField">Confirmação de Senha:</label>
-                <br />
-                <input
-                  className="inputFields"
-                  type="password"
-                  placeholder="Confirme a sua senha"
-                  onChange={e =>
-                    this.setState({ confirmSenha: e.target.value })
-                  }
-                />
-                <br />
-              </ul>
-            </div>
-            <br />
-            <br />
+                </div>
+                  <div className="col-md-3">
+                    <label className="labelField" style={{ display: "flex", justifyContent: "end" }}>Confirmação de Senha:</label>
+                      <input
+                        className="inputFields col-md-12"
+                        type="password"
+                        placeholder="Confirme a sua senha"
+                        onChange={e =>
+                          this.setState({ confirmSenha: e.target.value })
+                        }
+                      />
+                  </div>
             <label className="labelFields col-md-12" style={{ color: "red" }}>
               {this.state.error}
             </label>
@@ -154,8 +160,8 @@ class SectionBasics extends Component {
               </Col>
             </Row>
           </form>
+          </div>
         </div>
-      </div>
     );
   }
 }
