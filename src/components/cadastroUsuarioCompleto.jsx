@@ -52,7 +52,7 @@ class CadastroUsuarioCompleto extends Component {
       sobrenome: "",
       email: "",
       senha: "",
-
+      disponibilidade: null,
       fotoperfil: "",
       dt_nascimento: "",
       genero: "",
@@ -60,18 +60,14 @@ class CadastroUsuarioCompleto extends Component {
       nacionalidade: "",
       uf: "",
       cidade: "",
-      disponibilidade: "",
       resumo_profissional: "",
       categoria: "",
-
-      nome_empresa: "",
+      empresa: "",
       segmento: "",
       dt_empresa_inicio: "",
       dt_empresa_saida: "",
       cargo: "",
       atividades: "",
-
-      //formação
       curso: "",
       instituicao: "",
       formacao: "",
@@ -85,15 +81,61 @@ class CadastroUsuarioCompleto extends Component {
 
   atualizarMeuCadastro() {
     //TODO
+    let userID = JSON.parse(localStorage.getItem("userId"));
+    axios
+      .put(env.API + "resource/" + userID, {
+        nome: this.state.nome,
+        sobrenome: this.state.sobrenome,
+        email: this.state.email,
+        senha: this.state.senha,
+        fotoperfil: this.state.fotoperfil,
+        dt_nascimento: this.state.dt_nascimento,
+        genero: this.state.genero,
+        estado_civil: this.state.estado_civil,
+        nacionalidade: this.state.nacionalidade,
+        uf: this.state.uf,
+        cidade: this.state.cidade,
+        resumo_profissional: this.state.resumo_profissional,
+        category_id: this.state.categoria,
+        empresa: this.state.empresa,
+        segmento: this.state.segmento,
+        dt_empresa_inicio: this.state.dt_empresa_inicio,
+        dt_empresa_saida: this.state.dt_empresa_saida,
+        cargo: this.state.cargo,
+        atividades: this.state.atividades,
+        curso: this.state.curso,
+        instituicao: this.state.instituicao,
+        formacao: this.state.formacao,
+        dt_curso_inicio: this.state.dt_curso_inicio,
+        dt_curso_conclusao: this.state.dt_curso_conclusao,
+        info_complementares: this.state.info_complementares,
+        message1: this.state.message1,
+        disponibilidade: this.state.disponibilidade
+      })
+      .then(response => {
+        // handle success
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error + "Erro na API");
+      });
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
+
+  handleChangeDisp = disponibilidade => {
+    this.setState({ disponibilidade });
+  };
 
   render() {
     return (
       <div className="loginUser col-md-12" id="header3">
         <form className="signupForm form-inline">
           <div className="col-md-12 text-center">
-            <h1>
-              Complete Seu Cadastro Para Aumentar suas chances de ser Chamado
+            <h1 style={{ fontSize: "27px" }}>
+              O Seu Cadastro completo Aumenta suas chances de ser Chamado para
+              um projeto
             </h1>
             <br />
           </div>
@@ -222,18 +264,18 @@ class CadastroUsuarioCompleto extends Component {
               className="inputFields col-md-12"
               type="select"
               select="multiple"
-              name="civilstatus"
-              id="optioncivilstatus"
+              name="civilstatusq"
+              id="optioncivilstatusq"
               style={{ width: "100%" }}
               value={this.state.estado_civil}
               onChange={e => this.setState({ estado_civil: e.target.value })}
               required
             >
               <option value="">Selecione</option>
-              <option value="Solteiro">Solteiro(a)</option>
-              <option valeu="Casado">Casado(a)</option>
-              <option valeu="Viúvo">Viúvo(a)</option>
-              <option valeu="Divorciado">Divorciado(a)</option>
+              <option value="Solteiro">Solteiro</option>
+              <option valeu="Casado">Casado</option>
+              <option valeu="Viuvo">Viúvo</option>
+              <option valeu="Divorciado">Divorciado</option>
             </Input>
           </div>
 
@@ -257,12 +299,12 @@ class CadastroUsuarioCompleto extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="Brasileiro(a)">Brasileiro(a)</option>
-              <option valeu="Mexicano(a)">Mexicano(a)</option>
-              <option value="Argentino(a">Argentino(a)</option>
-              <option value="Italiano(a)">Italiano(a)</option>
-              <option valeu="Norte Americano(a)">Norte Americano(a)</option>
-              <option value="Español(a)">Español(a)</option>
+              <option value="Brasileiro">Brasileiro(a)</option>
+              <option valeu="Mexicano">Mexicano(a)</option>
+              <option value="Argentino">Argentino(a)</option>
+              <option value="Italiano">Italiano(a)</option>
+              <option valeu="Norte Americano">Norte Americano(a)</option>
+              <option value="Español">Español(a)</option>
             </Input>
           </div>
 
@@ -382,49 +424,7 @@ class CadastroUsuarioCompleto extends Component {
               required
             >
               <option value="">Selecione</option>
-              <option value="Administração">Administração</option>
-              <option valeu="Comércio Exterior">Comércio Exterior</option>
-              <option value="Tecnologia">Tecnologia</option>
-              <option value="Arquitetura">Arquitetura</option>
-              <option value="Medicina">Medicina</option>
-              <option value="Contábeis">Contábeis</option>
-              <option value="Economia">Economia</option>
-              <option value="Cinema e Audiovisual">Cinema e Audiovisual</option>
-              <option value="Radio e TV">Radio e TV</option>
-              <option value="Design">Design</option>
-              <option value="Direito">Direito</option>
-              <option value="Educação Física">Educação Física</option>
-              <option value="Enfermagem">Enfermagem</option>
-              <option value="Engenharia Civil">Engenharia Civil</option>
-              <option value="Engenharia de Automação e Controle">
-                Engenharia de Automação e Controle
-              </option>
-              <option value="Engenharia de Produção">
-                Engenharia de Produção
-              </option>
-              <option value="Engenharia Elétrica">Engenharia Elétrica</option>
-              <option value="Engenharia Eletrônica">
-                Engenharia Eletrônica
-              </option>
-              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
-              <option value="ngenharia Química">Engenharia Química</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Farmácia">Farmácia</option>
-              <option value="Fisioterapia">Fisioterapia</option>
-              <option value="Comercial">Comercial</option>
-              <option value="Qualidade">Qualidade</option>
-              <option value="Logística">Logística</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Medicina Veterinária">Medicina Veterinária</option>
-              <option value="Nutrição">Nutrição</option>
-              <option value="Odontologia">Odontologia</option>
-              <option value="Psicologia">Psicologia</option>
-              <option value="Relações Públicas">Relações Públicas</option>
-              <option value="Publicidade e Propagand">
-                Publicidade e Propaganda
-              </option>
-              <option value="Turismo">Turismo</option>
-              <option value="Outros">Outros</option>
+              <option value="1">Tecnologia</option>
             </Input>
           </div>
 
@@ -437,7 +437,12 @@ class CadastroUsuarioCompleto extends Component {
             </label>
             <br />
           </div>
-          <Disponibilidade />
+          {this.state.disp ? (
+            <Disponibilidade
+              disp={this.state.disp}
+              handleChangeDisp={this.handleChangeDisp}
+            />
+          ) : null}
           <div className="col-md-12">
             <label
               className="labelFields"
@@ -469,7 +474,7 @@ class CadastroUsuarioCompleto extends Component {
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
-              Empresa:
+              Ultima Empresa:
             </label>
             <textarea
               className="inputFields col-md-12"
@@ -511,7 +516,7 @@ class CadastroUsuarioCompleto extends Component {
               <Input
                 type="date"
                 name="date1"
-                className="col-md-12"
+                className="inputFields col-md-12"
                 id="dt_inicio"
                 placeholder="date placeholder"
                 value={this.state.dt_empresa_inicio}
@@ -538,7 +543,7 @@ class CadastroUsuarioCompleto extends Component {
               <Input
                 type="date"
                 name="date2"
-                className="col-md-12"
+                className="inputFields col-md-12"
                 id="dt_saida"
                 placeholder="date placeholder"
                 value={this.state.dt_empresa_saida}
@@ -673,7 +678,7 @@ class CadastroUsuarioCompleto extends Component {
                 type="date"
                 name="date1"
                 id="dt_inicio"
-                className="col-md-12"
+                className="inputFields col-md-12"
                 placeholder="date placeholder"
                 value={this.state.dt_curso_inicio}
                 onChange={e =>
@@ -698,7 +703,7 @@ class CadastroUsuarioCompleto extends Component {
               <Label for="labelFields" />
               <Input
                 type="date"
-                className="col-md-12"
+                className="inputFields col-md-12"
                 name="date2"
                 id="dt_conclusao"
                 placeholder="date placeholder"
@@ -766,10 +771,44 @@ class CadastroUsuarioCompleto extends Component {
     axios
       .get(env.API + "resource/" + userID)
       .then(response => {
+        console.log(response);
         // handle success
         const data = response.data;
         console.log(data);
-        this.setState({ nome: data.nome, dt_nascimento: data.dt_nascimento });
+        console.log(data.empresa);
+
+        this.setState(
+          {
+            nome: data.nome,
+            sobrenome: data.sobrenome,
+            email: data.email,
+            senha: data.senha,
+            fotoperfil: data.fotoperfil,
+            dt_nascimento: data.dt_nascimento,
+            genero: data.genero,
+            estado_civil: data.estado_civil,
+            nacionalidade: data.nacionalidade,
+            uf: data.uf,
+            cidade: data.cidade,
+            resumo_profissional: data.resumo_profissional,
+            categoria: data.category.id,
+            empresa: data.empresa,
+            segmento: data.segmento,
+            dt_empresa_inicio: data.dt_empresa_inicio,
+            dt_empresa_saida: data.dt_empresa_saida,
+            cargo: data.cargo,
+            atividades: data.atividades,
+            curso: data.curso,
+            instituicao: data.instituicao,
+            formacao: data.formacao,
+            dt_curso_inicio: data.dt_curso_inicio,
+            dt_curso_conclusao: data.dt_curso_conclusao,
+            info_complementares: data.info_complementares,
+            message1: data.message1,
+            disp: data.disponibilidade
+          },
+          () => console.log(this.state.empresa)
+        );
       })
       .catch(error => {
         // handle error

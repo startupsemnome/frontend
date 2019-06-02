@@ -112,7 +112,7 @@ class SectionBasics extends Component {
                 <br />
                 <input
                   className="inputFields"
-                  type="text"
+                  type="password"
                   placeholder="Digite a sua senha"
                   value={this.state.senha}
                   onChange={e => this.setState({ senha: e.target.value })}
@@ -122,7 +122,7 @@ class SectionBasics extends Component {
                 <br />
                 <input
                   className="inputFields"
-                  type="text"
+                  type="password"
                   placeholder="Confirme a sua senha"
                   onChange={e =>
                     this.setState({ confirmSenha: e.target.value })
