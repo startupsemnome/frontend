@@ -67,7 +67,7 @@ class HowWorking extends React.Component {
               </h5>
               <br />
               <p style={{ color: "white" }}>
-                A empresa SOL está com dificuldades em levar os requistos
+                A empresa SOL está com dificuldades em levantar os requistos
                 para uma nova oportunidade de crescimento.
                 Analisamos o seu perfil e vereficamos que você possui as habilidades
                 compativeis para resolver este problema.
