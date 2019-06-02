@@ -131,13 +131,12 @@ class CadastroUsuarioCompleto extends Component {
   render() {
     return (
       <div className="loginUser col-md-12" id="header3">
-        <form className="signupForm form-inline">
+        <form className="signupForm form-inline" style={{ marginTop: "60px" }}>
           <div className="col-md-12 text-center">
             <h1 style={{ fontSize: "27px" }}>
               O Seu Cadastro completo Aumenta suas chances de ser Chamado para
               um projeto
             </h1>
-     
           </div>
 
           <div className="col-md-6">
@@ -179,36 +178,35 @@ class CadastroUsuarioCompleto extends Component {
             />
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label
               className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
+              style={{
+                display: "flex",
+                justifyContent: "end",
+                marginBottom: "10px"
+              }}
             >
               Foto de Perfil:{" "}
             </label>
-       
-            <FormGroup row>
-              <Label for="exampleFile" />
-              <Col sm={10}>
-                <Input
-                  type="file"
-                  name="file"
-                  id="exampleFile"
-                  className="join-btn-no-transform mr-1 col-md-12"
-                />
-              </Col>
-            </FormGroup>
-           
+
+            <Input
+              type="file"
+              name="file"
+              id="exampleFile"
+              className="join-btn-no-transform mr-1 col-md-12"
+            />
+            <br />
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-3">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Data de Nascimento:
             </label>
-         
+
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -221,12 +219,10 @@ class CadastroUsuarioCompleto extends Component {
                 onChange={e => this.setState({ dt_nascimento: e.target.value })}
                 required
               />
-         
             </FormGroup>
-        
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-2">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -252,7 +248,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-2">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -279,7 +275,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-3">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -308,7 +304,7 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-2">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -358,53 +354,65 @@ class CadastroUsuarioCompleto extends Component {
           </div>
 
           {/* CIDADE - POR ESTADOS*/}
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Cidade:
             </label>
-            <Input
+            <input
               select
               className="inputFields col-md-12"
-              type="select"
-              select="multiple"
+              type="text"
               name="nationality"
               id="optionnationality"
               style={{ width: "100%" }}
               value={this.state.cidade}
               onChange={e => this.setState({ cidade: e.target.value })}
               required
-            >
-              {/* AC - ACRE */}
-              <option value="0">Selecione</option>
-              <option value="Acrelândia (AC)">Acrelândia (AC)</option>
-              <option value="Assis Brasil (AC)">Assis Brasil (AC)</option>
-              <option value="ac-3">Brasiléia (AC)</option>
-              <option value="ac-4">Bujari (AC)</option>
-              <option value="ac-5">Capixaba (AC)</option>
-              <option value="ac-6">Cruzeiro do Sul (AC)</option>
-              <option value="ac-7">Epitaciolândia (AC)</option>
-              <option value="ac-8">Feijó (AC)</option>
-              <option value="ac-9">Jordão (AC)</option>
-              <option value="ac-10">Mâncio Lima (AC)</option>
-              <option value="ac-11">Manoel Urbano (AC)</option>
-              <option value="ac-12">Marechal Thaumaturgo (AC)</option>
-              <option value="ac-13">Plácido de Castro (AC)</option>
-              <option value="ac-14">Porto Acre (AC)</option>
-              <option value="ac-15">Porto Walter (AC)</option>
-              <option value="ac-16">Rio Branco (AC)</option>
-              <option value="ac-17">Rodrigues Alves (AC)</option>
-              <option value="ac-18">Santa Rosa do Purus (AC)</option>
-              <option value="ac-19">Sena Madureira (AC)</option>
-              <option value="ac-20">Senador Guiomard (AC)</option>
-              <option value="ac-21">Tarauacá (AC)</option>
-              <option value="ac-22">Xapuri (AC)</option>
-            </Input>
+            />
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{
+                display: "flex",
+                justifyContent: "end",
+                marginBottom: "10px"
+              }}
+            >
+              Informe a disponibilidade da atuação:
+            </label>
+          </div>
+          {this.state.disponibilidade ? (
+            <Disponibilidade
+              disp={this.state.disponibilidade}
+              handleChangeDisp={this.handleChangeDisp}
+            />
+          ) : null}
+
+          <hr />
+          <div className="col-md-12">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Resumo Profissional:
+            </label>
+            <textarea
+              className="inputFields col-md-12"
+              type="text"
+              placeholder="Descreva sua trajetória profissional"
+              value={this.state.resumo_profissional}
+              onChange={e =>
+                this.setState({ resumo_profissional: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div className="col-md-3">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -427,54 +435,13 @@ class CadastroUsuarioCompleto extends Component {
               <option value="1">Tecnologia</option>
             </Input>
           </div>
-
-          <div className="col-md-12">
+          <div className="col-md-4">
             <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Informe a disponibilidade da atuação:
-            </label>
-       
-          </div>
-          {this.state.disp ? (
-            <Disponibilidade
-              disp={this.state.disp}
-              handleChangeDisp={this.handleChangeDisp}
-            />
-          ) : null}
-          <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Resumo Profissional:
-            </label>
-            <textarea
-              className="inputFields col-md-12"
-              type="text"
-              placeholder="Descreva sua trajetória profissional"
-              value={this.state.resumo_profissional}
-              onChange={e =>
-                this.setState({ resumo_profissional: e.target.value })
-              }
-              required
-            />
-          </div>
-
-          <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Experiência Profissional
-          </label>
-          <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Ultima Empresa:
-          </label>
+            </label>
             <textarea
               className="inputFields col-md-12"
               type="text"
@@ -485,7 +452,7 @@ class CadastroUsuarioCompleto extends Component {
             />
           </div>
 
-          <div className="col-md-12">
+          <div className="col-md-5">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -502,62 +469,7 @@ class CadastroUsuarioCompleto extends Component {
             />
           </div>
 
-          <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Data de Ínicio:
-            </label>
-        
-            <FormGroup>
-              <Label for="labelFields" />
-              <Input
-                type="date"
-                name="date1"
-                className="inputFields col-md-12"
-                id="dt_inicio"
-                placeholder="date placeholder"
-                value={this.state.dt_empresa_inicio}
-                onChange={e =>
-                  this.setState({ dt_empresa_inicio: e.target.value })
-                }
-                required
-              />
-            
-            </FormGroup>
-         
-          </div>
-
-          <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
-              Data de Saída:
-            </label>
-           
-            <FormGroup>
-              <Label for="labelFields" />
-              <Input
-                type="date"
-                name="date2"
-                className="inputFields col-md-12"
-                id="dt_saida"
-                placeholder="date placeholder"
-                value={this.state.dt_empresa_saida}
-                onChange={e =>
-                  this.setState({ dt_empresa_saida: e.target.value })
-                }
-                required
-              />
-           
-            </FormGroup>
-        
-          </div>
-   
-
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -572,6 +484,56 @@ class CadastroUsuarioCompleto extends Component {
               onChange={e => this.setState({ cargo: e.target.value })}
               required
             />
+          </div>
+
+          <div className="col-md-4">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Data de Ínicio:
+            </label>
+
+            <FormGroup>
+              <Label for="labelFields" />
+              <Input
+                type="date"
+                name="date1"
+                className="inputFields col-md-12"
+                id="dt_inicio"
+                placeholder="date placeholder"
+                value={this.state.dt_empresa_inicio}
+                onChange={e =>
+                  this.setState({ dt_empresa_inicio: e.target.value })
+                }
+                required
+              />
+            </FormGroup>
+          </div>
+
+          <div className="col-md-4">
+            <label
+              className="labelFields"
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              Data de Saída:
+            </label>
+
+            <FormGroup>
+              <Label for="labelFields" />
+              <Input
+                type="date"
+                name="date2"
+                className="inputFields col-md-12"
+                id="dt_saida"
+                placeholder="date placeholder"
+                value={this.state.dt_empresa_saida}
+                onChange={e =>
+                  this.setState({ dt_empresa_saida: e.target.value })
+                }
+                required
+              />
+            </FormGroup>
           </div>
 
           <div className="col-md-6">
@@ -596,13 +558,6 @@ class CadastroUsuarioCompleto extends Component {
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
-              Formação
-            </label>
-        
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
               Nome do Curso
             </label>
             <textarea
@@ -613,7 +568,8 @@ class CadastroUsuarioCompleto extends Component {
               onChange={e => this.setState({ curso: e.target.value })}
               required
             />
-
+          </div>
+          <div className="col-md-3">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -629,8 +585,8 @@ class CadastroUsuarioCompleto extends Component {
               required
             />
           </div>
-          
-          <div className="col-md-4">
+
+          <div className="col-md-5">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
@@ -663,14 +619,14 @@ class CadastroUsuarioCompleto extends Component {
             </Input>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-2">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Data de Ínicio:
             </label>
-          
+
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -685,19 +641,17 @@ class CadastroUsuarioCompleto extends Component {
                 }
                 required
               />
-            
             </FormGroup>
-    
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-2">
             <label
               className="labelFields"
               style={{ display: "flex", justifyContent: "end" }}
             >
               Data de Conclusão:
             </label>
-           
+
             <FormGroup>
               <Label for="labelFields" />
               <Input
@@ -712,9 +666,7 @@ class CadastroUsuarioCompleto extends Component {
                 }
                 required
               />
-           
             </FormGroup>
-          
           </div>
 
           <div className="col-md-12">
@@ -744,7 +696,7 @@ class CadastroUsuarioCompleto extends Component {
               type="button"
               onClick={() => this.atualizarMeuCadastro()}
               className="join-btn-no-transform mr-1 login"
-              style={{ width: "25%", margin: "0px" }}
+              style={{ width: "50%", margin: "0px" }}
             >
               Atualizar Cadastro
             </button>
@@ -763,57 +715,50 @@ class CadastroUsuarioCompleto extends Component {
     );
   }
 
-  loadUserInfor() {
+  loadUserInfor = () => {
     // Carregando a quantidade de usuários
     let userID = JSON.parse(localStorage.getItem("userId"));
 
     axios
       .get(env.API + "resource/" + userID)
       .then(response => {
-        console.log(response);
-        // handle success
         const data = response.data;
-        console.log(data);
-        console.log(data.empresa);
-
-        this.setState(
-          {
-            nome: data.nome,
-            sobrenome: data.sobrenome,
-            email: data.email,
-            senha: data.senha,
-            fotoperfil: data.fotoperfil,
-            dt_nascimento: data.dt_nascimento,
-            genero: data.genero,
-            estado_civil: data.estado_civil,
-            nacionalidade: data.nacionalidade,
-            uf: data.uf,
-            cidade: data.cidade,
-            resumo_profissional: data.resumo_profissional,
-            categoria: data.category.id,
-            empresa: data.empresa,
-            segmento: data.segmento,
-            dt_empresa_inicio: data.dt_empresa_inicio,
-            dt_empresa_saida: data.dt_empresa_saida,
-            cargo: data.cargo,
-            atividades: data.atividades,
-            curso: data.curso,
-            instituicao: data.instituicao,
-            formacao: data.formacao,
-            dt_curso_inicio: data.dt_curso_inicio,
-            dt_curso_conclusao: data.dt_curso_conclusao,
-            info_complementares: data.info_complementares,
-            message1: data.message1,
-            disp: data.disponibilidade
-          },
-          () => console.log(this.state.empresa)
-        );
+        this.setState({
+          nome: data.nome,
+          sobrenome: data.sobrenome,
+          email: data.email,
+          senha: data.senha,
+          fotoperfil: data.fotoperfil,
+          dt_nascimento: data.dt_nascimento,
+          genero: data.genero,
+          estado_civil: data.estado_civil,
+          nacionalidade: data.nacionalidade,
+          uf: data.uf,
+          cidade: data.cidade,
+          resumo_profissional: data.resumo_profissional,
+          categoria: data.category,
+          empresa: data.empresa,
+          segmento: data.segmento,
+          dt_empresa_inicio: data.dt_empresa_inicio,
+          dt_empresa_saida: data.dt_empresa_saida,
+          cargo: data.cargo,
+          atividades: data.atividades,
+          curso: data.curso,
+          instituicao: data.instituicao,
+          formacao: data.formacao,
+          dt_curso_inicio: data.dt_curso_inicio,
+          dt_curso_conclusao: data.dt_curso_conclusao,
+          info_complementares: data.info_complementares,
+          message1: data.message1,
+          disp: data.disponibilidad,
+          disponibilidade: data.disponibilidade
+        });
       })
       .catch(error => {
         // handle error
         console.log(error + "Erro na API");
       });
-  }
+  };
 
   componentDidMount() {
     this.loadUserInfor();

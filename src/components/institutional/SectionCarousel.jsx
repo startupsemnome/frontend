@@ -40,7 +40,7 @@ class SectionCarousel extends React.Component {
           style={{
             margin: "auto",
             marginTop: "40px",
-            maxWidth: "68%",
+            maxWidth: "69%",
             webkitBoxShadow: "0px 0px 29px -3px rgba(99,98,99,1)",
             mozBoxShadow: "0px 0px 29px -3px rgba(99,98,99,1)",
             boxShadow: "0px 0px 29px -3px rgba(99,98,99,1)"

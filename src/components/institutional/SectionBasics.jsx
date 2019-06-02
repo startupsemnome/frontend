@@ -71,9 +71,9 @@ class SectionBasics extends Component {
       return <LoaderComponent>Cadastrar</LoaderComponent>;
     } else {
       return (
-        <div style={{ marginTop: "50px" }}>
+        <div id="header3" style={{ marginTop: "50px" }}>
           <div>
-            <h1 id="header3" className="footer-H1-Question">
+            <h1 className="footer-H1-Question">
               Deseja cadastrar o seu perfil?
             </h1>
           </div>
@@ -157,15 +157,19 @@ class SectionBasics extends Component {
                   }
                 />
               </div>
-              <label className="labelFields col-md-12" style={{ color: "red" }}>
+              <label
+                className="labelFields col-md-12"
+                style={{ marginBottom: "20px", color: "red" }}
+              >
                 {this.state.error}
               </label>
-              <Row>
+              <Row style={{ width: "110%" }}>
                 <Col
                   style={{
                     display: "flex",
                     justifyContent: "center"
                   }}
+                  className="col-md-12"
                 >
                   <button
                     type="button"
@@ -173,7 +177,7 @@ class SectionBasics extends Component {
                     style={{ width: "100%" }}
                     onClick={() => this.cadastrarResource()}
                   >
-                    Cadastrar
+                    Cadastre-se na plataforma
                   </button>
                 </Col>
               </Row>
