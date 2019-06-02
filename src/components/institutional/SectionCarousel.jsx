@@ -65,7 +65,7 @@ class SectionCarousel extends React.Component {
             </div>
             <div>
               <img
-                src="https://d2r55xnwy6nx47.cloudfront.net/uploads/2018/08/Fat-Tail_Network_2880x1620-2880x1620.jpg"
+                src="https://image.freepik.com/vetores-gratis/carater-de-carreira-no-conceito-do-dia-do-trabalho_27170-45.jpg"
                 alt="Third slide"
                 className="slick-image"
               />
