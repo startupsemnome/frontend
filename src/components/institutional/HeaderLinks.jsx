@@ -39,6 +39,15 @@ class HeaderLinks extends Component {
           >
             Como funciona a plataforma
           </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            to="institutional#header10"
+            color="transparent"
+            className={classes.navLink}
+          >
+            Quem nós somos
+          </Link>
+
           {!this.props.auth.login ? (
             <Link
               style={{ textDecoration: "none" }}
