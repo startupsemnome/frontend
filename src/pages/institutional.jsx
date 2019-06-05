@@ -103,6 +103,19 @@ class Institutional extends Component {
         <br />
         <br />
         <br />
+        <Modal
+            style={{ marginTop: "240px" }}
+            isOpen={this.state.modalBoas}
+            toggle={this.toggle}
+          >
+            <ModalHeader toggle={this.toggle}>Dados Alterados!</ModalHeader>
+            <ModalBody>
+              Agora é com a gente!
+              <br />
+              <br />
+              Entraremos em contato por email, fique de olho.
+            </ModalBody>
+          </Modal>
       </div>
     );
   }

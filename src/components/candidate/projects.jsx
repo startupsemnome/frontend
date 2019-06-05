@@ -88,24 +88,21 @@ class Projects extends Component {
           {...rest}
         />
         <div
-          className="container col-md-8 mt-5"
-          style={{ marginTop: "130px !important" }}
+          className="col-md-12"          
         >
-          <div style={{ marginTop: "185px" }}>
-            <div className="row" style={{ marginTop: 60 }}>
+          <div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div className="row">
               <div className="col-md-12">
                 <h3 align="center" className="display-3">
                   Olá, Candidato!
-                </h3>
-                <h1 className="h1-main">
-                  Você foi selecionado para os seguintes projetos:
-                </h1>
+                </h3>               
                 {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
                 <hr className="my-2" />
                 <p className="lead" />
               </div>
             </div>
-            <div className="row mt-2 mb-2">
+            <div className="row mt-2 mb-1">
               <div
                 className="col-md-12"
                 style={{

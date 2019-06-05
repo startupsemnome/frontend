@@ -4,13 +4,12 @@ import { HashLink as Link } from "react-router-hash-link";
 export default class poxaNaoFoiDessaVez extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col-md-12">
             <div style={{ backgroundColor: "#174f78", padding: 20 }}>
               <h1 className="h1-main">
-                Todos os projetos erraram o alvo dessa vez, atualize seu
-                cadastro para que os projetos consigam encontra-lo melhor.{" "}
+                Você Ainda não foi chamado pra um projeto, atualize seu cadastro e iremos entrar em contato assim que encontrarmos um projeto com seu perfil.{" "}
                 <br />
                 <br />
                 <Link

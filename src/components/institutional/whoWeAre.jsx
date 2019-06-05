@@ -25,10 +25,10 @@ export default class WhoWeAre extends Component {
               <img
                 className="rounded-circle"
                 style={{
-                  width: "300px",
-                  margin: "0.5rem",
-                  border: "#0ce1f6 solid 1px",
-                  height: "300px"
+                  width: "100%",
+                  border: "1px solid rgb(12, 225, 246)",
+                  boxShadow: "-7px -1px 20px 0 rgba(0, 0, 0, 0.1)",
+                  height: "260px"
                 }}
                 src="https://blog.softwareavaliacao.com.br/wp-content/uploads/2017/05/0089-01.jpg"
                 alt=""
@@ -55,10 +55,10 @@ export default class WhoWeAre extends Component {
               <img
                 className="rounded-circle"
                 style={{
-                  width: "300px",
-                  margin: "0.5rem",
-                  border: "#0ce1f6 solid 1px",
-                  height: "300px"
+                  width: "100%",
+                  border: "1px solid rgb(12, 225, 246)",
+                  boxShadow: "-7px -1px 20px 0 rgba(0, 0, 0, 0.1)",
+                  height: "260px"
                 }}
                 src="http://diabetesevida.com.br/on/wp-content/uploads/2019/04/quem-somos.png"
                 alt=""
@@ -84,10 +84,10 @@ export default class WhoWeAre extends Component {
               <img
                 className="rounded-circle"
                 style={{
-                  width: "300px",
-                  margin: "0.5rem",
-                  border: "#0ce1f6 solid 1px",
-                  height: "300px"
+                  width: "100%",
+                  border: "1px solid rgb(12, 225, 246)",
+                  boxShadow: "-7px -1px 20px 0 rgba(0, 0, 0, 0.1)",
+                  height: "260px"
                 }}
                 src="https://image.freepik.com/vetores-gratis/design-de-vetor-de-desenho-animado-de-trabalho-em-equipe-de-carater-empresario_1473-147.jpg"
                 alt=""
