@@ -91,7 +91,7 @@ class Projects extends Component {
           className="container col-md-8 mt-5"
           style={{ marginTop: "130px !important" }}
         >
-          <div>
+          <div style={{ marginTop: "185px" }}>
             <div className="row" style={{ marginTop: 60 }}>
               <div className="col-md-12">
                 <h3 align="center" className="display-3">

@@ -3,8 +3,14 @@ import React from "react";
 class LoaderComponent extends React.Component {
   render() {
     return (
-      <div className="shopping-list">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      <div
+        className="shopping-list"
+        style={{ display: "flex", justifyContent: "center", padding: "30px" }}
+      >
+        <img
+          src="http://www.agroeste.com.br/images/loading.gif"
+          style={{ height: "115px" }}
+        />
       </div>
     );
   }

@@ -25,13 +25,18 @@ class SectionCarousel extends React.Component {
       infinite: true,
       speed: 100,
       slidesToShow: 1,
+      initialSlide: 1,
       slidesToScroll: 1,
-      autoplay: true
+      autoplay: false
     };
     return (
       <div>
-        <div>
-          <h1 id="header2" className="footer-H1-Question">
+        <div className="col-md-7" style={{ marginLetft: "-10px" }}>
+          <h1
+            id="header2"
+            className="footer-H1-Question titleInstitutional"
+            style={{ marginLeft: "12px", maxWidth: "468px" }}
+          >
             Quem Já esta usando a gente?
           </h1>
         </div>

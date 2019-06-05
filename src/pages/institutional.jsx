@@ -26,10 +26,22 @@ import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
 import { Helmet } from "react-helmet";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 class Institutional extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalBoas: false
+    };
+    this.toggle = this.toggle.bind(this);
+  }
   componentDidMount() {
     this.props.setNavbarOpen(false);
+    if (localStorage.getItem("bemVindo") === "SIM") {
+      localStorage.setItem("bemVindo", "NAO");
+      this.setState({ modalBoas: true });
+    }
   }
   render() {
     const { classes, ...rest } = this.props;
@@ -77,9 +89,9 @@ class Institutional extends Component {
           {!this.props.login || localStorage.getItem("type") === "ADMIN" ? (
             <SectionCarousel />
           ) : null}
-           
+
           <WhoWeAre />
-          
+
           {!this.props.login ? (
             <SectionBasics history={this.props.history} />
           ) : localStorage.getItem("type") !== "ADMIN" ? (
@@ -91,8 +103,30 @@ class Institutional extends Component {
         <br />
         <br />
         <br />
+        <Modal
+          style={{ marginTop: "240px" }}
+          isOpen={this.state.modalBoas}
+          toggle={this.toggle}
+        >
+          <ModalHeader toggle={this.toggle}>Seja Bem Vindo!</ModalHeader>
+          <ModalBody>
+            Obrigado pelo cadastro!
+            <br />
+            <br />
+            Para aumentar suas chances de ser chamado, complete seu cadastro!
+          </ModalBody>
+          <ModalFooter>
+            <Button color="success" onClick={this.toggle}>
+              Ok
+            </Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
+  }
+
+  toggle() {
+    this.setState({ modalBoas: !this.state.modalBoas });
   }
 }
 

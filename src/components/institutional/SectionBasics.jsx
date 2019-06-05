@@ -56,7 +56,7 @@ class SectionBasics extends Component {
           localStorage.setItem("userId", JSON.stringify(response.data.id));
           localStorage.setItem("userName", JSON.stringify(response.data.nome));
           localStorage.setItem("type", "RESOURCE");
-          this.setState({ loading: false });
+          localStorage.setItem("bemVindo", "SIM");
           window.location.reload();
         })
         .catch(function(error) {
@@ -73,7 +73,10 @@ class SectionBasics extends Component {
       return (
         <div id="header3" style={{ marginTop: "50px" }}>
           <div>
-            <h1 className="footer-H1-Question">
+            <h1
+              className="footer-H1-Question titleInstitutional"
+              style={{ maxWidth: "454px" }}
+            >
               Deseja cadastrar o seu perfil?
             </h1>
           </div>

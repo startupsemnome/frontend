@@ -3,15 +3,15 @@ import React, { Component } from "react";
 export default class WhoWeAre extends Component {
   render() {
     return (
-      <div id="header10">
+      <div id="header10" style={{ marginBottom: "20px" }}>
         <div className="row">
           <h1
             style={{
-              color: "black",
               marginTop: "45px",
               marginLeft: "40px",
               fontSize: "30px"
             }}
+            className="titleInstitutional"
           >
             Quem nós Somos
           </h1>
