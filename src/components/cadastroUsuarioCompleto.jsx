@@ -118,16 +118,15 @@ class CadastroUsuarioCompleto extends Component {
       })
       .then(response => {
         // handle success
-        this.setState({ loading: false, modalAlter: true });
+        this.setState({ loading: false });
         console.log(response);
       })
       .catch(error => {
         console.log(error + "Erro na API");
         this.setState({ loading: false });
       });
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
+
+    this.setState({ modalAlter: true });
   }
 
   handleChangeDisp = disponibilidade => {
@@ -759,14 +758,8 @@ class CadastroUsuarioCompleto extends Component {
               Agora é com a gente!
               <br />
               <br />
-              Entraremos em contato por email, fique de olho para aceitar ou não
-              o projeto
+              Entraremos em contato por email, fique de olho.
             </ModalBody>
-            <ModalFooter>
-              <Button color="success" onClick={this.toggle}>
-                Ok
-              </Button>
-            </ModalFooter>
           </Modal>
         </div>
       );
