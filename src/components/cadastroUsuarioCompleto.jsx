@@ -2,9 +2,6 @@ import React, { Component, PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import { toastr } from "react-redux-toastr";
-
 import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
@@ -752,10 +749,33 @@ class CadastroUsuarioCompleto extends Component {
             {/* ALTERAR */}
             {`Cadastrado ${this.state.fname} com sucesso!`}
           </SweetAlert>
+          <Modal
+            style={{ marginTop: "240px" }}
+            isOpen={this.state.modalAlter}
+            toggle={this.toggle}
+          >
+            <ModalHeader toggle={this.toggle}>Dados Alterados!</ModalHeader>
+            <ModalBody>
+              Agora é com a gente!
+              <br />
+              <br />
+              Entraremos em contato por email, fique de olho para aceitar ou não
+              o projeto
+            </ModalBody>
+            <ModalFooter>
+              <Button color="success" onClick={this.toggle}>
+                Ok
+              </Button>
+            </ModalFooter>
+          </Modal>
         </div>
       );
     }
   }
+
+  toggle = () => {
+    this.setState({ modalAlter: !this.state.modalAlter });
+  };
 
   showStep2 = show => {
     this.setState({
@@ -812,7 +832,6 @@ class CadastroUsuarioCompleto extends Component {
   };
 
   componentDidMount() {
-    toastr.success("The title", "The message");
     this.loadUserInfor();
   }
 }
