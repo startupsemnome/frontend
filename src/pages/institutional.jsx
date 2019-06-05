@@ -103,24 +103,6 @@ class Institutional extends Component {
         <br />
         <br />
         <br />
-        <Modal
-          style={{ marginTop: "240px" }}
-          isOpen={this.state.modalBoas}
-          toggle={this.toggle}
-        >
-          <ModalHeader toggle={this.toggle}>Seja Bem Vindo!</ModalHeader>
-          <ModalBody>
-            Obrigado pelo cadastro!
-            <br />
-            <br />
-            Para aumentar suas chances de ser chamado, complete seu cadastro!
-          </ModalBody>
-          <ModalFooter>
-            <Button color="success" onClick={this.toggle}>
-              Ok
-            </Button>
-          </ModalFooter>
-        </Modal>
       </div>
     );
   }

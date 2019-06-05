@@ -2,6 +2,9 @@ import React, { Component, PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import { toastr } from "react-redux-toastr";
+
 import "./../bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Button } from "@progress/kendo-react-buttons";
@@ -40,7 +43,7 @@ import env from "./../consts";
 
 import Disponibilidade from "./disponibilidade";
 import ComposedResponsive from "./graphics/composedResponsive.jsx";
-
+import LoaderComponent from "./institutional/LoaderComponent";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 class CadastroUsuarioCompleto extends Component {
@@ -77,11 +80,13 @@ class CadastroUsuarioCompleto extends Component {
       message1: "",
       sweetCreate: false,
       showMoreItens: false,
-      loading: true
+      loading: false,
+      modalAlter: false
     };
   }
 
   atualizarMeuCadastro() {
+    this.setState({ loading: true });
     //TODO
     let userID = JSON.parse(localStorage.getItem("userId"));
     axios
@@ -116,10 +121,12 @@ class CadastroUsuarioCompleto extends Component {
       })
       .then(response => {
         // handle success
+        this.setState({ loading: false, modalAlter: true });
         console.log(response);
       })
       .catch(error => {
         console.log(error + "Erro na API");
+        this.setState({ loading: false });
       });
     this.setState(prevState => ({
       modal: !prevState.modal
@@ -132,7 +139,7 @@ class CadastroUsuarioCompleto extends Component {
 
   render() {
     if (this.state.loading) {
-      <LoaderComponent />;
+      return <LoaderComponent />;
     } else {
       return (
         <div className="loginUser col-md-12" id="header3">
@@ -805,6 +812,7 @@ class CadastroUsuarioCompleto extends Component {
   };
 
   componentDidMount() {
+    toastr.success("The title", "The message");
     this.loadUserInfor();
   }
 }
