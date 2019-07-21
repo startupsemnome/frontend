@@ -11,7 +11,7 @@ class UserList extends Component {
     this.state = {
       users: [],
       buscaUser: "",
-      userListEdit: [null, false],
+      userListEdit: [null, false]
     };
     this.excluirUser = this.excluirUser.bind(this);
   }
@@ -21,9 +21,8 @@ class UserList extends Component {
     axios
       .post(env.API + "consult-user", { search: this.state.buscaUser })
       .then(response => {
-        alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
-        this.setState({ users: response.data })
+        this.setState({ users: response.data });
       })
       .catch(error => {
         // handle error
@@ -45,7 +44,7 @@ class UserList extends Component {
       });
   }
   editUser(id) {
-    this.setState({ userListEdit: [id, true] })
+    this.setState({ userListEdit: [id, true] });
   }
 
   loadUsers() {
@@ -77,13 +76,15 @@ class UserList extends Component {
             </div>
             <div className="row mt-2 mb-2">
               {/* Local onde vai receber o input do usuário e o botão dispara a ação de buscar */}
-              <div className="col-md-12"
+              <div
+                className="col-md-12"
                 style={{
                   backgroundColor: "#1a8687",
                   justifyContent: "center",
                   backgroundColor: "rgb(26, 134, 135)",
                   display: "flex"
-                }}>
+                }}
+              >
                 <input
                   type="text"
                   className="inputFields col-md-9"
@@ -98,7 +99,8 @@ class UserList extends Component {
                     borderRadius: "20px",
                     marginLeft: "10px"
                   }}
-                  onClick={() => this.buscarUsuario()}>
+                  onClick={() => this.buscarUsuario()}
+                >
                   Buscar
                 </button>
               </div>
@@ -129,14 +131,14 @@ class UserList extends Component {
                           <td>{user.created_at}</td>
                           <td>
                             <button
-                              onClick={(e) => this.editUser(user.id)}
+                              onClick={e => this.editUser(user.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
                               Detalhes
                             </button>
                             <button
-                              onClick={(e) => this.editUser(user.id)}
+                              onClick={e => this.editUser(user.id)}
                               className="join-btn-no-transform mr-1"
                               style={{
                                 width: "100%",
@@ -147,7 +149,7 @@ class UserList extends Component {
                               Editar
                             </button>
                             <button
-                              onClick={(e) => this.excluirUser(user.id)}
+                              onClick={e => this.excluirUser(user.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
@@ -163,12 +165,12 @@ class UserList extends Component {
             </div>
           </div>
         ) : (
-            <UserForm
-              history={this.props.history}
-              edit={this.state.userListEdit[1]}
-              id={this.state.userListEdit[0]}
-            />
-          )}
+          <UserForm
+            history={this.props.history}
+            edit={this.state.userListEdit[1]}
+            id={this.state.userListEdit[0]}
+          />
+        )}
       </div>
     );
   }

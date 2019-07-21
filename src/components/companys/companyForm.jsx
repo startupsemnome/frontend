@@ -34,7 +34,7 @@ class CompanyForm extends Component {
       segmentoEmpresa: "",
       sweetCreate: false
     };
-    console.log(this.props);
+
     this.hasErros = this.hasErros.bind(this);
     this.createCompany = this.createCompany.bind(this);
   }
@@ -93,6 +93,7 @@ class CompanyForm extends Component {
           })
           .then(response => {
             console.log(response);
+            this.props.handleChangeEdit();
             this.props.history.push("/consultar-empresa");
           })
           .catch(error => {
@@ -129,7 +130,7 @@ class CompanyForm extends Component {
             segmentoEmpresa: data.segmentoEmpresa
           });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
@@ -438,7 +439,9 @@ class CompanyForm extends Component {
               <option value="Belarus">Belarus</option>
               <option value="Belize">Belize</option>
               <option value="Canadá">Canadá</option>
-              <option value="Ilhas Cocos (Keeling)">Ilhas Cocos (Keeling)</option>
+              <option value="Ilhas Cocos (Keeling)">
+                Ilhas Cocos (Keeling)
+              </option>
               <option value=" Congo, República Democrática do">
                 Congo, República Democrática do
               </option>
@@ -534,7 +537,9 @@ class CompanyForm extends Component {
               <option value="Camboja">Camboja</option>
               <option value="Kiribati">Kiribati</option>
               <option value="Cômoros">Cômoros</option>
-              <option value="São Cristóvão e Nevis">São Cristóvão e Nevis</option>
+              <option value="São Cristóvão e Nevis">
+                São Cristóvão e Nevis
+              </option>
               <option value="Coreia do Norte">Coreia do Norte</option>
               <option value="Coreia do Sul">Coreia do Sul</option>
               <option value="Kuwait">Kuwait</option>
@@ -676,7 +681,9 @@ class CompanyForm extends Component {
               </option>
               <option value="Vietnã">Vietnã</option>
               <option value="Vanuatu">Vanuatu</option>
-              <option value="Ilhas Wallis e Futuna">Ilhas Wallis e Futuna</option>
+              <option value="Ilhas Wallis e Futuna">
+                Ilhas Wallis e Futuna
+              </option>
               <option value="Samoa">Samoa</option>
               <option value="Kosovo">Kosovo</option>
               <option value="Iêmen">Iêmen</option>
@@ -807,11 +814,11 @@ class CompanyForm extends Component {
             {this.props.id ? (
               <button
                 type="button"
-                onClick={() => this.props.history.push("/consultar-problema")}
+                onClick={this.props.handleChangeEdit}
                 className="join-btn-no-transform mr-1 login"
                 style={{ width: "25%", margin: "0px" }}
               >
-                Consultar Problemas
+                Voltar Empresas
               </button>
             ) : null}
             <div />

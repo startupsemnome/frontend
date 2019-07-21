@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 // import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
-import {FaEye, FaCogs, FaTrashAlt } from 'react-icons/fa';
+import { FaEye, FaCogs, FaTrashAlt } from "react-icons/fa";
 // import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
-import CompanyForm from "./companyForm";  
+import CompanyForm from "./companyForm";
 // to={"visualizar-empresa"}
 class ConsultCompanyForm extends Component {
   constructor(props) {
@@ -15,6 +15,11 @@ class ConsultCompanyForm extends Component {
       companyEdit: [null, false]
     };
     this.excluirCompany = this.excluirCompany.bind(this);
+    this.handleChangeEdit = this.handleChangeEdit.bind(this);
+  }
+  handleChangeEdit() {
+    this.loadCompanys();
+    this.setState({ companyEdit: [null, false] });
   }
   excluirCompany(id) {
     //chama a api do banco com o metodo de delete
@@ -40,7 +45,7 @@ class ConsultCompanyForm extends Component {
       .post(env.API + "consult-company", { search: this.state.userTable })
       .then(response => {
         // handle success
-        alert("Busca Realizada com sucesso");
+        console.log(response.data);
         const data = response.data;
         this.setState({ users: data });
       })
@@ -68,28 +73,28 @@ class ConsultCompanyForm extends Component {
     this.loadCompanys();
   }
   // visualizar(id) {
-    // this.props.history.push({
-    //   pathname: "/visualizar-empresa",
-    //   state: { id }
+  // this.props.history.push({
+  //   pathname: "/visualizar-empresa",
+  //   state: { id }
   //   }); this.props.history("/consultar-usuario");
   // }
-  viewCard(id){
+  viewCard(id) {
     axios
-    .get(env.API + "view-company/" + id)
-    .then(function(response) {
-      console.log(response);   
-      this.props.history({
-      pathname: "/visualizar-empresa",
-      state:{id}
-    });
-  })
-  .catch(function(error) {
-   console.log(error);
-  });
-}
+      .get(env.API + "view-company/" + id)
+      .then(function (response) {
+        console.log(response);
+        this.props.history({
+          pathname: "/visualizar-empresa",
+          state: { id }
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   render() {
     return (
-      <div className="container col-md-8">
+      <div className="container col-md-10">
         {!this.state.companyEdit[1] ? (
           <div>
             <div className="row">
@@ -130,59 +135,64 @@ class ConsultCompanyForm extends Component {
             <div className="row">
               {this.state.users.map(company => {
                 return (
-                  <div
-                    className="col-md-3 box"
-                    style={{
-                      fontSize: "18px",
-                      maxWidth: "275px",
-                      minHeight: "255px",
-                      paddingLeft:"30px",
-                      paddingRight:"5px"
-                    }}
-                    inline={true}
-                  >
+                  <div className="col-md-3 box">
                     <div
                       className="card"
                       body
                       outline
                       style={{
                         backgroundColor: "rgb(254, 254, 254)",
-                        minHeight: "240px",
-                        maxWidth: "274px",
-                        minWidth: "261px",
-                        marginRight: "0px",
-                        marginLeft: "0px",
                         borderRadius: "10px"
                       }}
                     >
                       <div className="card-body" key={`userTable${company.id}`}>
                         <div className="card-title">
-                          <h3 style={{ color: "#707070", margin: "auto" }}>
-                            Razão Social:&nbsp;{company.razaoSocial}
-                            <br />
-                            Nome Fantasia:&nbsp;{company.nomeFantasia}
-                          </h3>
-                        </div>
-                        <div
-                          className="card-text"
-                          style={{ margin: "auto", paddingBottom: "4px" }}
-                        >
-                          <h5>
-                          CNPJ:&nbsp;{company.cnpj} 
-                          </h5>
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Empresa:&nbsp;
+                            </h3>
+                          </span>
+                          {company.nomeFantasia}
+                          <br />
+                          <br />
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Telefone:&nbsp;
+                            </h3>
+                          </span>
+                          {company.telefoneRepresentante}
+                          <br />
+                          <br />
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Seguimento:&nbsp;
+                            </h3>
+                          </span>
+                          {company.segmentoEmpresa}
+                          <br />
+                          <br />
+                          <span>
+                            <h3 style={{ color: "#707070", margin: "auto" }}>
+                              Quantidade de problemas: &nbsp;&nbsp;{" "}
+                              {company.problem.length}
+                            </h3>
+                          </span>
+                          <br />
+                          <br />
                         </div>
                         <div
                           className="card-footer"
-                          style={{ padding: "1.25rem 0.725rem 0.85rem",
-                          display: "flex"
-                        }}
-                        >  
+                          style={{
+                            padding: "1.25rem 0.725rem 0.85rem",
+                            display: "flex"
+                          }}
+                        >
                           <FaEye
                             style={{ width: "90%" }}
                             onClick={e => this.viewCard(company.id)}
                             //() => this.visualizar(company.id)}
-                            to={"visualizar-empresa"}      
-                          />    
+                            to={"visualizar-empresa"}
+                          />
                           <FaCogs
                             onClick={e => this.editCompany(company.id)}
                             style={{
@@ -207,6 +217,7 @@ class ConsultCompanyForm extends Component {
             <CompanyForm
               history={this.props.history}
               edit={this.state.companyEdit[1]}
+              handleChangeEdit={this.handleChangeEdit}
               id={this.state.companyEdit[0]}
             />
           )}

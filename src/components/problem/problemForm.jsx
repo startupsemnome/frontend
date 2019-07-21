@@ -17,7 +17,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import ConsultResourceForm from "../resource/consultResourceForm";
-
+import Disponibilidade from "./../disponibilidade";
 import AcceptResourceForm from "../problem/acceptResourceForm";
 
 class ProblemForm extends Component {
@@ -25,15 +25,17 @@ class ProblemForm extends Component {
     super(props);
 
     this.state = {
-      empresa: "",
       users: [],
       resourcesCall: [],
-      solicitante: "",
       userTable: "",
-      email: "",
-      telefone: "",
+      // email: "",
+      // telefone: "",
+      // solicitante: "",
+      empresa: "",
       titulo: "",
+      categoria: "",
       descricao: "",
+      disponibilidade: null,
       modal: false,
       error: "",
       // alteração
@@ -55,6 +57,7 @@ class ProblemForm extends Component {
   }
   loadNamesCompany() {
     // Carregando os nomes das empresas
+    console.log(this.props);
     axios
       .get(env.API + "company")
       .then(response => {
@@ -70,7 +73,7 @@ class ProblemForm extends Component {
   loadResources() {
     // Make a request for a user with a given ID
     axios
-      .get(env.API + "resource")
+      .get(env.API + "match-resource-problem/" + this.props.idDetail)
       .then(response => {
         // handle success
         const data = response.data;
@@ -85,17 +88,20 @@ class ProblemForm extends Component {
   showAceeptForm() {
     this.setState({ acceptOpen: !this.state.acceptOpen });
   }
+  handleChangeDisp = disponibilidade => {
+    this.setState({ disponibilidade });
+  };
   createProblem(method, id) {
     if (!this.hasErros()) {
       if (method == "create") {
         axios
           .post(env.API + "problem", {
+            empresa_id: 1,
             empresa: this.state.empresa,
-            solicitante: this.state.solicitante,
-            email: this.state.email,
-            telefone: this.state.telefone,
             titulo: this.state.titulo,
-            descricao: this.state.descricao
+            categoria: this.state.categoria,
+            descricao: this.state.descricao,
+            disponibilidade: this.state.disponibilidade
           })
           .then(function(response) {
             console.log(response);
@@ -108,10 +114,10 @@ class ProblemForm extends Component {
         axios
           .put(env.API + "problem/" + id, {
             empresa: this.state.empresa,
-            solicitante: this.state.solicitante,
-            email: this.state.email,
-            telefone: this.state.telefone,
-            descricao: this.state.descricao
+            titulo: this.state.titulo,
+            categoria: this.state.categoria,
+            descricao: this.state.descricao,
+            disponibilidade: this.state.disponibilidade
           })
           .then(function(response) {
             console.log(response);
@@ -130,17 +136,16 @@ class ProblemForm extends Component {
     if (this.props.id) {
       const id = this.props.id;
       axios
-        .get(env.API + "problem/" + id)
+        .get(env.API + "problem/" + this.props.idDetail)
         .then(response => {
           console.log(response);
           const data = response.data;
           this.setState({
             empresa: data.empresa,
-            solicitante: data.solicitante,
-            email: data.email,
-            telefone: data.telefone,
+            titulo: data.titulo,
+            categoria: data.categoria,
             descricao: data.descricao,
-            titulo: data.titulo
+            disponibilidade: data.disponibilidade
           });
         })
         .catch(function(error) {
@@ -164,7 +169,8 @@ class ProblemForm extends Component {
     this.setState({ modal: !this.state.modal });
     axios
       .post(env.API + "communicate-resource", {
-        id_resource: this.state.resourcesCall
+        id_resource: this.state.resourcesCall,
+        id_problem: this.props.idDetail
       })
       .then(response => {
         alert("email enviado para recursos");
@@ -175,7 +181,7 @@ class ProblemForm extends Component {
   }
 
   goToPageListProblem() {
-    window.location = "/consultar-problema";
+    this.props.handleChangeProblemList([null, false]);
   }
 
   findResources() {
@@ -183,23 +189,17 @@ class ProblemForm extends Component {
   }
 
   hasErros() {
-    if (this.state.empresa === "") {
+    if (this.state.razaoSocial === "") {
       this.setState({ error: "preencha o campo empresa" });
-      return true;
-    } else if (this.state.solicitante === "") {
-      this.setState({ error: "preencha o campo solicitante" });
-      return true;
-    } else if (this.state.email === "") {
-      this.setState({ error: "preencha o campo email" });
-      return true;
-    } else if (this.state.telefone === "") {
-      this.setState({ error: "preencha o campo telefone" });
       return true;
     } else if (this.state.titulo === "") {
       this.setState({ error: "preencha o campo titulo" });
       return true;
+    } else if (this.state.categoria === "") {
+      this.setState({ error: "preencha o campo categoria" });
+      return true;
     } else if (this.state.descricao === "") {
-      this.setState({ error: "preencha o campo problema" });
+      this.setState({ error: "preencha o campo descricao" });
       return true;
     }
     return false;
@@ -229,11 +229,14 @@ class ProblemForm extends Component {
               className="inputFields col-md-12"
               type="select"
               name="select"
-              id="exampleSelect"
+              id="empresabanco"
               style={{ width: "100%" }}
+              value={this.state.empresa}
+              onChange={e => this.setState({ empresa: e.target.value })}
+              required
             >
               {this.state.users.map(company => {
-                return <option>{company.empresa}</option>;
+                return <option>{company.razaoSocial}</option>;
               })}
             </Input>
           </div>
@@ -250,7 +253,6 @@ class ProblemForm extends Component {
               placeholder="Digite em poucas palavras o titulo do seu problema"
               value={this.state.titulo}
               onChange={e => this.setState({ titulo: e.target.value })}
-              onChange={e => this.setState({ email: e.target.value })}
               required
             />
           </div>
@@ -276,10 +278,13 @@ class ProblemForm extends Component {
               type="select"
               select="multiple"
               name="category"
-              id="optioncategory"              
+              id="optioncategory"
               style={{ width: "100%" }}
-            >               
-              <option value="1">Administração</option>
+              value={this.state.categoria}
+              onChange={e => this.setState({ categoria: e.target.value })}
+              required
+            >
+              ><option value="1">Administração</option>
               <option valeu="2">Comércio Exterior</option>
               <option value="3">Tecnologia</option>
               <option value="4">Arquitetura</option>
@@ -341,93 +346,14 @@ class ProblemForm extends Component {
             >
               Informe a atuação do Problema:
             </label>
-            {/* <input
-              className="inputFields col-md-12"
-              type="text"
-              placeholder="Descreva o problema"
-              value={this.state.descricao}
-              onChange={e => this.setState({ descricao: e.target.value })}
-              required
-            /> */}
             <br />
           </div>
-          <div className="col-md-12">
-            <div className="col-md-12">
-              <table className="table table">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ display: "none" }}>
-                      ID
-                    </th>
-                    <th scope="col">Período</th>
-                    <th scope="col">Segunda-feira</th>
-                    <th scope="col">Terça-feira</th>
-                    <th scope="col">Quarta-feira</th>
-                    <th scope="col">Quinta-feira</th>
-                    <th scope="col">Sexta-feira</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Manhã</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="m-segunda" />
-                    </td>
-                    <td>
-                      <input name="terça" type="checkbox" id="m-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="m-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="m-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="m-sexta" />
-                    </td>
-                  </tr>
-                  {/* LINHA - TARDE */}
-                  <tr>
-                    <td>Tarde</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="t-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="t-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="t-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="t-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="t-sexta" />
-                    </td>
-                    {/* LINHA - NOITE */}
-                  </tr>
-                  <tr>
-                    <td>Noite</td>
-                    <td>
-                      <input name="segunda" type="checkbox" id="n-segunda" />
-                    </td>
-                    <td>
-                      <input name="terca" type="checkbox" id="n-terca" />
-                    </td>
-                    <td>
-                      <input name="quarta" type="checkbox" id="n-quarta" />
-                    </td>
-                    <td>
-                      <input name="quinta" type="checkbox" id="n-quinta" />
-                    </td>
-                    <td>
-                      <input name="sexta" type="checkbox" id="n-sexta" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          {this.state.disponibilidade ? (
+            <Disponibilidade
+              disp={this.state.disponibilidade}
+              handleChangeDisp={this.handleChangeDisp}
+            />
+          ) : null}
           <label className="labelFields col-md-12" style={{ color: "red" }}>
             {this.state.error}
           </label>
@@ -495,8 +421,9 @@ class ProblemForm extends Component {
                 <tr>
                   <th>Selecionar</th>
                   <th>Nome</th>
+                  <th>Email</th>
                   <th>Formação</th>
-                  <th>Area de Interesse</th>
+                  <th>Area de interesse</th>
                   <th>Cidade</th>
                 </tr>
               </thead>
@@ -507,7 +434,7 @@ class ProblemForm extends Component {
                       <td>
                         <FormGroup check>
                           <Label check>
-                            <Input
+                            <input
                               type="checkbox"
                               onChange={() =>
                                 this.handleCallResourcerSetList(resource.id)
@@ -517,8 +444,9 @@ class ProblemForm extends Component {
                         </FormGroup>
                       </td>
                       <td>{resource.nome}</td>
+                      <td>{resource.email}</td>
                       <td>{resource.formacao}</td>
-                      <td>{resource.area_interesse}</td>
+                      <td>{resource.categoria}</td>
                       <td>{resource.cidade}</td>
                     </tr>
                   );
@@ -527,12 +455,12 @@ class ProblemForm extends Component {
             </Table>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.callResource}>
+            <Button
+              className="join-btn-no-transform mr-1 login"
+              onClick={this.callResource}
+            >
               Comunicar Recursos
             </Button>{" "}
-            <Button color="secondary" onClick={this.findResources}>
-              Voltar
-            </Button>
           </ModalFooter>
         </Modal>
       </div>

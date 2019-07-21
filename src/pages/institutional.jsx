@@ -14,19 +14,34 @@ import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "./../assets/jss/material-kit-react/views/components.jsx";
 
+import CadastroUsuarioCompleto from "./../components/cadastroUsuarioCompleto.jsx";
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
+import WhoWeAre from "../components/institutional/whoWeAre.jsx";
 import HowWorking from "../components/institutional/HowWorking.jsx";
 import Notificacao from "../components/institutional/notificacao.jsx";
 import Footer from "../components/institutional/Footer.jsx";
+import Disponibilidade from "../components/disponibilidade";
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 
 import "./../assets/scss/material-kit-react.scss";
 import { Helmet } from "react-helmet";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 class Institutional extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalBoas: false
+    };
+    this.toggle = this.toggle.bind(this);
+  }
   componentDidMount() {
     this.props.setNavbarOpen(false);
+    if (localStorage.getItem("bemVindo") === "SIM") {
+      localStorage.setItem("bemVindo", "NAO");
+      this.setState({ modalBoas: true });
+    }
   }
   render() {
     const { classes, ...rest } = this.props;
@@ -34,8 +49,14 @@ class Institutional extends Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <meta name="description" content="página institucional responsável por apresentar nosso produto/negócio e possibilitará o acesso do usuário." />
-          <meta name="keywords" content="site, tela inicial, resource manager, institucional" />
+          <meta
+            name="description"
+            content="página institucional responsável por apresentar nosso produto/negócio e possibilitará o acesso do usuário."
+          />
+          <meta
+            name="keywords"
+            content="site, tela inicial, resource manager, institucional"
+          />
           <meta name="author" content="Equipe Resource Manager" />
           <title>Resource Manager</title>
         </Helmet>
@@ -49,18 +70,14 @@ class Institutional extends Component {
           }}
           {...rest}
         />
-        <Parallax
-          image={
-            "https://www.awal.com/hubfs/Awal%20-%20February%202018%20Folder/Images/Monday-finding_a_manager_v1.jpg"
-          }
-        >
+        <Parallax image={require("../images/home.jpg")}>
           <div className={classes.container}>
             <GridContainer>
               <GridItem>
                 <div className={classes.brand}>
-                  <h1 className={classes.title}>Connecting Minds</h1>
+                  <h1 className={classes.title}>Conectando Talentos</h1>
                   <h3 className={classes.subtitle}>
-                    The Perfect Solutions For Your Business.
+                    A perfeita solução para juntar problemas e recursos
                   </h3>
                 </div>
               </GridItem>
@@ -69,24 +86,53 @@ class Institutional extends Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <HowWorking />
-          <SectionCarousel />
-          <SectionBasics />
+          {!this.props.login || localStorage.getItem("type") === "ADMIN" ? (
+            <SectionCarousel />
+          ) : null}
+
+          <WhoWeAre />
+
+          {!this.props.login ? (
+            <SectionBasics history={this.props.history} />
+          ) : localStorage.getItem("type") !== "ADMIN" ? (
+            <CadastroUsuarioCompleto />
+          ) : null}
           {/* <Notificacao /> */}
         </div>
         <br />
         <br />
         <br />
         <br />
+        <Modal
+            style={{ marginTop: "240px" }}
+            isOpen={this.state.modalBoas}
+            toggle={this.toggle}
+          >
+            <ModalHeader toggle={this.toggle}>Dados Alterados!</ModalHeader>
+            <ModalBody>
+              Agora é com a gente!
+              <br />
+              <br />
+              Entraremos em contato por email, fique de olho.
+            </ModalBody>
+          </Modal>
       </div>
     );
   }
+
+  toggle() {
+    this.setState({ modalBoas: !this.state.modalBoas });
+  }
 }
+
+const mapStateToProps = state => ({ login: state.auth.login });
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen }, dispatch);
 
 export default withStyles(componentsStyle)(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(Institutional)
 );

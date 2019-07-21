@@ -23,15 +23,25 @@ class NavBar extends Component {
       NavLinkProblem: false,
       NavLinkUsuario: false,
       NavLinkEmpresa: false,
-      NavLinkRecurso: false
+      NavLinkRecurso: false,
+      active: ""
     };
     this.toggle = this.toggle.bind(this);
     this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
   }
+  componentDidMount() {
+    var pathname = window.location.pathname;
+    console.log(pathname);
+
+    this.setState({ active: pathname });
+  }
 
   render() {
+    const { active } = this.state
+    ;
+
     return (
       <div
         className="nav-bar"
@@ -69,13 +79,18 @@ class NavBar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav w-100">
-              <li className="nav-item active" style={{ margin: "15px" }}>
+              <li className={`nav-item`} style={{ margin: "15px" }}>
                 <Link to="/institutional" className="nav-link">
-                  INSTITUCIONAL
+                  HOME
                 </Link>
               </li>
 
-              <li className="nav-item active" style={{ margin: "15px" }}>
+              <li
+                className={`nav-item active ${
+                  active === "/dashboard" ? "active-nav-admin" : ""
+                }`}
+                style={{ margin: "15px" }}
+              >
                 <Link to="/dashboard" className="nav-link">
                   DASHBOARD
                 </Link>
@@ -190,7 +205,7 @@ class NavBar extends Component {
                   style={{ textDecoration: "none", marginTop: "3px" }}
                   caret
                 >
-                  USUARIO
+                  USUARIO ADMINISTRADOR
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>

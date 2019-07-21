@@ -10,7 +10,7 @@ import ProblemForm from "./../../components/problem/problemForm";
 import ModalLearnMore from "./modalLearnMore";
 import Header from "./../../components/institutional/Header.jsx";
 import HeaderLinks from "./../../components/institutional/HeaderLinks.jsx";
-
+import PoxaNaoFoiDessaVez from "./../../components/poxaNaoFoiDessaVez.jsx";
 import { setNavbarOpen } from "./../../redux/actions/navbarAction";
 
 class Projects extends Component {
@@ -18,10 +18,8 @@ class Projects extends Component {
     super(props);
     this.state = {
       project: [],
-      buscaTable: "",
-      problemListEdit: [null, false]
+      buscaTable: ""
     };
-    console.log(this.props);
     this.deleteProblem = this.deleteProblem.bind(this);
   }
   findProblem() {
@@ -29,7 +27,6 @@ class Projects extends Component {
     axios
       .post(env.API + "consult-problem", { search: this.state.buscaTable })
       .then(response => {
-        alert("Busca Realizada com Sucesso!");
         // apos excluir carrega novamente os usuarios da tabela
         this.setState({ users: response.data });
       })
@@ -52,9 +49,7 @@ class Projects extends Component {
         console.log(error + "Erro na exclusao do item");
       });
   }
-  editProblem(id) {
-    this.setState({ problemListEdit: [id, true] });
-  }
+
   loadProblems() {
     // Make a request for a user with a given ID
     const id_user = localStorage.getItem("userId");
@@ -63,6 +58,7 @@ class Projects extends Component {
       .then(response => {
         // handle success
         const data = response.data;
+        console.log(response.data);
         this.setState({ project: data });
       })
       .catch(error => {
@@ -75,8 +71,7 @@ class Projects extends Component {
   }
   componentDidMount() {
     this.props.setNavbarOpen(false);
-    document.body.style.backgroundImage =
-      "url('https://images.pexels.com/photos/754082/pexels-photo-754082.jpeg?cs=srgb&dl=blur-blurred-background-colors-754082.jpg&fm=jpg')";
+    //document.body.style.backgroundImage = "";
   }
   render() {
     const { ...rest } = this.props;
@@ -92,55 +87,44 @@ class Projects extends Component {
           }}
           {...rest}
         />
-        <div className="container col-md-8 mt-5">
-          {!this.state.problemListEdit[1] ? (
-            <div>
+        <div
+          className="col-md-12"          
+        >
+          <div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div className="row">
+              <div className="col-md-12">
+                <h3 align="center" className="display-3">
+                  Olá, Candidato!
+                </h3>               
+                {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
+                <hr className="my-2" />
+                <p className="lead" />
+              </div>
+            </div>
+            <div className="row mt-2 mb-1">
+              <div
+                className="col-md-12"
+                style={{
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
+                }}
+              />
+            </div>
+
+            {this.state.project.length > 0 ? (
               <div className="row">
                 <div className="col-md-12">
-                  <h1 className="h1-main">Possíveis Projetos Selecionados</h1>
-                  <h3 align="center" className="display-3">
-                    Olá, Candidato!
-                  </h3>
-                  {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
-                  <hr className="my-2" />
-
-                  <Alert
-                    align="center"
-                    color="info"
-                    style={{
-                      width: "100%",
-                      marginBottom: "5px",
-                      marginTop: "5px"
-                    }}
-                  >
-                    A relação abaixo, contem alguns possíveis projetos que você{" "}
-                    <a className="alert-link">possa participar</a>.
-                  </Alert>
-
-                  <p className="lead" />
-                </div>
-              </div>
-              <div className="row mt-2 mb-2">
-                <div
-                  className="col-md-12"
-                  style={{
-                    backgroundColor: "#1a8687",
-                    justifyContent: "center",
-                    backgroundColor: "rgb(26, 134, 135)",
-                    display: "flex"
-                  }}
-                />
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <table class="table table-main">
+                  <table className="table table-main">
                     <thead>
                       <tr>
                         <th scope="col" style={{ display: "none" }}>
                           ID
                         </th>
                         <th scope="col">Empresa</th>
-                        <th scope="col">Solicitante</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Status</th>
                         {/* COLOCAR UM TITULO OU ASSUNTO DO PROBLEMA/PROJETO*/}
                         <th scope="col">Tituto</th>
@@ -154,13 +138,14 @@ class Projects extends Component {
                             <td style={{ display: "none" }}>
                               {proj.problem.id}
                             </td>
-                            <td>{proj.problem.company.empresa}</td>
-                            <td>{proj.problem.solicitante}</td>
+                            <td>{proj.problem.empresa}</td>
+                            <td>{proj.problem.categoria}</td>
                             <td>{proj.status}</td>
                             <td>{proj.problem.titulo}</td>
                             <td>
                               <ModalLearnMore
                                 atualProblemId={proj.problem.id}
+                                atualProblemResourceId={proj.id}
                                 titulo={proj.problem.titulo}
                                 history={this.props.history}
                               />
@@ -172,14 +157,10 @@ class Projects extends Component {
                   </table>
                 </div>
               </div>
-            </div>
-          ) : (
-            <ProblemForm
-              history={this.props.history}
-              edit={this.state.problemListEdit[1]}
-              id={this.state.problemListEdit[0]}
-            />
-          )}
+            ) : (
+              <PoxaNaoFoiDessaVez history={this.props.history} />
+            )}
+          </div>
         </div>
       </div>
     );

@@ -40,7 +40,7 @@ class AcceptResourceForm extends React.Component {
     }
   }
 
-  componentDidUpdate(props) {}
+  componentDidUpdate(props) { }
 
   loadResourcesOk() {
     // Make a request for a user with a given ID
@@ -81,10 +81,8 @@ class AcceptResourceForm extends React.Component {
                 <tr>
                   <th>Nome</th>
                   <th>Formação</th>
-                  <th>Habilidades</th>
                   <th>Area de Interesse</th>
                   <th>Email</th>
-                  <th>Contato</th>
                 </tr>
               </thead>
               <tbody>
@@ -93,10 +91,8 @@ class AcceptResourceForm extends React.Component {
                     <tr>
                       <td>{user.resource.nome}</td>
                       <td>{user.resource.formacao}</td>
-                      <td>{user.resource.habilidades}</td>
-                      <td>{user.resource.area_interesse}</td>
+                      <td>{user.resource.categoria}</td>
                       <td>{user.resource.email}</td>
-                      <td>{user.resource.celular}</td>
                     </tr>
                   );
                 })}
