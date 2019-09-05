@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 import SweetAlert from "react-bootstrap-sweetalert";
-import {
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText
-} from "reactstrap";
+import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
 import env from "../../consts";
 class CompanyForm extends Component {
@@ -34,7 +25,6 @@ class CompanyForm extends Component {
       segmentoEmpresa: "",
       sweetCreate: false
     };
-
     this.hasErros = this.hasErros.bind(this);
     this.createCompany = this.createCompany.bind(this);
   }
@@ -102,7 +92,6 @@ class CompanyForm extends Component {
       }
     }
   }
-
   componentDidMount() {
     if (this.props.id) {
       const id = this.props.id;
@@ -130,7 +119,7 @@ class CompanyForm extends Component {
             segmentoEmpresa: data.segmentoEmpresa
           });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     }
@@ -195,10 +184,7 @@ class CompanyForm extends Component {
       <div className="loginUser col-md-12">
         <form className="signupForm form-inline">
           <div className="col-md-8">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Razão Social:{" "}
             </label>
             <input
@@ -213,10 +199,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-4">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               CNPJ :
             </label>
             <input
@@ -231,10 +214,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-7">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Nome Fantasia:{" "}
             </label>
             <input
@@ -249,10 +229,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-3">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               CEP :
             </label>
             <input
@@ -270,10 +247,7 @@ class CompanyForm extends Component {
           </div>
 
           <div className="col-md-7">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Rua :
             </label>
             <input
@@ -289,10 +263,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-5">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Numero :
             </label>
             <input
@@ -308,10 +279,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-5">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }} >
               Bairro :
             </label>
             <input
@@ -327,10 +295,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-5">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }} >
               Cidade :
             </label>
             <input
@@ -347,9 +312,7 @@ class CompanyForm extends Component {
           </div>
           <div className="col-md-2">
             <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+              className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               UF :
             </label>
             <select
@@ -389,10 +352,7 @@ class CompanyForm extends Component {
             </select>
           </div>
           <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }} >
               Pais :
             </label>
             <select
@@ -694,10 +654,7 @@ class CompanyForm extends Component {
             </select>
           </div>
           <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Nome do Representante:
             </label>
             <input
@@ -707,17 +664,12 @@ class CompanyForm extends Component {
               name="nome representante"
               placeholder="O nome do Representante"
               value={this.state.nomeRepresentante}
-              onChange={e =>
-                this.setState({ nomeRepresentante: e.target.value })
-              }
+              onChange={e => this.setState({ nomeRepresentante: e.target.value })}
               required
             />
           </div>
           <div className="col-md-3">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }} >
               Telefone do Representante:
             </label>
             <input
@@ -727,17 +679,12 @@ class CompanyForm extends Component {
               name="telefone"
               placeholder="Telefone do Representante"
               value={this.state.telefoneRepresentante}
-              onChange={e =>
-                this.setState({ telefoneRepresentante: e.target.value })
-              }
+              onChange={e => this.setState({ telefoneRepresentante: e.target.value })}
               required
             />
           </div>
           <div className="col-md-3">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Celular do Representante:
             </label>
             <input
@@ -747,17 +694,12 @@ class CompanyForm extends Component {
               name="celular"
               placeholder="Celular do Representante"
               value={this.state.celularRepresentante}
-              onChange={e =>
-                this.setState({ celularRepresentante: e.target.value })
-              }
+              onChange={e => this.setState({ celularRepresentante: e.target.value })}
               required
             />
           </div>
           <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               E-mail do Representante:
             </label>
             <input
@@ -767,17 +709,12 @@ class CompanyForm extends Component {
               name="email"
               placeholder="E-mail do Representante "
               value={this.state.emailRepresentante}
-              onChange={e =>
-                this.setState({ emailRepresentante: e.target.value })
-              }
+              onChange={e => this.setState({ emailRepresentante: e.target.value })}
               required
             />
           </div>
           <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Departmento:
             </label>
             <input
@@ -792,10 +729,7 @@ class CompanyForm extends Component {
             />
           </div>
           <div className="col-md-6">
-            <label
-              className="labelFields"
-              style={{ display: "flex", justifyContent: "end" }}
-            >
+            <label className="labelFields" style={{ display: "flex", justifyContent: "end" }}>
               Segmento da Empresa :
             </label>
             <input
@@ -812,12 +746,8 @@ class CompanyForm extends Component {
           </label>
           <Col className="col-md-12 d-flex justify-content-center">
             {this.props.id ? (
-              <button
-                type="button"
-                onClick={this.props.handleChangeEdit}
-                className="join-btn-no-transform mr-1 login"
-                style={{ width: "25%", margin: "0px" }}
-              >
+              <button type="button" onClick={this.props.handleChangeEdit}
+                className="join-btn-no-transform mr-1 login" style={{ width: "25%", margin: "0px" }}>
                 Voltar Empresas
               </button>
             ) : null}
@@ -826,8 +756,8 @@ class CompanyForm extends Component {
               type="button"
               onClick={() => {
                 !this.props.id
-                  ? this.createCompany("create")
-                  : this.createCompany("update", this.props.id);
+                ? this.createCompany("create")
+                : this.createCompany("update", this.props.id);
               }}
               className="join-btn-no-transform mr-1 login"
               style={{ width: "25%", margin: "0px" }}
