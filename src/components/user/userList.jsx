@@ -47,6 +47,10 @@ class UserList extends Component {
     this.setState({ userListEdit: [id, true] });
   }
 
+  resetUser = () => {
+    this.setState({ userListEdit: [null, false] });
+  };
+
   loadUsers() {
     // Make a request for a user with a given ID
     axios
@@ -166,6 +170,7 @@ class UserList extends Component {
           </div>
         ) : (
           <UserForm
+            resetUser={this.resetUser}
             history={this.props.history}
             edit={this.state.userListEdit[1]}
             id={this.state.userListEdit[0]}

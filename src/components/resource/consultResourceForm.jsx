@@ -147,7 +147,7 @@ class ConsultResourceForm extends Component {
                             >
                               Detalhes
                             </button>
-                            <button
+                            {/* <button
                               onClick={e => this.editResource(resource.id)}
                               className="join-btn-no-transform mr-1"
                               style={{
@@ -157,14 +157,14 @@ class ConsultResourceForm extends Component {
                               }}
                             >
                               Editar
-                            </button>
-                            <button
+                            </button> */}
+                            {/* <button
                               onClick={e => this.excluirResource(resource.id)}
                               className="join-btn-no-transform mr-1"
                               style={{ width: "100%" }}
                             >
                               Excluir
-                            </button>
+                            </button> */}
                           </td>
                         </tr>
                       );

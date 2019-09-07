@@ -39,9 +39,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const { active } = this.state
-    ;
-
+    const { active } = this.state;
     return (
       <div
         className="nav-bar"
@@ -96,6 +94,11 @@ class NavBar extends Component {
                 </Link>
               </li>
 
+              <li className={"nav-item active"} style={{ margin: "15px" }}>
+                <Link to="/consultar-recurso" className="nav-link">
+                  RECURSOS
+                </Link>
+              </li>
               <Dropdown
                 isOpen={this.state.NavLinkEmpresa}
                 toggle={this.toggleEmpresa}
@@ -127,40 +130,6 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <Dropdown
-                isOpen={this.state.NavLinkRecurso}
-                toggle={this.toggleRecurso}
-                style={{ margin: "10px" }}
-              >
-                <DropdownToggle
-                  color="link"
-                  style={{ textDecoration: "none", marginTop: "3px" }}
-                  caret
-                >
-                  RECURSO
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>
-                    <Link
-                      className="nav-link"
-                      to="/cadastro-recurso"
-                      className="nav-link text-secondary"
-                    >
-                      Cadastrar
-                    </Link>
-                  </DropdownItem>
-
-                  <DropdownItem>
-                    <Link
-                      className="nav-link text-secondary"
-                      to="/consultar-recurso"
-                    >
-                      Consultar
-                    </Link>
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-
               <Dropdown
                 isOpen={this.state.NavLinkProblem}
                 toggle={this.toggle}
