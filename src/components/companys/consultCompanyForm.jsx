@@ -201,10 +201,10 @@ class ConsultCompanyForm extends Component {
                               marginTop: "5px"
                             }}
                           />
-                          <FaTrashAlt
+                          {/* <FaTrashAlt
                             onClick={e => this.excluirCompany(company.id)}
                             style={{ width: "90%" }}
-                          />
+                          /> */}
                         </div>
                       </div>
                     </div>

@@ -15,7 +15,7 @@ class UserForm extends Component {
       error: "",
       sweetCreate: false
     };
-    console.log(this.props);
+
     this.hasErros = this.hasErros.bind(this);
     this.createUser = this.createUser.bind(this);
   }
@@ -33,11 +33,11 @@ class UserForm extends Component {
             email: this.state.email,
             password: this.state.password
           })
-          .then(function(response) {
+          .then(response => {
             console.log(response);
-            this.props.history("/consultar-usuario");
+            this.props.history.push("/consultar-usuario");
           })
-          .catch(function(error) {
+          .catch(error => {
             console.log(error);
           });
       } else if ((method = "update")) {
@@ -47,11 +47,11 @@ class UserForm extends Component {
             email: this.state.email,
             password: this.state.password
           })
-          .then(function(response) {
+          .then(response => {
             console.log(response);
-            this.props.history.push("/consultar-usuario");
+            this.props.resetUser();
           })
-          .catch(function(error) {
+          .catch(error => {
             console.log(error);
           });
       }
@@ -72,7 +72,7 @@ class UserForm extends Component {
             email: data.email
           });
         })
-        .catch(function(error) {
+        .catch(error => {
           console.log(error);
         });
     }
