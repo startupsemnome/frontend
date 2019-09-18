@@ -120,7 +120,7 @@ class Institutional extends Component {
     );
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({ modalBoas: !this.state.modalBoas });
   }
 }
