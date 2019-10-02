@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-// import { Row, Col, ModalHeader, Label, Input, Table } from "reactstrap";
 import { FaEye, FaCogs, FaTrashAlt } from "react-icons/fa";
-// import SweetAlert from "react-bootstrap-sweetalert";
 import axios from "axios";
 import env from "./../../consts";
 import CompanyForm from "./companyForm";
-// to={"visualizar-empresa"}
 class ConsultCompanyForm extends Component {
   constructor(props) {
     super(props);
@@ -69,15 +66,8 @@ class ConsultCompanyForm extends Component {
       });
   }
   componentDidMount() {
-    console.log("teste");
     this.loadCompanys();
   }
-  // visualizar(id) {
-  // this.props.history.push({
-  //   pathname: "/visualizar-empresa",
-  //   state: { id }
-  //   }); this.props.history("/consultar-usuario");
-  // }
   viewCard(id) {
     axios
       .get(env.API + "view-company/" + id)

@@ -3,6 +3,45 @@
     color: rgba#1d1c1cde;
   }
 }
+//sombra
+// #bloco{
+//   width: 200px;
+//   height: 200px;
+//   background-color: #F23005;
+//   -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+//   -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+//   box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+// }
+// #bloco{
+//   width: 200px;
+//   height: 200px;
+//   background-color: #F23005;
+//   margin-left: 50px;
+//   -webkit-box-shadow: -35px 32px 14px rgba(29, 140, 231, 0.45);
+//   -moz-box-shadow:    -35px 32px 14px rgba(29, 140, 231, 0.45);
+//  box-shadow:         -35px 32px 14px rgba(29, 140, 231, 0.45);   }
+// .active{ font-weight: bold;  color: red;}
+//.nav-link-active{color: tomato;} chosen
+/*
+https://medium.com/swlh/using-react-router-navlink-to-specify-the-active-element-in-a-navigation-bar-38700ffd4900
+https://reactgo.com/reactrouter/navlink/
+https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/NavLink.md
+*/
+// .navbar-nav .chosen,.navbar-nav .a:hover  {
+//  border-bottom: 1px solid #F14B31; font-weight: bold; 
+// }
+// .navbar-nav a.nav-link,.navbar-nav .chosen:hover {
+//   border-bottom: 1px solid #F14B31; font-weight: bold; background-color: darkgrey; border-radius: 10px; 
+// } Ativa tudo
+
+// .navbar-nav a.nav-link,.navbar-nav a:hover {
+//   border-bottom: 1px solid #F14B31; font-weight: bold; background-color: darkgrey; border-radius: 10px; 
+// } Ativa tudo
+
+// .navbar-nav a.nav-link,.navbar-nav a:hover { choncer
+//   border-bottom: 1px solid #F14B31;
+// }
+
 div.nav-bar a.navbar-brand {
   color: white;
 }

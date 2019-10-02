@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
-
+import { NavLink } from "react-router-dom";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import logo from "../images/logo-resource.jpg";
-
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
-
 import { setNavbarOpen } from "./../redux/actions/navbarAction";
 import { Logout } from "./../redux/actions/authAction";
 
@@ -34,10 +26,8 @@ class NavBar extends Component {
   componentDidMount() {
     var pathname = window.location.pathname;
     console.log(pathname);
-
     this.setState({ active: pathname });
   }
-
   render() {
     const { active } = this.state;
     return (
@@ -77,56 +67,60 @@ class NavBar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav w-100">
+
               <li className={`nav-item`} style={{ margin: "15px" }}>
-                <Link to="/institutional" className="nav-link">
+                <NavLink exact to="/institutional" className="nav-link">
                   HOME
-                </Link>
+                </NavLink>
               </li>
 
               <li
-                className={`nav-item active ${
-                  active === "/dashboard" ? "active-nav-admin" : ""
-                }`}
-                style={{ margin: "15px" }}
+               className={`nav-item active ${active === "/dashboard" ? "active-nav-admin" : ""}`}
+               style={{ margin: "15px" }}
               >
-                <Link to="/dashboard" className="nav-link">
+                <NavLink to="/dashboard" className="nav-link"  >
                   DASHBOARD
-                </Link>
+                </NavLink>
               </li>
-
-              <li className={"nav-item active"} style={{ margin: "15px" }}>
-                <Link to="/consultar-recurso" className="nav-link">
+              <li className={`nav-item active ${active === "/consultar-recurso" ? "active-nav-user" : ""}`}
+               style={{ margin: "15px" }} >
+                <NavLink to="/consultar-recurso" className="nav-link">
                   RECURSOS
-                </Link>
+                </NavLink>
               </li>
               <Dropdown
                 isOpen={this.state.NavLinkEmpresa}
                 toggle={this.toggleEmpresa}
                 style={{ margin: "10px" }}
+
               >
-                <DropdownToggle
-                  color="link"
-                  style={{ textDecoration: "none", marginTop: "3px" }}
-                  caret
+                <li className={`nav-item active ${active === "/cadastro-empresa" ? "active-nav-user" : ""}`
+                  || `nav-item active ${active === "/consultar-empresa" ? "active-nav-user" : ""}`}
                 >
-                  EMPRESA
-                </DropdownToggle>
+                  <DropdownToggle
+                    color="link"
+                    style={{ textDecoration: "none", marginTop: "3px" }}
+                    caret
+                  >
+                    EMPRESA
+                  </DropdownToggle>
+                </li>
                 <DropdownMenu>
-                  <DropdownItem>
-                    <Link
+                  <DropdownItem >
+                    <NavLink
                       to="/cadastro-empresa"
                       className="nav-link text-secondary"
                     >
                       Cadastrar
-                    </Link>
+                    </NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <Link
+                    <NavLink
                       className="nav-link text-secondary"
                       to="/consultar-empresa"
                     >
                       Consultar
-                    </Link>
+                    </NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
@@ -135,31 +129,33 @@ class NavBar extends Component {
                 toggle={this.toggle}
                 style={{ margin: "10px" }}
               >
-                <DropdownToggle
-                  color="link"
-                  style={{ textDecoration: "none", marginTop: "3px" }}
-                  caret
-                >
-                  PROBLEMA
+                <li className={`nav-item active ${active === "/cadastro-problema" ? "active-nav-user" : ""}`
+                  || `nav-item active ${active === "/consultar-problema" ? "active-nav-user" : ""}`} >
+                  <DropdownToggle
+                    color="link"
+                    style={{ textDecoration: "none", marginTop: "3px" }}
+                    caret
+                  >
+                    PROBLEMA
                 </DropdownToggle>
+                </li>
                 <DropdownMenu>
                   <DropdownItem>
-                    <Link
-                      className="nav-link"
+                    <NavLink
                       to="/cadastro-problema"
                       className="nav-link text-secondary"
                     >
                       Cadastrar
-                    </Link>
+                    </NavLink>
                   </DropdownItem>
 
                   <DropdownItem>
-                    <Link
+                    <NavLink
                       className="nav-link text-secondary"
                       to="/consultar-problema"
                     >
                       Consultar
-                    </Link>
+                    </NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
@@ -169,52 +165,55 @@ class NavBar extends Component {
                 toggle={this.toggleUsuario}
                 style={{ margin: "10px" }}
               >
-                <DropdownToggle
-                  color="link"
-                  style={{ textDecoration: "none", marginTop: "3px" }}
-                  caret
+                <li className={`nav-item active ${active === "/cadastro-usuario" ? "active-nav-user" : ""}`
+                  || `nav-item active ${active === "/consultar-usuario" ? "active-nav-user" : ""}`}
                 >
-                  USUARIO ADMINISTRADOR
-                </DropdownToggle>
+                  <DropdownToggle
+                    color="link"
+                    style={{ textDecoration: "none", marginTop: "3px" }}
+                    caret
+                  >
+                    USUARIO ADMINISTRADOR
+                  </DropdownToggle>
+                </li>
                 <DropdownMenu>
                   <DropdownItem>
-                    <Link
-                      className="nav-link"
+                    <NavLink
                       to="/cadastro-usuario"
                       className="nav-link text-secondary"
                     >
                       Cadastrar
-                    </Link>
+                    </NavLink>
                   </DropdownItem>
 
                   <DropdownItem>
-                    <Link
+                    <NavLink
                       className="nav-link text-secondary"
                       to="/consultar-usuario"
                     >
                       Consultar
-                    </Link>
+                    </NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
-              <li
-                style={{ position: "absolute", right: "0px", margin: "15px" }}
+              <li style={{ position: "absolute", right: "0px", margin: "15px" }}
+                className={`nav-item active ${active === "/login" ? "active-nav-user" : ""}`}
               >
-                <Link
+                <NavLink
                   onClick={() => this.props.Logout()}
                   to="/login"
                   className="nav-link"
                 >
                   SAIR
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
         </nav>
-      </div>
+      </div >
     );
   }
+
   toggle() {
     this.setState({
       NavLinkProblem: !this.state.NavLinkProblem
@@ -236,7 +235,6 @@ class NavBar extends Component {
     });
   }
 }
-
 const mapStateToProps = state => ({ navbar: state.navbar });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen, Logout }, dispatch);

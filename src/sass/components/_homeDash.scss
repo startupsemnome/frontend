@@ -49,7 +49,13 @@ text {
   color: white;
 }
 
-.active-nav-admin {
+.active-nav-admin{
+  background-color: #198792;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.active-nav-user{
   background-color: #198792;
   padding: 3px;
   border-radius: 3px;
