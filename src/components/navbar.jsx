@@ -86,7 +86,7 @@ class NavBar extends Component {
               <li
                 className={`nav-item active ${
                   active === "/dashboard" ? "active-nav-admin" : ""
-                }`}
+                  }`}
                 style={{ margin: "15px" }}
               >
                 <Link to="/dashboard" className="nav-link">
@@ -197,6 +197,15 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+
+              <li className={"nav-item active"} style={{ margin: "15px" }}>
+                <Link
+                  to="/feed"
+                  className="nav-link"
+                >
+                  FEED
+                </Link>
+              </li>
 
               <li
                 style={{ position: "absolute", right: "0px", margin: "15px" }}
