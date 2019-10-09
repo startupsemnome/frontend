@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import {
+  Navbar,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  NavbarToggler,
+  DropdownItem,
+  Collapse
+} from "reactstrap";
 import logo from "../images/logo-resource.jpg";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -16,12 +24,14 @@ class NavBar extends Component {
       NavLinkUsuario: false,
       NavLinkEmpresa: false,
       NavLinkRecurso: false,
+      isOpen: false,
       active: ""
     };
     this.toggle = this.toggle.bind(this);
     this.toggleEmpresa = this.toggleEmpresa.bind(this);
     this.toggleUsuario = this.toggleUsuario.bind(this);
     this.toggleRecurso = this.toggleRecurso.bind(this);
+    this.toggleButton = this.toggleButton.bind(this);
   }
   componentDidMount() {
     var pathname = window.location.pathname;
@@ -31,16 +41,10 @@ class NavBar extends Component {
   render() {
     const { active } = this.state;
     return (
-      <div
-        className="nav-bar"
-        style={{
-          display: `${this.props.navbar.isNavbarOpen ? "initial" : "none"}`
-        }}
+      <div className="nav-bar"
+        style={{ display: `${this.props.navbar.isNavbarOpen ? "initial" : "none"}` }}
       >
-        <nav
-          className="navbar navbar-expand-lg navbar-dark bg-dark navbar-cor"
-          style={{ height: "60px" }}
-        >
+        <Navbar style={{ height: "70px" }} color="dark" dark expand="lg">
           <a className="navbar-brand" href="#">
             <img
               src={logo}
@@ -54,36 +58,32 @@ class NavBar extends Component {
               title="logo"
             />
           </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav w-100">
+          <NavbarToggler onClick={this.toggleButton} />
+          <Collapse isOpen={this.state.isOpen}
+            style={{
+              zIndex: 999,
+              backgroundColor: "#343a40"
+            }}
 
-              <li className={`nav-item`} style={{ margin: "15px" }}>
+            navbar>
+            <ul className="navbar-nav w-100" style={{ backgroundColor: "#343a40" }}>
+
+              <li className={`nav-item`} style={{ margin: 15 }}>
                 <NavLink exact to="/institutional" className="nav-link">
                   HOME
                 </NavLink>
               </li>
 
               <li
-               className={`nav-item active ${active === "/dashboard" ? "active-nav-admin" : ""}`}
-               style={{ margin: "15px" }}
+                className={`nav-item active ${active === "/dashboard" ? "active-nav-admin" : ""}`}
+                style={{ margin: 15 }}
               >
                 <NavLink to="/dashboard" className="nav-link"  >
                   DASHBOARD
                 </NavLink>
               </li>
               <li className={`nav-item active ${active === "/consultar-recurso" ? "active-nav-user" : ""}`}
-               style={{ margin: "15px" }} >
+                style={{ margin: "15px" }} >
                 <NavLink to="/consultar-recurso" className="nav-link">
                   RECURSOS
                 </NavLink>
@@ -148,7 +148,6 @@ class NavBar extends Component {
                       Cadastrar
                     </NavLink>
                   </DropdownItem>
-
                   <DropdownItem>
                     <NavLink
                       className="nav-link text-secondary"
@@ -159,7 +158,6 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
               <Dropdown
                 isOpen={this.state.NavLinkUsuario}
                 toggle={this.toggleUsuario}
@@ -185,7 +183,6 @@ class NavBar extends Component {
                       Cadastrar
                     </NavLink>
                   </DropdownItem>
-
                   <DropdownItem>
                     <NavLink
                       className="nav-link text-secondary"
@@ -196,7 +193,7 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <li style={{ position: "absolute", right: "0px", margin: "15px" }}
+              <li style={{ position: "absolute", right: "10px", margin: "15px" }}
                 className={`nav-item active ${active === "/login" ? "active-nav-user" : ""}`}
               >
                 <NavLink
@@ -208,12 +205,11 @@ class NavBar extends Component {
                 </NavLink>
               </li>
             </ul>
-          </div>
-        </nav>
+          </Collapse>
+        </Navbar>
       </div >
     );
   }
-
   toggle() {
     this.setState({
       NavLinkProblem: !this.state.NavLinkProblem
@@ -232,6 +228,11 @@ class NavBar extends Component {
   toggleRecurso() {
     this.setState({
       NavLinkRecurso: !this.state.NavLinkRecurso
+    });
+  }
+  toggleButton() {
+    this.setState({
+      isOpen: !this.state.isOpen
     });
   }
 }
