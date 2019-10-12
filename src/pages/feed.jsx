@@ -46,6 +46,7 @@ class Feed extends Component {
           </div>
         </div>
 
+
         {/* <div className="row">
           <div className="col-md-12">
             <table className="table table-main">
