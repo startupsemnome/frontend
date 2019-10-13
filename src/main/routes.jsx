@@ -8,9 +8,13 @@ import { browserHistory } from "react-router";
 import Navbar from "./../components/navbar";
 import Footer from "./../components/footer";
 import PrivateRoute from "./privateRoutes";
+
 // Pages
 import Dashboard from "../pages/home";
 import NotFound from "../pages/notFound";
+import Feed from "../pages/feed";
+
+
 // Pages Company
 import RegisterCompany from "../pages/registerCompany";
 import ViewCompany from "../pages/viewCompany";
@@ -61,6 +65,7 @@ export default class Routes extends Component {
 
           <PrivateRoute exact={true} path="/lista-projetos" component={Projects} />
           <PrivateRoute exact={true} path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact={true} path="/feed" component={Feed} />
 
           <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />
           <PrivateRoute exact={true} path="/consultar-empresa" component={ConsultCompany} />

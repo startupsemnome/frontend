@@ -13,7 +13,7 @@ export default class WhoWeAre extends Component {
             }}
             className="titleInstitutional"
           >
-            Quem nós Somos
+            Quem somos nós
           </h1>
         </div>
         <div className="row">

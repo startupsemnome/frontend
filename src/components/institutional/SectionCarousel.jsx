@@ -37,7 +37,7 @@ class SectionCarousel extends React.Component {
             className="footer-H1-Question titleInstitutional"
             style={{ marginLeft: "12px", maxWidth: "468px" }}
           >
-            Quem Já esta usando a gente?
+            Veja quem está usando a nossa plataforma!
           </h1>
         </div>
         <div

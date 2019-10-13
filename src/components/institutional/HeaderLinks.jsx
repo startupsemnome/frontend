@@ -45,7 +45,7 @@ class HeaderLinks extends Component {
             color="transparent"
             className={classes.navLink}
           >
-            Quem nós somos
+            Quem somos nós
           </Link>
 
           {!this.props.auth.login ? (
@@ -69,33 +69,33 @@ class HeaderLinks extends Component {
             </Link>
           ) : null}
           {this.props.auth.login == true &&
-          localStorage.getItem("type") !== "ADMIN" ? (
-            <Link
-              to="/lista-projetos"
-              style={{ textDecoration: "none" }}
-              color="transparent"
-              className={classes.navLink}
-            >
-              Projetos <br />
-              <span className="badge badge-light" />
-            </Link>
-          ) : null}
+            localStorage.getItem("type") !== "ADMIN" ? (
+              <Link
+                to="/lista-projetos"
+                style={{ textDecoration: "none" }}
+                color="transparent"
+                className={classes.navLink}
+              >
+                Projetos <br />
+                <span className="badge badge-light" />
+              </Link>
+            ) : null}
         </ListItem>
 
         {this.props.auth.login === true &&
-        localStorage.getItem("type") === "ADMIN" ? (
-          <ListItem className={classes.listItem}>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/login"
-              to={this.props.auth.login ? "/dashboard" : "/login"}
-              color="transparent"
-              className={classes.navLink}
-            >
-              {this.props.auth.login ? "Dashboard" : "Login"}
-            </Link>
-          </ListItem>
-        ) : null}
+          localStorage.getItem("type") === "ADMIN" ? (
+            <ListItem className={classes.listItem}>
+              <Link
+                style={{ textDecoration: "none" }}
+                to="/login"
+                to={this.props.auth.login ? "/dashboard" : "/login"}
+                color="transparent"
+                className={classes.navLink}
+              >
+                {this.props.auth.login ? "Dashboard" : "Login"}
+              </Link>
+            </ListItem>
+          ) : null}
 
         {this.props.auth.login ? (
           <Link
@@ -108,15 +108,15 @@ class HeaderLinks extends Component {
             Sair
           </Link>
         ) : (
-          <Link
-            style={{ textDecoration: "none" }}
-            to="/login"
-            color="transparent"
-            className={classes.navLink}
-          >
-            Login
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/login"
+              color="transparent"
+              className={classes.navLink}
+            >
+              Login
           </Link>
-        )}
+          )}
       </List>
     );
   }

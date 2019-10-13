@@ -77,7 +77,7 @@ class Institutional extends Component {
                 <div className={classes.brand}>
                   <h1 className={classes.title}>Conectando Talentos</h1>
                   <h3 className={classes.subtitle}>
-                    A perfeita solução para juntar problemas e recursos
+                    A solução perfeita para conectar problemas e recursos
                   </h3>
                 </div>
               </GridItem>
@@ -104,18 +104,18 @@ class Institutional extends Component {
         <br />
         <br />
         <Modal
-            style={{ marginTop: "240px" }}
-            isOpen={this.state.modalBoas}
-            toggle={this.toggle}
-          >
-            <ModalHeader toggle={this.toggle}>Dados Alterados!</ModalHeader>
-            <ModalBody>
-              Agora é com a gente!
+          style={{ marginTop: "240px" }}
+          isOpen={this.state.modalBoas}
+          toggle={this.toggle}
+        >
+          <ModalHeader toggle={this.toggle}>Dados Alterados!</ModalHeader>
+          <ModalBody>
+            Agora é com a gente!
               <br />
-              <br />
-              Entraremos em contato por email, fique de olho.
+            <br />
+            Entraremos em contato por email, fique de olho.
             </ModalBody>
-          </Modal>
+        </Modal>
       </div>
     );
   }

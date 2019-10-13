@@ -193,9 +193,20 @@ class NavBar extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+
+              <li className={"nav-item active"} style={{ margin: "15px" }}>
+                <NavLink
+                  to="/feed"
+                  className="nav-link"
+                >
+                  FEED
+                </NavLink>
+              </li>
+
               <li style={{ position: "absolute", right: "10px", margin: "15px" }}
                 className={`nav-item active ${active === "/login" ? "active-nav-user" : ""}`}
               >
+
                 <NavLink
                   onClick={() => this.props.Logout()}
                   to="/login"
