@@ -81,7 +81,7 @@ class NavBar extends Component {
                 <NavLink to="/dashboard" className="nav-link"  >
                   DASHBOARD
                 </NavLink>
-              </li>
+              </li>                                                                
               <li className={`nav-item active ${active === "/consultar-recurso" ? "active-nav-user" : ""}`}
                 style={{ margin: "15px" }} >
                 <NavLink to="/consultar-recurso" className="nav-link">
@@ -194,7 +194,7 @@ class NavBar extends Component {
                 </DropdownMenu>
               </Dropdown>
 
-              <li className={"nav-item active"} style={{ margin: "15px" }}>
+              <li className={`nav-item active ${active === "/feed" ? "active-nav-user" : ""}`} style={{ margin: "15px" }}>
                 <NavLink
                   to="/feed"
                   className="nav-link"
