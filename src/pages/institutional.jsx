@@ -13,7 +13,7 @@ import Parallax from "../components/institutional/Parallax.jsx";
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import componentsStyle from "./../assets/jss/material-kit-react/views/components.jsx";
-
+import FeedBack from "./../components/feedback/feedBack.jsx";
 import CadastroUsuarioCompleto from "./../components/cadastroUsuarioCompleto.jsx";
 import SectionBasics from "../components/institutional/SectionBasics.jsx";
 import SectionCarousel from "../components/institutional/SectionCarousel.jsx";
@@ -98,6 +98,11 @@ class Institutional extends Component {
             <CadastroUsuarioCompleto />
           ) : null}
           {/* <Notificacao /> */}
+          {/* {!this.props.login ? (
+            <SectionBasics history={this.props.history} />
+          ) : localStorage.getItem("type") !== "ADMIN" ? (
+            <FeedBack />
+          ) : null} */}
         </div>
         <br />
         <br />

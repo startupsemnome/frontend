@@ -49,7 +49,6 @@ class Projects extends Component {
         console.log(error + "Erro na exclusao do item");
       });
   }
-
   loadProblems() {
     // Make a request for a user with a given ID
     const id_user = localStorage.getItem("userId");
@@ -88,15 +87,15 @@ class Projects extends Component {
           {...rest}
         />
         <div
-          className="col-md-12"          
+          className="col-md-12"
         >
           <div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             <div className="row">
               <div className="col-md-12">
                 <h3 align="center" className="display-3">
                   Olá, Candidato!
-                </h3>               
+                </h3>
                 {/* <p align="center" className="lead">Se estiver lendo isso, significa que, você foi pré-escolhido para participar de alguns projetos.</p> */}
                 <hr className="my-2" />
                 <p className="lead" />
@@ -158,8 +157,8 @@ class Projects extends Component {
                 </div>
               </div>
             ) : (
-              <PoxaNaoFoiDessaVez history={this.props.history} />
-            )}
+                <PoxaNaoFoiDessaVez history={this.props.history} />
+              )}
           </div>
         </div>
       </div>

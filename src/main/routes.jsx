@@ -44,7 +44,7 @@ import Institutional from "../pages/institutional";
 // Page Accept
 import Accept from "../pages/accept";
 import Projects from "../components/candidate/projects";
-
+import FeedBack from "../components/feedback/feedBack";
 import UserList from "../components/user/userList";
 import ContentRegister from "../components/componentsform/contentRegister";
 
@@ -66,7 +66,8 @@ export default class Routes extends Component {
           <PrivateRoute exact={true} path="/lista-projetos" component={Projects} />
           <PrivateRoute exact={true} path="/dashboard" component={Dashboard} />
           <PrivateRoute exact={true} path="/feed" component={Feed} />
-
+          <PrivateRoute exact={true} path="/feedback" component={FeedBack} />
+          
           <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />
           <PrivateRoute exact={true} path="/consultar-empresa" component={ConsultCompany} />
           <PrivateRoute exact={true} path="/visualizar-empresa" component={ViewCompany} />

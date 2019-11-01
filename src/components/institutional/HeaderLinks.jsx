@@ -80,6 +80,18 @@ class HeaderLinks extends Component {
                 <span className="badge badge-light" />
               </Link>
             ) : null}
+          {this.props.auth.login == true &&
+            localStorage.getItem("type") !== "ADMIN" ? (
+              <Link
+                to="/feedback"
+                style={{ textDecoration: "none" }}
+                color="transparent"
+                className={classes.navLink}
+              >
+                Feed back <br />
+                <span className="badge badge-light" />
+              </Link>
+            ) : null}
         </ListItem>
 
         {this.props.auth.login === true &&
