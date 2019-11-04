@@ -46,18 +46,14 @@ class Feedback extends Component {
   componentDidMount() {
     this.loadProblems();
     console.log(this.state.project);
-    console.log(this.props);
   }
   goToList = () => {
     this.props.history.push("/Institucional");
-
   }
-
   handleFormSubmit(event) {
     event.preventDefault();
     this.setState({ sweetCreate: true });
   }
-
   componentDidMount() {
     this.props.setNavbarOpen(false);
   }
@@ -86,28 +82,23 @@ class Feedback extends Component {
             {this.state.project.length > 0 ? (
               <div className="row">
                 <div className="col-md-12">
-                  <table className="table table-main">
-                    <thead>
-                      <tr>
-                        <th scope="col" style={{ display: "none" }}>
-                          ID
-                      </th>
-                        <th scope="row">Razão Social</th>
-                        <th scope="row">Descrição Do Problema</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.project.map(proj => {
-                        return (
-                          <tr key={proj.id}>
-                            <td style={{ display: "none" }}>{proj.problem.id}</td>
-                            <td>{proj.problem.empresa}</td>
-                            <td>{proj.problem.descricao}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                  <div className="col-md-11">
+                    {this.state.project.map(proj => {
+                      return (
+                        <div key={proj.id}>
+                          <label style={{ display: "none" }}>{proj.problem.id}</label>
+                          <div className="empresa">
+                            <label className="labelFields"><b>Razão Social</b></label><br />
+                            <label className="labelFields">{proj.problem.empresa}</label>
+                          </div>
+                          <div className="problema">
+                            <label className="labelFields"><b>Descrição Do Problema</b></label><br />
+                            <label className="labelFields">{proj.problem.descricao}</label>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>{/*col-md-11*/}
                 </div>
               </div>/*row*/
             ) : (
@@ -148,14 +139,14 @@ class Feedback extends Component {
           >
             {`Feed Back realizado com sucesso!!!!}`}
           </SweetAlert>
-        </div>{/*container col-md-8*/}
-      </div>
+        </div > {/*container col-md-8*/}
+      </div >
     );
   }
 
   loadSentiment() {
+    const resource = localStorage.getItem("userId");
     axios
-    const resource = localStorage.getItem("userId")
       .get(env.API + "sentiment-analysis")
       .then(response => {
         // handle success        
@@ -178,7 +169,6 @@ class Feedback extends Component {
   }
   componentDidMount() {
     this.loadSentiment();
-    console.log(this.props);
   }
 }
 const mapDispatchToProps = dispatch =>

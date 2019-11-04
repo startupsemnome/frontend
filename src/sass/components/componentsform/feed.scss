@@ -23,5 +23,11 @@ form.signupForm.form-inline div.col-md-11 button.join-btn-no-transform.mr-1{
   width: 45%;
   margin-bottom: 5px;
   margin-top: 8px;
-  margin-left: 27px;
+  // margin-left: 27px;
+}
+div.signupForm.form-inline div.row div.col-md-12 div.col-md-11 div label.labelFields{
+  font-size: 21px;
+}
+div.signupForm.form-inline div.row div.col-md-12 div.col-md-11 div label.labelFields b{
+  display: flex; font-size: 26px; justify-content: center;
 }
