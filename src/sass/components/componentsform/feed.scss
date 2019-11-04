@@ -1,0 +1,27 @@
+div.signupForm.form-inline div.row div.col-md-12 table.table.table-main{
+  margin-left: -1px;
+  -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+  box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+}
+
+form.signupForm.form-inline div.col-md-12{
+  margin-left: -1px;
+  -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+  box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+}
+
+form.signupForm.form-inline div.col-md-12 label.labelFields{ 
+display: flex; font-size: 22px; justify-content: center;
+}
+
+form.signupForm.form-inline div.col-md-12 textarea.inputFields.col-md-12{
+  margin-top: 5px; height: 150px;
+}
+form.signupForm.form-inline div.col-md-11 button.join-btn-no-transform.mr-1{
+  width: 45%;
+  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-left: 27px;
+}

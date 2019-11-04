@@ -7,15 +7,16 @@ class Feeds extends Component {
     super(props);
 
     this.state = {
-      users: []
+      users: [],
+      busca: ""
     };
   }
   findFeeds() {
     // Chama a api do banco com o método buscar
     axios
-      .post(env.API + "sentiment-analysis", { search: this.state.buscaTable })
+      .post(env.API + "consult-feed", { search_feed: this.state.busca })
       .then(response => {
-        // apos excluir carrega novamente os usuarios da tabela
+        // apos excluir carrega novamente os usuarios da tabela  status = CHAMADO 
         this.setState({ users: response.data });
       })
       .catch(error => {
@@ -23,120 +24,105 @@ class Feeds extends Component {
         console.log(error + "Erro na busca do item");
       });
   }
+
+  loadProblems() {
+    // Make a request for a user with a given ID
+    const id_user = localStorage.getItem("userId");
+    axios
+      .get(env.API + "resource-problem/resource/" + id_user)
+      .then(response => {
+        // handle success
+        const data = response.data;
+        console.log(response.data);
+        this.setState({ project: data });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
+  componentWillReceiveProps(props) {
+    this.loadProblems();
+  }
   render() {
     return (
       <div className="container col-md-9">
-        <div>
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="h1-main">Listar Feed Backs</h1>
+        {this.state.project.length > 0 ? (
+          <div>
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="h1-main">Listar Feed Backs</h1>
+              </div>
             </div>
-          </div>
-          <div className="row mt-2 mb-2">
-            <div
-              className="col-md-12"
-              style={{
-                backgroundColor: "#1a8687",
-                justifyContent: "center",
-                backgroundColor: "rgb(26, 134, 135)",
-                display: "flex"
-              }}
-            >
-              <input
-                type="text"
-                className="inputFields col-md-9"
-                style={{ width: "100%", marginleft: "10px" }}
-              // onChange={e => this.setState({ userTable: e.target.value })}
-              />
-              <button
-                type="button"
-                className="join-btn-no-transform mr-1 login col-md-2"
+            <div className="row mt-2 mb-2">
+              <div
+                className="col-md-12"
                 style={{
-                  width: "100%",
-                  borderRadius: "20px",
-                  marginLeft: "10px"
+                  backgroundColor: "#1a8687",
+                  justifyContent: "center",
+                  backgroundColor: "rgb(26, 134, 135)",
+                  display: "flex"
                 }}
-              // onClick={() => this.findFeeds()}
               >
-                Buscar
-                </button>
-            </div>
-          </div>
-          <form className="signupForm form-inline">
-            <div className="col-md-12" style={{ border: "solid 14px black", marginTop: "-13px", paddingTop: "8px" }}>
-              {/* 
-                Nome company v
-                descricao do problem v
-                nome do recource ou user v
-                o feedback do problem text v
-                setiment v verde ou x vermelho ou traço amarelo 
-            */}
-              <div className="col-md-12">
-                <label
-                  className="labelFields"
-                  style={{ display: "flex", fontSize: "22px", justifyContent: "center" }}
-                >
-                  Razão Social:{" "}
-                </label>
                 <input
-                  className="inputFields col-md-12"
-                  style={{ marginTop: "5px" }}
-                  // value={this.props.company.razaoSocial}
-                  // onChange={e => this.setState({ razaoSocial: e.target.value })}
-                  disabled="disabled"
-                />
-              </div>
-              <div className="col-md-12">
-                <label
-                  className="labelFields"
-                  style={{ display: "flex", fontSize: "22px", justifyContent: "center" }}
-                >
-                  Descrição do problema:{" "}
-                </label>
-                <input
-                  className="inputFields col-md-12"
-                  style={{ marginTop: "5px" }}
-                  // value={this.props.company.razaoSocial}
-                  // onChange={e => this.setState({ razaoSocial: e.target.value })}
-                  disabled="disabled"
-                />
-              </div>
-              <div className="col-md-12">
-                <label
-                  className="labelFields"
-                  style={{ display: "flex", fontSize: "22px", justifyContent: "center" }}
-                >
-                  Nome do Resource:{" "}
-                </label>
-                <input
-                  className="inputFields col-md-12"
-                  style={{ marginTop: "5px" }}
-                  // value={this.props.company.razaoSocial}
-                  // onChange={e => this.setState({ razaoSocial: e.target.value })}
-                  disabled="disabled"
-                />
-              </div>
-              <div className="col-md-12">
-                <label
-                  className="labelFields"
-                  style={{ display: "flex", fontSize: "22px", justifyContent: "center" }}
-                >
-                  Feed-Back:{" "}
-                </label>
-                <textarea
                   type="text"
-                  style={{ marginTop: "5px" }}
-                  className="inputFields col-md-12"
-                  // value={this.props.company.razaoSocial}
-                  // onChange={e => this.setState({ razaoSocial: e.target.value })}
-                  disabled="disabled"
+                  className="inputFields col-md-9"
+                  style={{ width: "100%", marginleft: "10px" }}
+                  onChange={e => this.setState({ userTable: e.target.value })}
                 />
+                <button
+                  type="button"
+                  className="join-btn-no-transform mr-1 login col-md-2"
+                  style={{
+                    width: "100%",
+                    borderRadius: "20px",
+                    marginLeft: "10px"
+                  }}
+                  onClick={() => this.findFeeds()}
+                >
+                  Buscar
+                </button>
               </div>
             </div>
-            <br />
-          </form>
-        </div>
-      </div>/*container col-md-8*/
+
+            <div className="row">
+              <div className="col-md-12">
+                <table className="table table-main">
+                  <thead>
+                    <tr>
+                      <th scope="col" style={{ display: "none" }}>
+                        ID
+                        </th>
+                      <th scope="col">Empresa</th>
+                      <th scope="col">Descricao do problem</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Feedback</th>
+                      <th scope="col">Analise</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.project.map(proj => {
+                      return (
+                        <tr key={`buscaTable${proj.id}`}>
+                          <td style={{ display: "none" }}>
+                            {proj.problem.id}
+                          </td>
+                          <td>{proj.problem.empresa}</td>
+                          <td>{proj.problem.categoria}</td>
+                          <td>{proj.status}</td>
+                          <td>{proj.problem.titulo}</td>
+                          <td>{proj.problem}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>/col-md-12/
+            </div>/"row"/
+          </div>
+        ) : (<h1><b>Sem feeds!!!</b></h1>)}
+      </div>/*container col-md-9*/
     );
   }
 }

@@ -5,15 +5,14 @@ import env from "./../../consts";
 import ConsultResource from "./../resource/consultResourceForm";
 import ConsultCompanyForm from "./../companys/consultCompanyForm";
 import ProblemForm from "./../../components/problem/problemForm";
+import SweetAlert from "react-bootstrap-sweetalert";
+
 import { setNavbarOpen } from "./../../redux/actions/navbarAction";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import Header from "./../../components/institutional/Header.jsx";
 import HeaderLinks from "./../../components/institutional/HeaderLinks.jsx";
-//import { setNavbarOpen } from "./../../../redux/actions/navbarAction";
-
-//import { Link } from "react-router-dom";
 
 class Feedback extends Component {
   constructor(props) {
@@ -24,7 +23,6 @@ class Feedback extends Component {
       sweetCreate: false
     };
   }
-  // problem_id comment resource_problem id status = CHAMADO 
   loadProblems() {
     // Make a request for a user with a given ID
     const id_user = localStorage.getItem("userId");
@@ -32,9 +30,9 @@ class Feedback extends Component {
       .get(env.API + "resource-problem/resource/" + id_user)
       .then(response => {
         // handle success
-        const data = response.data;//data;
+        const data = response.data;
         this.setState({ project: data });
-        console.log(data);
+        console.log(response);
       })
       .catch(error => {
         // handle error
@@ -45,11 +43,22 @@ class Feedback extends Component {
     this.loadProblems();
     console.log(localStorage.getItem("userId"));
   }
+  componentDidMount() {
+    this.loadProblems();
+    console.log(this.state.project);
+    console.log(this.props);
+  }
+  goToList = () => {
+    this.props.history.push("/Institucional");
 
-  goToList = () => { this.props.history.push("/Institucional"); console.log(this.state.project); }
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    this.setState({ sweetCreate: true });
+  }
 
   componentDidMount() {
-    // this.loadSentiment();
     this.props.setNavbarOpen(false);
   }
 
@@ -90,20 +99,19 @@ class Feedback extends Component {
                     <tbody>
                       {this.state.project.map(proj => {
                         return (
-                          <div key={proj.id}>
+                          <tr key={proj.id}>
                             <td style={{ display: "none" }}>{proj.problem.id}</td>
                             <td>{proj.problem.empresa}</td>
                             <td>{proj.problem.descricao}</td>
-                          </div>
+                          </tr>
                         );
                       })}
-
                     </tbody>
                   </table>
                 </div>
               </div>/*row*/
             ) : (
-                <h1 style={{ display: "flex", fontSize: "30px", justifyContent: "center" }}>ERROR #404</h1>
+                <h1 style={{ display: "flex", fontSize: "30px", justifyContent: "center" }}> ERROR #404</h1>
               )}
           </div>{/*signupForm form-inline*/}
 
@@ -111,20 +119,35 @@ class Feedback extends Component {
             <div className="col-md-12">
               <label
                 className="labelFields"
-                style={{ display: "flex", fontSize: "22px", justifyContent: "center" }}
               >
                 Feed-Back:{" "}
               </label>
               <textarea
                 type="text"
-                style={{ marginTop: "5px" }}
                 className="inputFields col-md-12"
                 max="150"
-                value={this.state.users.text}
-              // onChange={e => this.setState({ text: e.target.value })}
+                value={this.state.text}
+                onChange={e => this.setState({ text: e.target.value })}
               />
             </div>
+            <div className="col-md-11">
+              <button
+                onClick={() => this.goToList()}
+                className="join-btn-no-transform mr-1"
+                type="button"
+              >
+                Confirmar
+              </button>
+            </div>
           </form>{/*signupForm form-inline*/}
+          <SweetAlert
+            success
+            show={this.state.sweetCreate}
+            title="Atenção"
+            onConfirm={() => this.setState({ sweetCreate: false })}
+          >
+            {`Feed Back realizado com sucesso!!!!}`}
+          </SweetAlert>
         </div>{/*container col-md-8*/}
       </div>
     );
@@ -132,18 +155,18 @@ class Feedback extends Component {
 
   loadSentiment() {
     axios
-      // "resource_id": 1 "sentiment-analysis" + { resource_id })
+    const resource = localStorage.getItem("userId")
       .get(env.API + "sentiment-analysis")
       .then(response => {
         // handle success        
         const data = response.data;
+        alert("FeedBack com sucesso");
         this.setState({
-          resource_id: this.state.project.resource.id,
-          problem_id: this.state.project.problem.id,
-          text: this.state.users.text
+          resource_id: resource,
+          problem_id: this.state.problem.id,
+          text: this.state.text
         });
         console.log(response);
-        // console.log(id_resource);
       })
       .catch(error => {
         // handle error
@@ -151,9 +174,12 @@ class Feedback extends Component {
       });
   }
   componentWillReceiveProps(props) {
-    this.loadSentiment();
+    this.loadSentiment(console.log(localStorage.getItem("problem.id")));
   }
-
+  componentDidMount() {
+    this.loadSentiment();
+    console.log(this.props);
+  }
 }
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setNavbarOpen }, dispatch);
