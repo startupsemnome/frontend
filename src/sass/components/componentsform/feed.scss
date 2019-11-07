@@ -35,19 +35,22 @@ div.signupForm.form-inline div.row div.col-md-12 div.col-md-11 div label.labelFi
         /*feeds*/
 div.row.feeds div.col-md-12 div label.row{
   display: flex; font-size: 26px; justify-content:right;
-  margin-bottom: 6px; margin-top: 6px;
+  margin-bottom: 6px; margin-top: 6px; color:black;
 }
 div.row.feeds{
   border:outset white 10px;
   border-radius: 25px;
+  background-color: #0ce1f6
 }
 div.row.feeds div.col-md-12 div div.col-md-12{
+  border:outset white 2px;
   display: flex; font-size: 23px; justify-content: left;
   margin:2px; border-radius: 30px;  background-color: aliceblue;
 }
 div.row.feeds div.col-md-12 div div.col-md-12 p.text{
   color: black;
 }
-div.row.feeds div.col-md-12 div{
-  background-color: #0ce1f6
+div.container.col-md-9 h1 b{
+ display: flex; font-size: 30px;
+ justify-content: center; 
 }
