@@ -5,7 +5,6 @@ import env from "./../../consts";
 class Feeds extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       users: [],
       busca: ""
@@ -27,9 +26,8 @@ class Feeds extends Component {
 
   loadProblems() {
     // Make a request for a user with a given ID
-    const id_user = localStorage.getItem("userId");
     axios
-      .get(env.API + "resource-problem/resource/" + id_user)
+      .get(env.API + "resource-problem/resource/")
       .then(response => {
         // handle success
         const data = response.data;
@@ -83,46 +81,40 @@ class Feeds extends Component {
                   Buscar
                 </button>
               </div>
-            </div>
+            </div>{/*row mt-2 mb-2*/}
 
-            <div className="row">
+            <div className="row feeds">
               <div className="col-md-12">
-                <table className="table table-main">
-                  <thead>
-                    <tr>
-                      <th scope="col" style={{ display: "none" }}>
-                        ID
-                        </th>
-                      <th scope="col">Empresa</th>
-                      <th scope="col">Descricao do problem</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Nome</th>
-                      <th scope="col">Feedback</th>
-                      <th scope="col">Analise</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.state.project.map(proj => {
-                      return (
-                        <tr key={`buscaTable${proj.id}`}>
-                          <td style={{ display: "none" }}>
-                            {proj.problem.id}
-                          </td>
-                          <td>{proj.problem.empresa}</td>
-                          <td>{proj.problem.categoria}</td>
-                          <td>{proj.status}</td>
-                          <td>{proj.problem.titulo}</td>
-                          <td>{proj.problem}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>/col-md-12/
-            </div>/"row"/
+                {this.state.project.map(proj => {
+                  return (
+                    <div key={`buscaTable${proj.id}`}>
+                      <p scope="col" style={{ display: "none" }}>ID</p>
+                      <label className="row">Empresa</label>
+                      <div className="col-md-12">
+                        <p className="text">{proj.problem.empresa}</p></div>
+                      <label className="row">Descricao do problem</label>
+                      <div className="col-md-12">
+                        <p className="text">{proj.problem.descricao}</p></div>
+                      <label className="row">Nome</label>
+                      <div className="col-md-12">
+                        <p className="text"></p>
+                      </div>
+                      <label className="row">Feedback</label>
+                      <div className="col-md-12">
+                        <p className="text">{proj.comment}</p></div>
+                      <label className="row">Analise</label>
+                      <div className="col-md-12">
+                        <p className="text">{proj.sentiment}</p></div>
+                    </div>/*KEY*/
+                  );
+                })}
+              </div>{/*col-md-12*/}
+            </div>{/*row feeds*/}
           </div>
-        ) : (<h1><b>Sem feeds!!!</b></h1>)}
-      </div>/*container col-md-9*/
+        ) : (
+            <h1><b>Sem feeds!!!</b></h1>
+          )}
+      </div> /*container col-md-9*/
     );
   }
 }

@@ -43,10 +43,9 @@ class Feedback extends Component {
     this.loadProblems();
     console.log(localStorage.getItem("userId"));
   }
-  componentDidMount() {
-    this.loadProblems();
-    console.log(this.state.project);
-  }
+  // componentDidMount() {
+  //   this.loadProblems();
+  // }
   goToList = () => {
     this.props.history.push("/Institucional");
   }
@@ -164,9 +163,9 @@ class Feedback extends Component {
         console.log(error + "Erro na API");
       });
   }
-  componentWillReceiveProps(props) {
-    this.loadSentiment(console.log(localStorage.getItem("problem.id")));
-  }
+  // componentWillReceiveProps(props) {
+  //   this.loadSentiment(console.log(localStorage.getItem("problem.id")));
+  // }
   componentDidMount() {
     this.loadSentiment();
   }
