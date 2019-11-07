@@ -78,11 +78,12 @@ class CadastroUsuarioCompleto extends Component {
       sweetCreate: false,
       showMoreItens: false,
       loading: false,
-      modalAlter: false
+      modalAlter: false,
+      categories: []
     };
   }
 
-  atualizarMeuCadastro() {
+  atualizarMeuCadastro = () => {
     this.setState({ loading: true });
     //TODO
     let userID = JSON.parse(localStorage.getItem("userId"));
@@ -417,7 +418,7 @@ class CadastroUsuarioCompleto extends Component {
               style={{
                 display: `${
                   this.state.showMoreItens === true ? "contents" : "none"
-                }`
+                  }`
               }}
             >
               <div className="col-md-12">
@@ -458,7 +459,10 @@ class CadastroUsuarioCompleto extends Component {
                   required
                 >
                   <option value="">Selecione</option>
-                  <option value="1">Tecnologia</option>
+                  {this.state.categories.map(category => {
+                    return <option value={`${category.id}`}>{category.name}</option>
+                  })}
+
                 </Input>
               </div>
               <div className="col-md-4">
@@ -727,7 +731,7 @@ class CadastroUsuarioCompleto extends Component {
                   margin: "0px",
                   display: `${
                     this.state.showMoreItens === true ? "initial" : "none"
-                  }`
+                    }`
                 }}
               >
                 Atualizar Cadastro
@@ -775,6 +779,23 @@ class CadastroUsuarioCompleto extends Component {
       showMoreItens: show
     });
   };
+
+  loadCategory = () => {
+    axios
+      .get(env.API + "category")
+      .then(response => {
+        const data = response.data;
+        this.setState(
+          {
+            categories: data
+          },
+        );
+      })
+      .catch(error => {
+        // handle error
+        console.log(error + "Erro na API");
+      });
+  }
   loadUserInfor = () => {
     // Carregando a quantidade de usuários
     let userID = JSON.parse(localStorage.getItem("userId"));
@@ -826,6 +847,7 @@ class CadastroUsuarioCompleto extends Component {
 
   componentDidMount() {
     this.loadUserInfor();
+    this.loadCategory();
   }
 }
 

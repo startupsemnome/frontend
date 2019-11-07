@@ -59,7 +59,7 @@ class SectionBasics extends Component {
           localStorage.setItem("bemVindo", "SIM");
           window.location.reload();
         })
-        .catch(function(error) {
+        .catch((error) => {
           this.setState({ loading: false });
           console.log(error);
         });
