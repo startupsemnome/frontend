@@ -20,14 +20,16 @@ class Feedback extends Component {
     this.state = {
       project: [],
       users: [],
+      textComment: "",
       sweetCreate: false
     };
   }
   loadProblems() {
     // Make a request for a user with a given ID
-    const id_user = localStorage.getItem("userId");
     axios
-      .get(env.API + "resource-problem/resource/" + id_user)
+      .get(
+        env.API + "resource-problem/resource/" + localStorage.getItem("userId")
+      )
       .then(response => {
         // handle success
         const data = response.data;
@@ -39,26 +41,60 @@ class Feedback extends Component {
         console.log(error + "Erro na API");
       });
   }
-  componentWillReceiveProps(props) {
-    this.loadProblems();
-    console.log(localStorage.getItem("userId"));
-  }
-  // componentDidMount() {
-  //   this.loadProblems();
-  // }
+
   goToList = () => {
     this.props.history.push("/Institucional");
-  }
-  handleFormSubmit(event) {
+  };
+
+  loadImage = status => {
+    if (status === "Triste") {
+      return (
+        <img
+          src={
+            "https://imagepng.org/wp-content/uploads/2017/10/facebook-triste-emoji-icone-4.png"
+          }
+          style={{ width: 30, height: 30 }}
+        />
+      );
+    } else if (status === "Moderado") {
+      return (
+        <img
+          src={
+            "https://cdn.pixabay.com/photo/2014/10/08/02/47/bored-478651_640.png"
+          }
+          style={{ width: 45, height: 40 }}
+        />
+      );
+    } else {
+      return (
+        <img
+          src={
+            "https://purepng.com/public/uploads/large/31508450200spcaug8c6yrcwtjumebwrisfwkm9zqccww9g4pndyh5ddsgiydsvillhoab2tvpio1ounuvblikb6jzlqflr5fdrnay3p2w7r5e2.png"
+          }
+          style={{ width: 30, height: 30 }}
+        />
+      );
+    }
+  };
+
+  handleChangeTextComment = event => {
+    this.setState({ textComment: event.target.value });
+  };
+
+  handleFormSubmit = async (event, problem_id) => {
     event.preventDefault();
     this.setState({ sweetCreate: true });
-  }
-  componentDidMount() {
-    this.props.setNavbarOpen(false);
-  }
+    await axios.post(env.API + "sentiment-analysis", {
+      text: this.state.textComment,
+      problem_id,
+      resource_id: localStorage.getItem("userId")
+    });
+    this.loadProblems();
+  };
 
   render() {
     const { ...rest } = this.props;
+    const { project } = this.state;
     return (
       <div>
         <div className="row">
@@ -66,70 +102,92 @@ class Feedback extends Component {
             brand="Resource Manager"
             rightLinks={<HeaderLinks />}
             fixed
-            color="transparent"
+            color=""
             changeColorOnScroll={{
               height: 400
             }}
             {...rest}
           />
-          <div className="col-md-12">
-            <h1 className="h1-main">Feed Back</h1>
-          </div>
-        </div>{/*row*/}
-        <div className="container col-md-8">
-          <div className="signupForm form-inline">
-            {this.state.project.length > 0 ? (
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="col-md-11">
-                    {this.state.project.map(proj => {
-                      return (
-                        <div key={proj.id}>
-                          <label style={{ display: "none" }}>{proj.problem.id}</label>
-                          <div className="empresa">
-                            <label className="labelFields"><b>Razão Social</b></label><br />
-                            <label className="labelFields">{proj.problem.empresa}</label>
-                          </div>
-                          <div className="problema">
-                            <label className="labelFields"><b>Descrição Do Problema</b></label><br />
-                            <label className="labelFields">{proj.problem.descricao}</label>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>{/*col-md-11*/}
-                </div>
-              </div>/*row*/
-            ) : (
-                <h1 style={{ display: "flex", fontSize: "30px", justifyContent: "center" }}> ERROR #404</h1>
-              )}
-          </div>{/*signupForm form-inline*/}
+        </div>
+        {/*row*/}
+        <div className="container col-md-8" style={{ marginTop: 60 }}>
+          <div>
+            <h1>
+              Escreva um feadback sobre um projeto que você esta atuando ou
+              atuou
+            </h1>
+            {project.map((v, i) => {
+              const { titulo, empresa } = v.problem;
+              return (
+                <form
+                  key={`form${i}`}
+                  style={{ marginTop: 20 }}
+                  onSubmit={e => this.handleFormSubmit(e, v.problem_id)}
+                >
+                  <h1
+                    style={{
+                      backgroundColor: "rgba(27,161,226, 0.73)",
+                      padding: 20
+                    }}
+                  >
+                    Projeto: {titulo} | Empresa: {empresa}{" "}
+                  </h1>
+                  <input
+                    type="text"
+                    value={this.state.textComment}
+                    onChange={this.handleChangeTextComment}
+                    className="inputFields col-md-10"
+                    placeholder="Insira seu comentario aqui"
+                  />
+                  <button
+                    type="submit"
+                    style={{
+                      color: "white",
+                      backgroundColor: "#333399",
+                      borderRadius: 0,
+                      border: 0,
+                      height: 40,
+                      width: 120,
+                      marginLeft: 30
+                    }}
+                  >
+                    enviar
+                  </button>
+                  <div
+                    style={{
+                      backgroundColor: "rgba(27,161,226, 0.73)",
+                      padding: 20
+                    }}
+                  >
+                    {v.comment && (
+                      <>
+                        <h2 style={{ color: "white" }}>
+                          Seu Último Comentário:
+                        </h2>
+                        <div
+                          style={{
+                            display: "flex",
+                            marginTop: 20,
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center"
+                          }}
+                        >
+                          {this.loadImage(v.sentiment)}
 
-          <form className="signupForm form-inline">
-            <div className="col-md-12">
-              <label
-                className="labelFields"
-              >
-                Feed-Back:{" "}
-              </label>
-              <textarea
-                type="text"
-                className="inputFields col-md-12"
-                max="150"
-                value={this.state.text}
-                onChange={e => this.setState({ text: e.target.value })}
-              />
-            </div>
-            <div className="col-md-11">
-              <button
-                onClick={() => this.goToList()}
-                className="join-btn-no-transform mr-1"
-                type="button"
-              >
-                Confirmar
-              </button>
-            </div>
-          </form>{/*signupForm form-inline*/}
+                          <h4 style={{ width: "95%", marginLeft: 20 }}>
+                            {v.comment.charAt(0).toUpperCase() +
+                              v.comment.slice(1)}
+                          </h4>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </form>
+              );
+            })}
+          </div>
+          {/*signupForm form-inline*/}
           <SweetAlert
             success
             show={this.state.sweetCreate}
@@ -138,8 +196,9 @@ class Feedback extends Component {
           >
             {`Feed Back realizado com sucesso!!!!}`}
           </SweetAlert>
-        </div > {/*container col-md-8*/}
-      </div >
+        </div>{" "}
+        {/*container col-md-8*/}
+      </div>
     );
   }
 
@@ -148,7 +207,7 @@ class Feedback extends Component {
     axios
       .get(env.API + "sentiment-analysis")
       .then(response => {
-        // handle success        
+        // handle success
         const data = response.data;
         alert("FeedBack com sucesso");
         this.setState({
@@ -163,11 +222,9 @@ class Feedback extends Component {
         console.log(error + "Erro na API");
       });
   }
-  // componentWillReceiveProps(props) {
-  //   this.loadSentiment(console.log(localStorage.getItem("problem.id")));
-  // }
+
   componentDidMount() {
-    this.loadSentiment();
+    this.loadProblems();
   }
 }
 const mapDispatchToProps = dispatch =>
@@ -175,5 +232,7 @@ const mapDispatchToProps = dispatch =>
 
 const mapStateToProps = state => ({ navbar: state.navbar });
 
-export default connect(mapStateToProps, mapDispatchToProps)
-  (Feedback);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Feedback);

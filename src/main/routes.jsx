@@ -14,7 +14,6 @@ import Dashboard from "../pages/home";
 import NotFound from "../pages/notFound";
 import Feed from "../pages/feed";
 
-
 // Pages Company
 import RegisterCompany from "../pages/registerCompany";
 import ViewCompany from "../pages/viewCompany";
@@ -23,7 +22,6 @@ import ConsultCompany from "../pages/consultCompany";
 
 import RegisterResource from "../pages/registerResource";
 import ConsultResource from "../pages/consultResource";
-
 
 import RegisterProblem from "../pages/registerProblem";
 import EditProblem from "../pages/editProblem";
@@ -58,29 +56,72 @@ export default class Routes extends Component {
       <div>
         <Navbar />
         <Switch>
-
           <Route exact={true} path="/institutional" component={Institutional} />
           <Route exact={true} path="/" component={Institutional} />
           <Route exact={true} path="/login" component={Login} />
 
-          <PrivateRoute exact={true} path="/lista-projetos" component={Projects} />
+          <PrivateRoute
+            exact={true}
+            path="/lista-projetos"
+            component={Projects}
+          />
           <PrivateRoute exact={true} path="/dashboard" component={Dashboard} />
           <PrivateRoute exact={true} path="/feed" component={Feed} />
-          <PrivateRoute exact={true} path="/feedback" component={FeedBack} />
-          
-          <PrivateRoute exact={true} path="/cadastro-empresa" component={RegisterCompany} />
-          <PrivateRoute exact={true} path="/consultar-empresa" component={ConsultCompany} />
-          <PrivateRoute exact={true} path="/visualizar-empresa" component={ViewCompany} />
-          <PrivateRoute exact={true} path="/cadastro-recurso" component={RegisterResource} />
-          <PrivateRoute exact={true} path="/consultar-recurso" component={ConsultResource} />
+          <Route exact={true} path="/feedback" component={FeedBack} />
 
-          <PrivateRoute exact={true} path="/cadastro-usuario" component={RegisterUsuario} />
-          <PrivateRoute exact={true} path="/consultar-usuario" component={UserList} />
+          <PrivateRoute
+            exact={true}
+            path="/cadastro-empresa"
+            component={RegisterCompany}
+          />
+          <PrivateRoute
+            exact={true}
+            path="/consultar-empresa"
+            component={ConsultCompany}
+          />
+          <PrivateRoute
+            exact={true}
+            path="/visualizar-empresa"
+            component={ViewCompany}
+          />
+          <PrivateRoute
+            exact={true}
+            path="/cadastro-recurso"
+            component={RegisterResource}
+          />
+          <PrivateRoute
+            exact={true}
+            path="/consultar-recurso"
+            component={ConsultResource}
+          />
 
-          <PrivateRoute exact={true} path="/cadastro-problema" component={RegisterProblem} />
-          <PrivateRoute exact={true} path="/consultar-problema" component={ConsultProblem} />
+          <PrivateRoute
+            exact={true}
+            path="/cadastro-usuario"
+            component={RegisterUsuario}
+          />
+          <PrivateRoute
+            exact={true}
+            path="/consultar-usuario"
+            component={UserList}
+          />
 
-          <PrivateRoute exact={true} path="/registro-empresa" component={ContentRegister} />
+          <PrivateRoute
+            exact={true}
+            path="/cadastro-problema"
+            component={RegisterProblem}
+          />
+          <PrivateRoute
+            exact={true}
+            path="/consultar-problema"
+            component={ConsultProblem}
+          />
+
+          <PrivateRoute
+            exact={true}
+            path="/registro-empresa"
+            component={ContentRegister}
+          />
 
           <Route exact={true} component={NotFound} />
         </Switch>

@@ -13,9 +13,9 @@ class Feeds extends Component {
   findFeeds() {
     // Chama a api do banco com o método buscar
     axios
-      .post(env.API + "consult-feed", { search_feed: this.state.busca })
+      .post(env.API + "consult-feed", { search: this.state.busca })
       .then(response => {
-        // apos excluir carrega novamente os usuarios da tabela  status = CHAMADO 
+        // apos excluir carrega novamente os usuarios da tabela  status = CHAMADO
         this.setState({ users: response.data });
       })
       .catch(error => {
@@ -24,32 +24,18 @@ class Feeds extends Component {
       });
   }
 
-  loadProblems() {
-    // Make a request for a user with a given ID
-    axios
-      .get(env.API + "resource-problem/resource/")
-      .then(response => {
-        // handle success
-        const data = response.data;
-        console.log(response.data);
-        this.setState({ project: data });
-      })
-      .catch(error => {
-        // handle error
-        console.log(error + "Erro na API");
-      });
+  componentDidMount() {
+    this.findFeeds();
   }
-  componentWillReceiveProps(props) {
-    this.loadProblems();
-  }
+
   render() {
     return (
       <div className="container col-md-9">
-        {this.state.project.length > 0 ? (
+        {this.state.users.length > 0 ? (
           <div>
             <div className="row">
               <div className="col-md-12">
-                <h1 className="h1-main">Listar Feed Backs</h1>
+                <h1 className="h1-main">Listar FeedBacks</h1>
               </div>
             </div>
             <div className="row mt-2 mb-2">
@@ -81,46 +67,92 @@ class Feeds extends Component {
                   Buscar
                 </button>
               </div>
-            </div>{/*row mt-2 mb-2*/}
+            </div>
+            {/*row mt-2 mb-2*/}
 
             <div className="row feeds">
               <div className="col-md-12">
-                {this.state.project.map(proj => {
+                {this.state.users.map(proj => {
                   return (
-                    <div key={`buscaTable${proj.id}`}>
-                      <p scope="col" style={{ display: "none" }}>ID</p>
-                      <label className="row">Empresa</label>
-                      <div className="col-md-12">
-                        <p className="text">{proj.problem.empresa}</p></div>
-                      <label className="row">Descricao do problem</label>
-                      <div className="col-md-12">
-                        <p className="text">{proj.problem.descricao}</p></div>
-                      <label className="row">Nome</label>
-                      <div className="col-md-12">
-                        <p className="text"></p>
+                    <div
+                      key={`buscaTable${proj.id}`}
+                      style={{
+                        backgroundColor: "#6f90ff",
+                        padding: 5,
+                        margin: 30,
+                        justifyContent: "flex",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        flexDirection: "row"
+                      }}
+                    >
+                      <div style={{ width: "0%" }}>
+                        <p scope="col" style={{ display: "none" }}>
+                          ID
+                        </p>
                       </div>
-                      <label className="row">Feedback</label>
-                      <div className="col-md-12">
-                        <p className="text">{proj.comment}</p></div>
-                      <label className="row">Analise</label>
-                      <div className="col-md-12">
-                        <p className="text">{proj.sentiment}</p></div>
-                    </div>/*KEY*/
+                      <div style={{ width: "10%", margin: 20 }}>
+                        <label
+                          className="row"
+                          style={{ fontSize: 14, padding: 10 }}
+                        >
+                          Empresa:
+                        </label>
+                        <p style={{ color: "white" }}>{proj.problem.empresa}</p>
+                      </div>
+                      <div style={{ width: "30%", margin: 20 }}>
+                        <label
+                          className="row"
+                          style={{ fontSize: 14, padding: 10 }}
+                        >
+                          Descricao do problema:
+                        </label>
+                        <p style={{ color: "white" }}>
+                          {proj.problem.descricao}
+                        </p>
+                      </div>
+                      <div style={{ width: "20%", margin: 20 }}>
+                        <label
+                          style={{ fontSize: 14, padding: 10 }}
+                          className="row"
+                        >
+                          Nome:
+                        </label>
+                        <p style={{ color: "white" }}>{proj.resource.nome}</p>
+                      </div>
+                      <div style={{ width: "20%", margin: 20 }}>
+                        <label
+                          style={{ fontSize: 14, padding: 10 }}
+                          className="row"
+                        >
+                          Feedback:
+                        </label>
+                        <p style={{ color: "white" }}>{proj.comment}</p>
+                      </div>
+                      <div style={{ width: "5%", margin: 20 }}>
+                        <label
+                          style={{ fontSize: 14, padding: 10 }}
+                          className="row"
+                        >
+                          Analise:
+                        </label>
+                        <p style={{ color: "white" }}>{proj.sentiment}</p>
+                      </div>
+                    </div>
                   );
                 })}
-              </div>{/*col-md-12*/}
-            </div>{/*row feeds*/}
+              </div>
+              {/*col-md-12*/}
+            </div>
+            {/*row feeds*/}
           </div>
         ) : (
-            <h1><b>Sem feeds!!!</b></h1>
-          )}
+          <h1>
+            <b>Sem feeds!!!</b>
+          </h1>
+        )}
       </div> /*container col-md-9*/
     );
   }
 }
 export default Feeds;
-
-
-
-
-
