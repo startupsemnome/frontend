@@ -1,3 +1,74 @@
+div.container.col-md-8.feeback{ 
+  margin-top: 60px; border-radius: 30px;
+  background-color: #ffffffa8; margin-bottom: 60px;
+}
+
+div.container.col-md-8.feeback div div.feed{
+  background-color: rgba(27, 161, 226, 0.73);
+ padding: 22px; border-radius: 25px; margin:6px;
+ margin-left: -1px;
+ -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+ -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+ box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+}
+div.container.col-md-8.feeback div div.feed form{
+  margin:5px; margin-top: 10px;
+  margin-left: -1px;
+  -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+  box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+}
+
+div.container.col-md-8.feeback div div.feed form div.col-md-12.comemet{
+  background-color:#30a5b8;
+  padding-right:12px;
+  padding-left:12px;
+}
+div.container.col-md-8.feeback div div.feed form div.col-md-12.comemet input.inputFields.col-md-10 {
+  margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    border: 1px solid rgba(245, 244, 238, 0.856);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: rgba(33, 243, 206, 0.09);
+    color: black;
+    background-color: #faffbd;
+    outline: none;
+    margin-right: 15px;
+}
+
+div.container.col-md-8.feeback div div.row.comemet button.col-md-1.env{
+  border:solid #aadcea8c 5px; border-radius:8px;
+  background-color: white; color:black;
+  height: 40px; width: 120px; 
+  margin-Left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  justify-content: center;
+  display: flex;
+}
+div.container.col-md-8.feeback div div.text{
+background-color: rgba(27,161,226, 0.73);
+padding: 20px;   margin-left: -1px;
+}
+
+div.text div.analise{
+  background-color: white;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+}
+
+
+
+
 div.signupForm.form-inline div.row div.col-md-12 table.table.table-main{
   margin-left: -1px;
   -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);

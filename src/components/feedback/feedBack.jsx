@@ -110,82 +110,63 @@ class Feedback extends Component {
           />
         </div>
         {/*row*/}
-        <div className="container col-md-8" style={{ marginTop: 60 }}>
+        <div className="container col-md-8 feeback">
           <div>
-            <h1>
-              Escreva um feadback sobre um projeto que você esta atuando ou
-              atuou
+            <div className="feed">
+              <h1>
+                Escreva um feadback sobre um projeto que você esta atuando ou
+                atuou
             </h1>
-            {project.map((v, i) => {
-              const { titulo, empresa } = v.problem;
-              return (
-                <form
-                  key={`form${i}`}
-                  style={{ marginTop: 20 }}
-                  onSubmit={e => this.handleFormSubmit(e, v.problem_id)}
-                >
-                  <h1
-                    style={{
-                      backgroundColor: "rgba(27,161,226, 0.73)",
-                      padding: 20
-                    }}
+              {project.map((v, i) => {
+                const { titulo, empresa } = v.problem;
+                return (
+                  <form
+                    key={`form${i}`}
+                    style={{ marginTop: 20 }}
+                    onSubmit={e => this.handleFormSubmit(e, v.problem_id)}
                   >
-                    Projeto: {titulo} | Empresa: {empresa}{" "}
-                  </h1>
-                  <input
-                    type="text"
-                    value={this.state.textComment}
-                    onChange={this.handleChangeTextComment}
-                    className="inputFields col-md-10"
-                    placeholder="Insira seu comentario aqui"
-                  />
-                  <button
-                    type="submit"
-                    style={{
-                      color: "white",
-                      backgroundColor: "#333399",
-                      borderRadius: 0,
-                      border: 0,
-                      height: 40,
-                      width: 120,
-                      marginLeft: 30
-                    }}
-                  >
-                    enviar
+                    <h1
+                      style={{
+                        backgroundColor: "rgba(27,161,226, 0.73)",
+                        padding: 20
+                      }}
+                    >
+                      Projeto: {titulo} | Empresa: {empresa}{" "}
+                    </h1>
+                    <div className="col-md-12 comemet">
+                      <input
+                        type="text"
+                        value={this.state.textComment}
+                        onChange={this.handleChangeTextComment}
+                        className="inputFields col-md-10"
+                        placeholder="Insira seu comentario aqui"
+                      />
+                      <button type="submit" className="col-md-1 env">
+                        enviar
                   </button>
-                  <div
-                    style={{
-                      backgroundColor: "rgba(27,161,226, 0.73)",
-                      padding: 20
-                    }}
-                  >
-                    {v.comment && (
-                      <>
-                        <h2 style={{ color: "white" }}>
-                          Seu Último Comentário:
-                        </h2>
-                        <div
-                          style={{
-                            display: "flex",
-                            marginTop: 20,
-                            flexDirection: "row",
-                            justifyContent: "center",
-                            alignItems: "center"
-                          }}
-                        >
-                          {this.loadImage(v.sentiment)}
+                    </div>
+                    <div className="text">
 
-                          <h4 style={{ width: "95%", marginLeft: 20 }}>
-                            {v.comment.charAt(0).toUpperCase() +
-                              v.comment.slice(1)}
-                          </h4>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </form>
-              );
-            })}
+                      {v.comment && (
+                        <>
+                          <h2 style={{ color: "white" }}>
+                            Seu Último Comentário:
+                        </h2>
+                          <div className="analise">
+                            {this.loadImage(v.sentiment)}
+
+                            <h4 style={{ width: "95%", marginLeft: 20 }}>
+                              {v.comment.charAt(0).toUpperCase() +
+                                v.comment.slice(1)}
+                            </h4>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </form>
+                );
+              })}
+            </div>
           </div>
           {/*signupForm form-inline*/}
           <SweetAlert
