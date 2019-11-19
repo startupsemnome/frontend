@@ -74,17 +74,17 @@ class Feeds extends Component {
               <div className="col-md-12">
                 {this.state.users.map(proj => {
                   return (
-                    <div
+                    <div className="col-md-11 tabfeed"
                       key={`buscaTable${proj.id}`}
-                      style={{
-                        backgroundColor: "#6f90ff",
-                        padding: 5,
-                        margin: 30,
-                        justifyContent: "flex",
-                        display: "flex",
-                        alignItems: "flex-start",
-                        flexDirection: "row"
-                      }}
+                    // style={{
+                    //   backgroundColor: "#6f90ff",
+                    //   padding: 5,
+                    //   margin: 30,
+                    //   justifyContent: "flex",
+                    //   display: "flex",
+                    //   alignItems: "flex-start",
+                    //   flexDirection: "row"
+                    // }}
                     >
                       <div style={{ width: "0%" }}>
                         <p scope="col" style={{ display: "none" }}>
@@ -94,49 +94,48 @@ class Feeds extends Component {
                       <div style={{ width: "10%", margin: 20 }}>
                         <label
                           className="row"
-                          style={{ fontSize: 14, padding: 10 }}
                         >
                           Empresa:
                         </label>
-                        <p style={{ color: "white" }}>{proj.problem.empresa}</p>
+                        <p>{proj.problem.empresa}</p>
                       </div>
                       <div style={{ width: "30%", margin: 20 }}>
                         <label
                           className="row"
-                          style={{ fontSize: 14, padding: 10 }}
+                        //style={{ fontSize: 14, padding: 10 }}
                         >
                           Descricao do problema:
                         </label>
-                        <p style={{ color: "white" }}>
+                        <p>
                           {proj.problem.descricao}
                         </p>
                       </div>
                       <div style={{ width: "20%", margin: 20 }}>
                         <label
-                          style={{ fontSize: 14, padding: 10 }}
+                          //style={{ fontSize: 14, padding: 10 }}
                           className="row"
                         >
                           Nome:
                         </label>
-                        <p style={{ color: "white" }}>{proj.resource.nome}</p>
+                        <p>{proj.resource.nome}</p>
                       </div>
                       <div style={{ width: "20%", margin: 20 }}>
                         <label
-                          style={{ fontSize: 14, padding: 10 }}
+                          //style={{ fontSize: 14, padding: 10 }}
                           className="row"
                         >
                           Feedback:
                         </label>
-                        <p style={{ color: "white" }}>{proj.comment}</p>
+                        <p>{proj.comment}</p>
                       </div>
                       <div style={{ width: "5%", margin: 20 }}>
                         <label
-                          style={{ fontSize: 14, padding: 10 }}
+                          //style={{ fontSize: 14, padding: 10 }}
                           className="row"
                         >
                           Analise:
                         </label>
-                        <p style={{ color: "white" }}>{proj.sentiment}</p>
+                        <p>{proj.sentiment}</p>
                       </div>
                     </div>
                   );
@@ -147,10 +146,10 @@ class Feeds extends Component {
             {/*row feeds*/}
           </div>
         ) : (
-          <h1>
-            <b>Sem feeds!!!</b>
-          </h1>
-        )}
+            <h1>
+              <b>Sem feeds!!!</b>
+            </h1>
+          )}
       </div> /*container col-md-9*/
     );
   }

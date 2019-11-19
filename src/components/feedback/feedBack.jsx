@@ -49,29 +49,29 @@ class Feedback extends Component {
   loadImage = status => {
     if (status === "Triste") {
       return (
-        <img
+        <img className="fig"
           src={
             "https://imagepng.org/wp-content/uploads/2017/10/facebook-triste-emoji-icone-4.png"
           }
-          style={{ width: 30, height: 30 }}
+        // style={{ width: 45, height: 40 }}
         />
       );
     } else if (status === "Moderado") {
       return (
-        <img
+        <img className="fig"
           src={
             "https://cdn.pixabay.com/photo/2014/10/08/02/47/bored-478651_640.png"
           }
-          style={{ width: 45, height: 40 }}
+        //style={{ width: 45, height: 40 }}
         />
       );
     } else {
       return (
-        <img
+        <img className="fig"
           src={
             "https://purepng.com/public/uploads/large/31508450200spcaug8c6yrcwtjumebwrisfwkm9zqccww9g4pndyh5ddsgiydsvillhoab2tvpio1ounuvblikb6jzlqflr5fdrnay3p2w7r5e2.png"
           }
-          style={{ width: 30, height: 30 }}
+        //style={{ width: 45, height: 40 }}
         />
       );
     }
@@ -109,14 +109,13 @@ class Feedback extends Component {
             {...rest}
           />
         </div>
-        {/*row*/}
-        <div className="container col-md-8 feeback">
-          <div>
+        <div>
+          <div className="container col-md-8 feeback">
             <div className="feed">
-              <h1>
+              <h1 className="feedTitulo" >
                 Escreva um feadback sobre um projeto que você esta atuando ou
                 atuou
-            </h1>
+              </h1>
               {project.map((v, i) => {
                 const { titulo, empresa } = v.problem;
                 return (
@@ -125,12 +124,7 @@ class Feedback extends Component {
                     style={{ marginTop: 20 }}
                     onSubmit={e => this.handleFormSubmit(e, v.problem_id)}
                   >
-                    <h1
-                      style={{
-                        backgroundColor: "rgba(27,161,226, 0.73)",
-                        padding: 20
-                      }}
-                    >
+                    <h1 className="feedTituloform">
                       Projeto: {titulo} | Empresa: {empresa}{" "}
                     </h1>
                     <div className="col-md-12 comemet">
@@ -138,12 +132,12 @@ class Feedback extends Component {
                         type="text"
                         value={this.state.textComment}
                         onChange={this.handleChangeTextComment}
-                        className="inputFields col-md-10"
+                        className="inputFields col-md-9"
                         placeholder="Insira seu comentario aqui"
                       />
-                      <button type="submit" className="col-md-1 env">
+                      <button type="submit" className="env col-md-1">
                         enviar
-                  </button>
+                      </button>
                     </div>
                     <div className="text">
 
@@ -167,8 +161,7 @@ class Feedback extends Component {
                 );
               })}
             </div>
-          </div>
-          {/*signupForm form-inline*/}
+          </div>{/*signupForm form-inline*/}
           <SweetAlert
             success
             show={this.state.sweetCreate}
@@ -177,8 +170,7 @@ class Feedback extends Component {
           >
             {`Feed Back realizado com sucesso!!!!}`}
           </SweetAlert>
-        </div>{" "}
-        {/*container col-md-8*/}
+        </div>{" "}{/*container col-md-8 feeback*/}
       </div>
     );
   }

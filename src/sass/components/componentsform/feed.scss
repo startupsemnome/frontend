@@ -1,127 +1,89 @@
 div.container.col-md-8.feeback{ 
-  margin-top: 60px; border-radius: 30px;
-  background-color: #ffffffa8; margin-bottom: 60px;
+  margin-top: 60px; border-radius: 30px; 
 }
 
-div.container.col-md-8.feeback div div.feed{
-  background-color: rgba(27, 161, 226, 0.73);
- padding: 22px; border-radius: 25px; margin:6px;
- margin-left: -1px;
- -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
- -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
- box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+div.container.col-md-8.feeback div.feed{
+ padding: 22px; border-radius: 25px;
+ margin: 6px; border: solid #26a2de 4px;
 }
-div.container.col-md-8.feeback div div.feed form{
-  margin:5px; margin-top: 10px;
-  margin-left: -1px;
+
+div.container.col-md-8.feeback div.feed form{
+  margin:5px; margin-top: 10px; margin-left: -1px;
   -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
   -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
   box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+  border-start-end-radius:8px;
 }
 
-div.container.col-md-8.feeback div div.feed form div.col-md-12.comemet{
-  background-color:#30a5b8;
-  padding-right:12px;
-  padding-left:12px;
+div.container.col-md-8.feeback div.feed form div.col-md-12.comemet{
+  background-color:#26a2de;padding-left:12px;
+  margin-top: 20px; margin-left: 0px;
+  border-end-end-radius: 11px; border-start-end-radius: 11px; 
 }
-div.container.col-md-8.feeback div div.feed form div.col-md-12.comemet input.inputFields.col-md-10 {
-  margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 20px;
-    width: 100%;
-    border: 1px solid rgba(245, 244, 238, 0.856);
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background: rgba(33, 243, 206, 0.09);
-    color: black;
-    background-color: #faffbd;
-    outline: none;
-    margin-right: 15px;
+div.container.col-md-8.feeback div.feed form div.col-md-12.comemet input.inputFields.col-md-9 {
+  margin-top: 15px; margin-bottom: 15px; font-size: 16px;
+  padding: 10px; border-radius: 20px; width: 100%;
+  border: 1px solid rgba(245, 244, 238, 0.856);
+  border-top: none; border-left: none; border-right: none;
+  background: rgba(33, 243, 206, 0.09); color: black;
+  background-color: #faffbd; outline: none; margin-right: 15px;
 }
-
-div.container.col-md-8.feeback div div.row.comemet button.col-md-1.env{
-  border:solid #aadcea8c 5px; border-radius:8px;
-  background-color: white; color:black;
-  height: 40px; width: 120px; 
-  margin-Left: 20px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  justify-content: center;
-  display: flex;
+div.container.col-md-8.feeback div.col-md-12.comemet button.env.col-md-1{
+  border-radius: 10px; background-color: white; color: black;
+  height: 30px; min-width: 20%;
+  margin-top: 24px; margin-bottom: 9px;
 }
-div.container.col-md-8.feeback div div.text{
-background-color: rgba(27,161,226, 0.73);
-padding: 20px;   margin-left: -1px;
+div.container.col-md-8.feeback div.text{
+  background-color: #26a2de; padding: 20px; margin-left: -1px;
+  box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77); margin-top: 20px;
+  border-end-end-radius: 10px; border-end-start-radius: 10px;
+  font-size: 18px;
 }
 
 div.text div.analise{
-  background-color: white;
-  display: flex;
-  margin-top: 20px;
-  flex-direction: row;
-  justify-content: center;
-  align-items:center;
+ background-color:white;
+ align-items: center;
+ display: flex;
+ margin-top: 20px;
+ flex-direction: row;
+ text-align: initial;
+ justify-content: center;
+ border-end-end-radius: 9px;
+ border-end-start-radius: 9px;
+ box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+ margin-left: -2px;
+}
+
+img.fig{
+ margin: 10px; margin-right: 0px;
+ width: 45px; height: 40px;
+}
+
+h1.feedTitulo{
+  background-color:#26a2de; padding: 20px; margin-right: 5px;
+  box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+  border-end-end-radius: 11px; border-start-end-radius: 11px;
+ }
+
+h1.feedTituloform{
+ background-color:#26a2de; padding: 20px;
+ border-end-end-radius: 11px; border-start-end-radius: 11px;
 }
 
 
-
-
-div.signupForm.form-inline div.row div.col-md-12 table.table.table-main{
-  margin-left: -1px;
-  -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
-  -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
-  box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+/*************** FEEDS *************/
+div.row.feeds div.col-md-12 div.col-md-11.tabfeed{
+ border: solid #26a2de 4px;
+ background-color:rgba(196, 200, 215, 0.88);
+ padding: 4px; margin: 30px; display: flex;
+ align-items: flex-start; flex-direction: row; border-radius: 10px;
 }
 
-form.signupForm.form-inline div.col-md-12{
-  margin-left: -1px;
-  -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
-  -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
-  box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77); 
+div.row.feeds div.col-md-12 div.tabfeed label{
+  color: black; font-size: 16px; padding: 10;
+}
+div.row.feeds div.col-md-12 div.tabfeed p{
+  color: black; font-size: 14px;
 }
 
-form.signupForm.form-inline div.col-md-12 label.labelFields{ 
-display: flex; font-size: 22px; justify-content: center;
-}
 
-form.signupForm.form-inline div.col-md-12 textarea.inputFields.col-md-12{
-  margin-top: 5px; height: 150px;
-}
-form.signupForm.form-inline div.col-md-11 button.join-btn-no-transform.mr-1{
-  width: 45%;
-  margin-bottom: 5px;
-  margin-top: 8px;
-  // margin-left: 27px;
-}
-div.signupForm.form-inline div.row div.col-md-12 div.col-md-11 div label.labelFields{
-  font-size: 21px;
-}
-div.signupForm.form-inline div.row div.col-md-12 div.col-md-11 div label.labelFields b{
-  display: flex; font-size: 26px; justify-content: center;
-}
-
-        /*feeds*/
-div.row.feeds div.col-md-12 div label.row{
-  display: flex; font-size: 26px; justify-content:right;
-  margin-bottom: 6px; margin-top: 6px; color:black;
-}
-div.row.feeds{
-  border:outset white 10px;
-  border-radius: 25px;
-  background-color: #0ce1f6
-}
-div.row.feeds div.col-md-12 div div.col-md-12{
-  border:outset white 2px;
-  display: flex; font-size: 23px; justify-content: left;
-  margin:2px; border-radius: 30px;  background-color: aliceblue;
-}
-div.row.feeds div.col-md-12 div div.col-md-12 p.text{
-  color: black;
-}
-div.container.col-md-9 h1 b{
- display: flex; font-size: 30px;
- justify-content: center; 
-}
