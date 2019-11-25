@@ -23,7 +23,6 @@ class Feeds extends Component {
         console.log(error + "Erro na busca do item");
       });
   }
-
   componentDidMount() {
     this.findFeeds();
   }
@@ -91,49 +90,54 @@ class Feeds extends Component {
                           ID
                         </p>
                       </div>
-                      <div style={{ width: "10%", margin: 20 }}>
+                      <div style={{ width: "auto", margin: 15 }}>
                         <label
                           className="row"
-                        >
-                          Empresa:
+                        ><b>
+                            Empresa:
+                         </b>
                         </label>
                         <p>{proj.problem.empresa}</p>
                       </div>
-                      <div style={{ width: "30%", margin: 20 }}>
+                      <div style={{ width: "auto", margin: 15 }}>
                         <label
                           className="row"
                         //style={{ fontSize: 14, padding: 10 }}
-                        >
-                          Descricao do problema:
+                        ><b>
+                            Descricao do problema:
+                          </b>
                         </label>
                         <p>
                           {proj.problem.descricao}
                         </p>
                       </div>
-                      <div style={{ width: "20%", margin: 20 }}>
+                      <div style={{ width: "auto", margin: 15 }}>
                         <label
                           //style={{ fontSize: 14, padding: 10 }}
                           className="row"
-                        >
-                          Nome:
+                        ><b>
+                            Nome:
+                          </b>
                         </label>
                         <p>{proj.resource.nome}</p>
                       </div>
-                      <div style={{ width: "20%", margin: 20 }}>
+                      <div style={{ width: "auto", margin: 15 }}>
                         <label
                           //style={{ fontSize: 14, padding: 10 }}
                           className="row"
-                        >
-                          Feedback:
+                        ><b>
+                            Feedback:
+                          </b>
                         </label>
                         <p>{proj.comment}</p>
                       </div>
-                      <div style={{ width: "5%", margin: 20 }}>
+                      <div style={{ width: "auto", margin: 15 }}>
                         <label
                           //style={{ fontSize: 14, padding: 10 }}
                           className="row"
-                        >
-                          Analise:
+                        ><b>
+                            Analise:
+                          </b>
                         </label>
                         <p>{proj.sentiment}</p>
                       </div>

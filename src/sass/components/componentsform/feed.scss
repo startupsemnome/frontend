@@ -43,7 +43,7 @@ div.container.col-md-8.feeback div.text{
 div.text div.analise{
  background-color:white;
  align-items: center;
- display: flex;
+ display: flex !important;
  margin-top: 20px;
  flex-direction: row;
  text-align: initial;
@@ -73,17 +73,18 @@ h1.feedTituloform{
 
 /*************** FEEDS *************/
 div.row.feeds div.col-md-12 div.col-md-11.tabfeed{
- border: solid #26a2de 4px;
- background-color:rgba(196, 200, 215, 0.88);
- padding: 4px; margin: 30px; display: flex;
+ border: solid #1a8687 4px;
+ background-color: #faffbdbf;
+ padding: 4px; margin: 25px auto; display: inline-block !important;
  align-items: flex-start; flex-direction: row; border-radius: 10px;
 }
 
 div.row.feeds div.col-md-12 div.tabfeed label{
-  color: black; font-size: 16px; padding: 10;
+  color: black; font-size: 16px; 
 }
 div.row.feeds div.col-md-12 div.tabfeed p{
   color: black; font-size: 14px;
 }
+
 
 
